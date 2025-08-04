@@ -265,6 +265,11 @@ export default function Index() {
     setCurrentPage(1);
   };
 
+  const handleRegisterForEvent = (event: any) => {
+    setSelectedEventForRegistration(event);
+    setShowRegistrationModal(true);
+  };
+
   return (
     <Layout searchQuery={searchQuery} onSearchChange={handleSearchChange}>
       <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 transition-colors duration-300">
