@@ -170,14 +170,14 @@ export default function Index() {
   const filteredAndSortedEvents = useMemo(() => {
     let filtered = events.filter((event) => {
       // Search filter
-      const matchesSearch =
+      const matchesSearch = 
         event.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
         event.location.toLowerCase().includes(searchQuery.toLowerCase()) ||
         event.category.toLowerCase().includes(searchQuery.toLowerCase());
-
+      
       // Category filter
       const matchesCategory = selectedCategory === "All" || event.category === selectedCategory;
-
+      
       // Price filter
       let matchesPrice = true;
       if (filters.priceRange === 'free') {
@@ -191,30 +191,22 @@ export default function Index() {
         const price = parseFloat(event.price.replace('$', ''));
         matchesPrice = !isNaN(price) && price >= 50;
       }
-
+      
       // City filter
       const matchesCity = filters.cities.length === 0 || filters.cities.includes(event.location);
-
-      // Date filter (simplified for demo)
-      let matchesDate = true;
-      if (filters.dateRange !== 'all') {
-        // For demo purposes, we'll just show all events
-        // In a real app, you'd parse the date strings and filter accordingly
-      }
-
-      return matchesSearch && matchesCategory && matchesPrice && matchesCity && matchesDate;
+      
+      return matchesSearch && matchesCategory && matchesPrice && matchesCity;
     });
 
     // Sort events
     filtered.sort((a, b) => {
       let comparison = 0;
-
+      
       switch (sortConfig.option) {
         case 'name':
           comparison = a.title.localeCompare(b.title);
           break;
         case 'date':
-          // Simple date comparison (in real app, parse actual dates)
           comparison = a.date.localeCompare(b.date);
           break;
         case 'price':
@@ -232,7 +224,7 @@ export default function Index() {
           comparison = a.rating - b.rating;
           break;
       }
-
+      
       return sortConfig.direction === 'asc' ? comparison : -comparison;
     });
 
@@ -249,7 +241,7 @@ export default function Index() {
   const featuredEvents = paginatedEvents.filter(event => event.featured);
   const regularEvents = paginatedEvents.filter(event => !event.featured);
 
-  // Reset page when filters change
+  // Event handlers
   const handleFiltersChange = (newFilters: FilterState) => {
     setFilters(newFilters);
     setCurrentPage(1);
@@ -285,7 +277,7 @@ export default function Index() {
                 </div>
               </div>
               <div className="flex items-center space-x-3">
-                <button
+                <button 
                   onClick={toggleTheme}
                   className="p-2 rounded-xl bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
                 >
@@ -356,16 +348,15 @@ export default function Index() {
         </div>
 
         {/* Featured Events Section */}
-        <div className="px-4 lg:px-8 py-4">
-          <div className="max-w-md lg:max-w-7xl mx-auto">
-            <h2 className="text-xl lg:text-2xl font-bold text-gray-900 mb-6">⭐ Featured Events</h2>
-            <div className="space-y-6 lg:grid lg:grid-cols-2 xl:grid-cols-3 lg:space-y-0 lg:gap-8">
-              {filteredEvents
-                .filter((event) => event.featured)
-                .map((event) => (
+        {featuredEvents.length > 0 && (
+          <div className="px-4 lg:px-8 py-4">
+            <div className="max-w-md lg:max-w-7xl mx-auto">
+              <h2 className="text-xl lg:text-2xl font-bold text-gray-900 dark:text-gray-100 mb-6">⭐ Featured Events</h2>
+              <div className="space-y-6 lg:grid lg:grid-cols-2 xl:grid-cols-3 lg:space-y-0 lg:gap-8">
+                {featuredEvents.map((event) => (
                   <div
                     key={event.id}
-                    className="group bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-100 hover:border-purple-200 hover:-translate-y-1"
+                    className="group bg-white dark:bg-gray-800 rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-100 dark:border-gray-700 hover:border-purple-200 dark:hover:border-purple-400 hover:-translate-y-1"
                   >
                     <div className="relative overflow-hidden">
                       <img
@@ -386,30 +377,30 @@ export default function Index() {
                       </div>
                     </div>
                     <div className="p-6">
-                      <h3 className="font-bold text-gray-900 mb-3 text-lg group-hover:text-purple-600 transition-colors">{event.title}</h3>
-                      <div className="flex items-center space-x-4 text-sm text-gray-600 mb-4">
-                        <div className="flex items-center space-x-2 bg-gray-50 rounded-lg px-3 py-1.5">
+                      <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-3 text-lg group-hover:text-purple-600 transition-colors">{event.title}</h3>
+                      <div className="flex items-center space-x-4 text-sm text-gray-600 dark:text-gray-400 mb-4">
+                        <div className="flex items-center space-x-2 bg-gray-50 dark:bg-gray-700 rounded-lg px-3 py-1.5">
                           <Calendar className="h-4 w-4 text-purple-600" />
-                          <span className="font-medium">{event.date}</span>
+                          <span className="font-medium text-gray-900 dark:text-gray-200">{event.date}</span>
                         </div>
-                        <div className="flex items-center space-x-2 bg-gray-50 rounded-lg px-3 py-1.5">
+                        <div className="flex items-center space-x-2 bg-gray-50 dark:bg-gray-700 rounded-lg px-3 py-1.5">
                           <Clock className="h-4 w-4 text-purple-600" />
-                          <span className="font-medium">{event.time}</span>
+                          <span className="font-medium text-gray-900 dark:text-gray-200">{event.time}</span>
                         </div>
                       </div>
-                      <div className="flex items-center space-x-2 text-sm text-gray-600 mb-4 bg-gray-50 rounded-lg px-3 py-1.5">
+                      <div className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-400 mb-4 bg-gray-50 dark:bg-gray-700 rounded-lg px-3 py-1.5">
                         <MapPin className="h-4 w-4 text-purple-600" />
-                        <span className="font-medium">{event.location}</span>
+                        <span className="font-medium text-gray-900 dark:text-gray-200">{event.location}</span>
                       </div>
                       <div className="flex items-center justify-between">
                         <div className="flex items-center space-x-4">
                           <div className="flex items-center space-x-1">
                             <Users className="h-4 w-4 text-gray-500" />
-                            <span className="text-sm font-medium text-gray-700">{event.attendees}</span>
+                            <span className="text-sm font-medium text-gray-700 dark:text-gray-300">{event.attendees}</span>
                           </div>
                           <div className="flex items-center space-x-1">
                             <Star className="h-4 w-4 text-yellow-500 fill-current" />
-                            <span className="text-sm font-medium text-gray-700">{event.rating}</span>
+                            <span className="text-sm font-medium text-gray-700 dark:text-gray-300">{event.rating}</span>
                           </div>
                         </div>
                         <button className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white px-6 py-2.5 rounded-xl text-sm font-semibold shadow-lg hover:shadow-xl transition-all duration-200 hover:-translate-y-0.5">
@@ -419,87 +410,103 @@ export default function Index() {
                     </div>
                   </div>
                 ))}
+              </div>
             </div>
           </div>
-        </div>
+        )}
 
         {/* All Events Section */}
         <div className="px-4 lg:px-8 py-6">
           <div className="max-w-md lg:max-w-7xl mx-auto">
-            <h2 className="text-xl lg:text-2xl font-bold text-gray-900 mb-6">🎯 All Events</h2>
+            <h2 className="text-xl lg:text-2xl font-bold text-gray-900 dark:text-gray-100 mb-6">🎯 All Events</h2>
             <div className="space-y-4 lg:grid lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 lg:space-y-0 lg:gap-6">
-              {filteredEvents
-                .filter((event) => !event.featured)
-                .map((event) => (
-                  <div
-                    key={event.id}
-                    className="group bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 hover:border-purple-200 hover:-translate-y-1"
-                  >
-                    <div className="relative overflow-hidden">
-                      <img
-                        src={event.image}
-                        alt={event.title}
-                        className="w-full h-32 lg:h-40 object-cover group-hover:scale-105 transition-transform duration-300"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent"></div>
-                      <div className="absolute top-3 right-3">
-                        <span className="bg-white/95 backdrop-blur-sm text-gray-900 px-2.5 py-1 rounded-full text-xs font-bold shadow-lg">
-                          {event.price}
-                        </span>
-                      </div>
-                    </div>
-                    <div className="p-4">
-                      <h3 className="font-bold text-gray-900 mb-2 text-sm group-hover:text-purple-600 transition-colors line-clamp-2">{event.title}</h3>
-                      <div className="flex items-center space-x-2 text-xs text-gray-600 mb-3">
-                        <div className="flex items-center space-x-1 bg-gray-50 rounded-lg px-2 py-1">
-                          <Calendar className="h-3 w-3 text-purple-600" />
-                          <span className="font-medium">{event.date}</span>
-                        </div>
-                        <div className="flex items-center space-x-1 bg-gray-50 rounded-lg px-2 py-1">
-                          <Clock className="h-3 w-3 text-purple-600" />
-                          <span className="font-medium">{event.time}</span>
-                        </div>
-                      </div>
-                      <div className="flex items-center space-x-1 text-xs text-gray-600 mb-3 bg-gray-50 rounded-lg px-2 py-1">
-                        <MapPin className="h-3 w-3 text-purple-600" />
-                        <span className="font-medium truncate">{event.location}</span>
-                      </div>
-                      <div className="flex items-center justify-between">
-                        <div className="flex items-center space-x-3">
-                          <div className="flex items-center space-x-1">
-                            <Users className="h-3 w-3 text-gray-500" />
-                            <span className="text-xs font-medium text-gray-700">{event.attendees}</span>
-                          </div>
-                          <div className="flex items-center space-x-1">
-                            <Star className="h-3 w-3 text-yellow-500 fill-current" />
-                            <span className="text-xs font-medium text-gray-700">{event.rating}</span>
-                          </div>
-                        </div>
-                        <button className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white px-3 py-1.5 rounded-xl text-xs font-semibold shadow-md hover:shadow-lg transition-all duration-200 hover:-translate-y-0.5">
-                          Join
-                        </button>
-                      </div>
+              {regularEvents.map((event) => (
+                <div
+                  key={event.id}
+                  className="group bg-white dark:bg-gray-800 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 dark:border-gray-700 hover:border-purple-200 dark:hover:border-purple-400 hover:-translate-y-1"
+                >
+                  <div className="relative overflow-hidden">
+                    <img
+                      src={event.image}
+                      alt={event.title}
+                      className="w-full h-32 lg:h-40 object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent"></div>
+                    <div className="absolute top-3 right-3">
+                      <span className="bg-white/95 backdrop-blur-sm text-gray-900 px-2.5 py-1 rounded-full text-xs font-bold shadow-lg">
+                        {event.price}
+                      </span>
                     </div>
                   </div>
-                ))}
+                  <div className="p-4">
+                    <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-2 text-sm group-hover:text-purple-600 transition-colors line-clamp-2">{event.title}</h3>
+                    <div className="flex items-center space-x-2 text-xs text-gray-600 dark:text-gray-400 mb-3">
+                      <div className="flex items-center space-x-1 bg-gray-50 dark:bg-gray-700 rounded-lg px-2 py-1">
+                        <Calendar className="h-3 w-3 text-purple-600" />
+                        <span className="font-medium text-gray-900 dark:text-gray-200">{event.date}</span>
+                      </div>
+                      <div className="flex items-center space-x-1 bg-gray-50 dark:bg-gray-700 rounded-lg px-2 py-1">
+                        <Clock className="h-3 w-3 text-purple-600" />
+                        <span className="font-medium text-gray-900 dark:text-gray-200">{event.time}</span>
+                      </div>
+                    </div>
+                    <div className="flex items-center space-x-1 text-xs text-gray-600 dark:text-gray-400 mb-3 bg-gray-50 dark:bg-gray-700 rounded-lg px-2 py-1">
+                      <MapPin className="h-3 w-3 text-purple-600" />
+                      <span className="font-medium text-gray-900 dark:text-gray-200 truncate">{event.location}</span>
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center space-x-3">
+                        <div className="flex items-center space-x-1">
+                          <Users className="h-3 w-3 text-gray-500" />
+                          <span className="text-xs font-medium text-gray-700 dark:text-gray-300">{event.attendees}</span>
+                        </div>
+                        <div className="flex items-center space-x-1">
+                          <Star className="h-3 w-3 text-yellow-500 fill-current" />
+                          <span className="text-xs font-medium text-gray-700 dark:text-gray-300">{event.rating}</span>
+                        </div>
+                      </div>
+                      <button className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white px-3 py-1.5 rounded-xl text-xs font-semibold shadow-md hover:shadow-lg transition-all duration-200 hover:-translate-y-0.5">
+                        Join
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
 
+        {/* Pagination */}
+        <Pagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          totalItems={filteredAndSortedEvents.length}
+          itemsPerPage={ITEMS_PER_PAGE}
+          onPageChange={setCurrentPage}
+        />
+
         {/* Empty State */}
-        {filteredEvents.length === 0 && (
+        {filteredAndSortedEvents.length === 0 && (
           <div className="px-4 lg:px-8 py-12">
             <div className="max-w-md lg:max-w-7xl mx-auto text-center">
-              <div className="bg-gradient-to-br from-purple-100 to-blue-100 rounded-3xl p-12 border border-purple-200">
+              <div className="bg-gradient-to-br from-purple-100 to-blue-100 dark:from-purple-900/20 dark:to-blue-900/20 rounded-3xl p-12 border border-purple-200 dark:border-purple-800">
                 <div className="w-16 h-16 bg-gradient-to-br from-purple-600 to-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-6">
                   <Calendar className="h-8 w-8 text-white" />
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3">No events found</h3>
-                <p className="text-gray-600 max-w-sm mx-auto">
+                <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-3">No events found</h3>
+                <p className="text-gray-600 dark:text-gray-400 max-w-sm mx-auto">
                   Try adjusting your search or category filter to discover amazing events in your area.
                 </p>
-                <button
-                  onClick={() => setSearchQuery("")}
+                <button 
+                  onClick={() => {
+                    setSearchQuery("");
+                    setSelectedCategory("All");
+                    setFilters({
+                      priceRange: 'all',
+                      dateRange: 'all',
+                      cities: []
+                    });
+                  }}
                   className="mt-6 bg-gradient-to-r from-purple-600 to-blue-600 text-white px-6 py-3 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-200 hover:-translate-y-0.5"
                 >
                   Clear Filters
