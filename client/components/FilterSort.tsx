@@ -13,7 +13,7 @@ interface FilterSortProps {
 }
 
 export interface FilterState {
-  priceRange: 'all' | 'free' | 'paid' | 'under-50' | 'over-50';
+  priceRange: 'all' | 'open' | 'approval_required';
   dateRange: 'all' | 'today' | 'week' | 'month';
   cities: string[];
 }
