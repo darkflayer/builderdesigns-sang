@@ -37,9 +37,9 @@ export default function Layout({ children, searchQuery = "", onSearchChange }: L
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 flex flex-col">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 flex flex-col transition-colors duration-300">
       {/* Premium Desktop Navigation - Hidden on mobile */}
-      <nav className="hidden lg:block bg-white/95 backdrop-blur-md border-b border-gray-200/50 shadow-sm">
+      <nav className="hidden lg:block bg-white/95 dark:bg-gray-900/95 backdrop-blur-md border-b border-gray-200/50 dark:border-gray-700/50 shadow-sm">
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             {/* Logo/Brand */}
@@ -64,8 +64,8 @@ export default function Layout({ children, searchQuery = "", onSearchChange }: L
                       className={cn(
                         "flex items-center space-x-2 px-4 py-2.5 rounded-xl transition-all duration-200 font-medium",
                         isActive
-                          ? "text-purple-600 bg-purple-50 shadow-sm"
-                          : "text-gray-600 hover:text-gray-900 hover:bg-gray-50"
+                          ? "text-purple-600 bg-purple-50 dark:bg-purple-900/20 shadow-sm"
+                          : "text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-800"
                       )}
                     >
                       <item.icon className={cn("h-4 w-4", isActive ? "text-purple-600" : "")} />
@@ -79,29 +79,40 @@ export default function Layout({ children, searchQuery = "", onSearchChange }: L
             {/* Center Search */}
             <div className="flex-1 max-w-2xl mx-8">
               <div className="relative">
-                <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
+                <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400 dark:text-gray-500" />
                 <input
                   type="text"
                   placeholder="Search events by name, location, category..."
                   value={searchQuery}
                   onChange={(e) => onSearchChange?.(e.target.value)}
-                  className="w-full pl-12 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-200 text-sm"
+                  className="w-full pl-12 pr-4 py-3 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-200 text-sm text-gray-900 dark:text-gray-100"
                 />
               </div>
             </div>
 
-            {/* Right Side - Location & Profile */}
+            {/* Right Side - Theme Toggle, Location & Profile */}
             <div className="flex items-center space-x-4">
-              <div className="flex items-center space-x-2 px-3 py-2 bg-gray-50 rounded-xl">
+              <div className="flex items-center space-x-2 px-3 py-2 bg-gray-50 dark:bg-gray-800 rounded-xl">
                 <MapPin className="h-4 w-4 text-purple-600" />
                 <div className="text-sm">
-                  <span className="text-gray-600 block text-xs">Location</span>
-                  <span className="font-medium text-gray-900">San Francisco, CA</span>
+                  <span className="text-gray-600 dark:text-gray-400 block text-xs">Location</span>
+                  <span className="font-medium text-gray-900 dark:text-gray-100">San Francisco, CA</span>
                 </div>
               </div>
 
-              <button className="p-2.5 rounded-xl bg-gray-50 hover:bg-gray-100 transition-colors relative">
-                <Bell className="h-5 w-5 text-gray-600" />
+              <button
+                onClick={toggleTheme}
+                className="p-2.5 rounded-xl bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+              >
+                {theme === 'dark' ? (
+                  <Sun className="h-5 w-5 text-gray-600 dark:text-gray-300" />
+                ) : (
+                  <Moon className="h-5 w-5 text-gray-600 dark:text-gray-300" />
+                )}
+              </button>
+
+              <button className="p-2.5 rounded-xl bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors relative">
+                <Bell className="h-5 w-5 text-gray-600 dark:text-gray-300" />
                 <div className="absolute -top-1 -right-1 h-3 w-3 bg-red-500 rounded-full"></div>
               </button>
 
