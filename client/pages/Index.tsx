@@ -201,10 +201,10 @@ export default function Index() {
         </div>
 
         {/* Categories */}
-        <div className="px-4 py-4">
-          <div className="max-w-md mx-auto">
+        <div className="px-4 lg:px-8 py-4">
+          <div className="max-w-md lg:max-w-7xl mx-auto">
             <h2 className="text-lg font-semibold text-gray-900 mb-3">Categories</h2>
-            <div className="flex space-x-2 overflow-x-auto pb-2">
+            <div className="flex space-x-2 overflow-x-auto lg:overflow-x-visible pb-2">
               {categories.map((category) => (
                 <button
                   key={category.name}
