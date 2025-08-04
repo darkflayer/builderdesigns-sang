@@ -11,6 +11,7 @@ interface LayoutProps {
 
 export default function Layout({ children, searchQuery = "", onSearchChange }: LayoutProps) {
   const location = useLocation();
+  const { theme, toggleTheme } = useTheme();
 
   const navigation = [
     {
