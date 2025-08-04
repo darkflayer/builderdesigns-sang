@@ -360,18 +360,36 @@ export default function RegistrationModal({ isOpen, onClose, eventTitle, registr
 
             {step === 'confirmation' && (
               <div className="p-6 text-center">
-                <div className="w-16 h-16 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Check className="h-8 w-8 text-green-600 dark:text-green-400" />
+                <div className={`w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 ${
+                  registrationType === 'open'
+                    ? 'bg-green-100 dark:bg-green-900/30'
+                    : 'bg-orange-100 dark:bg-orange-900/30'
+                }`}>
+                  {registrationType === 'open' ? (
+                    <Check className="h-8 w-8 text-green-600 dark:text-green-400" />
+                  ) : (
+                    <Clock className="h-8 w-8 text-orange-600 dark:text-orange-400" />
+                  )}
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-2">
-                  Registration Successful!
+                  {registrationType === 'open' ? 'Registration Successful!' : 'Application Submitted!'}
                 </h3>
                 <p className="text-gray-600 dark:text-gray-400 mb-6">
-                  You're all set for {eventTitle}. We've sent a confirmation email with all the details.
+                  {registrationType === 'open'
+                    ? `You're all set for ${eventTitle}. We've sent a confirmation email with all the details.`
+                    : `Your application for ${eventTitle} has been submitted. You'll receive a notification once it's reviewed by the organizers.`
+                  }
                 </p>
-                <div className="bg-gray-50 dark:bg-gray-700 rounded-xl p-4">
+                <div className={`rounded-xl p-4 ${
+                  registrationType === 'open'
+                    ? 'bg-green-50 dark:bg-green-900/20'
+                    : 'bg-orange-50 dark:bg-orange-900/20'
+                }`}>
                   <p className="text-sm text-gray-600 dark:text-gray-400">
-                    You can update your privacy settings and shared information anytime in your profile.
+                    {registrationType === 'open'
+                      ? 'You can update your privacy settings and shared information anytime in your profile.'
+                      : 'We typically review applications within 24-48 hours. You can check your application status in "My Events".'
+                    }
                   </p>
                 </div>
               </div>
