@@ -291,10 +291,10 @@ export default function Index() {
         </div>
 
         {/* All Events Section */}
-        <div className="px-4 py-4">
-          <div className="max-w-md mx-auto">
+        <div className="px-4 lg:px-8 py-4">
+          <div className="max-w-md lg:max-w-7xl mx-auto">
             <h2 className="text-lg font-semibold text-gray-900 mb-4">All Events</h2>
-            <div className="space-y-4">
+            <div className="space-y-4 lg:grid lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 lg:space-y-0 lg:gap-4">
               {filteredEvents
                 .filter((event) => !event.featured)
                 .map((event) => (
@@ -306,7 +306,7 @@ export default function Index() {
                       <img
                         src={event.image}
                         alt={event.title}
-                        className="w-full h-32 object-cover"
+                        className="w-full h-32 lg:h-40 object-cover"
                       />
                       <div className="absolute top-2 right-2">
                         <span className="bg-white text-gray-900 px-2 py-1 rounded-full text-xs font-semibold">
