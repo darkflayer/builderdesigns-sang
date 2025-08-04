@@ -18,7 +18,7 @@ const eventDetails = {
     image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&h=400&fit=crop",
     attendees: 250,
     rating: 4.8,
-    price: "Free",
+    registrationType: "open" as const,
     category: "Technology",
     featured: true,
     description: "Join us for the most anticipated technology event of the year! Connect with industry leaders, discover cutting-edge innovations, and explore the future of technology. This summit brings together entrepreneurs, developers, investors, and visionaries from around the globe.",
@@ -46,7 +46,337 @@ const eventDetails = {
     },
     tags: ["AI", "Machine Learning", "Startups", "Innovation", "Networking"]
   },
-  // Add more events as needed
+  2: {
+    id: 2,
+    title: "Digital Marketing Workshop",
+    location: "New York, NY",
+    venue: "Creative Hub, Conference Room B",
+    date: "Dec 18, 2024",
+    time: "2:00 PM - 6:00 PM",
+    image: "https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=800&h=400&fit=crop",
+    attendees: 85,
+    rating: 4.6,
+    registrationType: "approval_required" as const,
+    category: "Business",
+    featured: false,
+    description: "Master the latest digital marketing strategies and tactics in this intensive workshop. Learn from industry experts and get hands-on experience with the latest tools and platforms.",
+    highlights: [
+      "Advanced social media strategies",
+      "SEO and content marketing",
+      "PPC campaign optimization",
+      "Analytics and reporting",
+      "Hands-on tool demonstrations"
+    ],
+    schedule: [
+      { time: "2:00 PM", activity: "Registration & Welcome" },
+      { time: "2:30 PM", activity: "Social Media Marketing Trends" },
+      { time: "3:30 PM", activity: "SEO Best Practices" },
+      { time: "4:30 PM", activity: "Break & Networking" },
+      { time: "5:00 PM", activity: "PPC Campaign Workshop" },
+      { time: "5:45 PM", activity: "Q&A and Wrap-up" }
+    ],
+    organizer: {
+      name: "Digital Marketing Pro",
+      avatar: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=100&h=100&fit=crop",
+      email: "info@digitalmarketingpro.com",
+      verified: true
+    },
+    tags: ["Digital Marketing", "SEO", "Social Media", "PPC", "Analytics"]
+  },
+  3: {
+    id: 3,
+    title: "Jazz Night at Blue Note",
+    location: "Chicago, IL",
+    venue: "Blue Note Jazz Club",
+    date: "Dec 20, 2024",
+    time: "8:00 PM - 11:00 PM",
+    image: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=800&h=400&fit=crop",
+    attendees: 120,
+    rating: 4.9,
+    registrationType: "open" as const,
+    category: "Music",
+    featured: false,
+    description: "Experience an unforgettable evening of jazz music featuring renowned artists and emerging talents. Enjoy classic cocktails and sophisticated atmosphere.",
+    highlights: [
+      "Live jazz performances",
+      "Featured guest artists",
+      "Premium cocktail menu",
+      "Intimate venue setting",
+      "Meet the artists session"
+    ],
+    schedule: [
+      { time: "8:00 PM", activity: "Doors Open & Welcome Drinks" },
+      { time: "8:30 PM", activity: "Opening Act" },
+      { time: "9:15 PM", activity: "Main Performance Set 1" },
+      { time: "10:00 PM", activity: "Intermission" },
+      { time: "10:15 PM", activity: "Main Performance Set 2" },
+      { time: "11:00 PM", activity: "Meet & Greet with Artists" }
+    ],
+    organizer: {
+      name: "Blue Note Entertainment",
+      avatar: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=100&h=100&fit=crop",
+      email: "events@bluenote.com",
+      verified: true
+    },
+    tags: ["Jazz", "Live Music", "Cocktails", "Entertainment", "Nightlife"]
+  },
+  4: {
+    id: 4,
+    title: "Startup Networking Mixer",
+    location: "Austin, TX",
+    venue: "Innovation District, Main Hall",
+    date: "Dec 22, 2024",
+    time: "6:00 PM - 9:00 PM",
+    image: "https://images.unsplash.com/photo-1515187029135-18ee286d815b?w=800&h=400&fit=crop",
+    attendees: 180,
+    rating: 4.7,
+    registrationType: "approval_required" as const,
+    category: "Business",
+    featured: true,
+    description: "Connect with fellow entrepreneurs, investors, and startup enthusiasts in Austin's thriving tech scene. This exclusive networking event brings together the most promising startups and influential investors.",
+    highlights: [
+      "Exclusive networking opportunities",
+      "Investor pitch sessions",
+      "Startup showcases",
+      "Expert panel discussions",
+      "Premium catering and drinks"
+    ],
+    schedule: [
+      { time: "6:00 PM", activity: "Registration & Welcome Reception" },
+      { time: "6:30 PM", activity: "Startup Showcase Presentations" },
+      { time: "7:30 PM", activity: "Investor Panel Discussion" },
+      { time: "8:00 PM", activity: "Open Networking Session" },
+      { time: "8:30 PM", activity: "Closing Remarks & After Party" }
+    ],
+    organizer: {
+      name: "Austin Startup Alliance",
+      avatar: "https://images.unsplash.com/photo-1556157382-97eda2d62296?w=100&h=100&fit=crop",
+      email: "network@austinstartups.org",
+      verified: true
+    },
+    tags: ["Startups", "Networking", "Investors", "Entrepreneurship", "Tech"]
+  },
+  5: {
+    id: 5,
+    title: "AI & Machine Learning Conference",
+    location: "Seattle, WA",
+    venue: "Seattle Convention Center",
+    date: "Dec 25, 2024",
+    time: "10:00 AM - 5:00 PM",
+    image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800&h=400&fit=crop",
+    attendees: 320,
+    rating: 4.9,
+    registrationType: "approval_required" as const,
+    category: "Technology",
+    featured: false,
+    description: "Dive deep into the latest advances in artificial intelligence and machine learning. This conference features cutting-edge research, practical applications, and networking opportunities with AI experts.",
+    highlights: [
+      "Cutting-edge AI research presentations",
+      "Hands-on ML workshops",
+      "Industry expert keynotes",
+      "AI startup exhibitions",
+      "Technical deep-dive sessions"
+    ],
+    schedule: [
+      { time: "10:00 AM", activity: "Registration & Coffee" },
+      { time: "10:30 AM", activity: "Keynote: Future of AI" },
+      { time: "11:30 AM", activity: "Technical Sessions Track A & B" },
+      { time: "1:00 PM", activity: "Lunch & Networking" },
+      { time: "2:00 PM", activity: "Workshop: Building AI Models" },
+      { time: "4:00 PM", activity: "Panel: AI Ethics & Society" },
+      { time: "5:00 PM", activity: "Closing & Happy Hour" }
+    ],
+    organizer: {
+      name: "AI Research Institute",
+      avatar: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=100&h=100&fit=crop",
+      email: "events@airesearch.org",
+      verified: true
+    },
+    tags: ["AI", "Machine Learning", "Research", "Deep Learning", "Neural Networks"]
+  },
+  6: {
+    id: 6,
+    title: "Photography Masterclass",
+    location: "Los Angeles, CA",
+    venue: "Creative Arts Studio",
+    date: "Dec 28, 2024",
+    time: "1:00 PM - 5:00 PM",
+    image: "https://images.unsplash.com/photo-1606983340126-99ab4feaa64a?w=800&h=400&fit=crop",
+    attendees: 45,
+    rating: 4.7,
+    registrationType: "open" as const,
+    category: "Art",
+    featured: false,
+    description: "Learn advanced photography techniques from award-winning photographers. This hands-on masterclass covers portrait, landscape, and street photography with practical shooting sessions.",
+    highlights: [
+      "Professional photography techniques",
+      "Hands-on shooting sessions",
+      "Photo editing workshops",
+      "Equipment demonstrations",
+      "Portfolio review sessions"
+    ],
+    schedule: [
+      { time: "1:00 PM", activity: "Welcome & Introduction" },
+      { time: "1:30 PM", activity: "Portrait Photography Techniques" },
+      { time: "2:30 PM", activity: "Practical Shooting Session" },
+      { time: "3:30 PM", activity: "Break & Equipment Demo" },
+      { time: "4:00 PM", activity: "Photo Editing Workshop" },
+      { time: "4:45 PM", activity: "Portfolio Review & Feedback" }
+    ],
+    organizer: {
+      name: "Creative Photography Academy",
+      avatar: "https://images.unsplash.com/photo-1502920917128-1aa500764cbd?w=100&h=100&fit=crop",
+      email: "workshops@creativephoto.com",
+      verified: true
+    },
+    tags: ["Photography", "Portrait", "Landscape", "Art", "Creative"]
+  },
+  7: {
+    id: 7,
+    title: "Basketball Championship Finals",
+    location: "Miami, FL",
+    venue: "American Airlines Arena",
+    date: "Dec 30, 2024",
+    time: "7:00 PM - 10:00 PM",
+    image: "https://images.unsplash.com/photo-1546519638-68e109498ffc?w=800&h=400&fit=crop",
+    attendees: 15000,
+    rating: 4.8,
+    registrationType: "approval_required" as const,
+    category: "Sports",
+    featured: false,
+    description: "Experience the excitement of championship basketball at its finest. Watch the season's best teams compete for the ultimate prize in this thrilling finale.",
+    highlights: [
+      "Championship game experience",
+      "Premium seating options",
+      "Pre-game entertainment",
+      "Concession and merchandise",
+      "Post-game celebration"
+    ],
+    schedule: [
+      { time: "7:00 PM", activity: "Arena Opens & Pre-game Activities" },
+      { time: "7:30 PM", activity: "Team Warm-ups" },
+      { time: "8:00 PM", activity: "Opening Ceremony" },
+      { time: "8:15 PM", activity: "Game Start" },
+      { time: "10:00 PM", activity: "Post-game Celebration" }
+    ],
+    organizer: {
+      name: "Professional Basketball League",
+      avatar: "https://images.unsplash.com/photo-1574623452334-1e0ac2b3ccb4?w=100&h=100&fit=crop",
+      email: "tickets@probasketball.com",
+      verified: true
+    },
+    tags: ["Basketball", "Sports", "Championship", "Entertainment", "Live Event"]
+  },
+  8: {
+    id: 8,
+    title: "Food & Wine Festival",
+    location: "Portland, OR",
+    venue: "Waterfront Park",
+    date: "Jan 2, 2025",
+    time: "12:00 PM - 8:00 PM",
+    image: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&h=400&fit=crop",
+    attendees: 500,
+    rating: 4.6,
+    registrationType: "open" as const,
+    category: "Business",
+    featured: false,
+    description: "Celebrate the finest in food and wine with local chefs, wineries, and culinary experts. Taste exceptional dishes, discover new wines, and enjoy live cooking demonstrations.",
+    highlights: [
+      "Local chef demonstrations",
+      "Wine tasting sessions",
+      "Artisan food vendors",
+      "Live cooking competitions",
+      "Culinary workshops"
+    ],
+    schedule: [
+      { time: "12:00 PM", activity: "Festival Opening & Welcome" },
+      { time: "12:30 PM", activity: "Chef Demonstrations Begin" },
+      { time: "2:00 PM", activity: "Wine Tasting Sessions" },
+      { time: "4:00 PM", activity: "Cooking Competition" },
+      { time: "6:00 PM", activity: "Live Music & Dining" },
+      { time: "8:00 PM", activity: "Festival Closing" }
+    ],
+    organizer: {
+      name: "Portland Culinary Society",
+      avatar: "https://images.unsplash.com/photo-1577219491135-ce391730fb2c?w=100&h=100&fit=crop",
+      email: "events@portlandculinary.org",
+      verified: true
+    },
+    tags: ["Food", "Wine", "Culinary", "Local Chefs", "Gastronomy"]
+  },
+  9: {
+    id: 9,
+    title: "Classical Music Concert",
+    location: "Boston, MA",
+    venue: "Symphony Hall",
+    date: "Jan 5, 2025",
+    time: "8:00 PM - 10:30 PM",
+    image: "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=800&h=400&fit=crop",
+    attendees: 800,
+    rating: 4.9,
+    registrationType: "open" as const,
+    category: "Music",
+    featured: false,
+    description: "Experience the beauty of classical music performed by world-renowned musicians in the historic Symphony Hall. An evening of timeless compositions and exceptional artistry.",
+    highlights: [
+      "World-class symphony orchestra",
+      "Historic venue acoustics",
+      "Classical masterpieces",
+      "Professional musicians",
+      "Elegant evening atmosphere"
+    ],
+    schedule: [
+      { time: "8:00 PM", activity: "Doors Open & Pre-concert Reception" },
+      { time: "8:30 PM", activity: "Opening Performance" },
+      { time: "9:15 PM", activity: "Intermission" },
+      { time: "9:30 PM", activity: "Main Symphony Performance" },
+      { time: "10:30 PM", activity: "Closing & Reception" }
+    ],
+    organizer: {
+      name: "Boston Symphony Orchestra",
+      avatar: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=100&h=100&fit=crop",
+      email: "tickets@bostonsymphony.org",
+      verified: true
+    },
+    tags: ["Classical Music", "Symphony", "Orchestra", "Culture", "Arts"]
+  },
+  10: {
+    id: 10,
+    title: "Modern Art Exhibition",
+    location: "New York, NY",
+    venue: "Metropolitan Art Gallery",
+    date: "Jan 8, 2025",
+    time: "10:00 AM - 6:00 PM",
+    image: "https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?w=800&h=400&fit=crop",
+    attendees: 200,
+    rating: 4.5,
+    registrationType: "approval_required" as const,
+    category: "Art",
+    featured: false,
+    description: "Explore cutting-edge contemporary art from emerging and established artists. This curated exhibition showcases innovative works across various mediums and artistic expressions.",
+    highlights: [
+      "Contemporary art showcase",
+      "Artist meet and greets",
+      "Guided exhibition tours",
+      "Art acquisition opportunities",
+      "Cultural networking events"
+    ],
+    schedule: [
+      { time: "10:00 AM", activity: "Exhibition Opening" },
+      { time: "11:00 AM", activity: "Guided Tour Session 1" },
+      { time: "1:00 PM", activity: "Artist Talk & Q&A" },
+      { time: "3:00 PM", activity: "Guided Tour Session 2" },
+      { time: "5:00 PM", activity: "Closing Reception" },
+      { time: "6:00 PM", activity: "Exhibition Closes" }
+    ],
+    organizer: {
+      name: "Metropolitan Art Society",
+      avatar: "https://images.unsplash.com/photo-1459749411175-04bf5292ceea?w=100&h=100&fit=crop",
+      email: "exhibitions@metartsociety.org",
+      verified: true
+    },
+    tags: ["Modern Art", "Contemporary", "Exhibition", "Culture", "Gallery"]
+  }
 };
 
 export default function EventDetails() {
