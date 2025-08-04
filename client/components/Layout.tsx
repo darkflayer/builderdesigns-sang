@@ -2,6 +2,7 @@ import { Home, Calendar, Scan, Users, Search, MapPin, Bell, User, Moon, Sun } fr
 import { Link, useLocation } from "react-router-dom";
 import { cn } from "@/lib/utils";
 import { useTheme } from "@/contexts/ThemeContext";
+import Footer from "./Footer";
 
 interface LayoutProps {
   children: React.ReactNode;
