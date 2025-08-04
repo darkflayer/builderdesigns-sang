@@ -71,7 +71,7 @@ const shareableFields = [
   },
 ];
 
-export default function RegistrationModal({ isOpen, onClose, eventTitle, eventPrice }: RegistrationModalProps) {
+export default function RegistrationModal({ isOpen, onClose, eventTitle, registrationType }: RegistrationModalProps) {
   const [shareableDetails, setShareableDetails] = useState<ShareableDetails>({
     email: true, // Email is required and pre-checked
     phone: false,
