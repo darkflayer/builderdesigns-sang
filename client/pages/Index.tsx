@@ -366,26 +366,30 @@ export default function Index() {
                     key={event.id}
                     className="group bg-white dark:bg-gray-800 rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-100 dark:border-gray-700 hover:border-purple-200 dark:hover:border-purple-400 hover:-translate-y-1"
                   >
-                    <div className="relative overflow-hidden">
-                      <img
-                        src={event.image}
-                        alt={event.title}
-                        className="w-full h-48 lg:h-56 object-cover group-hover:scale-105 transition-transform duration-300"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
-                      <div className="absolute top-4 left-4">
-                        <span className="bg-gradient-to-r from-purple-600 to-blue-600 text-white px-3 py-1.5 rounded-full text-xs font-semibold shadow-lg">
-                          ✨ Featured
-                        </span>
+                    <Link to={`/event/${event.id}`} className="block">
+                      <div className="relative overflow-hidden">
+                        <img
+                          src={event.image}
+                          alt={event.title}
+                          className="w-full h-48 lg:h-56 object-cover group-hover:scale-105 transition-transform duration-300"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+                        <div className="absolute top-4 left-4">
+                          <span className="bg-gradient-to-r from-purple-600 to-blue-600 text-white px-3 py-1.5 rounded-full text-xs font-semibold shadow-lg">
+                            ✨ Featured
+                          </span>
+                        </div>
+                        <div className="absolute top-4 right-4">
+                          <span className="bg-white/95 backdrop-blur-sm text-gray-900 px-3 py-1.5 rounded-full text-sm font-bold shadow-lg">
+                            {event.price}
+                          </span>
+                        </div>
                       </div>
-                      <div className="absolute top-4 right-4">
-                        <span className="bg-white/95 backdrop-blur-sm text-gray-900 px-3 py-1.5 rounded-full text-sm font-bold shadow-lg">
-                          {event.price}
-                        </span>
-                      </div>
-                    </div>
+                    </Link>
                     <div className="p-6">
-                      <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-3 text-lg group-hover:text-purple-600 transition-colors">{event.title}</h3>
+                      <Link to={`/event/${event.id}`}>
+                        <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-3 text-lg group-hover:text-purple-600 transition-colors">{event.title}</h3>
+                      </Link>
                       <div className="flex items-center space-x-4 text-sm text-gray-600 dark:text-gray-400 mb-4">
                         <div className="flex items-center space-x-2 bg-gray-50 dark:bg-gray-700 rounded-lg px-3 py-1.5">
                           <Calendar className="h-4 w-4 text-purple-600" />
@@ -411,7 +415,13 @@ export default function Index() {
                             <span className="text-sm font-medium text-gray-700 dark:text-gray-300">{event.rating}</span>
                           </div>
                         </div>
-                        <button className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white px-6 py-2.5 rounded-xl text-sm font-semibold shadow-lg hover:shadow-xl transition-all duration-200 hover:-translate-y-0.5">
+                        <button
+                          onClick={(e) => {
+                            e.preventDefault();
+                            handleRegisterForEvent(event);
+                          }}
+                          className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white px-6 py-2.5 rounded-xl text-sm font-semibold shadow-lg hover:shadow-xl transition-all duration-200 hover:-translate-y-0.5"
+                        >
                           Join Event
                         </button>
                       </div>
