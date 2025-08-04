@@ -229,62 +229,63 @@ export default function Index() {
         </div>
 
         {/* Featured Events Section */}
-        <div className="px-4 lg:px-8 py-2">
+        <div className="px-4 lg:px-8 py-4">
           <div className="max-w-md lg:max-w-7xl mx-auto">
-            <h2 className="text-lg font-semibold text-gray-900 mb-4">Featured Events</h2>
-            <div className="space-y-4 lg:grid lg:grid-cols-2 xl:grid-cols-3 lg:space-y-0 lg:gap-6">
+            <h2 className="text-xl lg:text-2xl font-bold text-gray-900 mb-6">⭐ Featured Events</h2>
+            <div className="space-y-6 lg:grid lg:grid-cols-2 xl:grid-cols-3 lg:space-y-0 lg:gap-8">
               {filteredEvents
                 .filter((event) => event.featured)
                 .map((event) => (
                   <div
                     key={event.id}
-                    className="bg-white rounded-xl shadow-sm overflow-hidden hover:shadow-md transition-shadow"
+                    className="group bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-100 hover:border-purple-200 hover:-translate-y-1"
                   >
-                    <div className="relative">
+                    <div className="relative overflow-hidden">
                       <img
                         src={event.image}
                         alt={event.title}
-                        className="w-full h-48 lg:h-56 object-cover"
+                        className="w-full h-48 lg:h-56 object-cover group-hover:scale-105 transition-transform duration-300"
                       />
-                      <div className="absolute top-3 left-3">
-                        <span className="bg-purple-600 text-white px-2 py-1 rounded-full text-xs font-medium">
-                          Featured
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+                      <div className="absolute top-4 left-4">
+                        <span className="bg-gradient-to-r from-purple-600 to-blue-600 text-white px-3 py-1.5 rounded-full text-xs font-semibold shadow-lg">
+                          ✨ Featured
                         </span>
                       </div>
-                      <div className="absolute top-3 right-3">
-                        <span className="bg-white text-gray-900 px-2 py-1 rounded-full text-sm font-semibold">
+                      <div className="absolute top-4 right-4">
+                        <span className="bg-white/95 backdrop-blur-sm text-gray-900 px-3 py-1.5 rounded-full text-sm font-bold shadow-lg">
                           {event.price}
                         </span>
                       </div>
                     </div>
-                    <div className="p-4">
-                      <h3 className="font-semibold text-gray-900 mb-2">{event.title}</h3>
-                      <div className="flex items-center space-x-4 text-sm text-gray-600 mb-3">
-                        <div className="flex items-center space-x-1">
-                          <Calendar className="h-4 w-4" />
-                          <span>{event.date}</span>
+                    <div className="p-6">
+                      <h3 className="font-bold text-gray-900 mb-3 text-lg group-hover:text-purple-600 transition-colors">{event.title}</h3>
+                      <div className="flex items-center space-x-4 text-sm text-gray-600 mb-4">
+                        <div className="flex items-center space-x-2 bg-gray-50 rounded-lg px-3 py-1.5">
+                          <Calendar className="h-4 w-4 text-purple-600" />
+                          <span className="font-medium">{event.date}</span>
                         </div>
-                        <div className="flex items-center space-x-1">
-                          <Clock className="h-4 w-4" />
-                          <span>{event.time}</span>
+                        <div className="flex items-center space-x-2 bg-gray-50 rounded-lg px-3 py-1.5">
+                          <Clock className="h-4 w-4 text-purple-600" />
+                          <span className="font-medium">{event.time}</span>
                         </div>
                       </div>
-                      <div className="flex items-center space-x-1 text-sm text-gray-600 mb-3">
-                        <MapPin className="h-4 w-4" />
-                        <span>{event.location}</span>
+                      <div className="flex items-center space-x-2 text-sm text-gray-600 mb-4 bg-gray-50 rounded-lg px-3 py-1.5">
+                        <MapPin className="h-4 w-4 text-purple-600" />
+                        <span className="font-medium">{event.location}</span>
                       </div>
                       <div className="flex items-center justify-between">
                         <div className="flex items-center space-x-4">
                           <div className="flex items-center space-x-1">
                             <Users className="h-4 w-4 text-gray-500" />
-                            <span className="text-sm text-gray-600">{event.attendees}</span>
+                            <span className="text-sm font-medium text-gray-700">{event.attendees}</span>
                           </div>
                           <div className="flex items-center space-x-1">
                             <Star className="h-4 w-4 text-yellow-500 fill-current" />
-                            <span className="text-sm text-gray-600">{event.rating}</span>
+                            <span className="text-sm font-medium text-gray-700">{event.rating}</span>
                           </div>
                         </div>
-                        <button className="bg-purple-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-purple-700 transition-colors">
+                        <button className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white px-6 py-2.5 rounded-xl text-sm font-semibold shadow-lg hover:shadow-xl transition-all duration-200 hover:-translate-y-0.5">
                           Join Event
                         </button>
                       </div>
