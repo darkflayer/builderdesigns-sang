@@ -192,7 +192,7 @@ export default function Index() {
       // City filter
       const matchesCity = filters.cities.length === 0 || filters.cities.includes(event.location);
       
-      return matchesSearch && matchesCategory && matchesPrice && matchesCity;
+      return matchesSearch && matchesCategory && matchesRegistrationType && matchesCity;
     });
 
     // Sort events
