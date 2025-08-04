@@ -361,13 +361,23 @@ export default function Index() {
 
         {/* Empty State */}
         {filteredEvents.length === 0 && (
-          <div className="px-4 lg:px-8 py-8">
+          <div className="px-4 lg:px-8 py-12">
             <div className="max-w-md lg:max-w-7xl mx-auto text-center">
-              <Calendar className="mx-auto h-12 w-12 text-gray-400 mb-4" />
-              <h3 className="text-lg font-medium text-gray-900 mb-2">No events found</h3>
-              <p className="text-gray-600">
-                Try adjusting your search or category filter to find more events.
-              </p>
+              <div className="bg-gradient-to-br from-purple-100 to-blue-100 rounded-3xl p-12 border border-purple-200">
+                <div className="w-16 h-16 bg-gradient-to-br from-purple-600 to-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                  <Calendar className="h-8 w-8 text-white" />
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-3">No events found</h3>
+                <p className="text-gray-600 max-w-sm mx-auto">
+                  Try adjusting your search or category filter to discover amazing events in your area.
+                </p>
+                <button
+                  onClick={() => setSearchQuery("")}
+                  className="mt-6 bg-gradient-to-r from-purple-600 to-blue-600 text-white px-6 py-3 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-200 hover:-translate-y-0.5"
+                >
+                  Clear Filters
+                </button>
+              </div>
             </div>
           </div>
         )}
