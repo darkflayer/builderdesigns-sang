@@ -86,7 +86,7 @@ export default function RegistrationModal({ isOpen, onClose, eventTitle, registr
 
   const handleToggle = (field: keyof ShareableDetails) => {
     if (field === 'email') return; // Email is required, can't be toggled
-    
+
     setShareableDetails(prev => ({
       ...prev,
       [field]: !prev[field]
@@ -96,15 +96,16 @@ export default function RegistrationModal({ isOpen, onClose, eventTitle, registr
   const handleRegister = () => {
     // Here you would typically send the registration data to your backend
     console.log('Registering with shared details:', shareableDetails);
-    
-    // Simulate registration success
+    console.log('Registration type:', registrationType);
+
+    // Simulate registration
     setStep('confirmation');
-    
+
     // Auto-close after a delay
     setTimeout(() => {
       onClose();
       setStep('privacy'); // Reset for next time
-    }, 2000);
+    }, 3000);
   };
 
   if (!isOpen) return null;
