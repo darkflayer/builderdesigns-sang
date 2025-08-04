@@ -165,6 +165,8 @@ export default function Index() {
     dateRange: 'all',
     cities: []
   });
+  const [showRegistrationModal, setShowRegistrationModal] = useState(false);
+  const [selectedEventForRegistration, setSelectedEventForRegistration] = useState<any>(null);
   const { theme, toggleTheme } = useTheme();
 
   // Filter and sort events
