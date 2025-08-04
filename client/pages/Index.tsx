@@ -166,16 +166,109 @@ export default function Index() {
   });
   const { theme, toggleTheme } = useTheme();
 
-  const filteredEvents = events.filter((event) => {
-    const matchesSearch = 
-      event.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      event.location.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      event.category.toLowerCase().includes(searchQuery.toLowerCase());
-    
-    const matchesCategory = selectedCategory === "All" || event.category === selectedCategory;
-    
-    return matchesSearch && matchesCategory;
-  });
+  // Filter and sort events
+  const filteredAndSortedEvents = useMemo(() => {
+    let filtered = events.filter((event) => {
+      // Search filter
+      const matchesSearch =
+        event.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        event.location.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        event.category.toLowerCase().includes(searchQuery.toLowerCase());
+
+      // Category filter
+      const matchesCategory = selectedCategory === "All" || event.category === selectedCategory;
+
+      // Price filter
+      let matchesPrice = true;
+      if (filters.priceRange === 'free') {
+        matchesPrice = event.price.toLowerCase() === 'free';
+      } else if (filters.priceRange === 'paid') {
+        matchesPrice = event.price.toLowerCase() !== 'free';
+      } else if (filters.priceRange === 'under-50') {
+        const price = parseFloat(event.price.replace('$', ''));
+        matchesPrice = !isNaN(price) && price < 50;
+      } else if (filters.priceRange === 'over-50') {
+        const price = parseFloat(event.price.replace('$', ''));
+        matchesPrice = !isNaN(price) && price >= 50;
+      }
+
+      // City filter
+      const matchesCity = filters.cities.length === 0 || filters.cities.includes(event.location);
+
+      // Date filter (simplified for demo)
+      let matchesDate = true;
+      if (filters.dateRange !== 'all') {
+        // For demo purposes, we'll just show all events
+        // In a real app, you'd parse the date strings and filter accordingly
+      }
+
+      return matchesSearch && matchesCategory && matchesPrice && matchesCity && matchesDate;
+    });
+
+    // Sort events
+    filtered.sort((a, b) => {
+      let comparison = 0;
+
+      switch (sortConfig.option) {
+        case 'name':
+          comparison = a.title.localeCompare(b.title);
+          break;
+        case 'date':
+          // Simple date comparison (in real app, parse actual dates)
+          comparison = a.date.localeCompare(b.date);
+          break;
+        case 'price':
+          const priceA = a.price === 'Free' ? 0 : parseFloat(a.price.replace('$', ''));
+          const priceB = b.price === 'Free' ? 0 : parseFloat(b.price.replace('$', ''));
+          comparison = priceA - priceB;
+          break;
+        case 'location':
+          comparison = a.location.localeCompare(b.location);
+          break;
+        case 'attendees':
+          comparison = a.attendees - b.attendees;
+          break;
+        case 'rating':
+          comparison = a.rating - b.rating;
+          break;
+      }
+
+      return sortConfig.direction === 'asc' ? comparison : -comparison;
+    });
+
+    return filtered;
+  }, [events, searchQuery, selectedCategory, filters, sortConfig]);
+
+  // Pagination
+  const totalPages = Math.ceil(filteredAndSortedEvents.length / ITEMS_PER_PAGE);
+  const paginatedEvents = filteredAndSortedEvents.slice(
+    (currentPage - 1) * ITEMS_PER_PAGE,
+    currentPage * ITEMS_PER_PAGE
+  );
+
+  const featuredEvents = paginatedEvents.filter(event => event.featured);
+  const regularEvents = paginatedEvents.filter(event => !event.featured);
+
+  // Reset page when filters change
+  const handleFiltersChange = (newFilters: FilterState) => {
+    setFilters(newFilters);
+    setCurrentPage(1);
+  };
+
+  const handleSortChange = (option: SortOption, direction: SortDirection) => {
+    setSortConfig({ option, direction });
+    setCurrentPage(1);
+  };
+
+  const handleSearchChange = (query: string) => {
+    setSearchQuery(query);
+    setCurrentPage(1);
+  };
+
+  const handleCategoryChange = (category: string) => {
+    setSelectedCategory(category);
+    setCurrentPage(1);
+  };
 
   return (
     <Layout searchQuery={searchQuery} onSearchChange={setSearchQuery}>
