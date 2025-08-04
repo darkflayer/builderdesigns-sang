@@ -443,21 +443,25 @@ export default function Index() {
                   key={event.id}
                   className="group bg-white dark:bg-gray-800 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 dark:border-gray-700 hover:border-purple-200 dark:hover:border-purple-400 hover:-translate-y-1"
                 >
-                  <div className="relative overflow-hidden">
-                    <img
-                      src={event.image}
-                      alt={event.title}
-                      className="w-full h-32 lg:h-40 object-cover group-hover:scale-105 transition-transform duration-300"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent"></div>
-                    <div className="absolute top-3 right-3">
-                      <span className="bg-white/95 backdrop-blur-sm text-gray-900 px-2.5 py-1 rounded-full text-xs font-bold shadow-lg">
-                        {event.price}
-                      </span>
+                  <Link to={`/event/${event.id}`} className="block">
+                    <div className="relative overflow-hidden">
+                      <img
+                        src={event.image}
+                        alt={event.title}
+                        className="w-full h-32 lg:h-40 object-cover group-hover:scale-105 transition-transform duration-300"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent"></div>
+                      <div className="absolute top-3 right-3">
+                        <span className="bg-white/95 backdrop-blur-sm text-gray-900 px-2.5 py-1 rounded-full text-xs font-bold shadow-lg">
+                          {event.price}
+                        </span>
+                      </div>
                     </div>
-                  </div>
+                  </Link>
                   <div className="p-4">
-                    <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-2 text-sm group-hover:text-purple-600 transition-colors line-clamp-2">{event.title}</h3>
+                    <Link to={`/event/${event.id}`}>
+                      <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-2 text-sm group-hover:text-purple-600 transition-colors line-clamp-2">{event.title}</h3>
+                    </Link>
                     <div className="flex items-center space-x-2 text-xs text-gray-600 dark:text-gray-400 mb-3">
                       <div className="flex items-center space-x-1 bg-gray-50 dark:bg-gray-700 rounded-lg px-2 py-1">
                         <Calendar className="h-3 w-3 text-purple-600" />
@@ -483,7 +487,13 @@ export default function Index() {
                           <span className="text-xs font-medium text-gray-700 dark:text-gray-300">{event.rating}</span>
                         </div>
                       </div>
-                      <button className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white px-3 py-1.5 rounded-xl text-xs font-semibold shadow-md hover:shadow-lg transition-all duration-200 hover:-translate-y-0.5">
+                      <button
+                        onClick={(e) => {
+                          e.preventDefault();
+                          handleRegisterForEvent(event);
+                        }}
+                        className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white px-3 py-1.5 rounded-xl text-xs font-semibold shadow-md hover:shadow-lg transition-all duration-200 hover:-translate-y-0.5"
+                      >
                         Join
                       </button>
                     </div>
