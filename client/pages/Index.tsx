@@ -207,9 +207,10 @@ export default function Index() {
           comparison = a.date.localeCompare(b.date);
           break;
         case 'price':
-          const priceA = a.price === 'Free' ? 0 : parseFloat(a.price.replace('$', ''));
-          const priceB = b.price === 'Free' ? 0 : parseFloat(b.price.replace('$', ''));
-          comparison = priceA - priceB;
+          // Sort by registration type (open first, then approval required)
+          const typeOrderA = a.registrationType === 'open' ? 0 : 1;
+          const typeOrderB = b.registrationType === 'open' ? 0 : 1;
+          comparison = typeOrderA - typeOrderB;
           break;
         case 'location':
           comparison = a.location.localeCompare(b.location);
