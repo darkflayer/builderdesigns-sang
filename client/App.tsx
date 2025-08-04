@@ -26,6 +26,7 @@ const App = () => (
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Index />} />
+            <Route path="/event/:id" element={<EventDetails />} />
             <Route path="/my-events" element={<MyEvents />} />
             <Route path="/scan" element={<Scan />} />
             <Route path="/network" element={<Network />} />
