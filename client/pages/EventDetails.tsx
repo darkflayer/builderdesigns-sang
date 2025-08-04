@@ -528,10 +528,18 @@ export default function EventDetails() {
               {/* Registration Card */}
               <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg sticky top-8">
                 <div className="text-center mb-6">
-                  <div className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-2">
-                    {event.price}
+                  <div className={`text-2xl font-bold mb-2 px-4 py-2 rounded-xl ${
+                    event.registrationType === 'open'
+                      ? 'bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300'
+                      : 'bg-orange-100 dark:bg-orange-900/30 text-orange-800 dark:text-orange-300'
+                  }`}>
+                    {event.registrationType === 'open' ? 'Open Registration' : 'Approval Required'}
                   </div>
-                  <p className="text-gray-600 dark:text-gray-400">per person</p>
+                  <p className="text-gray-600 dark:text-gray-400">
+                    {event.registrationType === 'open'
+                      ? 'Register instantly'
+                      : 'Application review required'}
+                  </p>
                 </div>
                 
                 <button 
