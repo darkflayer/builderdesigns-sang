@@ -130,6 +130,11 @@ export default function Layout({ children, searchQuery = "", onSearchChange }: L
         {children}
       </main>
 
+      {/* Footer - Hidden on mobile */}
+      <div className="hidden lg:block">
+        <Footer />
+      </div>
+
       {/* Mobile Bottom Navigation - Hidden on desktop */}
       <nav className="lg:hidden fixed bottom-0 left-0 right-0 bg-white/95 dark:bg-gray-900/95 backdrop-blur-md border-t border-gray-200/50 dark:border-gray-700/50 px-4 py-2 shadow-lg">
         <div className="max-w-md mx-auto">
