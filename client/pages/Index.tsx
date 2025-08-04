@@ -165,8 +165,8 @@ export default function Index() {
     <Layout>
       <div className="min-h-screen bg-gray-50">
         {/* Header with Location and Profile */}
-        <div className="bg-white shadow-sm px-4 py-4">
-          <div className="max-w-md mx-auto">
+        <div className="bg-white shadow-sm px-4 lg:px-8 py-4">
+          <div className="max-w-md lg:max-w-7xl mx-auto">
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center space-x-2">
                 <MapPin className="h-5 w-5 text-purple-600" />
@@ -187,7 +187,7 @@ export default function Index() {
             </div>
 
             {/* Search Bar */}
-            <div className="relative">
+            <div className="relative max-w-xl lg:max-w-2xl mx-auto lg:mx-0">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
               <input
                 type="text"
