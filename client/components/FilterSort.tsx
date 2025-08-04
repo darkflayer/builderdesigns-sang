@@ -150,22 +150,22 @@ export default function FilterSort({
             </div>
           </div>
 
-          {/* Price Filter */}
+          {/* Registration Type Filter */}
           <div className="mb-6">
-            <h4 className="text-sm font-semibold text-gray-900 dark:text-gray-100 mb-3">Price Range</h4>
+            <h4 className="text-sm font-semibold text-gray-900 dark:text-gray-100 mb-3">Registration Type</h4>
             <div className="space-y-2">
-              {priceRanges.map((range) => (
+              {registrationTypes.map((type) => (
                 <button
-                  key={range.value}
-                  onClick={() => handleFilterChange('priceRange', range.value)}
+                  key={type.value}
+                  onClick={() => handleFilterChange('priceRange', type.value)}
                   className={cn(
                     "w-full text-left px-3 py-2 rounded-lg text-sm transition-all duration-200",
-                    currentFilters.priceRange === range.value
+                    currentFilters.priceRange === type.value
                       ? "bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300"
                       : "bg-gray-50 dark:bg-gray-700 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600"
                   )}
                 >
-                  {range.label}
+                  {type.label}
                 </button>
               ))}
             </div>
