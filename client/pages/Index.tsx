@@ -451,8 +451,12 @@ export default function Index() {
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent"></div>
                       <div className="absolute top-3 right-3">
-                        <span className="bg-white/95 backdrop-blur-sm text-gray-900 px-2.5 py-1 rounded-full text-xs font-bold shadow-lg">
-                          {event.price}
+                        <span className={`bg-white/95 backdrop-blur-sm px-2.5 py-1 rounded-full text-xs font-bold shadow-lg ${
+                          event.registrationType === 'open'
+                            ? 'text-green-700 bg-green-100/95'
+                            : 'text-orange-700 bg-orange-100/95'
+                        }`}>
+                          {event.registrationType === 'open' ? 'Open' : 'Approval Required'}
                         </span>
                       </div>
                     </div>
