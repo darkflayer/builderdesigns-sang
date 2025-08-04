@@ -279,54 +279,20 @@ export default function EventDetails() {
           </div>
         </div>
 
-        {/* Modals will be added here */}
-        {showAttendeesModal && (
-          <div className="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm">
-            {/* Attendees Modal Component will go here */}
-            <div className="flex items-center justify-center min-h-screen p-4">
-              <div className="bg-white dark:bg-gray-800 rounded-2xl max-w-2xl w-full max-h-[80vh] overflow-hidden">
-                <div className="p-6 border-b border-gray-200 dark:border-gray-700">
-                  <div className="flex items-center justify-between">
-                    <h2 className="text-xl font-bold text-gray-900 dark:text-gray-100">Event Attendees</h2>
-                    <button 
-                      onClick={() => setShowAttendeesModal(false)}
-                      className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors"
-                    >
-                      ✕
-                    </button>
-                  </div>
-                </div>
-                <div className="p-6">
-                  <p className="text-gray-600 dark:text-gray-400">Attendees modal content will be implemented next...</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
+        {/* Modals */}
+        <AttendeesModal
+          isOpen={showAttendeesModal}
+          onClose={() => setShowAttendeesModal(false)}
+          attendees={attendees}
+          eventTitle={event.title}
+        />
 
-        {showRegistrationModal && (
-          <div className="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm">
-            {/* Registration Modal Component will go here */}
-            <div className="flex items-center justify-center min-h-screen p-4">
-              <div className="bg-white dark:bg-gray-800 rounded-2xl max-w-md w-full">
-                <div className="p-6 border-b border-gray-200 dark:border-gray-700">
-                  <div className="flex items-center justify-between">
-                    <h2 className="text-xl font-bold text-gray-900 dark:text-gray-100">Register for Event</h2>
-                    <button 
-                      onClick={() => setShowRegistrationModal(false)}
-                      className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors"
-                    >
-                      ✕
-                    </button>
-                  </div>
-                </div>
-                <div className="p-6">
-                  <p className="text-gray-600 dark:text-gray-400">Registration modal content will be implemented next...</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
+        <RegistrationModal
+          isOpen={showRegistrationModal}
+          onClose={() => setShowRegistrationModal(false)}
+          eventTitle={event.title}
+          eventPrice={event.price}
+        />
       </div>
     </Layout>
   );
