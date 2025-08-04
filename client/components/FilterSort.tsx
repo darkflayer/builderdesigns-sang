@@ -27,12 +27,10 @@ const sortOptions = [
   { value: 'rating', label: 'Rating', icon: Filter },
 ];
 
-const priceRanges = [
-  { value: 'all', label: 'All Prices' },
-  { value: 'free', label: 'Free Events' },
-  { value: 'paid', label: 'Paid Events' },
-  { value: 'under-50', label: 'Under $50' },
-  { value: 'over-50', label: '$50+' },
+const registrationTypes = [
+  { value: 'all', label: 'All Events' },
+  { value: 'open', label: 'Open Registration' },
+  { value: 'approval_required', label: 'Approval Required' },
 ];
 
 const dateRanges = [
