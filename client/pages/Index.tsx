@@ -354,8 +354,8 @@ export default function Index() {
 
         {/* Empty State */}
         {filteredEvents.length === 0 && (
-          <div className="px-4 py-8">
-            <div className="max-w-md mx-auto text-center">
+          <div className="px-4 lg:px-8 py-8">
+            <div className="max-w-md lg:max-w-7xl mx-auto text-center">
               <Calendar className="mx-auto h-12 w-12 text-gray-400 mb-4" />
               <h3 className="text-lg font-medium text-gray-900 mb-2">No events found</h3>
               <p className="text-gray-600">
