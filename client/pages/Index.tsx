@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import Layout from "@/components/Layout";
 import FilterSort, { SortOption, SortDirection, FilterState } from "@/components/FilterSort";
 import Pagination from "@/components/Pagination";
+import RegistrationModal from "@/components/RegistrationModal";
 import { cn } from "@/lib/utils";
 import { useTheme } from "@/contexts/ThemeContext";
 
