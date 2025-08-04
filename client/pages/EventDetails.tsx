@@ -2,6 +2,8 @@ import { useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { ArrowLeft, Calendar, Clock, MapPin, Users, Star, Share2, Heart, User } from "lucide-react";
 import Layout from "@/components/Layout";
+import AttendeesModal from "@/components/AttendeesModal";
+import RegistrationModal from "@/components/RegistrationModal";
 import { mockAttendees } from "@/data/mockAttendees";
 
 // Extended event data for details page
