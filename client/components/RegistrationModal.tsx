@@ -6,7 +6,7 @@ interface RegistrationModalProps {
   isOpen: boolean;
   onClose: () => void;
   eventTitle: string;
-  eventPrice: string;
+  registrationType: 'open' | 'approval_required';
 }
 
 interface ShareableDetails {
