@@ -10,6 +10,7 @@ import Index from "./pages/Index";
 import MyEvents from "./pages/MyEvents";
 import Scan from "./pages/Scan";
 import Network from "./pages/Network";
+import Profile from "./pages/Profile";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
