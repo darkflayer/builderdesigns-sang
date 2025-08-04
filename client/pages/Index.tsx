@@ -162,11 +162,11 @@ export default function Index() {
   });
 
   return (
-    <Layout>
-      <div className="min-h-screen bg-gray-50">
-        {/* Header with Location and Profile */}
-        <div className="bg-white shadow-sm px-4 lg:px-8 py-4">
-          <div className="max-w-md lg:max-w-7xl mx-auto">
+    <Layout searchQuery={searchQuery} onSearchChange={setSearchQuery}>
+      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
+        {/* Mobile Header - Only shown on mobile */}
+        <div className="lg:hidden bg-white/95 backdrop-blur-md shadow-sm px-4 py-4">
+          <div className="max-w-md mx-auto">
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center space-x-2">
                 <MapPin className="h-5 w-5 text-purple-600" />
@@ -176,25 +176,25 @@ export default function Index() {
                 </div>
               </div>
               <div className="flex items-center space-x-3">
-                <button className="p-2 rounded-full bg-gray-100 relative">
+                <button className="p-2 rounded-xl bg-gray-100 relative">
                   <Bell className="h-5 w-5 text-gray-600" />
                   <div className="absolute -top-1 -right-1 h-3 w-3 bg-red-500 rounded-full"></div>
                 </button>
-                <Link to="/profile" className="p-2 rounded-full bg-purple-100">
-                  <User className="h-5 w-5 text-purple-600" />
+                <Link to="/profile" className="p-2 rounded-xl bg-gradient-to-br from-purple-500 to-blue-600">
+                  <User className="h-5 w-5 text-white" />
                 </Link>
               </div>
             </div>
 
-            {/* Search Bar */}
-            <div className="relative max-w-xl lg:max-w-2xl mx-auto lg:mx-0">
+            {/* Mobile Search Bar */}
+            <div className="relative">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
               <input
                 type="text"
-                placeholder="Search events by name, location, category..."
+                placeholder="Search events..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-10 pr-4 py-3 bg-gray-100 rounded-xl border-0 focus:ring-2 focus:ring-purple-500 focus:bg-white transition-all"
+                className="w-full pl-10 pr-4 py-3 bg-gray-100 rounded-2xl border-0 focus:ring-2 focus:ring-purple-500 focus:bg-white transition-all"
               />
             </div>
           </div>
