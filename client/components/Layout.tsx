@@ -130,7 +130,7 @@ export default function Layout({ children, searchQuery = "", onSearchChange }: L
       </main>
 
       {/* Mobile Bottom Navigation - Hidden on desktop */}
-      <nav className="lg:hidden fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur-md border-t border-gray-200/50 px-4 py-2 shadow-lg">
+      <nav className="lg:hidden fixed bottom-0 left-0 right-0 bg-white/95 dark:bg-gray-900/95 backdrop-blur-md border-t border-gray-200/50 dark:border-gray-700/50 px-4 py-2 shadow-lg">
         <div className="max-w-md mx-auto">
           <div className="flex justify-around">
             {navigation.map((item) => {
@@ -142,8 +142,8 @@ export default function Layout({ children, searchQuery = "", onSearchChange }: L
                   className={cn(
                     "flex flex-col items-center py-2 px-3 rounded-xl transition-all duration-200",
                     isActive
-                      ? "text-purple-600 bg-purple-50 shadow-sm"
-                      : "text-gray-600 hover:text-gray-900"
+                      ? "text-purple-600 bg-purple-50 dark:bg-purple-900/20 shadow-sm"
+                      : "text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"
                   )}
                 >
                   <item.icon className={cn("h-5 w-5 mb-1", isActive ? "text-purple-600" : "")} />
