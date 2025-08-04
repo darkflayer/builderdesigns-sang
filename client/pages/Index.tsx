@@ -1,8 +1,11 @@
-import { useState } from "react";
-import { Search, MapPin, Bell, User, Calendar, Clock, Users, Star } from "lucide-react";
+import { useState, useMemo } from "react";
+import { Search, MapPin, Bell, User, Calendar, Clock, Users, Star, Moon, Sun } from "lucide-react";
 import { Link } from "react-router-dom";
 import Layout from "@/components/Layout";
+import FilterSort, { SortOption, SortDirection, FilterState } from "@/components/FilterSort";
+import Pagination from "@/components/Pagination";
 import { cn } from "@/lib/utils";
+import { useTheme } from "@/contexts/ThemeContext";
 
 const categories = [
   { name: "All", active: true },
