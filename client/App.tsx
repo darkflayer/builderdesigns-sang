@@ -26,6 +26,7 @@ const App = () => (
           <Route path="/my-events" element={<MyEvents />} />
           <Route path="/scan" element={<Scan />} />
           <Route path="/network" element={<Network />} />
+          <Route path="/profile" element={<Profile />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
