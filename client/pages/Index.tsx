@@ -543,6 +543,19 @@ export default function Index() {
             </div>
           </div>
         )}
+
+        {/* Registration Modal */}
+        {selectedEventForRegistration && (
+          <RegistrationModal
+            isOpen={showRegistrationModal}
+            onClose={() => {
+              setShowRegistrationModal(false);
+              setSelectedEventForRegistration(null);
+            }}
+            eventTitle={selectedEventForRegistration.title}
+            eventPrice={selectedEventForRegistration.price}
+          />
+        )}
       </div>
     </Layout>
   );
