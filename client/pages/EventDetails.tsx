@@ -388,6 +388,7 @@ export default function EventDetails() {
   const eventId = parseInt(id || "1");
   const event = eventDetails[eventId as keyof typeof eventDetails];
   const attendees = mockAttendees[eventId] || [];
+  const userRegistration = getRegistrationStatus(eventId);
 
   if (!event) {
     return (
