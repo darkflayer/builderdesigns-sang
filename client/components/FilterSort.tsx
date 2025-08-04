@@ -21,7 +21,7 @@ export interface FilterState {
 const sortOptions = [
   { value: 'name', label: 'Name', icon: Type },
   { value: 'date', label: 'Date', icon: Calendar },
-  { value: 'price', label: 'Price', icon: DollarSign },
+  { value: 'price', label: 'Registration', icon: DollarSign },
   { value: 'location', label: 'Location', icon: MapPin },
   { value: 'attendees', label: 'Popularity', icon: Filter },
   { value: 'rating', label: 'Rating', icon: Filter },
