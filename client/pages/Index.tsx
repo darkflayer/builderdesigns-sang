@@ -102,9 +102,9 @@ export default function Index() {
                   <Bell className="h-5 w-5 text-gray-600" />
                   <div className="absolute -top-1 -right-1 h-3 w-3 bg-red-500 rounded-full"></div>
                 </button>
-                <button className="p-2 rounded-full bg-purple-100">
+                <Link to="/profile" className="p-2 rounded-full bg-purple-100">
                   <User className="h-5 w-5 text-purple-600" />
-                </button>
+                </Link>
               </div>
             </div>
 
