@@ -1,12 +1,14 @@
-import { Home, Calendar, Scan, Users } from "lucide-react";
+import { Home, Calendar, Scan, Users, Search, MapPin, Bell, User } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import { cn } from "@/lib/utils";
 
 interface LayoutProps {
   children: React.ReactNode;
+  searchQuery?: string;
+  onSearchChange?: (query: string) => void;
 }
 
-export default function Layout({ children }: LayoutProps) {
+export default function Layout({ children, searchQuery = "", onSearchChange }: LayoutProps) {
   const location = useLocation();
 
   const navigation = [
@@ -33,29 +35,78 @@ export default function Layout({ children }: LayoutProps) {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col">
-      {/* Desktop Navigation - Hidden on mobile */}
-      <nav className="hidden lg:block bg-white border-b border-gray-200 px-6 py-4">
-        <div className="flex items-center justify-center">
-          <div className="flex space-x-8">
-            {navigation.map((item) => {
-              const isActive = location.pathname === item.href;
-              return (
-                <Link
-                  key={item.name}
-                  to={item.href}
-                  className={cn(
-                    "flex items-center space-x-2 px-4 py-2 rounded-lg transition-colors font-medium",
-                    isActive
-                      ? "text-purple-600 bg-purple-50"
-                      : "text-gray-600 hover:text-gray-900 hover:bg-gray-50"
-                  )}
-                >
-                  <item.icon className={cn("h-5 w-5", isActive ? "text-purple-600" : "")} />
-                  <span>{item.name}</span>
-                </Link>
-              );
-            })}
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 flex flex-col">
+      {/* Premium Desktop Navigation - Hidden on mobile */}
+      <nav className="hidden lg:block bg-white/95 backdrop-blur-md border-b border-gray-200/50 shadow-sm">
+        <div className="max-w-7xl mx-auto px-6 py-4">
+          <div className="flex items-center justify-between">
+            {/* Logo/Brand */}
+            <div className="flex items-center space-x-8">
+              <div className="flex items-center space-x-2">
+                <div className="w-8 h-8 bg-gradient-to-br from-purple-600 to-blue-600 rounded-lg flex items-center justify-center">
+                  <Calendar className="h-5 w-5 text-white" />
+                </div>
+                <span className="text-xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
+                  EventHub
+                </span>
+              </div>
+
+              {/* Navigation Links */}
+              <div className="flex space-x-1">
+                {navigation.map((item) => {
+                  const isActive = location.pathname === item.href;
+                  return (
+                    <Link
+                      key={item.name}
+                      to={item.href}
+                      className={cn(
+                        "flex items-center space-x-2 px-4 py-2.5 rounded-xl transition-all duration-200 font-medium",
+                        isActive
+                          ? "text-purple-600 bg-purple-50 shadow-sm"
+                          : "text-gray-600 hover:text-gray-900 hover:bg-gray-50"
+                      )}
+                    >
+                      <item.icon className={cn("h-4 w-4", isActive ? "text-purple-600" : "")} />
+                      <span className="text-sm">{item.name}</span>
+                    </Link>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* Center Search */}
+            <div className="flex-1 max-w-2xl mx-8">
+              <div className="relative">
+                <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
+                <input
+                  type="text"
+                  placeholder="Search events by name, location, category..."
+                  value={searchQuery}
+                  onChange={(e) => onSearchChange?.(e.target.value)}
+                  className="w-full pl-12 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-200 text-sm"
+                />
+              </div>
+            </div>
+
+            {/* Right Side - Location & Profile */}
+            <div className="flex items-center space-x-4">
+              <div className="flex items-center space-x-2 px-3 py-2 bg-gray-50 rounded-xl">
+                <MapPin className="h-4 w-4 text-purple-600" />
+                <div className="text-sm">
+                  <span className="text-gray-600 block text-xs">Location</span>
+                  <span className="font-medium text-gray-900">San Francisco, CA</span>
+                </div>
+              </div>
+
+              <button className="p-2.5 rounded-xl bg-gray-50 hover:bg-gray-100 transition-colors relative">
+                <Bell className="h-5 w-5 text-gray-600" />
+                <div className="absolute -top-1 -right-1 h-3 w-3 bg-red-500 rounded-full"></div>
+              </button>
+
+              <Link to="/profile" className="p-2.5 rounded-xl bg-gradient-to-br from-purple-500 to-blue-600 hover:from-purple-600 hover:to-blue-700 transition-all duration-200 shadow-lg hover:shadow-xl">
+                <User className="h-5 w-5 text-white" />
+              </Link>
+            </div>
           </div>
         </div>
       </nav>
@@ -66,7 +117,7 @@ export default function Layout({ children }: LayoutProps) {
       </main>
 
       {/* Mobile Bottom Navigation - Hidden on desktop */}
-      <nav className="lg:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 px-4 py-2">
+      <nav className="lg:hidden fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur-md border-t border-gray-200/50 px-4 py-2 shadow-lg">
         <div className="max-w-md mx-auto">
           <div className="flex justify-around">
             {navigation.map((item) => {
@@ -76,9 +127,9 @@ export default function Layout({ children }: LayoutProps) {
                   key={item.name}
                   to={item.href}
                   className={cn(
-                    "flex flex-col items-center py-2 px-3 rounded-lg transition-colors",
+                    "flex flex-col items-center py-2 px-3 rounded-xl transition-all duration-200",
                     isActive
-                      ? "text-purple-600 bg-purple-50"
+                      ? "text-purple-600 bg-purple-50 shadow-sm"
                       : "text-gray-600 hover:text-gray-900"
                   )}
                 >
