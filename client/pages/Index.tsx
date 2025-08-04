@@ -149,9 +149,22 @@ const events = [
   },
 ];
 
+const ITEMS_PER_PAGE = 6;
+
 export default function Index() {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");
+  const [currentPage, setCurrentPage] = useState(1);
+  const [sortConfig, setSortConfig] = useState<{ option: SortOption; direction: SortDirection }>({
+    option: 'date',
+    direction: 'asc'
+  });
+  const [filters, setFilters] = useState<FilterState>({
+    priceRange: 'all',
+    dateRange: 'all',
+    cities: []
+  });
+  const { theme, toggleTheme } = useTheme();
 
   const filteredEvents = events.filter((event) => {
     const matchesSearch = 
