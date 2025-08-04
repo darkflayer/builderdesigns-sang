@@ -271,22 +271,32 @@ export default function Index() {
   };
 
   return (
-    <Layout searchQuery={searchQuery} onSearchChange={setSearchQuery}>
-      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
+    <Layout searchQuery={searchQuery} onSearchChange={handleSearchChange}>
+      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 transition-colors duration-300">
         {/* Mobile Header - Only shown on mobile */}
-        <div className="lg:hidden bg-white/95 backdrop-blur-md shadow-sm px-4 py-4">
+        <div className="lg:hidden bg-white/95 dark:bg-gray-900/95 backdrop-blur-md shadow-sm px-4 py-4">
           <div className="max-w-md mx-auto">
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center space-x-2">
                 <MapPin className="h-5 w-5 text-purple-600" />
                 <div>
-                  <p className="text-sm text-gray-600">Your location</p>
-                  <p className="font-semibold text-gray-900">San Francisco, CA</p>
+                  <p className="text-sm text-gray-600 dark:text-gray-400">Your location</p>
+                  <p className="font-semibold text-gray-900 dark:text-gray-100">San Francisco, CA</p>
                 </div>
               </div>
               <div className="flex items-center space-x-3">
-                <button className="p-2 rounded-xl bg-gray-100 relative">
-                  <Bell className="h-5 w-5 text-gray-600" />
+                <button
+                  onClick={toggleTheme}
+                  className="p-2 rounded-xl bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+                >
+                  {theme === 'dark' ? (
+                    <Sun className="h-5 w-5 text-gray-600 dark:text-gray-300" />
+                  ) : (
+                    <Moon className="h-5 w-5 text-gray-600 dark:text-gray-300" />
+                  )}
+                </button>
+                <button className="p-2 rounded-xl bg-gray-100 dark:bg-gray-800 relative">
+                  <Bell className="h-5 w-5 text-gray-600 dark:text-gray-300" />
                   <div className="absolute -top-1 -right-1 h-3 w-3 bg-red-500 rounded-full"></div>
                 </button>
                 <Link to="/profile" className="p-2 rounded-xl bg-gradient-to-br from-purple-500 to-blue-600">
@@ -297,13 +307,13 @@ export default function Index() {
 
             {/* Mobile Search Bar */}
             <div className="relative">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400 dark:text-gray-500" />
               <input
                 type="text"
                 placeholder="Search events..."
                 value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-10 pr-4 py-3 bg-gray-100 rounded-2xl border-0 focus:ring-2 focus:ring-purple-500 focus:bg-white transition-all"
+                onChange={(e) => handleSearchChange(e.target.value)}
+                className="w-full pl-10 pr-4 py-3 bg-gray-100 dark:bg-gray-800 rounded-2xl border-0 focus:ring-2 focus:ring-purple-500 focus:bg-white dark:focus:bg-gray-700 transition-all text-gray-900 dark:text-gray-100"
               />
             </div>
           </div>
