@@ -181,18 +181,12 @@ export default function Index() {
       // Category filter
       const matchesCategory = selectedCategory === "All" || event.category === selectedCategory;
       
-      // Price filter
-      let matchesPrice = true;
-      if (filters.priceRange === 'free') {
-        matchesPrice = event.price.toLowerCase() === 'free';
-      } else if (filters.priceRange === 'paid') {
-        matchesPrice = event.price.toLowerCase() !== 'free';
-      } else if (filters.priceRange === 'under-50') {
-        const price = parseFloat(event.price.replace('$', ''));
-        matchesPrice = !isNaN(price) && price < 50;
-      } else if (filters.priceRange === 'over-50') {
-        const price = parseFloat(event.price.replace('$', ''));
-        matchesPrice = !isNaN(price) && price >= 50;
+      // Registration type filter
+      let matchesRegistrationType = true;
+      if (filters.priceRange === 'open') {
+        matchesRegistrationType = event.registrationType === 'open';
+      } else if (filters.priceRange === 'approval_required') {
+        matchesRegistrationType = event.registrationType === 'approval_required';
       }
       
       // City filter
