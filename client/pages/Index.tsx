@@ -319,25 +319,33 @@ export default function Index() {
           </div>
         </div>
 
-        {/* Categories */}
+        {/* Categories and Filters */}
         <div className="px-4 lg:px-8 py-6 lg:py-8">
           <div className="max-w-md lg:max-w-7xl mx-auto">
-            <div className="flex items-center justify-between mb-6">
-              <h2 className="text-2xl lg:text-3xl font-bold text-gray-900">Discover Events</h2>
-              <div className="hidden lg:block text-sm text-gray-600">
-                {filteredEvents.length} events found
+            <div className="flex flex-col lg:flex-row lg:items-center justify-between mb-6 gap-4">
+              <h2 className="text-2xl lg:text-3xl font-bold text-gray-900 dark:text-gray-100">Discover Events</h2>
+              <div className="flex items-center justify-between lg:justify-end space-x-4">
+                <div className="text-sm text-gray-600 dark:text-gray-400">
+                  {filteredAndSortedEvents.length} events found
+                </div>
+                <FilterSort
+                  onSortChange={handleSortChange}
+                  onFilterChange={handleFiltersChange}
+                  currentSort={sortConfig}
+                  currentFilters={filters}
+                />
               </div>
             </div>
             <div className="flex space-x-3 overflow-x-auto lg:overflow-x-visible pb-2 lg:pb-0">
               {categories.map((category) => (
                 <button
                   key={category.name}
-                  onClick={() => setSelectedCategory(category.name)}
+                  onClick={() => handleCategoryChange(category.name)}
                   className={cn(
                     "px-6 py-3 rounded-2xl text-sm font-semibold whitespace-nowrap transition-all duration-200 shadow-sm",
                     selectedCategory === category.name
                       ? "bg-gradient-to-r from-purple-600 to-blue-600 text-white shadow-lg shadow-purple-500/25"
-                      : "bg-white text-gray-700 hover:bg-gray-50 border border-gray-200 hover:border-gray-300"
+                      : "bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700 border border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600"
                   )}
                 >
                   {category.name}
