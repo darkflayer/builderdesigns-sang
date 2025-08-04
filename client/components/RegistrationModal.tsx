@@ -226,7 +226,7 @@ export default function RegistrationModal({ isOpen, onClose, eventTitle, registr
                   <h3 className="font-semibold text-gray-900 dark:text-gray-100 mb-2">Event Summary</h3>
                   <div className="text-sm text-gray-600 dark:text-gray-400">
                     <p className="mb-1"><strong>Event:</strong> {eventTitle}</p>
-                    <p><strong>Price:</strong> {eventPrice}</p>
+                    <p><strong>Registration:</strong> {registrationType === 'open' ? 'Open (Instant approval)' : 'Approval Required'}</p>
                   </div>
                 </div>
 
