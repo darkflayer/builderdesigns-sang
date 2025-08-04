@@ -556,7 +556,7 @@ export default function Index() {
               setSelectedEventForRegistration(null);
             }}
             eventTitle={selectedEventForRegistration.title}
-            eventPrice={selectedEventForRegistration.price}
+            registrationType={selectedEventForRegistration.registrationType}
           />
         )}
       </div>
