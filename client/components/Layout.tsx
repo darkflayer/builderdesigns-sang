@@ -34,13 +34,39 @@ export default function Layout({ children }: LayoutProps) {
 
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col">
+      {/* Desktop Navigation - Hidden on mobile */}
+      <nav className="hidden lg:block bg-white border-b border-gray-200 px-6 py-4">
+        <div className="flex items-center justify-center">
+          <div className="flex space-x-8">
+            {navigation.map((item) => {
+              const isActive = location.pathname === item.href;
+              return (
+                <Link
+                  key={item.name}
+                  to={item.href}
+                  className={cn(
+                    "flex items-center space-x-2 px-4 py-2 rounded-lg transition-colors font-medium",
+                    isActive
+                      ? "text-purple-600 bg-purple-50"
+                      : "text-gray-600 hover:text-gray-900 hover:bg-gray-50"
+                  )}
+                >
+                  <item.icon className={cn("h-5 w-5", isActive ? "text-purple-600" : "")} />
+                  <span>{item.name}</span>
+                </Link>
+              );
+            })}
+          </div>
+        </div>
+      </nav>
+
       {/* Main Content */}
-      <main className="flex-1 pb-20">
+      <main className="flex-1 lg:pb-0 pb-20">
         {children}
       </main>
 
-      {/* Bottom Navigation */}
-      <nav className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 px-4 py-2">
+      {/* Mobile Bottom Navigation - Hidden on desktop */}
+      <nav className="lg:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 px-4 py-2">
         <div className="max-w-md mx-auto">
           <div className="flex justify-around">
             {navigation.map((item) => {
