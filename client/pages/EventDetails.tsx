@@ -527,6 +527,38 @@ export default function EventDetails() {
 
             {/* Right Column - Event Actions & Info */}
             <div className="space-y-6">
+              {/* User Registration Status */}
+              {userRegistration && (
+                <div className="bg-white dark:bg-gray-800 rounded-2xl p-4 shadow-lg border-l-4 border-purple-500">
+                  <div className="flex items-center space-x-3">
+                    {userRegistration.status === 'registered' || userRegistration.status === 'approved' ? (
+                      <CheckCircle className="h-5 w-5 text-green-600" />
+                    ) : userRegistration.status === 'pending' ? (
+                      <AlertCircle className="h-5 w-5 text-orange-600" />
+                    ) : (
+                      <XCircle className="h-5 w-5 text-red-600" />
+                    )}
+                    <div className="flex-1">
+                      <h3 className="font-semibold text-gray-900 dark:text-gray-100">
+                        {userRegistration.status === 'registered' ? 'You\'re Registered!' :
+                         userRegistration.status === 'approved' ? 'Registration Approved!' :
+                         userRegistration.status === 'pending' ? 'Registration Pending' :
+                         'Registration Not Approved'}
+                      </h3>
+                      <p className="text-sm text-gray-600 dark:text-gray-400">
+                        Registered on {new Date(userRegistration.registrationDate).toLocaleDateString()}
+                        {userRegistration.approvalDate && ` • Confirmed on ${new Date(userRegistration.approvalDate).toLocaleDateString()}`}
+                      </p>
+                      {userRegistration.notes && (
+                        <p className="text-xs text-gray-500 dark:text-gray-500 mt-1">
+                          {userRegistration.notes}
+                        </p>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              )}
+
               {/* Registration Card */}
               <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg sticky top-8">
                 <div className="text-center mb-6">
