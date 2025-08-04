@@ -576,12 +576,25 @@ export default function EventDetails() {
                   </p>
                 </div>
                 
-                <button 
-                  onClick={() => setShowRegistrationModal(true)}
-                  className="w-full bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white py-3 rounded-xl font-semibold transition-all duration-200 mb-4"
-                >
-                  Register for Event
-                </button>
+                {!userRegistration ? (
+                  <button
+                    onClick={() => setShowRegistrationModal(true)}
+                    className="w-full bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white py-3 rounded-xl font-semibold transition-all duration-200 mb-4"
+                  >
+                    Register for Event
+                  </button>
+                ) : (
+                  <div className="w-full bg-gray-100 dark:bg-gray-700 py-3 rounded-xl font-semibold text-center mb-4">
+                    <span className="text-gray-600 dark:text-gray-400">
+                      {userRegistration.status === 'registered' || userRegistration.status === 'approved'
+                        ? 'Already Registered'
+                        : userRegistration.status === 'pending'
+                        ? 'Registration Pending'
+                        : 'Registration Not Approved'
+                      }
+                    </span>
+                  </div>
+                )}
                 
                 <div className="flex space-x-3 mb-6">
                   <button className="flex-1 flex items-center justify-center space-x-2 py-2 border border-gray-300 dark:border-gray-600 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
