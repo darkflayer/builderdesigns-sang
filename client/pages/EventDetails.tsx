@@ -633,7 +633,7 @@ export default function EventDetails() {
           isOpen={showRegistrationModal}
           onClose={() => setShowRegistrationModal(false)}
           eventTitle={event.title}
-          eventPrice={event.price}
+          registrationType={event.registrationType}
         />
       </div>
     </Layout>
