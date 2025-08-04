@@ -201,19 +201,24 @@ export default function Index() {
         </div>
 
         {/* Categories */}
-        <div className="px-4 lg:px-8 py-4">
+        <div className="px-4 lg:px-8 py-6 lg:py-8">
           <div className="max-w-md lg:max-w-7xl mx-auto">
-            <h2 className="text-lg font-semibold text-gray-900 mb-3">Categories</h2>
-            <div className="flex space-x-2 overflow-x-auto lg:overflow-x-visible pb-2">
+            <div className="flex items-center justify-between mb-6">
+              <h2 className="text-2xl lg:text-3xl font-bold text-gray-900">Discover Events</h2>
+              <div className="hidden lg:block text-sm text-gray-600">
+                {filteredEvents.length} events found
+              </div>
+            </div>
+            <div className="flex space-x-3 overflow-x-auto lg:overflow-x-visible pb-2 lg:pb-0">
               {categories.map((category) => (
                 <button
                   key={category.name}
                   onClick={() => setSelectedCategory(category.name)}
                   className={cn(
-                    "px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-all",
+                    "px-6 py-3 rounded-2xl text-sm font-semibold whitespace-nowrap transition-all duration-200 shadow-sm",
                     selectedCategory === category.name
-                      ? "bg-purple-600 text-white"
-                      : "bg-white text-gray-600 hover:bg-gray-100"
+                      ? "bg-gradient-to-r from-purple-600 to-blue-600 text-white shadow-lg shadow-purple-500/25"
+                      : "bg-white text-gray-700 hover:bg-gray-50 border border-gray-200 hover:border-gray-300"
                   )}
                 >
                   {category.name}
