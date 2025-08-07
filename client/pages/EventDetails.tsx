@@ -465,7 +465,7 @@ export default function EventDetails() {
 
   return (
     <Layout searchQuery="" onSearchChange={() => {}} isAuthenticated={isAuthenticated}>
-      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
+      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-slate-900 dark:to-slate-800">
         {/* Hero Section */}
         <div className="relative">
           <img
