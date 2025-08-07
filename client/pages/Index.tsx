@@ -43,7 +43,6 @@ const megaEvents = [
     registrationType: "open" as const,
     category: "Technology",
     isMega: true,
-    price: "$299",
     description: "The premier technology conference featuring industry leaders, cutting-edge innovations, and networking opportunities.",
     hasSubEvents: true,
     subEvents: [
@@ -83,7 +82,6 @@ const megaEvents = [
     registrationType: "approval_required" as const,
     category: "Business",
     isMega: true,
-    price: "$149",
     description: "Premier networking event bringing together entrepreneurs, investors, and innovators.",
     hasSubEvents: true,
     subEvents: [
@@ -123,7 +121,6 @@ const megaEvents = [
     registrationType: "open" as const,
     category: "Music",
     isMega: true,
-    price: "$89",
     description: "An intimate evening of world-class jazz performances featuring renowned artists.",
     hasSubEvents: false
   }
