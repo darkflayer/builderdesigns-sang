@@ -469,30 +469,37 @@ export default function EventDetails() {
           <img
             src={event.image}
             alt={event.title}
-            className="w-full h-64 lg:h-96 object-cover"
+            className="w-full h-56 sm:h-64 lg:h-96 object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-          
+          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
+
           {/* Back Button */}
           <Link
             to="/"
-            className="absolute top-4 left-4 lg:top-8 lg:left-8 p-2 bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm rounded-xl hover:bg-white dark:hover:bg-gray-900 transition-colors"
+            className="absolute top-3 left-3 lg:top-8 lg:left-8 p-2 bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm rounded-lg lg:rounded-xl hover:bg-white dark:hover:bg-gray-900 transition-colors z-10"
           >
-            <ArrowLeft className="h-5 w-5 text-gray-900 dark:text-gray-100" />
+            <ArrowLeft className="h-4 w-4 lg:h-5 lg:w-5 text-gray-900 dark:text-gray-100" />
           </Link>
 
           {/* Event Info Overlay */}
-          <div className="absolute bottom-0 left-0 right-0 p-4 lg:p-8">
+          <div className="absolute bottom-0 left-0 right-0 p-3 lg:p-8">
             <div className="max-w-7xl mx-auto">
-              <div className="flex items-start justify-between">
-                <div className="flex-1">
-                  {event.featured && (
-                    <span className="inline-block bg-gradient-to-r from-purple-600 to-blue-600 text-white px-3 py-1 rounded-full text-sm font-semibold mb-3">
-                      ✨ Featured Event
-                    </span>
-                  )}
-                  <h1 className="text-2xl lg:text-4xl font-bold text-white mb-2">{event.title}</h1>
-                  <div className="flex flex-wrap items-center gap-4 text-white/90 text-sm lg:text-base">
+              <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between space-y-3 lg:space-y-0">
+                <div className="flex-1 min-w-0">
+                  <div className="flex flex-wrap items-center gap-2 mb-2">
+                    {event.featured && (
+                      <span className="inline-block bg-gradient-to-r from-purple-600 to-blue-600 text-white px-3 py-1 rounded-full text-xs lg:text-sm font-semibold">
+                        ✨ Featured
+                      </span>
+                    )}
+                    {event.hasSubEvents && (
+                      <span className="inline-block bg-gradient-to-r from-green-500 to-green-600 text-white px-3 py-1 rounded-full text-xs lg:text-sm font-semibold">
+                        📅 Sub Events
+                      </span>
+                    )}
+                  </div>
+                  <h1 className="text-xl sm:text-2xl lg:text-4xl font-bold text-white mb-2 lg:mb-3 leading-tight">{event.title}</h1>
+                  <div className="flex flex-wrap items-center gap-2 lg:gap-4 text-white/90 text-xs lg:text-base">
                     <div className="flex items-center space-x-2">
                       <Calendar className="h-4 w-4" />
                       <span>{event.date}</span>
