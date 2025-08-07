@@ -45,7 +45,34 @@ const eventDetails = {
       email: "contact@techevents.com",
       verified: true
     },
-    tags: ["AI", "Machine Learning", "Startups", "Innovation", "Networking"]
+    tags: ["AI", "Machine Learning", "Startups", "Innovation", "Networking"],
+    hasSubEvents: true,
+    subEvents: [
+      {
+        id: "sub_1_1",
+        title: "AI & Machine Learning Workshop",
+        description: "Deep dive into AI and ML technologies with hands-on exercises",
+        time: "10:00 AM - 12:00 PM",
+        date: "Dec 15, 2024",
+        maxAttendees: 50,
+        registrationType: "open" as const,
+        eventManager: "Dr. Sarah Chen",
+        eventCoordinator: "Alex Rodriguez",
+        currentAttendees: 32
+      },
+      {
+        id: "sub_1_2",
+        title: "Blockchain Innovation Panel",
+        description: "Expert panel discussion on blockchain technology trends and future opportunities",
+        time: "2:00 PM - 4:00 PM",
+        date: "Dec 15, 2024",
+        maxAttendees: 100,
+        registrationType: "approval_required" as const,
+        eventManager: "Michael Zhang",
+        eventCoordinator: "Lisa Park",
+        currentAttendees: 78
+      }
+    ]
   },
   2: {
     id: 2,
