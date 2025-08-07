@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Calendar, Star, Users, Award, MapPin, Clock, ArrowLeft, Edit3 } from "lucide-react";
+import { Calendar, Star, Users, Award, MapPin, Clock, ArrowLeft, Edit3, Mail, Phone } from "lucide-react";
 import Layout from "@/components/Layout";
 import { useAuth } from "@/hooks/useAuth";
 
