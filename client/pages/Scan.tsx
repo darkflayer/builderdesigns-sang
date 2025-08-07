@@ -28,12 +28,41 @@ export default function Scan() {
     }
   };
 
-  const startScanning = () => {
+  const requestLocationPermission = async () => {
+    if (navigator.geolocation) {
+      try {
+        const position = await new Promise<GeolocationPosition>((resolve, reject) => {
+          navigator.geolocation.getCurrentPosition(resolve, reject);
+        });
+
+        // In a real app, you would reverse geocode the coordinates to get a readable address
+        const mockLocation = `${position.coords.latitude.toFixed(4)}, ${position.coords.longitude.toFixed(4)}`;
+        setCurrentLocation(mockLocation);
+        setLocationPermission('granted');
+        return true;
+      } catch (error) {
+        setLocationPermission('denied');
+        alert('Location access denied. QR scanning will work without location data.');
+        return false;
+      }
+    } else {
+      alert('Geolocation is not supported by this browser.');
+      return false;
+    }
+  };
+
+  const startScanning = async () => {
+    // Request location if not already granted
+    if (locationPermission === 'prompt') {
+      await requestLocationPermission();
+    }
+
     setScanning(true);
     // In a real app, you would start the camera and QR scanning
     setTimeout(() => {
       setScanning(false);
-      alert("QR Code scanned successfully! In a real app, this would process the scanned data.");
+      const locationText = currentLocation ? ` at ${currentLocation}` : '';
+      alert(`QR Code scanned successfully${locationText}! In a real app, this would process the scanned data and save the connection with location info.`);
     }, 2000);
   };
 
