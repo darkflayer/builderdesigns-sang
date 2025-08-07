@@ -35,7 +35,7 @@ export default function Profile() {
   ];
 
   return (
-    <Layout searchQuery="" onSearchChange={() => {}}>
+    <Layout searchQuery="" onSearchChange={() => {}} isAuthenticated={true}>
       <div className="min-h-screen bg-gray-50">
         {/* Header */}
         <div className="bg-white shadow-sm px-4 py-4">
