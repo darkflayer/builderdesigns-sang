@@ -337,8 +337,16 @@ export default function Index() {
   const [showRegistrationModal, setShowRegistrationModal] = useState(false);
   const [selectedEventForRegistration, setSelectedEventForRegistration] = useState<any>(null);
   const [currentMegaEvent, setCurrentMegaEvent] = useState(0);
-  const [isAuthenticated, setIsAuthenticated] = useState(false); // Mock authentication state
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
   const { theme, toggleTheme } = useTheme();
+
+  // Check authentication status on mount
+  useEffect(() => {
+    const authStatus = localStorage.getItem('sang_authenticated');
+    if (authStatus === 'true') {
+      setIsAuthenticated(true);
+    }
+  }, []);
 
   // Auto-advance carousel every 5 seconds
   useEffect(() => {
