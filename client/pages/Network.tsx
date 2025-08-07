@@ -260,6 +260,16 @@ export default function Network() {
                           </div>
                         )}
 
+                        {/* Scan Location */}
+                        {connection.scanLocation && (
+                          <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-2 mb-3">
+                            <div className="flex items-center space-x-1 text-xs text-gray-600 dark:text-gray-400">
+                              <MapPin className="h-3 w-3 text-gray-500" />
+                              <span>Scanned at: {connection.scanLocation}</span>
+                            </div>
+                          </div>
+                        )}
+
                         {/* Connection Date */}
                         <div className="flex items-center justify-center space-x-1 text-xs text-gray-500 dark:text-gray-500">
                           <Calendar className="h-3 w-3" />
