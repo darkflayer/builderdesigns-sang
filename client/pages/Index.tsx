@@ -17,51 +17,114 @@ const categories = [
   { name: "Art", active: false },
 ];
 
+interface SubEvent {
+  id: string;
+  title: string;
+  description: string;
+  time: string;
+  date: string;
+  maxAttendees: number;
+  registrationType: "open" | "approval_required";
+  eventManager?: string;
+  eventCoordinator?: string;
+}
+
 const megaEvents = [
   {
-    id: 101,
-    title: "Global Tech Conference 2024",
-    location: "Las Vegas, NV",
-    date: "Jan 15-17, 2025",
-    time: "All Day",
+    id: 1, // Use actual event ID
+    title: "Tech Innovation Summit 2024",
+    location: "San Francisco, CA",
+    date: "Dec 15, 2024",
+    time: "9:00 AM",
     image: "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?w=800&h=400&fit=crop",
-    attendees: 50000,
-    rating: 4.9,
-    registrationType: "approval_required" as const,
+    attendees: 250,
+    rating: 4.8,
+    registrationType: "open" as const,
     category: "Technology",
     isMega: true,
-    price: "$2,499",
-    description: "The world's largest technology conference featuring industry leaders, cutting-edge innovations, and networking opportunities."
+    price: "$299",
+    description: "The premier technology conference featuring industry leaders, cutting-edge innovations, and networking opportunities.",
+    hasSubEvents: true,
+    subEvents: [
+      {
+        id: "sub_1_1",
+        title: "AI & Machine Learning Workshop",
+        description: "Deep dive into AI and ML technologies",
+        time: "10:00 AM - 12:00 PM",
+        date: "Dec 15, 2024",
+        maxAttendees: 50,
+        registrationType: "open" as const,
+        eventManager: "Dr. Sarah Chen",
+        eventCoordinator: "Alex Rodriguez"
+      },
+      {
+        id: "sub_1_2",
+        title: "Blockchain Innovation Panel",
+        description: "Expert panel on blockchain technology trends",
+        time: "2:00 PM - 4:00 PM",
+        date: "Dec 15, 2024",
+        maxAttendees: 100,
+        registrationType: "approval_required" as const,
+        eventManager: "Michael Zhang",
+        eventCoordinator: "Lisa Park"
+      }
+    ] as SubEvent[]
   },
   {
-    id: 102,
-    title: "International Business Summit",
-    location: "New York, NY",
-    date: "Feb 10-12, 2025",
-    time: "All Day",
+    id: 4, // Use actual event ID
+    title: "Startup Networking Mixer",
+    location: "Austin, TX",
+    date: "Dec 22, 2024",
+    time: "6:00 PM",
     image: "https://images.unsplash.com/photo-1511578314322-379afb476865?w=800&h=400&fit=crop",
-    attendees: 25000,
-    rating: 4.8,
+    attendees: 180,
+    rating: 4.7,
     registrationType: "approval_required" as const,
     category: "Business",
     isMega: true,
-    price: "$1,899",
-    description: "Premier business conference bringing together global leaders, entrepreneurs, and innovators."
+    price: "$149",
+    description: "Premier networking event bringing together entrepreneurs, investors, and innovators.",
+    hasSubEvents: true,
+    subEvents: [
+      {
+        id: "sub_4_1",
+        title: "Investor Pitch Session",
+        description: "Present your startup to potential investors",
+        time: "7:00 PM - 8:30 PM",
+        date: "Dec 22, 2024",
+        maxAttendees: 30,
+        registrationType: "approval_required" as const,
+        eventManager: "Jennifer Walsh",
+        eventCoordinator: "David Kim"
+      },
+      {
+        id: "sub_4_2",
+        title: "Networking Happy Hour",
+        description: "Casual networking with drinks and appetizers",
+        time: "8:30 PM - 10:00 PM",
+        date: "Dec 22, 2024",
+        maxAttendees: 150,
+        registrationType: "open" as const,
+        eventManager: "Tom Wilson",
+        eventCoordinator: "Maria Garcia"
+      }
+    ] as SubEvent[]
   },
   {
-    id: 103,
-    title: "World Music Festival",
-    location: "Austin, TX",
-    date: "Mar 20-25, 2025",
-    time: "All Day",
+    id: 3, // Use actual event ID
+    title: "Jazz Night at Blue Note",
+    location: "Chicago, IL",
+    date: "Dec 20, 2024",
+    time: "8:00 PM",
     image: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=800&h=400&fit=crop",
-    attendees: 100000,
+    attendees: 120,
     rating: 4.9,
     registrationType: "open" as const,
     category: "Music",
     isMega: true,
-    price: "$599",
-    description: "The ultimate music experience featuring world-renowned artists across multiple genres and stages."
+    price: "$89",
+    description: "An intimate evening of world-class jazz performances featuring renowned artists.",
+    hasSubEvents: false
   }
 ];
 
@@ -78,6 +141,31 @@ const events = [
     registrationType: "open" as const,
     category: "Technology",
     featured: true,
+    hasSubEvents: true,
+    subEvents: [
+      {
+        id: "sub_1_1",
+        title: "AI & Machine Learning Workshop",
+        description: "Deep dive into AI and ML technologies",
+        time: "10:00 AM - 12:00 PM",
+        date: "Dec 15, 2024",
+        maxAttendees: 50,
+        registrationType: "open" as const,
+        eventManager: "Dr. Sarah Chen",
+        eventCoordinator: "Alex Rodriguez"
+      },
+      {
+        id: "sub_1_2",
+        title: "Blockchain Innovation Panel",
+        description: "Expert panel on blockchain technology trends",
+        time: "2:00 PM - 4:00 PM",
+        date: "Dec 15, 2024",
+        maxAttendees: 100,
+        registrationType: "approval_required" as const,
+        eventManager: "Michael Zhang",
+        eventCoordinator: "Lisa Park"
+      }
+    ] as SubEvent[]
   },
   {
     id: 2,
