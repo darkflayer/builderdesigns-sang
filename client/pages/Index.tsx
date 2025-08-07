@@ -665,10 +665,15 @@ export default function Index() {
                           className="w-full h-48 lg:h-56 object-cover group-hover:scale-105 transition-transform duration-300"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
-                        <div className="absolute top-4 left-4">
-                          <span className="bg-gradient-to-r from-purple-600 to-blue-600 text-white px-3 py-1.5 rounded-full text-xs font-semibold shadow-lg">
+                        <div className="absolute top-4 left-4 space-y-2">
+                          <span className="block bg-gradient-to-r from-purple-600 to-blue-600 text-white px-3 py-1.5 rounded-full text-xs font-semibold shadow-lg">
                             ✨ Featured
                           </span>
+                          {event.hasSubEvents && (
+                            <span className="block bg-gradient-to-r from-green-500 to-green-600 text-white px-3 py-1.5 rounded-full text-xs font-semibold shadow-lg">
+                              📅 Sub Events
+                            </span>
+                          )}
                         </div>
                         <div className="absolute top-4 right-4">
                           <span className={`bg-white/95 backdrop-blur-sm px-3 py-1.5 rounded-full text-sm font-bold shadow-lg ${
@@ -699,6 +704,13 @@ export default function Index() {
                         <MapPin className="h-4 w-4 text-purple-600" />
                         <span className="font-medium text-gray-900 dark:text-gray-200">{event.location}</span>
                       </div>
+                      {event.hasSubEvents && (
+                        <div className="mb-4 p-3 bg-green-50 dark:bg-green-900/20 rounded-lg border border-green-200 dark:border-green-800">
+                          <div className="flex items-center space-x-2 text-green-700 dark:text-green-400">
+                            <span className="text-xs font-semibold">🎯 {event.subEvents?.length || 0} Sub Events Available</span>
+                          </div>
+                        </div>
+                      )}
                       <div className="flex items-center justify-between">
                         <div className="flex items-center space-x-4">
                           <div className="flex items-center space-x-1">
