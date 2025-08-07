@@ -1,8 +1,10 @@
 import { ArrowLeft, Edit3, MapPin, Mail, Phone, Calendar, Star, Users, Award } from "lucide-react";
 import { Link } from "react-router-dom";
 import Layout from "@/components/Layout";
+import { useAuth } from "@/hooks/useAuth";
 
 export default function Profile() {
+  const { isAuthenticated } = useAuth();
   const userStats = [
     { label: "Events Attended", value: "24", icon: Calendar },
     { label: "Average Rating", value: "4.8", icon: Star },
@@ -35,7 +37,7 @@ export default function Profile() {
   ];
 
   return (
-    <Layout searchQuery="" onSearchChange={() => {}} isAuthenticated={true}>
+    <Layout searchQuery="" onSearchChange={() => {}} isAuthenticated={isAuthenticated}>
       <div className="min-h-screen bg-gray-50">
         {/* Header */}
         <div className="bg-white shadow-sm px-4 py-4">
