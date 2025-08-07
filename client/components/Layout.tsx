@@ -179,6 +179,12 @@ export default function Layout({ children, searchQuery = "", onSearchChange, isA
           </div>
         </div>
       </nav>
+
+      {/* Notifications Modal */}
+      <NotificationsModal
+        isOpen={showNotifications}
+        onClose={() => setShowNotifications(false)}
+      />
     </div>
   );
 }
