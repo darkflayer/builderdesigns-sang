@@ -30,6 +30,8 @@ export function useAuth() {
     localStorage.removeItem('sang_user');
     setIsAuthenticated(false);
     setUser(null);
+    // Redirect to home page
+    window.location.href = '/';
   };
 
   return {
