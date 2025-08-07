@@ -11,6 +11,8 @@ export default function Scan() {
   const [flashEnabled, setFlashEnabled] = useState(false);
   const [scanning, setScanning] = useState(false);
   const [showConnections, setShowConnections] = useState(false);
+  const [locationPermission, setLocationPermission] = useState<'granted' | 'denied' | 'prompt'>('prompt');
+  const [currentLocation, setCurrentLocation] = useState<string>('');
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const handleFileUpload = () => {
