@@ -449,37 +449,49 @@ export default function Index() {
     <Layout searchQuery={searchQuery} onSearchChange={handleSearchChange} isAuthenticated={isAuthenticated}>
       <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 transition-colors duration-300">
         {/* Mobile Header - Only shown on mobile */}
-        <div className="lg:hidden bg-white/95 dark:bg-gray-900/95 backdrop-blur-md shadow-sm px-4 py-4">
-          <div className="max-w-md mx-auto">
-            <div className="flex items-center justify-between mb-4">
+        <div className="lg:hidden bg-white/95 dark:bg-gray-900/95 backdrop-blur-md shadow-sm px-3 py-3">
+          <div className="max-w-full mx-auto">
+            {/* App Brand */}
+            <div className="flex items-center justify-center mb-3">
               <div className="flex items-center space-x-2">
-                <MapPin className="h-5 w-5 text-purple-600" />
-                <div>
-                  <p className="text-sm text-gray-600 dark:text-gray-400">Your location</p>
-                  <p className="font-semibold text-gray-900 dark:text-gray-100">San Francisco, CA</p>
+                <div className="w-6 h-6 bg-gradient-to-br from-purple-600 to-blue-600 rounded-lg flex items-center justify-center">
+                  <Calendar className="h-4 w-4 text-white" />
+                </div>
+                <span className="text-lg font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
+                  Sang
+                </span>
+              </div>
+            </div>
+
+            <div className="flex items-center justify-between mb-3">
+              <div className="flex items-center space-x-2 flex-1">
+                <MapPin className="h-4 w-4 text-purple-600 flex-shrink-0" />
+                <div className="min-w-0 flex-1">
+                  <p className="text-xs text-gray-600 dark:text-gray-400">Location</p>
+                  <p className="font-semibold text-gray-900 dark:text-gray-100 text-sm truncate">San Francisco, CA</p>
                 </div>
               </div>
-              <div className="flex items-center space-x-3">
-                <button 
+              <div className="flex items-center space-x-2">
+                <button
                   onClick={toggleTheme}
-                  className="p-2 rounded-xl bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+                  className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
                 >
                   {theme === 'dark' ? (
-                    <Sun className="h-5 w-5 text-gray-600 dark:text-gray-300" />
+                    <Sun className="h-4 w-4 text-gray-600 dark:text-gray-300" />
                   ) : (
-                    <Moon className="h-5 w-5 text-gray-600 dark:text-gray-300" />
+                    <Moon className="h-4 w-4 text-gray-600 dark:text-gray-300" />
                   )}
                 </button>
-                <button className="p-2 rounded-xl bg-gray-100 dark:bg-gray-800 relative">
-                  <Bell className="h-5 w-5 text-gray-600 dark:text-gray-300" />
-                  <div className="absolute -top-1 -right-1 h-3 w-3 bg-red-500 rounded-full"></div>
+                <button className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 relative">
+                  <Bell className="h-4 w-4 text-gray-600 dark:text-gray-300" />
+                  <div className="absolute -top-1 -right-1 h-2 w-2 bg-red-500 rounded-full"></div>
                 </button>
                 {isAuthenticated ? (
-                  <Link to="/profile" className="p-2 rounded-xl bg-gradient-to-br from-purple-500 to-blue-600">
-                    <User className="h-5 w-5 text-white" />
+                  <Link to="/profile" className="p-2 rounded-lg bg-gradient-to-br from-purple-500 to-blue-600">
+                    <User className="h-4 w-4 text-white" />
                   </Link>
                 ) : (
-                  <Link to="/auth" className="bg-gradient-to-r from-purple-600 to-blue-600 text-white px-3 py-2 rounded-xl text-sm font-semibold">
+                  <Link to="/auth" className="bg-gradient-to-r from-purple-600 to-blue-600 text-white px-3 py-2 rounded-lg text-xs font-semibold">
                     Login
                   </Link>
                 )}
@@ -488,13 +500,13 @@ export default function Index() {
 
             {/* Mobile Search Bar */}
             <div className="relative">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400 dark:text-gray-500" />
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400 dark:text-gray-500" />
               <input
                 type="text"
                 placeholder="Search events..."
                 value={searchQuery}
                 onChange={(e) => handleSearchChange(e.target.value)}
-                className="w-full pl-10 pr-4 py-3 bg-gray-100 dark:bg-gray-800 rounded-2xl border-0 focus:ring-2 focus:ring-purple-500 focus:bg-white dark:focus:bg-gray-700 transition-all text-gray-900 dark:text-gray-100"
+                className="w-full pl-9 pr-4 py-2.5 bg-gray-100 dark:bg-gray-800 rounded-xl border-0 focus:ring-2 focus:ring-purple-500 focus:bg-white dark:focus:bg-gray-700 transition-all text-gray-900 dark:text-gray-100 text-sm"
               />
             </div>
           </div>
