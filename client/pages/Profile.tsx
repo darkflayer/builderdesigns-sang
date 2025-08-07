@@ -112,12 +112,12 @@ export default function Profile() {
           <div className="max-w-md mx-auto">
             <div className="grid grid-cols-2 gap-4">
               {userStats.map((stat, index) => (
-                <div key={index} className="bg-white rounded-xl shadow-sm p-4 text-center">
+                <div key={index} className="bg-white dark:bg-slate-800 rounded-xl shadow-sm p-4 text-center">
                   <div className="flex justify-center mb-2">
                     <stat.icon className="h-6 w-6 text-purple-600" />
                   </div>
-                  <p className="text-2xl font-bold text-gray-900">{stat.value}</p>
-                  <p className="text-sm text-gray-600">{stat.label}</p>
+                  <p className="text-2xl font-bold text-gray-900 dark:text-gray-100">{stat.value}</p>
+                  <p className="text-sm text-gray-600 dark:text-gray-400">{stat.label}</p>
                 </div>
               ))}
             </div>
@@ -127,7 +127,7 @@ export default function Profile() {
         {/* Recent Events */}
         <div className="px-4 py-4">
           <div className="max-w-md mx-auto">
-            <h3 className="text-lg font-semibold text-gray-900 mb-4">Recent Events</h3>
+            <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">Recent Events</h3>
             <div className="space-y-3">
               {recentEvents.map((event) => (
                 <div key={event.id} className="bg-white rounded-xl shadow-sm p-4">
