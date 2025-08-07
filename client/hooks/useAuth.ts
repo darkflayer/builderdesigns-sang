@@ -12,12 +12,16 @@ export function useAuth() {
   useEffect(() => {
     const authStatus = localStorage.getItem('sang_authenticated');
     const userData = localStorage.getItem('sang_user');
-    
+
+    console.log('Auth check:', { authStatus, userData }); // Debug log
+
     if (authStatus === 'true') {
       setIsAuthenticated(true);
       if (userData) {
         try {
-          setUser(JSON.parse(userData));
+          const parsedUser = JSON.parse(userData);
+          setUser(parsedUser);
+          console.log('User set:', parsedUser); // Debug log
         } catch (error) {
           console.error('Error parsing user data:', error);
         }
