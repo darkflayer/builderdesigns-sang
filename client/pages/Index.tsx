@@ -587,7 +587,7 @@ export default function Index() {
                                 onClick={() => handleRegisterForEvent(event)}
                                 className="w-full sm:w-auto bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white px-6 py-3 lg:px-8 lg:py-4 rounded-xl lg:rounded-2xl text-sm lg:text-lg font-bold shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1"
                               >
-                                Register Now - {event.price}
+                                {event.registrationType === 'open' ? 'Register Now' : 'Apply to Register'}
                               </button>
                               <Link
                                 to={`/event/${event.id}`}
