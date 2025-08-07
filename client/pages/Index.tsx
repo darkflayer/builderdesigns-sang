@@ -7,6 +7,7 @@ import Pagination from "@/components/Pagination";
 import RegistrationModal from "@/components/RegistrationModal";
 import { cn } from "@/lib/utils";
 import { useTheme } from "@/contexts/ThemeContext";
+import { useAuth } from "@/hooks/useAuth";
 
 const categories = [
   { name: "All", active: true },
@@ -337,16 +338,8 @@ export default function Index() {
   const [showRegistrationModal, setShowRegistrationModal] = useState(false);
   const [selectedEventForRegistration, setSelectedEventForRegistration] = useState<any>(null);
   const [currentMegaEvent, setCurrentMegaEvent] = useState(0);
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const { isAuthenticated } = useAuth();
   const { theme, toggleTheme } = useTheme();
-
-  // Check authentication status on mount
-  useEffect(() => {
-    const authStatus = localStorage.getItem('sang_authenticated');
-    if (authStatus === 'true') {
-      setIsAuthenticated(true);
-    }
-  }, []);
 
   // Auto-advance carousel every 5 seconds
   useEffect(() => {
