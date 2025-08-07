@@ -534,19 +534,19 @@ export default function EventDetails() {
         </div>
 
         {/* Main Content */}
-        <div className="max-w-7xl mx-auto px-4 lg:px-8 py-8">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="max-w-7xl mx-auto px-3 lg:px-8 py-4 lg:py-8">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 lg:gap-8">
             {/* Left Column - Main Content */}
-            <div className="lg:col-span-2 space-y-8">
+            <div className="lg:col-span-2 space-y-4 lg:space-y-8">
               {/* About Event */}
-              <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg">
-                <h2 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4">About This Event</h2>
-                <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-6">
+              <div className="bg-white dark:bg-gray-800 rounded-xl lg:rounded-2xl p-4 lg:p-6 shadow-lg">
+                <h2 className="text-lg lg:text-xl font-bold text-gray-900 dark:text-gray-100 mb-3 lg:mb-4">About This Event</h2>
+                <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-4 lg:mb-6 text-sm lg:text-base">
                   {event.description}
                 </p>
-                
+
                 {/* Event Highlights */}
-                <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-3">What to Expect</h3>
+                <h3 className="text-base lg:text-lg font-semibold text-gray-900 dark:text-gray-100 mb-3">What to Expect</h3>
                 <ul className="space-y-2">
                   {event.highlights.map((highlight, index) => (
                     <li key={index} className="flex items-start space-x-2">
