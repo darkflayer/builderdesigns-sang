@@ -146,7 +146,10 @@ export default function Profile() {
             <button className="w-full bg-gray-100 text-gray-700 py-3 rounded-xl font-medium hover:bg-gray-200 transition-colors">
               Privacy Settings
             </button>
-            <button className="w-full bg-gray-100 text-red-600 py-3 rounded-xl font-medium hover:bg-red-50 transition-colors">
+            <button
+              onClick={logout}
+              className="w-full bg-gray-100 text-red-600 py-3 rounded-xl font-medium hover:bg-red-50 transition-colors"
+            >
               Sign Out
             </button>
           </div>
