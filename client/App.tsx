@@ -13,6 +13,7 @@ import MyEvents from "./pages/MyEvents";
 import Scan from "./pages/Scan";
 import Network from "./pages/Network";
 import Profile from "./pages/Profile";
+import Auth from "./pages/Auth";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
