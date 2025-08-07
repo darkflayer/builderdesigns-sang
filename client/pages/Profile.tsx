@@ -1,10 +1,23 @@
 import { Link } from "react-router-dom";
-import { Calendar, Star, Users, Award, MapPin, Clock, ArrowLeft, Edit3, Mail, Phone } from "lucide-react";
+import { useState } from "react";
+import { Calendar, Star, Users, Award, MapPin, Clock, ArrowLeft, Edit3, Mail, Phone, Building, UserPlus, Settings, CheckCircle, XCircle, Clock as ClockIcon, Plus } from "lucide-react";
 import Layout from "@/components/Layout";
 import { useAuth } from "@/hooks/useAuth";
+import { getUserOrganizations, getUserInvitations, getPendingRoleRequests, getOrganizationEvents, isAdmin, type Organization, type RoleRequest, type EventManagement } from "@/data/mockOrganizations";
 
 export default function Profile() {
   const { isAuthenticated, logout, user } = useAuth();
+  const [activeTab, setActiveTab] = useState<'profile' | 'organizations' | 'events' | 'requests'>('profile');
+  const [showCreateOrg, setShowCreateOrg] = useState(false);
+  const [showJoinOrg, setShowJoinOrg] = useState(false);
+
+  const currentUserId = 'user_current'; // In real app, get from auth
+  const userOrganizations = getUserOrganizations(currentUserId);
+  const userInvitations = getUserInvitations(currentUserId);
+  const pendingRequests = userOrganizations.flatMap(org =>
+    isAdmin(currentUserId, org._id) ? getPendingRoleRequests(org._id) : []
+  );
+  const userEvents = userOrganizations.flatMap(org => getOrganizationEvents(org._id));
 
   // Redirect to auth if not authenticated
   if (!isAuthenticated) {
