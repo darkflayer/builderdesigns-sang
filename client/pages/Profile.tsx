@@ -88,19 +88,19 @@ export default function Profile() {
                   <p className="text-gray-600">Event Enthusiast</p>
                   <div className="flex items-center space-x-1 mt-1">
                     <MapPin className="h-4 w-4 text-gray-500" />
-                    <span className="text-sm text-gray-600">San Francisco, CA</span>
+                    <span className="text-sm text-gray-600 dark:text-gray-400">San Francisco, CA</span>
                   </div>
                 </div>
               </div>
 
               <div className="space-y-3">
                 <div className="flex items-center space-x-3">
-                  <Mail className="h-4 w-4 text-gray-500" />
-                  <span className="text-gray-700">john.doe@email.com</span>
+                  <Mail className="h-4 w-4 text-gray-500 dark:text-gray-400" />
+                  <span className="text-gray-700 dark:text-gray-300">john.doe@email.com</span>
                 </div>
                 <div className="flex items-center space-x-3">
-                  <Phone className="h-4 w-4 text-gray-500" />
-                  <span className="text-gray-700">+1 (555) 123-4567</span>
+                  <Phone className="h-4 w-4 text-gray-500 dark:text-gray-400" />
+                  <span className="text-gray-700 dark:text-gray-300">+1 (555) 123-4567</span>
                 </div>
               </div>
             </div>
