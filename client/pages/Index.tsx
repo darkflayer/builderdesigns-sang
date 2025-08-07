@@ -753,10 +753,10 @@ export default function Index() {
         )}
 
         {/* All Events Section */}
-        <div className="px-4 lg:px-8 py-6">
-          <div className="max-w-md lg:max-w-7xl mx-auto">
-            <h2 className="text-xl lg:text-2xl font-bold text-gray-900 dark:text-gray-100 mb-6">🎯 All Events</h2>
-            <div className="space-y-4 lg:grid lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 lg:space-y-0 lg:gap-6">
+        <div className="px-3 lg:px-8 py-4 lg:py-6">
+          <div className="max-w-full lg:max-w-7xl mx-auto">
+            <h2 className="text-lg lg:text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4 lg:mb-6">🎯 All Events</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-4 lg:gap-6">
               {regularEvents.map((event) => (
                 <div
                   key={event.id}
