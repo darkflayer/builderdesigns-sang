@@ -27,6 +27,7 @@ export interface Connection {
   connectionDate: string;
   eventId?: number;
   eventName?: string;
+  scanLocation?: string; // Location where QR code was scanned
   fieldsShared: {
     name?: string;
     email?: string;
@@ -216,6 +217,7 @@ export const mockConnections: Connection[] = [
     connectionDate: "2024-12-14",
     eventId: 1,
     eventName: "Tech Innovation Summit 2024",
+    scanLocation: "Moscone Center, San Francisco, CA",
     fieldsShared: {
       name: "Sarah Johnson",
       email: "sarah.johnson@techcorp.com",
@@ -227,13 +229,14 @@ export const mockConnections: Connection[] = [
     }
   },
   {
-    id: "conn_2", 
+    id: "conn_2",
     name: "Marcus Chen",
     category: "investor",
     avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face",
     connectionDate: "2024-12-13",
     eventId: 4,
     eventName: "Startup Networking Mixer",
+    scanLocation: "Austin Convention Center, Austin, TX",
     fieldsShared: {
       name: "Marcus Chen",
       email: "marcus@venturecap.com",
@@ -251,6 +254,7 @@ export const mockConnections: Connection[] = [
     category: "friend",
     avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face",
     connectionDate: "2024-12-12",
+    scanLocation: "Union Square, San Francisco, CA",
     fieldsShared: {
       name: "Emily Rodriguez",
       email: "emily.r@gmail.com",
