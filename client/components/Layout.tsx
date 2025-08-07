@@ -3,6 +3,8 @@ import { Link, useLocation } from "react-router-dom";
 import { cn } from "@/lib/utils";
 import { useTheme } from "@/contexts/ThemeContext";
 import Footer from "./Footer";
+import NotificationsModal from "./NotificationsModal";
+import { getUnreadCount } from "@/data/mockNotifications";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -14,6 +16,8 @@ interface LayoutProps {
 export default function Layout({ children, searchQuery = "", onSearchChange, isAuthenticated = false }: LayoutProps) {
   const location = useLocation();
   const { theme, toggleTheme } = useTheme();
+  const [showNotifications, setShowNotifications] = useState(false);
+  const unreadCount = getUnreadCount();
 
   const navigation = [
     {
@@ -113,9 +117,16 @@ export default function Layout({ children, searchQuery = "", onSearchChange, isA
                 )}
               </button>
 
-              <button className="p-2.5 rounded-xl bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors relative">
+              <button
+                onClick={() => setShowNotifications(true)}
+                className="p-2.5 rounded-xl bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors relative"
+              >
                 <Bell className="h-5 w-5 text-gray-600 dark:text-gray-300" />
-                <div className="absolute -top-1 -right-1 h-3 w-3 bg-red-500 rounded-full"></div>
+                {unreadCount > 0 && (
+                  <div className="absolute -top-1 -right-1 h-5 w-5 bg-red-500 rounded-full flex items-center justify-center">
+                    <span className="text-xs text-white font-bold">{unreadCount > 9 ? '9+' : unreadCount}</span>
+                  </div>
+                )}
               </button>
 
               {isAuthenticated ? (
