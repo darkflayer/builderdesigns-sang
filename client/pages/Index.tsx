@@ -364,6 +364,111 @@ export default function Index() {
           </div>
         </div>
 
+        {/* Premium Mega Events Carousel */}
+        <div className="px-4 lg:px-8 py-6">
+          <div className="max-w-md lg:max-w-7xl mx-auto">
+            <div className="flex items-center justify-between mb-6">
+              <h2 className="text-2xl lg:text-3xl font-bold text-gray-900 dark:text-gray-100">🌟 Mega Events</h2>
+              <div className="flex space-x-2">
+                {megaEvents.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentMegaEvent(index)}
+                    className={cn(
+                      "w-3 h-3 rounded-full transition-all duration-300",
+                      currentMegaEvent === index
+                        ? "bg-gradient-to-r from-purple-600 to-blue-600 scale-125"
+                        : "bg-gray-300 dark:bg-gray-600 hover:bg-gray-400 dark:hover:bg-gray-500"
+                    )}
+                  />
+                ))}
+              </div>
+            </div>
+
+            <div className="relative overflow-hidden rounded-3xl shadow-2xl">
+              <div
+                className="flex transition-transform duration-500 ease-in-out"
+                style={{ transform: `translateX(-${currentMegaEvent * 100}%)` }}
+              >
+                {megaEvents.map((event, index) => (
+                  <div key={event.id} className="min-w-full relative">
+                    <div className="relative h-64 lg:h-80 overflow-hidden">
+                      <img
+                        src={event.image}
+                        alt={event.title}
+                        className="w-full h-full object-cover"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-transparent"></div>
+
+                      <div className="absolute inset-0 flex items-center">
+                        <div className="px-8 lg:px-16 max-w-2xl">
+                          <div className="mb-4">
+                            <span className="bg-gradient-to-r from-yellow-400 to-orange-500 text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg">
+                              ⚡ MEGA EVENT
+                            </span>
+                          </div>
+                          <h3 className="text-3xl lg:text-5xl font-bold text-white mb-4 leading-tight">
+                            {event.title}
+                          </h3>
+                          <p className="text-gray-200 text-lg mb-6 leading-relaxed">
+                            {event.description}
+                          </p>
+                          <div className="flex flex-wrap items-center gap-4 mb-6">
+                            <div className="flex items-center space-x-2 bg-white/20 backdrop-blur-sm rounded-lg px-3 py-2">
+                              <Calendar className="h-5 w-5 text-white" />
+                              <span className="text-white font-medium">{event.date}</span>
+                            </div>
+                            <div className="flex items-center space-x-2 bg-white/20 backdrop-blur-sm rounded-lg px-3 py-2">
+                              <MapPin className="h-5 w-5 text-white" />
+                              <span className="text-white font-medium">{event.location}</span>
+                            </div>
+                            <div className="flex items-center space-x-2 bg-white/20 backdrop-blur-sm rounded-lg px-3 py-2">
+                              <Users className="h-5 w-5 text-white" />
+                              <span className="text-white font-medium">{event.attendees.toLocaleString()} attendees</span>
+                            </div>
+                          </div>
+                          <div className="flex items-center space-x-4">
+                            <button
+                              onClick={() => handleRegisterForEvent(event)}
+                              className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white px-8 py-4 rounded-2xl text-lg font-bold shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1"
+                            >
+                              Register Now - {event.price}
+                            </button>
+                            <Link
+                              to={`/event/${event.id}`}
+                              className="text-white hover:text-gray-200 font-semibold underline transition-colors"
+                            >
+                              Learn More
+                            </Link>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* Navigation Arrows */}
+              <button
+                onClick={() => setCurrentMegaEvent((prev) => (prev - 1 + megaEvents.length) % megaEvents.length)}
+                className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white p-3 rounded-full transition-all duration-200"
+              >
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                </svg>
+              </button>
+              <button
+                onClick={() => setCurrentMegaEvent((prev) => (prev + 1) % megaEvents.length)}
+                className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white p-3 rounded-full transition-all duration-200"
+              >
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
         {/* Categories and Filters */}
         <div className="px-4 lg:px-8 py-6 lg:py-8">
           <div className="max-w-md lg:max-w-7xl mx-auto">
