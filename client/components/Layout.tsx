@@ -118,9 +118,15 @@ export default function Layout({ children, searchQuery = "", onSearchChange }: L
                 <div className="absolute -top-1 -right-1 h-3 w-3 bg-red-500 rounded-full"></div>
               </button>
 
-              <Link to="/profile" className="p-2.5 rounded-xl bg-gradient-to-br from-purple-500 to-blue-600 hover:from-purple-600 hover:to-blue-700 transition-all duration-200 shadow-lg hover:shadow-xl">
-                <User className="h-5 w-5 text-white" />
-              </Link>
+              {isAuthenticated ? (
+                <Link to="/profile" className="p-2.5 rounded-xl bg-gradient-to-br from-purple-500 to-blue-600 hover:from-purple-600 hover:to-blue-700 transition-all duration-200 shadow-lg hover:shadow-xl">
+                  <User className="h-5 w-5 text-white" />
+                </Link>
+              ) : (
+                <Link to="/auth" className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white px-4 py-2 rounded-xl font-semibold transition-all duration-200 shadow-lg hover:shadow-xl">
+                  Login / Sign Up
+                </Link>
+              )}
             </div>
           </div>
         </div>
