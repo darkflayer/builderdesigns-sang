@@ -623,13 +623,13 @@ export default function Index() {
         </div>
 
         {/* Categories and Filters */}
-        <div className="px-4 lg:px-8 py-6 lg:py-8">
-          <div className="max-w-md lg:max-w-7xl mx-auto">
-            <div className="flex flex-col lg:flex-row lg:items-center justify-between mb-6 gap-4">
-              <h2 className="text-2xl lg:text-3xl font-bold text-gray-900 dark:text-gray-100">Discover Events</h2>
-              <div className="flex items-center justify-between lg:justify-end space-x-4">
-                <div className="text-sm text-gray-600 dark:text-gray-400">
-                  {filteredAndSortedEvents.length} events found
+        <div className="px-3 lg:px-8 py-4 lg:py-8">
+          <div className="max-w-full lg:max-w-7xl mx-auto">
+            <div className="flex flex-col lg:flex-row lg:items-center justify-between mb-4 lg:mb-6 gap-3 lg:gap-4">
+              <h2 className="text-xl lg:text-3xl font-bold text-gray-900 dark:text-gray-100">Discover Events</h2>
+              <div className="flex items-center justify-between lg:justify-end space-x-3 lg:space-x-4">
+                <div className="text-xs lg:text-sm text-gray-600 dark:text-gray-400">
+                  {filteredAndSortedEvents.length} events
                 </div>
                 <FilterSort
                   onSortChange={handleSortChange}
@@ -639,13 +639,13 @@ export default function Index() {
                 />
               </div>
             </div>
-            <div className="flex space-x-3 overflow-x-auto lg:overflow-x-visible pb-2 lg:pb-0">
+            <div className="flex space-x-2 lg:space-x-3 overflow-x-auto lg:overflow-x-visible pb-2 lg:pb-0 scrollbar-hide">
               {categories.map((category) => (
                 <button
                   key={category.name}
                   onClick={() => handleCategoryChange(category.name)}
                   className={cn(
-                    "px-6 py-3 rounded-2xl text-sm font-semibold whitespace-nowrap transition-all duration-200 shadow-sm",
+                    "px-4 py-2 lg:px-6 lg:py-3 rounded-xl lg:rounded-2xl text-xs lg:text-sm font-semibold whitespace-nowrap transition-all duration-200 shadow-sm flex-shrink-0",
                     selectedCategory === category.name
                       ? "bg-gradient-to-r from-purple-600 to-blue-600 text-white shadow-lg shadow-purple-500/25"
                       : "bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700 border border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600"
