@@ -184,7 +184,34 @@ const eventDetails = {
       email: "network@austinstartups.org",
       verified: true
     },
-    tags: ["Startups", "Networking", "Investors", "Entrepreneurship", "Tech"]
+    tags: ["Startups", "Networking", "Investors", "Entrepreneurship", "Tech"],
+    hasSubEvents: true,
+    subEvents: [
+      {
+        id: "sub_4_1",
+        title: "Investor Pitch Session",
+        description: "Present your startup to potential investors in a structured format",
+        time: "7:00 PM - 8:30 PM",
+        date: "Dec 22, 2024",
+        maxAttendees: 30,
+        registrationType: "approval_required" as const,
+        eventManager: "Jennifer Walsh",
+        eventCoordinator: "David Kim",
+        currentAttendees: 25
+      },
+      {
+        id: "sub_4_2",
+        title: "Networking Happy Hour",
+        description: "Casual networking session with drinks and appetizers",
+        time: "8:30 PM - 10:00 PM",
+        date: "Dec 22, 2024",
+        maxAttendees: 150,
+        registrationType: "open" as const,
+        eventManager: "Tom Wilson",
+        eventCoordinator: "Maria Garcia",
+        currentAttendees: 95
+      }
+    ]
   },
   5: {
     id: 5,
