@@ -215,6 +215,8 @@ export default function Index() {
   });
   const [showRegistrationModal, setShowRegistrationModal] = useState(false);
   const [selectedEventForRegistration, setSelectedEventForRegistration] = useState<any>(null);
+  const [currentMegaEvent, setCurrentMegaEvent] = useState(0);
+  const [isAuthenticated, setIsAuthenticated] = useState(false); // Mock authentication state
   const { theme, toggleTheme } = useTheme();
 
   // Filter and sort events
