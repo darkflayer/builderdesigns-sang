@@ -516,7 +516,7 @@ export default function EventDetails() {
                 </div>
                 
                 <div className="flex flex-col lg:items-end space-y-2 lg:space-y-2">
-                  <span className={`backdrop-blur-sm px-3 py-1 lg:px-4 lg:py-2 rounded-lg lg:rounded-xl text-sm lg:text-lg font-bold ${
+                  <span className={`inline-flex self-start lg:self-end backdrop-blur-sm px-3 py-1 lg:px-4 lg:py-2 rounded-lg lg:rounded-xl text-sm lg:text-lg font-bold ${
                     event.registrationType === 'open'
                       ? 'bg-green-100/90 text-green-800'
                       : 'bg-orange-100/90 text-orange-800'
