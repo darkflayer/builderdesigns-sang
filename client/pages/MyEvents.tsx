@@ -4,6 +4,7 @@ import { Calendar, Clock, MapPin, Users, Star, CheckCircle, XCircle, AlertCircle
 import Layout from "@/components/Layout";
 import { getUserRegisteredEvents } from "@/data/mockRegistrations";
 import { cn } from "@/lib/utils";
+import { useAuth } from "@/hooks/useAuth";
 
 // Import events data to match with registrations
 const events = [
@@ -77,6 +78,7 @@ const events = [
 type StatusFilter = 'all' | 'registered' | 'pending' | 'approved' | 'rejected';
 
 export default function MyEvents() {
+  const { isAuthenticated } = useAuth();
   const [statusFilter, setStatusFilter] = useState<StatusFilter>('all');
   const userRegistrations = getUserRegisteredEvents();
 
@@ -138,7 +140,7 @@ export default function MyEvents() {
   };
 
   return (
-    <Layout searchQuery="" onSearchChange={() => {}} isAuthenticated={true}>
+    <Layout searchQuery="" onSearchChange={() => {}} isAuthenticated={isAuthenticated}>
       <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
         {/* Header */}
         <div className="bg-white dark:bg-gray-800 shadow-sm px-4 lg:px-8 py-6">
