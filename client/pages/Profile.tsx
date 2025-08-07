@@ -59,17 +59,17 @@ export default function Profile() {
 
   return (
     <Layout searchQuery="" onSearchChange={() => {}} isAuthenticated={isAuthenticated}>
-      <div className="min-h-screen bg-gray-50">
+      <div className="min-h-screen bg-gray-50 dark:bg-slate-900">
         {/* Header */}
-        <div className="bg-white shadow-sm px-4 py-4">
+        <div className="bg-white dark:bg-slate-800 shadow-sm px-4 py-4">
           <div className="max-w-md mx-auto">
             <div className="flex items-center justify-between">
-              <Link to="/" className="p-2 rounded-full hover:bg-gray-100">
-                <ArrowLeft className="h-5 w-5 text-gray-600" />
+              <Link to="/" className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-slate-700">
+                <ArrowLeft className="h-5 w-5 text-gray-600 dark:text-gray-300" />
               </Link>
-              <h1 className="text-lg font-semibold text-gray-900">Profile</h1>
-              <button className="p-2 rounded-full hover:bg-gray-100">
-                <Edit3 className="h-5 w-5 text-gray-600" />
+              <h1 className="text-lg font-semibold text-gray-900 dark:text-gray-100">Profile</h1>
+              <button className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-slate-700">
+                <Edit3 className="h-5 w-5 text-gray-600 dark:text-gray-300" />
               </button>
             </div>
           </div>
