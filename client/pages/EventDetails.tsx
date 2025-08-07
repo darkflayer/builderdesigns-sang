@@ -6,6 +6,7 @@ import AttendeesModal from "@/components/AttendeesModal";
 import RegistrationModal from "@/components/RegistrationModal";
 import { mockAttendees } from "@/data/mockAttendees";
 import { getRegistrationStatus } from "@/data/mockRegistrations";
+import { useAuth } from "@/hooks/useAuth";
 
 // Extended event data for details page
 const eventDetails = {
@@ -437,6 +438,7 @@ const eventDetails = {
 };
 
 export default function EventDetails() {
+  const { isAuthenticated } = useAuth();
   const { id } = useParams<{ id: string }>();
   const [showAttendeesModal, setShowAttendeesModal] = useState(false);
   const [showRegistrationModal, setShowRegistrationModal] = useState(false);
@@ -448,7 +450,7 @@ export default function EventDetails() {
 
   if (!event) {
     return (
-      <Layout searchQuery="" onSearchChange={() => {}} isAuthenticated={true}>
+      <Layout searchQuery="" onSearchChange={() => {}} isAuthenticated={isAuthenticated}>
         <div className="min-h-screen flex items-center justify-center">
           <div className="text-center">
             <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4">Event Not Found</h1>
@@ -462,7 +464,7 @@ export default function EventDetails() {
   }
 
   return (
-    <Layout searchQuery="" onSearchChange={() => {}} isAuthenticated={true}>
+    <Layout searchQuery="" onSearchChange={() => {}} isAuthenticated={isAuthenticated}>
       <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
         {/* Hero Section */}
         <div className="relative">
