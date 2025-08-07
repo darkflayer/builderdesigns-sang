@@ -5,7 +5,7 @@ import Layout from "@/components/Layout";
 import { useAuth } from "@/hooks/useAuth";
 
 export default function Profile() {
-  const { isAuthenticated } = useAuth();
+  const { isAuthenticated, logout } = useAuth();
   const userStats = [
     { label: "Events Attended", value: "24", icon: Calendar },
     { label: "Average Rating", value: "4.8", icon: Star },
