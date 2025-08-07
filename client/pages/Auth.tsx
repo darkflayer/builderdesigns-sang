@@ -26,6 +26,13 @@ export default function Auth() {
     // Mock authentication - in real app, this would call your backend
     setTimeout(() => {
       setIsLoading(false);
+      // Set authentication state in localStorage
+      localStorage.setItem('sang_authenticated', 'true');
+      localStorage.setItem('sang_user', JSON.stringify({
+        name: formData.fullName || 'User',
+        email: formData.email
+      }));
+
       if (isLogin) {
         alert("Login successful! Redirecting to homepage...");
       } else {
