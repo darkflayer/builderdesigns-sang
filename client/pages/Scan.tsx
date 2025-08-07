@@ -261,6 +261,12 @@ export default function Scan() {
                                 <span>Met at: {connection.eventName}</span>
                               </div>
                             )}
+                            {connection.scanLocation && (
+                              <div className="flex items-center space-x-1 mt-1 text-xs text-gray-500 dark:text-gray-500">
+                                <MapPin className="h-3 w-3" />
+                                <span>Scanned at: {connection.scanLocation}</span>
+                              </div>
+                            )}
                             <p className="text-xs text-gray-500 dark:text-gray-500 mt-1">
                               Connected on {new Date(connection.connectionDate).toLocaleDateString()}
                             </p>
