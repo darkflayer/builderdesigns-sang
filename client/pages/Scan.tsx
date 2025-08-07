@@ -3,8 +3,10 @@ import { Camera, Upload, Flashlight, QrCode, ToggleLeft, ToggleRight, X, User, M
 import Layout from "@/components/Layout";
 import { connectionCategories, mockConnections, getCategoryById } from "@/data/connectionCategories";
 import { cn } from "@/lib/utils";
+import { useAuth } from "@/hooks/useAuth";
 
 export default function Scan() {
+  const { isAuthenticated } = useAuth();
   const [eventMode, setEventMode] = useState(false);
   const [showMyQR, setShowMyQR] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState("");
@@ -82,7 +84,7 @@ export default function Scan() {
   };
 
   return (
-    <Layout searchQuery="" onSearchChange={() => {}} isAuthenticated={true}>
+    <Layout searchQuery="" onSearchChange={() => {}} isAuthenticated={isAuthenticated}>
       <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
         {/* Header */}
         <div className="bg-white dark:bg-gray-800 shadow-sm px-4 lg:px-8 py-6">
