@@ -512,11 +512,11 @@ export default function Index() {
           </div>
         </div>
 
-        {/* Premium Mega Events Carousel */}
-        <div className="px-4 lg:px-8 py-6">
+        {/* Premium Events Carousel */}
+        <div className="px-3 lg:px-8 py-4 lg:py-6">
           <div className="max-w-full lg:max-w-7xl mx-auto">
-            <div className="flex items-center justify-between mb-6">
-              <h2 className="text-xl lg:text-3xl font-bold text-gray-900 dark:text-gray-100">🌟 Mega Events</h2>
+            {/* Navigation Dots */}
+            <div className="flex justify-center mb-4 lg:mb-6">
               <div className="flex space-x-2">
                 {megaEvents.map((_, index) => (
                   <button
@@ -540,59 +540,61 @@ export default function Index() {
               >
                 {megaEvents.map((event, index) => (
                   <div key={event.id} className="min-w-full relative">
-                    <div className="relative h-56 sm:h-64 lg:h-80 overflow-hidden">
+                    <div className="relative h-64 sm:h-72 lg:h-96 overflow-hidden">
                       <img
                         src={event.image}
                         alt={event.title}
                         className="w-full h-full object-cover"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/20"></div>
+                      <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-black/20"></div>
 
                       <div className="absolute inset-0 flex items-center">
-                        <div className="px-4 sm:px-6 lg:px-16 max-w-full lg:max-w-2xl">
-                          <div className="mb-2 lg:mb-4">
-                            <span className="bg-gradient-to-r from-yellow-400 to-orange-500 text-white px-3 py-1 lg:px-4 lg:py-2 rounded-full text-xs lg:text-sm font-bold shadow-lg">
-                              ⚡ MEGA EVENT
-                            </span>
-                            {event.hasSubEvents && (
-                              <span className="ml-2 bg-gradient-to-r from-green-400 to-green-600 text-white px-3 py-1 lg:px-4 lg:py-2 rounded-full text-xs lg:text-sm font-bold shadow-lg">
-                                📅 Sub Events
+                        <div className="px-4 sm:px-6 lg:px-16 w-full">
+                          <div className="max-w-2xl">
+                            <div className="mb-3 lg:mb-4">
+                              <span className="bg-gradient-to-r from-yellow-400 to-orange-500 text-white px-3 py-1.5 lg:px-4 lg:py-2 rounded-full text-xs lg:text-sm font-bold shadow-lg">
+                                ⚡ FEATURED EVENT
                               </span>
-                            )}
-                          </div>
-                          <h3 className="text-xl sm:text-2xl lg:text-5xl font-bold text-white mb-2 lg:mb-4 leading-tight">
-                            {event.title}
-                          </h3>
-                          <p className="text-gray-200 text-sm lg:text-lg mb-4 lg:mb-6 leading-relaxed line-clamp-2 lg:line-clamp-none">
-                            {event.description}
-                          </p>
-                          <div className="flex flex-wrap items-center gap-2 lg:gap-4 mb-4 lg:mb-6">
-                            <div className="flex items-center space-x-1 lg:space-x-2 bg-white/20 backdrop-blur-sm rounded-lg px-2 py-1 lg:px-3 lg:py-2">
-                              <Calendar className="h-3 w-3 lg:h-5 lg:w-5 text-white" />
-                              <span className="text-white font-medium text-xs lg:text-sm">{event.date}</span>
+                              {event.hasSubEvents && (
+                                <span className="ml-2 bg-gradient-to-r from-green-400 to-green-600 text-white px-3 py-1.5 lg:px-4 lg:py-2 rounded-full text-xs lg:text-sm font-bold shadow-lg">
+                                  📅 Sub Events
+                                </span>
+                              )}
                             </div>
-                            <div className="flex items-center space-x-1 lg:space-x-2 bg-white/20 backdrop-blur-sm rounded-lg px-2 py-1 lg:px-3 lg:py-2">
-                              <MapPin className="h-3 w-3 lg:h-5 lg:w-5 text-white" />
-                              <span className="text-white font-medium text-xs lg:text-sm">{event.location}</span>
+                            <h3 className="text-2xl sm:text-3xl lg:text-5xl font-bold text-white mb-3 lg:mb-4 leading-tight">
+                              {event.title}
+                            </h3>
+                            <p className="text-gray-200 text-sm lg:text-lg mb-4 lg:mb-6 leading-relaxed">
+                              {event.description}
+                            </p>
+                            <div className="flex flex-wrap items-center gap-3 lg:gap-4 mb-4 lg:mb-6">
+                              <div className="flex items-center space-x-2 bg-white/20 backdrop-blur-sm rounded-lg px-3 py-2">
+                                <Calendar className="h-4 w-4 lg:h-5 lg:w-5 text-white" />
+                                <span className="text-white font-medium text-sm lg:text-base">{event.date}</span>
+                              </div>
+                              <div className="flex items-center space-x-2 bg-white/20 backdrop-blur-sm rounded-lg px-3 py-2">
+                                <MapPin className="h-4 w-4 lg:h-5 lg:w-5 text-white" />
+                                <span className="text-white font-medium text-sm lg:text-base">{event.location}</span>
+                              </div>
+                              <div className="flex items-center space-x-2 bg-white/20 backdrop-blur-sm rounded-lg px-3 py-2">
+                                <Users className="h-4 w-4 lg:h-5 lg:w-5 text-white" />
+                                <span className="text-white font-medium text-sm lg:text-base">{event.attendees.toLocaleString()}</span>
+                              </div>
                             </div>
-                            <div className="flex items-center space-x-1 lg:space-x-2 bg-white/20 backdrop-blur-sm rounded-lg px-2 py-1 lg:px-3 lg:py-2">
-                              <Users className="h-3 w-3 lg:h-5 lg:w-5 text-white" />
-                              <span className="text-white font-medium text-xs lg:text-sm">{event.attendees.toLocaleString()}</span>
+                            <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-3 sm:space-y-0 sm:space-x-4">
+                              <button
+                                onClick={() => handleRegisterForEvent(event)}
+                                className="w-full sm:w-auto bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white px-6 py-3 lg:px-8 lg:py-4 rounded-xl lg:rounded-2xl text-sm lg:text-lg font-bold shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1"
+                              >
+                                Register Now - {event.price}
+                              </button>
+                              <Link
+                                to={`/event/${event.id}`}
+                                className="text-white hover:text-gray-200 font-semibold underline transition-colors text-sm lg:text-base"
+                              >
+                                Learn More
+                              </Link>
                             </div>
-                          </div>
-                          <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-2 sm:space-y-0 sm:space-x-4">
-                            <button
-                              onClick={() => handleRegisterForEvent(event)}
-                              className="w-full sm:w-auto bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white px-4 py-2 lg:px-8 lg:py-4 rounded-xl lg:rounded-2xl text-sm lg:text-lg font-bold shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1"
-                            >
-                              Register Now - {event.price}
-                            </button>
-                            <Link
-                              to={`/event/${event.id}`}
-                              className="text-white hover:text-gray-200 font-semibold underline transition-colors text-sm lg:text-base"
-                            >
-                              Learn More
-                            </Link>
                           </div>
                         </div>
                       </div>
