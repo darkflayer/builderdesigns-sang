@@ -105,7 +105,7 @@ export default function Network() {
   };
 
   return (
-    <Layout searchQuery={searchQuery} onSearchChange={setSearchQuery}>
+    <Layout searchQuery={searchQuery} onSearchChange={setSearchQuery} isAuthenticated={true}>
       <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
         {/* Header */}
         <div className="bg-white dark:bg-gray-800 shadow-sm px-4 lg:px-8 py-6">
