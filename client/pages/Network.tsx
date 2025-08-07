@@ -199,13 +199,13 @@ export default function Network() {
                           </button>
 
                           {/* Actions Menu */}
-                          <div className="relative">
-                            <button className="p-1 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors group/menu">
-                              <MoreVertical className="h-4 w-4 text-gray-500 group-hover/menu:text-gray-700 dark:group-hover/menu:text-gray-300" />
+                          <div className="relative group">
+                            <button className="p-1 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors">
+                              <MoreVertical className="h-4 w-4 text-gray-500 group-hover:text-gray-700 dark:group-hover:text-gray-300" />
                             </button>
 
-                            {/* Quick Actions - Always Visible */}
-                            <div className="absolute top-8 right-0 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg py-1 z-10 min-w-[160px]">
+                            {/* Dropdown Menu - Only visible on hover */}
+                            <div className="absolute top-8 right-0 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg py-1 z-50 min-w-[160px] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
                               <button
                                 onClick={() => setShowCategoryModal(connection)}
                                 className="flex items-center space-x-2 w-full px-3 py-2 text-left hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
