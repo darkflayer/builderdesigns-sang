@@ -674,7 +674,7 @@ export default function Index() {
                         <img
                           src={event.image}
                           alt={event.title}
-                          className="w-full h-48 lg:h-56 object-cover group-hover:scale-105 transition-transform duration-300"
+                          className="w-full h-40 lg:h-56 object-cover group-hover:scale-105 transition-transform duration-300"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
                         <div className="absolute top-4 left-4 space-y-2">
@@ -698,17 +698,17 @@ export default function Index() {
                         </div>
                       </div>
                     </Link>
-                    <div className="p-6">
+                    <div className="p-4 lg:p-6">
                       <Link to={`/event/${event.id}`}>
-                        <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-3 text-lg group-hover:text-purple-600 transition-colors">{event.title}</h3>
+                        <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-2 lg:mb-3 text-base lg:text-lg group-hover:text-purple-600 transition-colors line-clamp-2">{event.title}</h3>
                       </Link>
-                      <div className="flex items-center space-x-4 text-sm text-gray-600 dark:text-gray-400 mb-4">
-                        <div className="flex items-center space-x-2 bg-gray-50 dark:bg-gray-700 rounded-lg px-3 py-1.5">
-                          <Calendar className="h-4 w-4 text-purple-600" />
+                      <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-4 space-y-2 sm:space-y-0 text-xs lg:text-sm text-gray-600 dark:text-gray-400 mb-3 lg:mb-4">
+                        <div className="flex items-center space-x-1 lg:space-x-2 bg-gray-50 dark:bg-gray-700 rounded-lg px-2 py-1 lg:px-3 lg:py-1.5">
+                          <Calendar className="h-3 w-3 lg:h-4 lg:w-4 text-purple-600" />
                           <span className="font-medium text-gray-900 dark:text-gray-200">{event.date}</span>
                         </div>
-                        <div className="flex items-center space-x-2 bg-gray-50 dark:bg-gray-700 rounded-lg px-3 py-1.5">
-                          <Clock className="h-4 w-4 text-purple-600" />
+                        <div className="flex items-center space-x-1 lg:space-x-2 bg-gray-50 dark:bg-gray-700 rounded-lg px-2 py-1 lg:px-3 lg:py-1.5">
+                          <Clock className="h-3 w-3 lg:h-4 lg:w-4 text-purple-600" />
                           <span className="font-medium text-gray-900 dark:text-gray-200">{event.time}</span>
                         </div>
                       </div>
