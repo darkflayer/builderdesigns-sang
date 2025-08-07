@@ -515,17 +515,17 @@ export default function EventDetails() {
                   </div>
                 </div>
                 
-                <div className="flex flex-col items-end space-y-2">
-                  <span className={`backdrop-blur-sm px-4 py-2 rounded-xl text-lg font-bold ${
+                <div className="flex flex-col lg:items-end space-y-2 lg:space-y-2">
+                  <span className={`backdrop-blur-sm px-3 py-1 lg:px-4 lg:py-2 rounded-lg lg:rounded-xl text-sm lg:text-lg font-bold ${
                     event.registrationType === 'open'
                       ? 'bg-green-100/90 text-green-800'
                       : 'bg-orange-100/90 text-orange-800'
                   }`}>
-                    {event.registrationType === 'open' ? 'Open Registration' : 'Approval Required'}
+                    {event.registrationType === 'open' ? 'Open' : 'Approval Required'}
                   </span>
-                  <div className="flex items-center space-x-2 text-white/90">
-                    <Star className="h-4 w-4 text-yellow-400 fill-current" />
-                    <span>{event.rating}</span>
+                  <div className="flex items-center space-x-1 lg:space-x-2 text-white/90">
+                    <Star className="h-3 w-3 lg:h-4 lg:w-4 text-yellow-400 fill-current" />
+                    <span className="text-sm lg:text-base">{event.rating}</span>
                   </div>
                 </div>
               </div>
