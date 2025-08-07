@@ -43,7 +43,14 @@ export default function Auth() {
   };
 
   const handleGoogleAuth = () => {
-    alert("Google authentication would be implemented here with OAuth2");
+    // Mock Google authentication
+    localStorage.setItem('sang_authenticated', 'true');
+    localStorage.setItem('sang_user', JSON.stringify({
+      name: 'Google User',
+      email: 'user@gmail.com'
+    }));
+    alert("Google authentication successful! Redirecting to homepage...");
+    navigate("/");
   };
 
   return (
