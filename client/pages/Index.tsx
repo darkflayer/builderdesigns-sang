@@ -17,6 +17,54 @@ const categories = [
   { name: "Art", active: false },
 ];
 
+const megaEvents = [
+  {
+    id: 101,
+    title: "Global Tech Conference 2024",
+    location: "Las Vegas, NV",
+    date: "Jan 15-17, 2025",
+    time: "All Day",
+    image: "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?w=800&h=400&fit=crop",
+    attendees: 50000,
+    rating: 4.9,
+    registrationType: "approval_required" as const,
+    category: "Technology",
+    isMega: true,
+    price: "$2,499",
+    description: "The world's largest technology conference featuring industry leaders, cutting-edge innovations, and networking opportunities."
+  },
+  {
+    id: 102,
+    title: "International Business Summit",
+    location: "New York, NY",
+    date: "Feb 10-12, 2025",
+    time: "All Day",
+    image: "https://images.unsplash.com/photo-1511578314322-379afb476865?w=800&h=400&fit=crop",
+    attendees: 25000,
+    rating: 4.8,
+    registrationType: "approval_required" as const,
+    category: "Business",
+    isMega: true,
+    price: "$1,899",
+    description: "Premier business conference bringing together global leaders, entrepreneurs, and innovators."
+  },
+  {
+    id: 103,
+    title: "World Music Festival",
+    location: "Austin, TX",
+    date: "Mar 20-25, 2025",
+    time: "All Day",
+    image: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=800&h=400&fit=crop",
+    attendees: 100000,
+    rating: 4.9,
+    registrationType: "open" as const,
+    category: "Music",
+    isMega: true,
+    price: "$599",
+    description: "The ultimate music experience featuring world-renowned artists across multiple genres and stages."
+  }
+];
+
 const events = [
   {
     id: 1,
