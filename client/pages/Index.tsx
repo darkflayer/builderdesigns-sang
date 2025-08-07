@@ -660,14 +660,14 @@ export default function Index() {
 
         {/* Featured Events Section */}
         {featuredEvents.length > 0 && (
-          <div className="px-4 lg:px-8 py-4">
-            <div className="max-w-md lg:max-w-7xl mx-auto">
-              <h2 className="text-xl lg:text-2xl font-bold text-gray-900 dark:text-gray-100 mb-6">⭐ Featured Events</h2>
-              <div className="space-y-6 lg:grid lg:grid-cols-2 xl:grid-cols-3 lg:space-y-0 lg:gap-8">
+          <div className="px-3 lg:px-8 py-4">
+            <div className="max-w-full lg:max-w-7xl mx-auto">
+              <h2 className="text-lg lg:text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4 lg:mb-6">⭐ Featured Events</h2>
+              <div className="space-y-4 lg:grid lg:grid-cols-2 xl:grid-cols-3 lg:space-y-0 lg:gap-8">
                 {featuredEvents.map((event) => (
                   <div
                     key={event.id}
-                    className="group bg-white dark:bg-gray-800 rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-100 dark:border-gray-700 hover:border-purple-200 dark:hover:border-purple-400 hover:-translate-y-1"
+                    className="group bg-white dark:bg-gray-800 rounded-2xl lg:rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-100 dark:border-gray-700 hover:border-purple-200 dark:hover:border-purple-400 hover:-translate-y-1"
                   >
                     <Link to={`/event/${event.id}`} className="block">
                       <div className="relative overflow-hidden">
