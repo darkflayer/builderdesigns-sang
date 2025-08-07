@@ -109,7 +109,8 @@ const eventDetails = {
       email: "info@digitalmarketingpro.com",
       verified: true
     },
-    tags: ["Digital Marketing", "SEO", "Social Media", "PPC", "Analytics"]
+    tags: ["Digital Marketing", "SEO", "Social Media", "PPC", "Analytics"],
+    hasSubEvents: false
   },
   3: {
     id: 3,
