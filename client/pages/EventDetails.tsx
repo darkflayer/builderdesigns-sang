@@ -147,7 +147,8 @@ const eventDetails = {
       email: "events@bluenote.com",
       verified: true
     },
-    tags: ["Jazz", "Live Music", "Cocktails", "Entertainment", "Nightlife"]
+    tags: ["Jazz", "Live Music", "Cocktails", "Entertainment", "Nightlife"],
+    hasSubEvents: false
   },
   4: {
     id: 4,
