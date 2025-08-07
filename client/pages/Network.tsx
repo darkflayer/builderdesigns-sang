@@ -120,8 +120,18 @@ export default function Network() {
                 </p>
               </div>
 
-              {/* Filters and Sort */}
+              {/* Search Bar */}
               <div className="flex flex-col sm:flex-row gap-3">
+                <div className="relative">
+                  <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
+                  <input
+                    type="text"
+                    placeholder="Search connections..."
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    className="pl-10 pr-4 py-2 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-purple-500 w-full sm:w-64"
+                  />
+                </div>
                 {/* Category Filter */}
                 <select
                   value={categoryFilter}
