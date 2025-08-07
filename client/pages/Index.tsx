@@ -245,6 +245,7 @@ const events = [
     registrationType: "approval_required" as const,
     category: "Technology",
     featured: false,
+    hasSubEvents: false,
   },
   {
     id: 6,
@@ -258,6 +259,7 @@ const events = [
     registrationType: "open" as const,
     category: "Art",
     featured: false,
+    hasSubEvents: false,
   },
   {
     id: 7,
@@ -271,6 +273,7 @@ const events = [
     registrationType: "approval_required" as const,
     category: "Sports",
     featured: false,
+    hasSubEvents: false,
   },
   {
     id: 8,
@@ -284,6 +287,7 @@ const events = [
     registrationType: "open" as const,
     category: "Business",
     featured: false,
+    hasSubEvents: false,
   },
   {
     id: 9,
@@ -297,6 +301,7 @@ const events = [
     registrationType: "open" as const,
     category: "Music",
     featured: false,
+    hasSubEvents: false,
   },
   {
     id: 10,
@@ -310,6 +315,7 @@ const events = [
     registrationType: "approval_required" as const,
     category: "Art",
     featured: false,
+    hasSubEvents: false,
   },
 ];
 
