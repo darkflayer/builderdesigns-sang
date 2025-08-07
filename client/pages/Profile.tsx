@@ -4,7 +4,28 @@ import Layout from "@/components/Layout";
 import { useAuth } from "@/hooks/useAuth";
 
 export default function Profile() {
-  const { isAuthenticated, logout } = useAuth();
+  const { isAuthenticated, logout, user } = useAuth();
+
+  // Redirect to auth if not authenticated
+  if (!isAuthenticated) {
+    return (
+      <Layout searchQuery="" onSearchChange={() => {}} isAuthenticated={false}>
+        <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-slate-900">
+          <div className="text-center">
+            <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4">
+              Please log in to view your profile
+            </h1>
+            <Link
+              to="/auth"
+              className="bg-gradient-to-r from-purple-600 to-blue-600 text-white px-6 py-3 rounded-xl font-semibold hover:from-purple-700 hover:to-blue-700 transition-all duration-200"
+            >
+              Login / Sign Up
+            </Link>
+          </div>
+        </div>
+      </Layout>
+    );
+  }
   const userStats = [
     { label: "Events Attended", value: "24", icon: Calendar },
     { label: "Average Rating", value: "4.8", icon: Star },
