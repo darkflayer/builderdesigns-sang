@@ -62,7 +62,7 @@ export default function Auth() {
             {isLogin ? "Welcome back!" : "Create account"}
           </h1>
           <p className="text-gray-600 dark:text-gray-400">
-            {isLogin ? "Sign in to your account to continue" : "Join EventHub to discover amazing events"}
+            {isLogin ? "Sign in to your account to continue" : "Join Sang to discover amazing events"}
           </p>
         </div>
 
