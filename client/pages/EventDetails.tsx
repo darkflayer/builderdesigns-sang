@@ -550,6 +550,56 @@ export default function EventDetails() {
                 </ul>
               </div>
 
+              {/* Sub Events */}
+              {event.hasSubEvents && event.subEvents && (
+                <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg">
+                  <h2 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-6">Sub Events</h2>
+                  <div className="space-y-4">
+                    {event.subEvents.map((subEvent, index) => (
+                      <div key={subEvent.id} className="border border-gray-200 dark:border-gray-600 rounded-xl p-4 hover:border-purple-300 dark:hover:border-purple-500 transition-colors">
+                        <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
+                          <div className="flex-1">
+                            <div className="flex items-center space-x-2 mb-2">
+                              <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">{subEvent.title}</h3>
+                              <span className={`px-2 py-1 rounded-full text-xs font-semibold ${
+                                subEvent.registrationType === 'open'
+                                  ? 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400'
+                                  : 'bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400'
+                              }`}>
+                                {subEvent.registrationType === 'open' ? 'Open' : 'Approval Required'}
+                              </span>
+                            </div>
+                            <p className="text-gray-600 dark:text-gray-400 mb-3">{subEvent.description}</p>
+                            <div className="flex flex-wrap items-center gap-4 text-sm text-gray-500 dark:text-gray-500">
+                              <div className="flex items-center space-x-1">
+                                <Clock className="h-4 w-4" />
+                                <span>{subEvent.time}</span>
+                              </div>
+                              <div className="flex items-center space-x-1">
+                                <Users className="h-4 w-4" />
+                                <span>{subEvent.currentAttendees}/{subEvent.maxAttendees} attendees</span>
+                              </div>
+                              <div className="flex items-center space-x-1">
+                                <User className="h-4 w-4" />
+                                <span>Manager: {subEvent.eventManager}</span>
+                              </div>
+                            </div>
+                          </div>
+                          <div className="flex flex-col items-end space-y-2">
+                            <button className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white px-4 py-2 rounded-xl font-semibold transition-all duration-200 hover:scale-105">
+                              Register for Sub Event
+                            </button>
+                            <div className="text-xs text-gray-500 dark:text-gray-500">
+                              Coord: {subEvent.eventCoordinator}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
               {/* Schedule */}
               <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg">
                 <h2 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-6">Event Schedule</h2>
