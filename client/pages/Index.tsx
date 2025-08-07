@@ -219,6 +219,15 @@ export default function Index() {
   const [isAuthenticated, setIsAuthenticated] = useState(false); // Mock authentication state
   const { theme, toggleTheme } = useTheme();
 
+  // Auto-advance carousel every 5 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentMegaEvent((prev) => (prev + 1) % megaEvents.length);
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, []);
+
   // Filter and sort events
   const filteredAndSortedEvents = useMemo(() => {
     let filtered = events.filter((event) => {
