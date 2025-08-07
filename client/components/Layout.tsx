@@ -11,7 +11,7 @@ interface LayoutProps {
   isAuthenticated?: boolean;
 }
 
-export default function Layout({ children, searchQuery = "", onSearchChange }: LayoutProps) {
+export default function Layout({ children, searchQuery = "", onSearchChange, isAuthenticated = false }: LayoutProps) {
   const location = useLocation();
   const { theme, toggleTheme } = useTheme();
 
