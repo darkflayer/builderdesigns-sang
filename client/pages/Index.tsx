@@ -179,6 +179,7 @@ const events = [
     registrationType: "approval_required" as const,
     category: "Business",
     featured: false,
+    hasSubEvents: false,
   },
   {
     id: 3,
@@ -192,6 +193,7 @@ const events = [
     registrationType: "open" as const,
     category: "Music",
     featured: false,
+    hasSubEvents: false,
   },
   {
     id: 4,
@@ -205,6 +207,31 @@ const events = [
     registrationType: "approval_required" as const,
     category: "Business",
     featured: true,
+    hasSubEvents: true,
+    subEvents: [
+      {
+        id: "sub_4_1",
+        title: "Investor Pitch Session",
+        description: "Present your startup to potential investors",
+        time: "7:00 PM - 8:30 PM",
+        date: "Dec 22, 2024",
+        maxAttendees: 30,
+        registrationType: "approval_required" as const,
+        eventManager: "Jennifer Walsh",
+        eventCoordinator: "David Kim"
+      },
+      {
+        id: "sub_4_2",
+        title: "Networking Happy Hour",
+        description: "Casual networking with drinks and appetizers",
+        time: "8:30 PM - 10:00 PM",
+        date: "Dec 22, 2024",
+        maxAttendees: 150,
+        registrationType: "open" as const,
+        eventManager: "Tom Wilson",
+        eventCoordinator: "Maria Garcia"
+      }
+    ] as SubEvent[]
   },
   {
     id: 5,
