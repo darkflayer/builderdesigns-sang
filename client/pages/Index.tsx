@@ -758,14 +758,19 @@ export default function Index() {
                         className="w-full h-32 lg:h-40 object-cover group-hover:scale-105 transition-transform duration-300"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent"></div>
-                      <div className="absolute top-3 right-3">
-                        <span className={`bg-white/95 backdrop-blur-sm px-2.5 py-1 rounded-full text-xs font-bold shadow-lg ${
+                      <div className="absolute top-3 right-3 space-y-1">
+                        <span className={`block bg-white/95 backdrop-blur-sm px-2.5 py-1 rounded-full text-xs font-bold shadow-lg ${
                           event.registrationType === 'open'
                             ? 'text-green-700 bg-green-100/95'
                             : 'text-orange-700 bg-orange-100/95'
                         }`}>
                           {event.registrationType === 'open' ? 'Open' : 'Approval Required'}
                         </span>
+                        {event.hasSubEvents && (
+                          <span className="block bg-green-500/95 backdrop-blur-sm text-white px-2.5 py-1 rounded-full text-xs font-bold shadow-lg">
+                            📅 Sub Events
+                          </span>
+                        )}
                       </div>
                     </div>
                   </Link>
@@ -787,6 +792,13 @@ export default function Index() {
                       <MapPin className="h-3 w-3 text-purple-600" />
                       <span className="font-medium text-gray-900 dark:text-gray-200 truncate">{event.location}</span>
                     </div>
+                    {event.hasSubEvents && (
+                      <div className="mb-3 px-2 py-1 bg-green-50 dark:bg-green-900/20 rounded-lg">
+                        <span className="text-xs font-semibold text-green-700 dark:text-green-400">
+                          🎯 {event.subEvents?.length || 0} Sub Events
+                        </span>
+                      </div>
+                    )}
                     <div className="flex items-center justify-between">
                       <div className="flex items-center space-x-3">
                         <div className="flex items-center space-x-1">
