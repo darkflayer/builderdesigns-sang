@@ -22,7 +22,9 @@ export default function Layout({ children, searchQuery = "", onSearchChange }: L
   const { isAuthenticated, user, logout } = useAuth();
   const [showNotifications, setShowNotifications] = useState(false);
   const [showProfileDropdown, setShowProfileDropdown] = useState(false);
+  const [dropdownPosition, setDropdownPosition] = useState({ top: 0, right: 0 });
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const profileButtonRef = useRef<HTMLButtonElement>(null);
   const unreadCount = getUnreadCount();
 
   // Close dropdown when clicking outside
