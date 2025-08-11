@@ -450,7 +450,7 @@ export default function EventDetails() {
 
   if (!event) {
     return (
-      <Layout searchQuery="" onSearchChange={() => {}} isAuthenticated={isAuthenticated}>
+      <Layout searchQuery="" onSearchChange={() => {}}>
         <div className="min-h-screen flex items-center justify-center">
           <div className="text-center">
             <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4">Event Not Found</h1>
@@ -464,7 +464,7 @@ export default function EventDetails() {
   }
 
   return (
-    <Layout searchQuery="" onSearchChange={() => {}} isAuthenticated={isAuthenticated}>
+    <Layout searchQuery="" onSearchChange={() => {}}>
       <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-slate-900 dark:to-slate-800">
         {/* Hero Section */}
         <div className="relative">
