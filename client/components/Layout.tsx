@@ -173,17 +173,26 @@ export default function Layout({ children, searchQuery = "", onSearchChange }: L
               </button>
 
               {isAuthenticated ? (
-                <div className="relative" ref={dropdownRef}>
+                <>
                   <button
-                    onClick={() => setShowProfileDropdown(!showProfileDropdown)}
+                    ref={profileButtonRef}
+                    onClick={toggleProfileDropdown}
                     className="flex items-center space-x-2 p-2.5 rounded-xl bg-gradient-to-br from-purple-500 to-blue-600 hover:from-purple-600 hover:to-blue-700 transition-all duration-200 shadow-lg hover:shadow-xl"
                   >
                     <User className="h-5 w-5 text-white" />
                     <ChevronDown className="h-3 w-3 text-white" />
                   </button>
 
-                  {showProfileDropdown && (
-                    <div className="absolute right-0 mt-2 w-64 bg-white dark:bg-gray-800 rounded-xl shadow-xl border border-gray-200 dark:border-gray-700 py-2 z-[9999]">
+                  {showProfileDropdown && createPortal(
+                    <div
+                      ref={dropdownRef}
+                      className="fixed w-64 bg-white dark:bg-gray-800 rounded-xl shadow-2xl border border-gray-200 dark:border-gray-700 py-2"
+                      style={{
+                        top: dropdownPosition.top,
+                        right: dropdownPosition.right,
+                        zIndex: 99999
+                      }}
+                    >
                       {/* Profile Header */}
                       <div className="px-4 py-3 border-b border-gray-100 dark:border-gray-700">
                         <div className="flex items-center space-x-3">
@@ -218,9 +227,10 @@ export default function Layout({ children, searchQuery = "", onSearchChange }: L
                           Log out
                         </button>
                       </div>
-                    </div>
+                    </div>,
+                    document.body
                   )}
-                </div>
+                </>
               ) : (
                 <Link to="/auth" className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white px-4 py-2 rounded-xl font-semibold transition-all duration-200 shadow-lg hover:shadow-xl">
                   Login / Sign Up
