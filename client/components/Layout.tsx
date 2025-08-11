@@ -14,11 +14,39 @@ interface LayoutProps {
   onSearchChange?: (query: string) => void;
 }
 
-export default function Layout({ children, searchQuery = "", onSearchChange, isAuthenticated = false }: LayoutProps) {
+export default function Layout({ children, searchQuery = "", onSearchChange }: LayoutProps) {
   const location = useLocation();
+  const navigate = useNavigate();
   const { theme, toggleTheme } = useTheme();
+  const { isAuthenticated, user, logout } = useAuth();
   const [showNotifications, setShowNotifications] = useState(false);
+  const [showProfileDropdown, setShowProfileDropdown] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
   const unreadCount = getUnreadCount();
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setShowProfileDropdown(false);
+      }
+    }
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
+  const handleProfileClick = () => {
+    setShowProfileDropdown(false);
+    navigate('/profile');
+  };
+
+  const handleLogout = () => {
+    setShowProfileDropdown(false);
+    logout();
+  };
 
   const navigation = [
     {
