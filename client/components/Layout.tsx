@@ -51,6 +51,17 @@ export default function Layout({ children, searchQuery = "", onSearchChange }: L
     logout();
   };
 
+  const toggleProfileDropdown = () => {
+    if (!showProfileDropdown && profileButtonRef.current) {
+      const rect = profileButtonRef.current.getBoundingClientRect();
+      setDropdownPosition({
+        top: rect.bottom + 8,
+        right: window.innerWidth - rect.right
+      });
+    }
+    setShowProfileDropdown(!showProfileDropdown);
+  };
+
   const navigation = [
     {
       name: "Home",
