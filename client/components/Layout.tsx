@@ -12,7 +12,6 @@ interface LayoutProps {
   children: React.ReactNode;
   searchQuery?: string;
   onSearchChange?: (query: string) => void;
-  isAuthenticated?: boolean;
 }
 
 export default function Layout({ children, searchQuery = "", onSearchChange, isAuthenticated = false }: LayoutProps) {
