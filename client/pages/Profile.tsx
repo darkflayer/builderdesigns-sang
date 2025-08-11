@@ -22,7 +22,7 @@ export default function Profile() {
   // Redirect to auth if not authenticated
   if (!isAuthenticated) {
     return (
-      <Layout searchQuery="" onSearchChange={() => {}} isAuthenticated={false}>
+      <Layout searchQuery="" onSearchChange={() => {}}>
         <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-slate-900">
           <div className="text-center">
             <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4">
@@ -358,7 +358,7 @@ export default function Profile() {
   );
 
   return (
-    <Layout searchQuery="" onSearchChange={() => {}} isAuthenticated={isAuthenticated}>
+    <Layout searchQuery="" onSearchChange={() => {}}>
       <div className="min-h-screen bg-gray-50 dark:bg-slate-900">
         {/* Header */}
         <div className="bg-white dark:bg-slate-800 shadow-sm px-4 py-4">
