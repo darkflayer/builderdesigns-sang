@@ -79,14 +79,14 @@ export default function Layout({ children, searchQuery = "", onSearchChange }: L
           <div className="flex items-center justify-between">
             {/* Logo/Brand */}
             <div className="flex items-center space-x-8">
-              <div className="flex items-center space-x-2">
+              <Link to="/" className="flex items-center space-x-2 hover:opacity-80 transition-opacity">
                 <div className="w-8 h-8 bg-gradient-to-br from-purple-600 to-blue-600 rounded-lg flex items-center justify-center">
                   <Calendar className="h-5 w-5 text-white" />
                 </div>
                 <span className="text-xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
                   Sang
                 </span>
-              </div>
+              </Link>
 
               {/* Navigation Links */}
               <div className="flex space-x-1">
