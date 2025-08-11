@@ -1,8 +1,9 @@
-import { useState } from "react";
-import { Home, Calendar, Scan, Users, Search, MapPin, Bell, User, Moon, Sun } from "lucide-react";
-import { Link, useLocation } from "react-router-dom";
+import { useState, useRef, useEffect } from "react";
+import { Home, Calendar, Scan, Users, Search, MapPin, Bell, User, Moon, Sun, LogOut, ChevronDown } from "lucide-react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { cn } from "@/lib/utils";
 import { useTheme } from "@/contexts/ThemeContext";
+import { useAuth } from "@/hooks/useAuth";
 import Footer from "./Footer";
 import NotificationsModal from "./NotificationsModal";
 import { getUnreadCount } from "@/data/mockNotifications";
