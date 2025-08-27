@@ -101,7 +101,7 @@ export default function Scan() {
                 {/* Show My QR Button */}
                 <button
                   onClick={() => setShowMyQR(true)}
-                  className="flex items-center space-x-2 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white px-4 py-2 rounded-xl font-semibold transition-all duration-200"
+                  className="flex items-center space-x-2 bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 text-white px-4 py-2 rounded-xl font-semibold transition-all duration-200"
                 >
                   <QrCode className="h-4 w-4" />
                   <span>Show My QR</span>
@@ -113,8 +113,8 @@ export default function Scan() {
                   <button
                     onClick={() => setEventMode(!eventMode)}
                     className={cn(
-                      "relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2",
-                      eventMode ? "bg-purple-600" : "bg-gray-200 dark:bg-gray-600"
+                      "relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2",
+                      eventMode ? "bg-blue-600" : "bg-gray-200 dark:bg-gray-600"
                     )}
                   >
                     <span
@@ -130,8 +130,8 @@ export default function Scan() {
 
             {/* Event Mode Indicator */}
             {eventMode && (
-              <div className="mt-4 bg-purple-50 dark:bg-purple-900/20 border border-purple-200 dark:border-purple-800 rounded-xl p-4">
-                <div className="flex items-center space-x-2 text-purple-700 dark:text-purple-300">
+              <div className="mt-4 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-xl p-4">
+                <div className="flex items-center space-x-2 text-blue-700 dark:text-blue-300">
                   <Calendar className="h-4 w-4" />
                   <span className="text-sm font-medium">
                     Event Mode Active - Connections will show "Met at Event" context
@@ -172,11 +172,11 @@ export default function Scan() {
                       )}
 
                       {/* Scanner Frame Overlay */}
-                      <div className="absolute inset-4 border-2 border-purple-500 rounded-lg">
-                        <div className="absolute top-0 left-0 w-6 h-6 border-t-2 border-l-2 border-purple-500"></div>
-                        <div className="absolute top-0 right-0 w-6 h-6 border-t-2 border-r-2 border-purple-500"></div>
-                        <div className="absolute bottom-0 left-0 w-6 h-6 border-b-2 border-l-2 border-purple-500"></div>
-                        <div className="absolute bottom-0 right-0 w-6 h-6 border-b-2 border-r-2 border-purple-500"></div>
+                      <div className="absolute inset-4 border-2 border-blue-500 rounded-lg">
+                        <div className="absolute top-0 left-0 w-6 h-6 border-t-2 border-l-2 border-blue-500"></div>
+                        <div className="absolute top-0 right-0 w-6 h-6 border-t-2 border-r-2 border-blue-500"></div>
+                        <div className="absolute bottom-0 left-0 w-6 h-6 border-b-2 border-l-2 border-blue-500"></div>
+                        <div className="absolute bottom-0 right-0 w-6 h-6 border-b-2 border-r-2 border-blue-500"></div>
                       </div>
                     </div>
 
@@ -198,7 +198,7 @@ export default function Scan() {
                       <button
                         onClick={startScanning}
                         disabled={scanning}
-                        className="flex flex-col items-center space-y-2 p-3 rounded-xl bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 hover:bg-purple-200 dark:hover:bg-purple-900/50 transition-all duration-200 disabled:opacity-50"
+                        className="flex flex-col items-center space-y-2 p-3 rounded-xl bg-purple-100 dark:bg-purple-900/30 text-blue-700 dark:text-blue-300 hover:bg-purple-200 dark:hover:bg-purple-900/50 transition-all duration-200 disabled:opacity-50"
                       >
                         <Camera className="h-5 w-5" />
                         <span className="text-xs font-medium">Scan</span>
@@ -333,7 +333,7 @@ export default function Scan() {
                         className={cn(
                           "flex flex-col items-center p-4 rounded-xl border-2 transition-all duration-200",
                           selectedCategory === category.id
-                            ? "border-purple-500 bg-purple-50 dark:bg-purple-900/30"
+                            ? "border-blue-500 bg-purple-50 dark:bg-purple-900/30"
                             : "border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600"
                         )}
                       >
@@ -377,7 +377,7 @@ export default function Scan() {
                   <button
                     onClick={generateQRCode}
                     disabled={!selectedCategory}
-                    className="w-full bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 disabled:from-gray-400 disabled:to-gray-500 text-white py-3 rounded-xl font-semibold transition-all duration-200 disabled:cursor-not-allowed"
+                    className="w-full bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 disabled:from-gray-400 disabled:to-gray-500 text-white py-3 rounded-xl font-semibold transition-all duration-200 disabled:cursor-not-allowed"
                   >
                     Generate QR Code
                   </button>
