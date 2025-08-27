@@ -88,7 +88,7 @@ export default function Layout({ children, searchQuery = "", onSearchChange }: L
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#F8F5EF] to-[#F2EDE6] dark:from-gray-900 dark:to-gray-800 flex flex-col transition-colors duration-300">
       {/* Premium Desktop Navigation - Hidden on mobile */}
-      <nav className="hidden lg:block bg-white/95 dark:bg-gray-900/95 backdrop-blur-md border-b border-gray-200/50 dark:border-gray-700/50 shadow-sm">
+      <nav className="hidden lg:block relative bg-gradient-to-b from-[rgba(255,255,255,0.85)] to-[rgba(255,255,255,0.65)] dark:from-[rgba(16,23,40,0.85)] dark:to-[rgba(16,23,40,0.65)] backdrop-blur-xl border-b border-transparent shadow-sm after:content-[''] after:absolute after:left-0 after:right-0 after:bottom-0 after:h-0.5 after:bg-gradient-to-r after:from-[#7DA3D8] after:via-[#1976d2] after:to-[#4F6789] after:opacity-70">
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             {/* Logo/Brand */}
@@ -114,7 +114,7 @@ export default function Layout({ children, searchQuery = "", onSearchChange }: L
                         "flex items-center space-x-2 px-4 py-2.5 rounded-xl transition-all duration-200 font-medium",
                         isActive
                           ? "text-[#1976d2] bg-[#E8F1FC] dark:bg-[#4F6789]/20 shadow-sm"
-                          : "text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-800"
+                          : "text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-[rgba(125,163,216,0.08)] dark:hover:bg-[rgba(79,103,137,0.18)]"
                       )}
                     >
                       <item.icon className={cn("h-4 w-4", isActive ? "text-[#1976d2]" : "")} />
@@ -134,14 +134,14 @@ export default function Layout({ children, searchQuery = "", onSearchChange }: L
                   placeholder="Search events by name, location, category..."
                   value={searchQuery}
                   onChange={(e) => onSearchChange?.(e.target.value)}
-                  className="w-full pl-12 pr-4 py-3 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl focus:outline-none focus:ring-2 focus:ring-[#1976d2] focus:border-transparent transition-all duration-200 text-sm text-gray-900 dark:text-gray-100"
+                  className="w-full pl-12 pr-4 py-3 bg-white/60 dark:bg-white/5 border border-white/20 dark:border-white/10 rounded-2xl focus:outline-none focus:ring-2 focus:ring-[#1976d2] focus:border-transparent transition-all duration-200 text-sm text-gray-900 dark:text-gray-100 placeholder:text-gray-500 dark:placeholder:text-gray-500"
                 />
               </div>
             </div>
 
             {/* Right Side - Theme Toggle, Location & Profile */}
             <div className="flex items-center space-x-4">
-              <div className="flex items-center space-x-2 px-3 py-2 bg-gray-50 dark:bg-gray-800 rounded-xl">
+              <div className="flex items-center space-x-2 px-3 py-2 bg-white/60 dark:bg-white/5 rounded-xl ring-1 ring-white/20 dark:ring-white/10">
                 <MapPin className="h-4 w-4 text-[#1976d2]" />
                 <div className="text-sm">
                   <span className="text-gray-600 dark:text-gray-400 block text-xs">Location</span>
@@ -151,7 +151,7 @@ export default function Layout({ children, searchQuery = "", onSearchChange }: L
 
               <button
                 onClick={toggleTheme}
-                className="p-2.5 rounded-xl bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+                className="p-2.5 rounded-xl bg-white/60 dark:bg-white/5 hover:bg-white/80 dark:hover:bg-white/10 ring-1 ring-white/20 dark:ring-white/10 transition-colors"
               >
                 {theme === 'dark' ? (
                   <Sun className="h-5 w-5 text-gray-600 dark:text-gray-300" />
@@ -252,7 +252,7 @@ export default function Layout({ children, searchQuery = "", onSearchChange }: L
       </div>
 
       {/* Mobile Bottom Navigation - Hidden on desktop */}
-      <nav className="lg:hidden fixed bottom-0 left-0 right-0 bg-white/95 dark:bg-gray-900/95 backdrop-blur-md border-t border-gray-200/50 dark:border-gray-700/50 px-4 py-2 shadow-lg">
+      <nav className="lg:hidden fixed bottom-0 left-0 right-0 bg-gradient-to-t from-[rgba(255,255,255,0.9)] to-[rgba(255,255,255,0.6)] dark:from-[rgba(16,23,40,0.9)] dark:to-[rgba(16,23,40,0.6)] backdrop-blur-xl border-t border-transparent px-4 py-2 shadow-lg">
         <div className="max-w-md mx-auto">
           <div className="flex justify-around">
             {navigation.map((item) => {
