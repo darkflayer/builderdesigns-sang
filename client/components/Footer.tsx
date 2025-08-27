@@ -65,7 +65,7 @@ export default function Footer() {
                 <span>hello@eventhub.com</span>
               </div>
               <div className="flex items-center space-x-3 text-sm text-gray-600 dark:text-gray-400">
-                <Phone className="h-4 w-4 text-purple-600" />
+                <Phone className="h-4 w-4 text-blue-600" />
                 <span>+1 (555) 123-4567</span>
               </div>
               <div className="flex items-center space-x-3 text-sm text-gray-600 dark:text-gray-400">
