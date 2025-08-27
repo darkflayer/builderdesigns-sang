@@ -113,7 +113,7 @@ export default function Layout({ children, searchQuery = "", onSearchChange }: L
                       className={cn(
                         "flex items-center space-x-2 px-4 py-2.5 rounded-xl transition-all duration-200 font-medium",
                         isActive
-                          ? "text-[#1976d2] bg-[#E8F1FC] dark:bg-[#4F6789]/20 shadow-sm"
+                          ? "text-[#1976d2] bg-[#E8F1FC] dark:bg-[#4F6789]/20 shadow-sm ring-1 ring-[#7DA3D8]/30 dark:ring-[#7DA3D8]/20"
                           : "text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-[rgba(125,163,216,0.08)] dark:hover:bg-[rgba(79,103,137,0.18)]"
                       )}
                     >
@@ -264,7 +264,7 @@ export default function Layout({ children, searchQuery = "", onSearchChange }: L
                   className={cn(
                     "flex flex-col items-center py-2 px-3 rounded-xl transition-all duration-200",
                     isActive
-                      ? "text-[#1976d2] bg-[#E8F1FC] dark:bg-[#4F6789]/20 shadow-sm"
+                      ? "text-[#1976d2] bg-[#E8F1FC] dark:bg-[#4F6789]/20 shadow-sm ring-1 ring-[#7DA3D8]/30 dark:ring-[#7DA3D8]/20"
                       : "text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"
                   )}
                 >
