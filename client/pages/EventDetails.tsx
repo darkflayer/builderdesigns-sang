@@ -454,7 +454,7 @@ export default function EventDetails() {
         <div className="min-h-screen flex items-center justify-center">
           <div className="text-center">
             <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4">Event Not Found</h1>
-            <Link to="/" className="text-blue-600 hover:text-blue-700">
+            <Link to="/" className="text-[#1976d2] hover:text-[#125AA0]">
               Return to Home
             </Link>
           </div>
@@ -465,7 +465,7 @@ export default function EventDetails() {
 
   return (
     <Layout searchQuery="" onSearchChange={() => {}}>
-      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-slate-900 dark:to-slate-800">
+      <div className="min-h-screen bg-gradient-to-br from-[#F8F5EF] to-[#F2EDE6] dark:from-slate-900 dark:to-slate-800">
         {/* Hero Section */}
         <div className="relative">
           <img
@@ -490,7 +490,7 @@ export default function EventDetails() {
                 <div className="flex-1 min-w-0">
                   <div className="flex flex-wrap items-center gap-2 mb-2">
                     {event.featured && (
-                      <span className="inline-block bg-gradient-to-r from-blue-600 to-cyan-500 text-white px-3 py-1 rounded-full text-xs lg:text-sm font-semibold">
+                      <span className="inline-block bg-gradient-to-r from-[#7DA3D8] to-[#4F6789] text-white px-3 py-1 rounded-full text-xs lg:text-sm font-semibold">
                         ✨ Featured
                       </span>
                     )}
@@ -595,7 +595,7 @@ export default function EventDetails() {
                             </div>
                           </div>
                           <div className="flex flex-col items-end space-y-2">
-                            <button className="bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 text-white px-4 py-2 rounded-xl font-semibold transition-all duration-200 hover:scale-105">
+                            <button className="bg-gradient-to-r from-[#7DA3D8] to-[#4F6789] hover:opacity-90 text-white px-4 py-2 rounded-xl font-semibold transition-all duration-200 hover:scale-105">
                               Register for Sub Event
                             </button>
                             <div className="text-xs text-gray-500 dark:text-gray-500">
@@ -615,7 +615,7 @@ export default function EventDetails() {
                 <div className="space-y-4">
                   {event.schedule.map((item, index) => (
                     <div key={index} className="flex items-start space-x-4 p-3 bg-gray-50 dark:bg-gray-700 rounded-xl">
-                      <div className="text-sm font-semibold text-blue-600 dark:text-purple-400 min-w-[80px]">
+                      <div className="text-sm font-semibold text-[#1976d2] dark:text-[#7DA3D8] min-w-[80px]">
                         {item.time}
                       </div>
                       <div className="text-gray-700 dark:text-gray-300">{item.activity}</div>
@@ -694,7 +694,7 @@ export default function EventDetails() {
                 {!userRegistration ? (
                   <button
                     onClick={() => setShowRegistrationModal(true)}
-                    className="w-full bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 text-white py-3 rounded-xl font-semibold transition-all duration-200 mb-4"
+                    className="w-full bg-gradient-to-r from-[#7DA3D8] to-[#4F6789] hover:opacity-90 text-white py-3 rounded-xl font-semibold transition-all duration-200 mb-4"
                   >
                     Register for Event
                   </button>
@@ -750,7 +750,7 @@ export default function EventDetails() {
                   
                   <button 
                     onClick={() => setShowAttendeesModal(true)}
-                    className="w-full text-blue-600 dark:text-purple-400 hover:text-blue-700 dark:hover:text-purple-300 text-sm font-medium py-2 border border-purple-200 dark:border-purple-800 rounded-xl hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-colors"
+                    className="w-full text-[#1976d2] dark:text-[#7DA3D8] hover:text-[#125AA0] dark:hover:text-purple-300 text-sm font-medium py-2 border border-purple-200 dark:border-purple-800 rounded-xl hover:bg-[#E8F1FC] dark:hover:bg-[#4F6789]/20 transition-colors"
                   >
                     View All Attendees
                   </button>

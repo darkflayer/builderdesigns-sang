@@ -85,7 +85,7 @@ export default function Scan() {
 
   return (
     <Layout searchQuery="" onSearchChange={() => {}}>
-      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
+      <div className="min-h-screen bg-gradient-to-br from-[#F8F5EF] to-[#F2EDE6] dark:from-gray-900 dark:to-gray-800">
         {/* Header */}
         <div className="bg-white dark:bg-gray-800 shadow-sm px-4 lg:px-8 py-6">
           <div className="max-w-4xl mx-auto">
@@ -101,7 +101,7 @@ export default function Scan() {
                 {/* Show My QR Button */}
                 <button
                   onClick={() => setShowMyQR(true)}
-                  className="flex items-center space-x-2 bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 text-white px-4 py-2 rounded-xl font-semibold transition-all duration-200"
+                  className="flex items-center space-x-2 bg-gradient-to-r from-[#7DA3D8] to-[#4F6789] hover:opacity-90 text-white px-4 py-2 rounded-xl font-semibold transition-all duration-200"
                 >
                   <QrCode className="h-4 w-4" />
                   <span>Show My QR</span>
@@ -113,8 +113,8 @@ export default function Scan() {
                   <button
                     onClick={() => setEventMode(!eventMode)}
                     className={cn(
-                      "relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2",
-                      eventMode ? "bg-blue-600" : "bg-gray-200 dark:bg-gray-600"
+                      "relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-[#1976d2] focus:ring-offset-2",
+                      eventMode ? "bg-[#1976d2]" : "bg-gray-200 dark:bg-gray-600"
                     )}
                   >
                     <span
@@ -377,7 +377,7 @@ export default function Scan() {
                   <button
                     onClick={generateQRCode}
                     disabled={!selectedCategory}
-                    className="w-full bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 disabled:from-gray-400 disabled:to-gray-500 text-white py-3 rounded-xl font-semibold transition-all duration-200 disabled:cursor-not-allowed"
+                    className="w-full bg-gradient-to-r from-[#7DA3D8] to-[#4F6789] hover:opacity-90 disabled:from-gray-400 disabled:to-gray-500 text-white py-3 rounded-xl font-semibold transition-all duration-200 disabled:cursor-not-allowed"
                   >
                     Generate QR Code
                   </button>

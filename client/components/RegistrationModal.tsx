@@ -145,7 +145,7 @@ export default function RegistrationModal({ isOpen, onClose, eventTitle, registr
                 {/* Privacy Notice */}
                 <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-xl p-4 mb-6">
                   <div className="flex items-start space-x-3">
-                    <Shield className="h-5 w-5 text-blue-600 dark:text-blue-400 mt-0.5 flex-shrink-0" />
+                    <Shield className="h-5 w-5 text-[#1976d2] dark:text-[#7DA3D8] mt-0.5 flex-shrink-0" />
                     <div>
                       <h3 className="font-semibold text-blue-900 dark:text-blue-100 mb-1">
                         Your Privacy Matters
@@ -166,7 +166,7 @@ export default function RegistrationModal({ isOpen, onClose, eventTitle, registr
                   {shareableFields.map((field) => (
                     <div key={field.key} className="flex items-start space-x-4 p-4 border border-gray-200 dark:border-gray-700 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors">
                       <div className="flex-shrink-0">
-                        <field.icon className="h-5 w-5 text-blue-600 dark:text-blue-400 mt-1" />
+                        <field.icon className="h-5 w-5 text-[#1976d2] dark:text-[#7DA3D8] mt-1" />
                       </div>
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center space-x-2 mb-1">
@@ -188,7 +188,7 @@ export default function RegistrationModal({ isOpen, onClose, eventTitle, registr
                           onClick={() => handleToggle(field.key)}
                           disabled={field.required}
                           className={cn(
-                            "relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2",
+                            "relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-[#1976d2] focus:ring-offset-2",
                             shareableDetails[field.key]
                               ? "bg-blue-600"
                               : "bg-gray-200 dark:bg-gray-600",
@@ -211,7 +211,7 @@ export default function RegistrationModal({ isOpen, onClose, eventTitle, registr
                 <div className="mt-8 flex space-x-3">
                   <button
                     onClick={() => setStep('details')}
-                    className="flex-1 bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 text-white py-3 rounded-xl font-semibold transition-all duration-200"
+                    className="flex-1 bg-gradient-to-r from-[#7DA3D8] to-[#4F6789] hover:opacity-90 text-white py-3 rounded-xl font-semibold transition-all duration-200"
                   >
                     Continue to Registration
                   </button>
@@ -244,7 +244,7 @@ export default function RegistrationModal({ isOpen, onClose, eventTitle, registr
                       </label>
                       <input
                         type="text"
-                        className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
+                        className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1976d2] bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
                         placeholder="Enter your full name"
                       />
                     </div>
@@ -254,7 +254,7 @@ export default function RegistrationModal({ isOpen, onClose, eventTitle, registr
                       </label>
                       <input
                         type="email"
-                        className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
+                        className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1976d2] bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
                         placeholder="Enter your email"
                       />
                     </div>
@@ -268,7 +268,7 @@ export default function RegistrationModal({ isOpen, onClose, eventTitle, registr
                       </label>
                       <input
                         type="tel"
-                        className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
+                        className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1976d2] bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
                         placeholder="Enter your phone number"
                       />
                     </div>
@@ -281,7 +281,7 @@ export default function RegistrationModal({ isOpen, onClose, eventTitle, registr
                       </label>
                       <input
                         type="text"
-                        className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
+                        className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1976d2] bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
                         placeholder="Enter your company name"
                       />
                     </div>
@@ -294,7 +294,7 @@ export default function RegistrationModal({ isOpen, onClose, eventTitle, registr
                       </label>
                       <input
                         type="text"
-                        className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
+                        className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1976d2] bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
                         placeholder="Enter your job title"
                       />
                     </div>
@@ -307,7 +307,7 @@ export default function RegistrationModal({ isOpen, onClose, eventTitle, registr
                       </label>
                       <input
                         type="url"
-                        className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
+                        className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1976d2] bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
                         placeholder="https://linkedin.com/in/yourprofile"
                       />
                     </div>
@@ -320,7 +320,7 @@ export default function RegistrationModal({ isOpen, onClose, eventTitle, registr
                       </label>
                       <input
                         type="url"
-                        className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
+                        className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1976d2] bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
                         placeholder="https://twitter.com/yourusername"
                       />
                     </div>
@@ -333,7 +333,7 @@ export default function RegistrationModal({ isOpen, onClose, eventTitle, registr
                       </label>
                       <textarea
                         rows={3}
-                        className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
+                        className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1976d2] bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
                         placeholder="Tell other attendees about yourself..."
                       />
                     </div>
@@ -350,7 +350,7 @@ export default function RegistrationModal({ isOpen, onClose, eventTitle, registr
                   </button>
                   <button
                     onClick={handleRegister}
-                    className="flex-1 bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 text-white py-3 rounded-xl font-semibold transition-all duration-200"
+                    className="flex-1 bg-gradient-to-r from-[#7DA3D8] to-[#4F6789] hover:opacity-90 text-white py-3 rounded-xl font-semibold transition-all duration-200"
                   >
                     Complete Registration
                   </button>

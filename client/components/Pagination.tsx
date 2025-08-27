@@ -97,7 +97,7 @@ export default function Pagination({
                 className={cn(
                   "w-10 h-10 rounded-lg text-sm font-medium transition-all duration-200",
                   currentPage === page
-                    ? "bg-gradient-to-r from-blue-600 to-cyan-500 text-white shadow-lg"
+                    ? "bg-gradient-to-r from-[#7DA3D8] to-[#4F6789] text-white shadow-lg"
                     : "text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
                 )}
               >

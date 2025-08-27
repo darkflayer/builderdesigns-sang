@@ -141,7 +141,7 @@ export default function MyEvents() {
 
   return (
     <Layout searchQuery="" onSearchChange={() => {}}>
-      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
+      <div className="min-h-screen bg-gradient-to-br from-[#F8F5EF] to-[#F2EDE6] dark:from-gray-900 dark:to-gray-800">
         {/* Header */}
         <div className="bg-white dark:bg-gray-800 shadow-sm px-4 lg:px-8 py-6">
           <div className="max-w-7xl mx-auto">
@@ -159,7 +159,7 @@ export default function MyEvents() {
                 <select
                   value={statusFilter}
                   onChange={(e) => setStatusFilter(e.target.value as StatusFilter)}
-                  className="px-3 py-2 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="px-3 py-2 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#1976d2]"
                 >
                   <option value="all">All Status</option>
                   <option value="registered">Registered</option>
@@ -214,24 +214,24 @@ export default function MyEvents() {
 
                     <div className="p-6">
                       <Link to={`/event/${event!.id}`}>
-                        <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-3 text-lg group-hover:text-blue-600 transition-colors">
+                        <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-3 text-lg group-hover:text-[#1976d2] transition-colors">
                           {event!.title}
                         </h3>
                       </Link>
 
                       <div className="flex items-center space-x-4 text-sm text-gray-600 dark:text-gray-400 mb-4">
                         <div className="flex items-center space-x-2 bg-gray-50 dark:bg-gray-700 rounded-lg px-3 py-1.5">
-                          <Calendar className="h-4 w-4 text-blue-600" />
+                          <Calendar className="h-4 w-4 text-[#1976d2]" />
                           <span className="font-medium text-gray-900 dark:text-gray-200">{event!.date}</span>
                         </div>
                         <div className="flex items-center space-x-2 bg-gray-50 dark:bg-gray-700 rounded-lg px-3 py-1.5">
-                          <Clock className="h-4 w-4 text-blue-600" />
+                          <Clock className="h-4 w-4 text-[#1976d2]" />
                           <span className="font-medium text-gray-900 dark:text-gray-200">{event!.time}</span>
                         </div>
                       </div>
 
                       <div className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-400 mb-4 bg-gray-50 dark:bg-gray-700 rounded-lg px-3 py-1.5">
-                        <MapPin className="h-4 w-4 text-blue-600" />
+                        <MapPin className="h-4 w-4 text-[#1976d2]" />
                         <span className="font-medium text-gray-900 dark:text-gray-200">{event!.location}</span>
                       </div>
 
@@ -295,7 +295,7 @@ export default function MyEvents() {
                   </p>
                   <Link
                     to="/"
-                    className="inline-flex items-center bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 text-white px-6 py-3 rounded-xl font-semibold transition-all duration-200"
+                    className="inline-flex items-center bg-gradient-to-r from-[#7DA3D8] to-[#4F6789] hover:opacity-90 text-white px-6 py-3 rounded-xl font-semibold transition-all duration-200"
                   >
                     Discover Events
                   </Link>
