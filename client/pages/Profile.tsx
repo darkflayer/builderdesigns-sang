@@ -30,7 +30,7 @@ export default function Profile() {
             </h1>
             <Link 
               to="/auth" 
-              className="bg-gradient-to-r from-blue-600 to-cyan-500 text-white px-6 py-3 rounded-xl font-semibold hover:from-blue-700 hover:to-cyan-600 transition-all duration-200"
+              className="bg-gradient-to-r from-[#7DA3D8] to-[#4F6789] text-white px-6 py-3 rounded-xl font-semibold hover:from-blue-700 hover:to-cyan-600 transition-all duration-200"
             >
               Login / Sign Up
             </Link>
@@ -76,7 +76,7 @@ export default function Profile() {
       {/* Profile Info */}
       <div className="bg-white dark:bg-slate-800 rounded-xl shadow-sm p-6">
         <div className="flex items-center space-x-4 mb-4">
-          <div className="w-16 h-16 bg-gradient-to-br from-blue-600 to-cyan-500 rounded-full flex items-center justify-center">
+          <div className="w-16 h-16 bg-gradient-to-br from-[#7DA3D8] to-[#4F6789] rounded-full flex items-center justify-center">
             <span className="text-white text-xl font-bold">JD</span>
           </div>
           <div className="flex-1">
@@ -106,7 +106,7 @@ export default function Profile() {
         {userStats.map((stat, index) => (
           <div key={index} className="bg-white dark:bg-slate-800 rounded-xl shadow-sm p-4 text-center">
             <div className="flex justify-center mb-2">
-              <stat.icon className="h-6 w-6 text-blue-600" />
+              <stat.icon className="h-6 w-6 text-[#1976d2]" />
             </div>
             <p className="text-2xl font-bold text-gray-900 dark:text-gray-100">{stat.value}</p>
             <p className="text-sm text-gray-600 dark:text-gray-400">{stat.label}</p>
@@ -128,7 +128,7 @@ export default function Profile() {
               <span className={`px-3 py-1 rounded-full text-xs font-medium ${
                 event.status === "Attended"
                   ? "bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400"
-                  : "bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-400"
+                  : "bg-[#E8F1FC] text-[#125AA0] dark:bg-[#4F6789]/30 dark:text-[#7DA3D8]"
               }`}>
                 {event.status}
               </span>
@@ -147,7 +147,7 @@ export default function Profile() {
         <div className="flex space-x-2">
           <button
             onClick={() => setShowCreateOrg(true)}
-            className="bg-gradient-to-r from-blue-600 to-cyan-500 text-white px-4 py-2 rounded-lg font-medium hover:from-blue-700 hover:to-cyan-600 transition-all"
+            className="bg-gradient-to-r from-[#7DA3D8] to-[#4F6789] text-white px-4 py-2 rounded-lg font-medium hover:from-blue-700 hover:to-cyan-600 transition-all"
           >
             <Plus className="h-4 w-4 inline mr-2" />
             Create Org
@@ -203,7 +203,7 @@ export default function Profile() {
                   Your role: <span className="font-medium capitalize">{getUserRole(currentUserId, org._id)}</span>
                 </p>
               </div>
-              <Building className="h-6 w-6 text-blue-600" />
+              <Building className="h-6 w-6 text-[#1976d2]" />
             </div>
             
             <div className="grid grid-cols-3 gap-4 mb-4">
@@ -229,10 +229,10 @@ export default function Profile() {
               <div className="border-t border-gray-200 dark:border-slate-700 pt-4">
                 <p className="text-sm font-medium text-gray-900 dark:text-gray-100 mb-2">Admin Actions:</p>
                 <div className="flex space-x-2">
-                  <button className="bg-blue-600 text-white px-3 py-1 rounded text-sm font-medium hover:bg-blue-700">
+                  <button className="bg-[#1976d2] text-white px-3 py-1 rounded text-sm font-medium hover:bg-[#125AA0]">
                     Manage Members
                   </button>
-                  <button className="bg-blue-600 text-white px-3 py-1 rounded text-sm font-medium hover:bg-blue-700">
+                  <button className="bg-[#1976d2] text-white px-3 py-1 rounded text-sm font-medium hover:bg-[#125AA0]">
                     View Requests
                   </button>
                 </div>
@@ -258,7 +258,7 @@ export default function Profile() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <h2 className="text-xl font-bold text-gray-900 dark:text-gray-100">Event Management</h2>
-        <button className="bg-gradient-to-r from-blue-600 to-cyan-500 text-white px-4 py-2 rounded-lg font-medium hover:from-blue-700 hover:to-cyan-600 transition-all">
+        <button className="bg-gradient-to-r from-[#7DA3D8] to-[#4F6789] text-white px-4 py-2 rounded-lg font-medium hover:from-blue-700 hover:to-cyan-600 transition-all">
           <Plus className="h-4 w-4 inline mr-2" />
           Create Event
         </button>
@@ -359,7 +359,7 @@ export default function Profile() {
 
   return (
     <Layout searchQuery="" onSearchChange={() => {}}>
-      <div className="min-h-screen bg-gray-50 dark:bg-slate-900">
+      <div className="min-h-screen bg-gradient-to-br from-[#F8F5EF] to-[#F2EDE6] dark:bg-slate-900">
         {/* Header */}
         <div className="bg-white dark:bg-slate-800 shadow-sm px-4 py-4">
           <div className="max-w-4xl mx-auto">
@@ -390,7 +390,7 @@ export default function Profile() {
                   onClick={() => setActiveTab(tab.id as any)}
                   className={`flex items-center space-x-2 py-4 border-b-2 font-medium text-sm transition-colors relative ${
                     activeTab === tab.id
-                      ? 'border-purple-600 text-blue-600 dark:text-purple-400'
+                      ? 'border-[#1976d2] text-[#1976d2] dark:text-[#7DA3D8]'
                       : 'border-transparent text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300'
                   }`}
                 >
@@ -419,7 +419,7 @@ export default function Profile() {
         {activeTab === 'profile' && (
           <div className="fixed bottom-6 left-1/2 transform -translate-x-1/2 bg-white dark:bg-slate-800 rounded-xl shadow-lg p-4 border border-gray-200 dark:border-slate-700">
             <div className="flex space-x-3">
-              <button className="bg-blue-600 text-white px-6 py-3 rounded-xl font-medium hover:bg-blue-700 transition-colors">
+              <button className="bg-[#1976d2] text-white px-6 py-3 rounded-xl font-medium hover:bg-[#125AA0] transition-colors">
                 Edit Profile
               </button>
               <button className="bg-gray-100 dark:bg-slate-700 text-gray-700 dark:text-gray-300 px-6 py-3 rounded-xl font-medium hover:bg-gray-200 dark:hover:bg-slate-600 transition-colors">
