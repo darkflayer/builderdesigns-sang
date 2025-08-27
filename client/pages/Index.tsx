@@ -485,7 +485,7 @@ export default function Index() {
                   <div className="absolute -top-1 -right-1 h-2 w-2 bg-red-500 rounded-full"></div>
                 </button>
                 {isAuthenticated ? (
-                  <Link to="/profile" className="p-2 rounded-lg bg-gradient-to-br from-purple-500 to-blue-600">
+                  <Link to="/profile" className="p-2 rounded-lg bg-gradient-to-br from-blue-600 to-cyan-500">
                     <User className="h-4 w-4 text-white" />
                   </Link>
                 ) : (
@@ -852,7 +852,7 @@ export default function Index() {
         {filteredAndSortedEvents.length === 0 && (
           <div className="px-3 lg:px-8 py-8 lg:py-12">
             <div className="max-w-full lg:max-w-7xl mx-auto text-center">
-              <div className="bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20 rounded-2xl lg:rounded-3xl p-6 lg:p-12 border border-purple-200 dark:border-purple-800">
+              <div className="bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20 rounded-2xl lg:rounded-3xl p-6 lg:p-12 border border-blue-200 dark:border-blue-800">
                 <div className="w-16 h-16 bg-gradient-to-br from-blue-600 to-cyan-500 rounded-2xl flex items-center justify-center mx-auto mb-6">
                   <Calendar className="h-8 w-8 text-white" />
                 </div>
