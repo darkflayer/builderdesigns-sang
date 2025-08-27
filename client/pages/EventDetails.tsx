@@ -454,7 +454,7 @@ export default function EventDetails() {
         <div className="min-h-screen flex items-center justify-center">
           <div className="text-center">
             <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4">Event Not Found</h1>
-            <Link to="/" className="text-purple-600 hover:text-purple-700">
+            <Link to="/" className="text-blue-600 hover:text-blue-700">
               Return to Home
             </Link>
           </div>
@@ -490,7 +490,7 @@ export default function EventDetails() {
                 <div className="flex-1 min-w-0">
                   <div className="flex flex-wrap items-center gap-2 mb-2">
                     {event.featured && (
-                      <span className="inline-block bg-gradient-to-r from-purple-600 to-blue-600 text-white px-3 py-1 rounded-full text-xs lg:text-sm font-semibold">
+                      <span className="inline-block bg-gradient-to-r from-blue-600 to-cyan-500 text-white px-3 py-1 rounded-full text-xs lg:text-sm font-semibold">
                         ✨ Featured
                       </span>
                     )}
@@ -565,7 +565,7 @@ export default function EventDetails() {
                   <h2 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-6">Sub Events</h2>
                   <div className="space-y-4">
                     {event.subEvents.map((subEvent, index) => (
-                      <div key={subEvent.id} className="border border-gray-200 dark:border-gray-600 rounded-xl p-4 hover:border-purple-300 dark:hover:border-purple-500 transition-colors">
+                      <div key={subEvent.id} className="border border-gray-200 dark:border-gray-600 rounded-xl p-4 hover:border-blue-300 dark:hover:border-blue-500 transition-colors">
                         <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
                           <div className="flex-1">
                             <div className="flex items-center space-x-2 mb-2">
@@ -595,7 +595,7 @@ export default function EventDetails() {
                             </div>
                           </div>
                           <div className="flex flex-col items-end space-y-2">
-                            <button className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white px-4 py-2 rounded-xl font-semibold transition-all duration-200 hover:scale-105">
+                            <button className="bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 text-white px-4 py-2 rounded-xl font-semibold transition-all duration-200 hover:scale-105">
                               Register for Sub Event
                             </button>
                             <div className="text-xs text-gray-500 dark:text-gray-500">
@@ -615,7 +615,7 @@ export default function EventDetails() {
                 <div className="space-y-4">
                   {event.schedule.map((item, index) => (
                     <div key={index} className="flex items-start space-x-4 p-3 bg-gray-50 dark:bg-gray-700 rounded-xl">
-                      <div className="text-sm font-semibold text-purple-600 dark:text-purple-400 min-w-[80px]">
+                      <div className="text-sm font-semibold text-blue-600 dark:text-purple-400 min-w-[80px]">
                         {item.time}
                       </div>
                       <div className="text-gray-700 dark:text-gray-300">{item.activity}</div>
@@ -631,7 +631,7 @@ export default function EventDetails() {
                   {event.tags.map((tag, index) => (
                     <span
                       key={index}
-                      className="px-3 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 rounded-full text-sm font-medium"
+                      className="px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-full text-sm font-medium"
                     >
                       {tag}
                     </span>
@@ -644,7 +644,7 @@ export default function EventDetails() {
             <div className="space-y-6">
               {/* User Registration Status */}
               {userRegistration && (
-                <div className="bg-white dark:bg-gray-800 rounded-2xl p-4 shadow-lg border-l-4 border-purple-500">
+                <div className="bg-white dark:bg-gray-800 rounded-2xl p-4 shadow-lg border-l-4 border-blue-500">
                   <div className="flex items-center space-x-3">
                     {userRegistration.status === 'registered' || userRegistration.status === 'approved' ? (
                       <CheckCircle className="h-5 w-5 text-green-600" />
@@ -694,7 +694,7 @@ export default function EventDetails() {
                 {!userRegistration ? (
                   <button
                     onClick={() => setShowRegistrationModal(true)}
-                    className="w-full bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white py-3 rounded-xl font-semibold transition-all duration-200 mb-4"
+                    className="w-full bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 text-white py-3 rounded-xl font-semibold transition-all duration-200 mb-4"
                   >
                     Register for Event
                   </button>
@@ -750,7 +750,7 @@ export default function EventDetails() {
                   
                   <button 
                     onClick={() => setShowAttendeesModal(true)}
-                    className="w-full text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 text-sm font-medium py-2 border border-purple-200 dark:border-purple-800 rounded-xl hover:bg-purple-50 dark:hover:bg-purple-900/20 transition-colors"
+                    className="w-full text-blue-600 dark:text-purple-400 hover:text-blue-700 dark:hover:text-purple-300 text-sm font-medium py-2 border border-purple-200 dark:border-purple-800 rounded-xl hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-colors"
                   >
                     View All Attendees
                   </button>
