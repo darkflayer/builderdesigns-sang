@@ -159,7 +159,7 @@ export default function MyEvents() {
                 <select
                   value={statusFilter}
                   onChange={(e) => setStatusFilter(e.target.value as StatusFilter)}
-                  className="px-3 py-2 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-purple-500"
+                  className="px-3 py-2 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                 >
                   <option value="all">All Status</option>
                   <option value="registered">Registered</option>
@@ -214,24 +214,24 @@ export default function MyEvents() {
 
                     <div className="p-6">
                       <Link to={`/event/${event!.id}`}>
-                        <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-3 text-lg group-hover:text-purple-600 transition-colors">
+                        <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-3 text-lg group-hover:text-blue-600 transition-colors">
                           {event!.title}
                         </h3>
                       </Link>
 
                       <div className="flex items-center space-x-4 text-sm text-gray-600 dark:text-gray-400 mb-4">
                         <div className="flex items-center space-x-2 bg-gray-50 dark:bg-gray-700 rounded-lg px-3 py-1.5">
-                          <Calendar className="h-4 w-4 text-purple-600" />
+                          <Calendar className="h-4 w-4 text-blue-600" />
                           <span className="font-medium text-gray-900 dark:text-gray-200">{event!.date}</span>
                         </div>
                         <div className="flex items-center space-x-2 bg-gray-50 dark:bg-gray-700 rounded-lg px-3 py-1.5">
-                          <Clock className="h-4 w-4 text-purple-600" />
+                          <Clock className="h-4 w-4 text-blue-600" />
                           <span className="font-medium text-gray-900 dark:text-gray-200">{event!.time}</span>
                         </div>
                       </div>
 
                       <div className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-400 mb-4 bg-gray-50 dark:bg-gray-700 rounded-lg px-3 py-1.5">
-                        <MapPin className="h-4 w-4 text-purple-600" />
+                        <MapPin className="h-4 w-4 text-blue-600" />
                         <span className="font-medium text-gray-900 dark:text-gray-200">{event!.location}</span>
                       </div>
 
@@ -295,7 +295,7 @@ export default function MyEvents() {
                   </p>
                   <Link
                     to="/"
-                    className="inline-flex items-center bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white px-6 py-3 rounded-xl font-semibold transition-all duration-200"
+                    className="inline-flex items-center bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 text-white px-6 py-3 rounded-xl font-semibold transition-all duration-200"
                   >
                     Discover Events
                   </Link>
