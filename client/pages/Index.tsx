@@ -452,7 +452,7 @@ export default function Index() {
             {/* App Brand */}
             <div className="flex items-center justify-center mb-3">
               <div className="flex items-center space-x-2">
-                <div className="w-6 h-6 bg-gradient-to-br from-purple-600 to-blue-600 rounded-lg flex items-center justify-center">
+                <div className="w-6 h-6 bg-gradient-to-br from-blue-600 to-cyan-500 rounded-lg flex items-center justify-center">
                   <Calendar className="h-4 w-4 text-white" />
                 </div>
                 <span className="text-lg font-bold bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent">
