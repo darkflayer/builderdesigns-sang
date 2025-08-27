@@ -177,7 +177,7 @@ export default function Layout({ children, searchQuery = "", onSearchChange }: L
                   <button
                     ref={profileButtonRef}
                     onClick={toggleProfileDropdown}
-                    className="flex items-center space-x-2 p-2.5 rounded-xl bg-gradient-to-br from-purple-500 to-blue-600 hover:from-purple-600 hover:to-blue-700 transition-all duration-200 shadow-lg hover:shadow-xl"
+                    className="flex items-center space-x-2 p-2.5 rounded-xl bg-gradient-to-br from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 transition-all duration-200 shadow-lg hover:shadow-xl"
                   >
                     <User className="h-5 w-5 text-white" />
                     <ChevronDown className="h-3 w-3 text-white" />
@@ -196,7 +196,7 @@ export default function Layout({ children, searchQuery = "", onSearchChange }: L
                       {/* Profile Header */}
                       <div className="px-4 py-3 border-b border-gray-100 dark:border-gray-700">
                         <div className="flex items-center space-x-3">
-                          <div className="w-10 h-10 bg-gradient-to-br from-purple-500 to-blue-600 rounded-full flex items-center justify-center">
+                          <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-cyan-500 rounded-full flex items-center justify-center">
                             <User className="h-5 w-5 text-white" />
                           </div>
                           <div>
