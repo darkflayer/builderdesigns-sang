@@ -95,13 +95,13 @@ export default function Network() {
 
   const formatFieldValue = (fieldName: string, value: string) => {
     if (fieldName === 'email') {
-      return <a href={`mailto:${value}`} className="text-purple-600 dark:text-purple-400 hover:underline">{value}</a>;
+      return <a href={`mailto:${value}`} className="text-blue-600 dark:text-blue-400 hover:underline">{value}</a>;
     }
     if (fieldName === 'phone') {
-      return <a href={`tel:${value}`} className="text-purple-600 dark:text-purple-400 hover:underline">{value}</a>;
+      return <a href={`tel:${value}`} className="text-blue-600 dark:text-blue-400 hover:underline">{value}</a>;
     }
     if (['linkedin', 'twitter', 'instagram', 'website'].includes(fieldName)) {
-      return <a href={value} target="_blank" rel="noopener noreferrer" className="text-purple-600 dark:text-purple-400 hover:underline">View Profile</a>;
+      return <a href={value} target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">View Profile</a>;
     }
     return value;
   };
@@ -129,14 +129,14 @@ export default function Network() {
                     placeholder="Search connections..."
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
-                    className="pl-10 pr-4 py-2 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-purple-500 w-full sm:w-64"
+                    className="pl-10 pr-4 py-2 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 w-full sm:w-64"
                   />
                 </div>
                 {/* Category Filter */}
                 <select
                   value={categoryFilter}
                   onChange={(e) => setCategoryFilter(e.target.value as CategoryFilter)}
-                  className="px-3 py-2 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-purple-500"
+                  className="px-3 py-2 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                 >
                   <option value="all">All Categories</option>
                   {connectionCategories.map((category) => (
@@ -150,7 +150,7 @@ export default function Network() {
                 <select
                   value={sortBy}
                   onChange={(e) => setSortBy(e.target.value as SortOption)}
-                  className="px-3 py-2 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-purple-500"
+                  className="px-3 py-2 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                 >
                   <option value="name">Sort by Name</option>
                   <option value="date">Sort by Date</option>
@@ -161,9 +161,9 @@ export default function Network() {
 
             {/* Stats */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-6">
-              <div className="bg-purple-50 dark:bg-purple-900/20 rounded-xl p-4">
-                <div className="text-2xl font-bold text-purple-600 dark:text-purple-400">{connections.length}</div>
-                <div className="text-sm text-purple-700 dark:text-purple-300">Total Connections</div>
+              <div className="bg-blue-50 dark:bg-blue-900/20 rounded-xl p-4">
+                <div className="text-2xl font-bold text-blue-600 dark:text-blue-400">{connections.length}</div>
+                <div className="text-sm text-blue-700 dark:text-blue-300">Total Connections</div>
               </div>
               <div className="bg-blue-50 dark:bg-blue-900/20 rounded-xl p-4">
                 <div className="text-2xl font-bold text-blue-600 dark:text-blue-400">
@@ -205,7 +205,7 @@ export default function Network() {
                               alt={connection.name}
                               className="w-16 h-16 rounded-full mx-auto mb-3 group-hover:scale-105 transition-transform duration-200"
                             />
-                            <h3 className="font-bold text-gray-900 dark:text-gray-100 text-center group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">
+                            <h3 className="font-bold text-gray-900 dark:text-gray-100 text-center group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
                               {connection.name}
                             </h3>
                           </button>
@@ -264,8 +264,8 @@ export default function Network() {
 
                         {/* Event Context */}
                         {connection.eventName && (
-                          <div className="bg-purple-50 dark:bg-purple-900/20 rounded-lg p-2 mb-3">
-                            <div className="flex items-center space-x-1 text-xs text-purple-700 dark:text-purple-300">
+                          <div className="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-2 mb-3">
+                            <div className="flex items-center space-x-1 text-xs text-blue-700 dark:text-blue-300">
                               <MapPin className="h-3 w-3" />
                               <span>Met at: {connection.eventName}</span>
                             </div>
@@ -311,7 +311,7 @@ export default function Network() {
                       setSearchQuery("");
                       setCategoryFilter('all');
                     }}
-                    className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white px-6 py-3 rounded-xl font-semibold transition-all duration-200"
+                    className="bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 text-white px-6 py-3 rounded-xl font-semibold transition-all duration-200"
                   >
                     Clear Filters
                   </button>
@@ -361,8 +361,8 @@ export default function Network() {
 
                     {/* Event Context */}
                     {selectedConnection.eventName && (
-                      <div className="bg-purple-50 dark:bg-purple-900/20 rounded-lg p-3 mb-4">
-                        <div className="flex items-center justify-center space-x-2 text-purple-700 dark:text-purple-300">
+                      <div className="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-3 mb-4">
+                        <div className="flex items-center justify-center space-x-2 text-blue-700 dark:text-blue-300">
                           <MapPin className="h-4 w-4" />
                           <span className="text-sm font-medium">Met at: {selectedConnection.eventName}</span>
                         </div>
@@ -382,7 +382,7 @@ export default function Network() {
 
                         return (
                           <div key={field} className="flex items-start space-x-3 p-4 bg-gray-50 dark:bg-gray-700 rounded-xl">
-                            <IconComponent className="h-5 w-5 text-purple-600 dark:text-purple-400 mt-0.5 flex-shrink-0" />
+                            <IconComponent className="h-5 w-5 text-blue-600 dark:text-blue-400 mt-0.5 flex-shrink-0" />
                             <div className="flex-1">
                               <p className="text-sm font-medium text-gray-700 dark:text-gray-300 capitalize mb-1">
                                 {field.replace(/([A-Z])/g, ' $1').trim()}
@@ -416,7 +416,7 @@ export default function Network() {
                   </button>
                   <button
                     onClick={() => handleDownloadInfo(selectedConnection)}
-                    className="flex-1 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white py-2 rounded-xl font-medium transition-all duration-200"
+                    className="flex-1 bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 text-white py-2 rounded-xl font-medium transition-all duration-200"
                   >
                     Download Info
                   </button>
@@ -445,7 +445,7 @@ export default function Network() {
                         className={cn(
                           "flex flex-col items-center p-4 rounded-xl border-2 transition-all duration-200",
                           showCategoryModal.category === category.id
-                            ? "border-purple-500 bg-purple-50 dark:bg-purple-900/30"
+                            ? "border-blue-500 bg-blue-50 dark:bg-blue-900/30"
                             : "border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600"
                         )}
                       >
