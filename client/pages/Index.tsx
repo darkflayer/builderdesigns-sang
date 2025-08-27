@@ -445,17 +445,17 @@ export default function Index() {
 
   return (
     <Layout searchQuery={searchQuery} onSearchChange={handleSearchChange}>
-      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-slate-900 dark:to-slate-800 transition-colors duration-300">
+      <div className="min-h-screen bg-gradient-to-br from-[#F8F5EF] to-[#F2EDE6] dark:from-slate-900 dark:to-slate-800 transition-colors duration-300">
         {/* Mobile Header - Only shown on mobile */}
         <div className="lg:hidden bg-white/95 dark:bg-slate-900/95 backdrop-blur-md shadow-sm px-3 py-3">
           <div className="max-w-full mx-auto">
             {/* App Brand */}
             <div className="flex items-center justify-center mb-3">
               <div className="flex items-center space-x-2">
-                <div className="w-6 h-6 bg-gradient-to-br from-blue-600 to-cyan-500 rounded-lg flex items-center justify-center">
+                <div className="w-6 h-6 bg-gradient-to-br from-[#7DA3D8] to-[#4F6789] rounded-lg flex items-center justify-center">
                   <Calendar className="h-4 w-4 text-white" />
                 </div>
-                <span className="text-lg font-bold bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent">
+                <span className="text-lg font-bold bg-gradient-to-r from-[#7DA3D8] to-[#4F6789] bg-clip-text text-transparent">
                   Sang
                 </span>
               </div>
@@ -463,7 +463,7 @@ export default function Index() {
 
             <div className="flex items-center justify-between mb-3">
               <div className="flex items-center space-x-2 flex-1">
-                <MapPin className="h-4 w-4 text-blue-600 flex-shrink-0" />
+                <MapPin className="h-4 w-4 text-[#1976d2] flex-shrink-0" />
                 <div className="min-w-0 flex-1">
                   <p className="text-xs text-gray-600 dark:text-gray-400">Location</p>
                   <p className="font-semibold text-gray-900 dark:text-gray-100 text-sm truncate">San Francisco, CA</p>
@@ -485,11 +485,11 @@ export default function Index() {
                   <div className="absolute -top-1 -right-1 h-2 w-2 bg-red-500 rounded-full"></div>
                 </button>
                 {isAuthenticated ? (
-                  <Link to="/profile" className="p-2 rounded-lg bg-gradient-to-br from-blue-600 to-cyan-500">
+                  <Link to="/profile" className="p-2 rounded-lg bg-gradient-to-br from-[#7DA3D8] to-[#4F6789]">
                     <User className="h-4 w-4 text-white" />
                   </Link>
                 ) : (
-                  <Link to="/auth" className="bg-gradient-to-r from-blue-600 to-cyan-500 text-white px-3 py-2 rounded-lg text-xs font-semibold">
+                  <Link to="/auth" className="bg-gradient-to-r from-[#7DA3D8] to-[#4F6789] text-white px-3 py-2 rounded-lg text-xs font-semibold">
                     Login
                   </Link>
                 )}
@@ -504,7 +504,7 @@ export default function Index() {
                 placeholder="Search events..."
                 value={searchQuery}
                 onChange={(e) => handleSearchChange(e.target.value)}
-                className="w-full pl-9 pr-4 py-2.5 bg-gray-100 dark:bg-gray-800 rounded-xl border-0 focus:ring-2 focus:ring-blue-500 focus:bg-white dark:focus:bg-gray-700 transition-all text-gray-900 dark:text-gray-100 text-sm"
+                className="w-full pl-9 pr-4 py-2.5 bg-gray-100 dark:bg-gray-800 rounded-xl border-0 focus:ring-2 focus:ring-[#1976d2] focus:bg-white dark:focus:bg-gray-700 transition-all text-gray-900 dark:text-gray-100 text-sm"
               />
             </div>
           </div>
@@ -523,7 +523,7 @@ export default function Index() {
                     className={cn(
                       "w-2 h-2 lg:w-3 lg:h-3 rounded-full transition-all duration-300",
                       currentMegaEvent === index
-                        ? "bg-gradient-to-r from-blue-600 to-cyan-500 scale-125"
+                        ? "bg-gradient-to-r from-[#7DA3D8] to-[#4F6789] scale-125"
                         : "bg-gray-300 dark:bg-gray-600 hover:bg-gray-400 dark:hover:bg-gray-500"
                     )}
                   />
@@ -582,7 +582,7 @@ export default function Index() {
                             <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-3 sm:space-y-0 sm:space-x-4">
                               <button
                                 onClick={() => handleRegisterForEvent(event)}
-                                className="w-full sm:w-auto bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 text-white px-6 py-3 lg:px-8 lg:py-4 rounded-xl lg:rounded-2xl text-sm lg:text-lg font-bold shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1"
+                                className="w-full sm:w-auto bg-gradient-to-r from-[#7DA3D8] to-[#4F6789] hover:opacity-90 text-white px-6 py-3 lg:px-8 lg:py-4 rounded-xl lg:rounded-2xl text-sm lg:text-lg font-bold shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1"
                               >
                                 {event.registrationType === 'open' ? 'Register Now' : 'Apply to Register'}
                               </button>
@@ -647,7 +647,7 @@ export default function Index() {
                   className={cn(
                     "px-4 py-2 lg:px-6 lg:py-3 rounded-xl lg:rounded-2xl text-xs lg:text-sm font-semibold whitespace-nowrap transition-all duration-200 shadow-sm flex-shrink-0",
                     selectedCategory === category.name
-                      ? "bg-gradient-to-r from-blue-600 to-cyan-500 text-white shadow-lg shadow-blue-500/25"
+                      ? "bg-gradient-to-r from-[#7DA3D8] to-[#4F6789] text-white shadow-lg shadow-blue-500/25"
                       : "bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700 border border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600"
                   )}
                 >
@@ -678,7 +678,7 @@ export default function Index() {
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
                         <div className="absolute top-4 left-4 space-y-2">
-                          <span className="block bg-gradient-to-r from-blue-600 to-cyan-500 text-white px-3 py-1.5 rounded-full text-xs font-semibold shadow-lg">
+                          <span className="block bg-gradient-to-r from-[#7DA3D8] to-[#4F6789] text-white px-3 py-1.5 rounded-full text-xs font-semibold shadow-lg">
                             ✨ Featured
                           </span>
                           {event.hasSubEvents && (
@@ -700,20 +700,20 @@ export default function Index() {
                     </Link>
                     <div className="p-4 lg:p-6">
                       <Link to={`/event/${event.id}`}>
-                        <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-2 lg:mb-3 text-base lg:text-lg group-hover:text-blue-600 transition-colors line-clamp-2">{event.title}</h3>
+                        <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-2 lg:mb-3 text-base lg:text-lg group-hover:text-[#1976d2] transition-colors line-clamp-2">{event.title}</h3>
                       </Link>
                       <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-4 space-y-2 sm:space-y-0 text-xs lg:text-sm text-gray-600 dark:text-gray-400 mb-3 lg:mb-4">
                         <div className="flex items-center space-x-1 lg:space-x-2 bg-gray-50 dark:bg-gray-700 rounded-lg px-2 py-1 lg:px-3 lg:py-1.5">
-                          <Calendar className="h-3 w-3 lg:h-4 lg:w-4 text-blue-600" />
+                          <Calendar className="h-3 w-3 lg:h-4 lg:w-4 text-[#1976d2]" />
                           <span className="font-medium text-gray-900 dark:text-gray-200">{event.date}</span>
                         </div>
                         <div className="flex items-center space-x-1 lg:space-x-2 bg-gray-50 dark:bg-gray-700 rounded-lg px-2 py-1 lg:px-3 lg:py-1.5">
-                          <Clock className="h-3 w-3 lg:h-4 lg:w-4 text-blue-600" />
+                          <Clock className="h-3 w-3 lg:h-4 lg:w-4 text-[#1976d2]" />
                           <span className="font-medium text-gray-900 dark:text-gray-200">{event.time}</span>
                         </div>
                       </div>
                       <div className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-400 mb-4 bg-gray-50 dark:bg-gray-700 rounded-lg px-3 py-1.5">
-                        <MapPin className="h-4 w-4 text-blue-600" />
+                        <MapPin className="h-4 w-4 text-[#1976d2]" />
                         <span className="font-medium text-gray-900 dark:text-gray-200">{event.location}</span>
                       </div>
                       {event.hasSubEvents && (
@@ -739,7 +739,7 @@ export default function Index() {
                             e.preventDefault();
                             handleRegisterForEvent(event);
                           }}
-                          className="bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 text-white px-6 py-2.5 rounded-xl text-sm font-semibold shadow-lg hover:shadow-xl transition-all duration-200 hover:-translate-y-0.5"
+                          className="bg-gradient-to-r from-[#7DA3D8] to-[#4F6789] hover:opacity-90 text-white px-6 py-2.5 rounded-xl text-sm font-semibold shadow-lg hover:shadow-xl transition-all duration-200 hover:-translate-y-0.5"
                         >
                           Join Event
                         </button>
@@ -788,20 +788,20 @@ export default function Index() {
                   </Link>
                   <div className="p-4">
                     <Link to={`/event/${event.id}`}>
-                      <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-2 text-sm group-hover:text-blue-600 transition-colors line-clamp-2">{event.title}</h3>
+                      <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-2 text-sm group-hover:text-[#1976d2] transition-colors line-clamp-2">{event.title}</h3>
                     </Link>
                     <div className="flex items-center space-x-2 text-xs text-gray-600 dark:text-gray-400 mb-3">
                       <div className="flex items-center space-x-1 bg-gray-50 dark:bg-gray-700 rounded-lg px-2 py-1">
-                        <Calendar className="h-3 w-3 text-blue-600" />
+                        <Calendar className="h-3 w-3 text-[#1976d2]" />
                         <span className="font-medium text-gray-900 dark:text-gray-200">{event.date}</span>
                       </div>
                       <div className="flex items-center space-x-1 bg-gray-50 dark:bg-gray-700 rounded-lg px-2 py-1">
-                        <Clock className="h-3 w-3 text-blue-600" />
+                        <Clock className="h-3 w-3 text-[#1976d2]" />
                         <span className="font-medium text-gray-900 dark:text-gray-200">{event.time}</span>
                       </div>
                     </div>
                     <div className="flex items-center space-x-1 text-xs text-gray-600 dark:text-gray-400 mb-3 bg-gray-50 dark:bg-gray-700 rounded-lg px-2 py-1">
-                      <MapPin className="h-3 w-3 text-blue-600" />
+                      <MapPin className="h-3 w-3 text-[#1976d2]" />
                       <span className="font-medium text-gray-900 dark:text-gray-200 truncate">{event.location}</span>
                     </div>
                     {event.hasSubEvents && (
@@ -827,7 +827,7 @@ export default function Index() {
                           e.preventDefault();
                           handleRegisterForEvent(event);
                         }}
-                        className="bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 text-white px-3 py-1.5 rounded-xl text-xs font-semibold shadow-md hover:shadow-lg transition-all duration-200 hover:-translate-y-0.5"
+                        className="bg-gradient-to-r from-[#7DA3D8] to-[#4F6789] hover:opacity-90 text-white px-3 py-1.5 rounded-xl text-xs font-semibold shadow-md hover:shadow-lg transition-all duration-200 hover:-translate-y-0.5"
                       >
                         Join
                       </button>
@@ -852,8 +852,8 @@ export default function Index() {
         {filteredAndSortedEvents.length === 0 && (
           <div className="px-3 lg:px-8 py-8 lg:py-12">
             <div className="max-w-full lg:max-w-7xl mx-auto text-center">
-              <div className="bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20 rounded-2xl lg:rounded-3xl p-6 lg:p-12 border border-blue-200 dark:border-blue-800">
-                <div className="w-16 h-16 bg-gradient-to-br from-blue-600 to-cyan-500 rounded-2xl flex items-center justify-center mx-auto mb-6">
+              <div className="bg-gradient-to-br from-[#E8F1FC] to-[#D9E4F4] dark:from-[#4F6789]/20 dark:to-[#7DA3D8]/20 rounded-2xl lg:rounded-3xl p-6 lg:p-12 border border-blue-200 dark:border-blue-800">
+                <div className="w-16 h-16 bg-gradient-to-br from-[#7DA3D8] to-[#4F6789] rounded-2xl flex items-center justify-center mx-auto mb-6">
                   <Calendar className="h-8 w-8 text-white" />
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-3">No events found</h3>
@@ -870,7 +870,7 @@ export default function Index() {
                       cities: []
                     });
                   }}
-                  className="mt-6 bg-gradient-to-r from-blue-600 to-cyan-500 text-white px-6 py-3 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-200 hover:-translate-y-0.5"
+                  className="mt-6 bg-gradient-to-r from-[#7DA3D8] to-[#4F6789] text-white px-6 py-3 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-200 hover:-translate-y-0.5"
                 >
                   Clear Filters
                 </button>
