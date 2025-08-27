@@ -88,7 +88,7 @@ export default function Layout({ children, searchQuery = "", onSearchChange }: L
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#F8F5EF] to-[#F2EDE6] dark:from-gray-900 dark:to-gray-800 flex flex-col transition-colors duration-300">
       {/* Premium Desktop Navigation - Hidden on mobile */}
-      <nav className="hidden lg:block relative bg-gradient-to-b from-[rgba(255,255,255,0.85)] to-[rgba(255,255,255,0.65)] dark:from-[rgba(16,23,40,0.85)] dark:to-[rgba(16,23,40,0.65)] backdrop-blur-xl border-b border-transparent shadow-sm after:content-[''] after:absolute after:left-0 after:right-0 after:bottom-0 after:h-0.5 after:bg-gradient-to-r after:from-[#7DA3D8] after:via-[#1976d2] after:to-[#4F6789] after:opacity-70">
+      <nav className="hidden lg:block relative bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl border-b border-white/20 dark:border-white/10 shadow-[0_10px_30px_-10px_rgba(0,0,0,0.25)] before:content-[''] before:absolute before:inset-0 before:pointer-events-none before:bg-gradient-to-r before:from-[#7DA3D8]/10 before:via-transparent before:to-[#4F6789]/10">
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             {/* Logo/Brand */}
