@@ -85,7 +85,7 @@ export default function Footer() {
                 <li key={link.name}>
                   <Link
                     to={link.href}
-                    className="text-sm text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors"
+                    className="text-sm text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
                   >
                     {link.name}
                   </Link>
@@ -104,7 +104,7 @@ export default function Footer() {
                 <li key={link.name}>
                   <Link
                     to={link.href}
-                    className="text-sm text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors"
+                    className="text-sm text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
                   >
                     {link.name}
                   </Link>
@@ -123,7 +123,7 @@ export default function Footer() {
                 <li key={link.name}>
                   <Link
                     to={link.href}
-                    className="text-sm text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors"
+                    className="text-sm text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
                   >
                     {link.name}
                   </Link>
@@ -142,7 +142,7 @@ export default function Footer() {
                 <li key={link.name}>
                   <Link
                     to={link.href}
-                    className="text-sm text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors"
+                    className="text-sm text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
                   >
                     {link.name}
                   </Link>
