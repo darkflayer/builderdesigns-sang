@@ -447,7 +447,7 @@ export default function Index() {
     <Layout searchQuery={searchQuery} onSearchChange={handleSearchChange}>
       <div className="min-h-screen bg-gradient-to-br from-[#F8F5EF] to-[#F2EDE6] dark:from-slate-900 dark:to-slate-800 transition-colors duration-300">
         {/* Mobile Header - Only shown on mobile */}
-        <div className="lg:hidden bg-white/95 dark:bg-slate-900/95 backdrop-blur-md shadow-sm px-3 py-3">
+        <div className="lg:hidden bg-gradient-to-b from-[rgba(255,255,255,0.85)] to-[rgba(255,255,255,0.65)] dark:from-[rgba(16,23,40,0.85)] dark:to-[rgba(16,23,40,0.65)] backdrop-blur-xl border-b border-white/20 dark:border-white/10 shadow-sm px-3 py-3">
           <div className="max-w-full mx-auto">
             {/* App Brand */}
             <div className="flex items-center justify-center mb-3">
@@ -472,7 +472,7 @@ export default function Index() {
               <div className="flex items-center space-x-2">
                 <button
                   onClick={toggleTheme}
-                  className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+                  className="p-2 rounded-lg bg-white/60 dark:bg-white/5 hover:bg-white/80 dark:hover:bg-white/10 ring-1 ring-white/20 dark:ring-white/10 transition-colors"
                 >
                   {theme === 'dark' ? (
                     <Sun className="h-4 w-4 text-gray-600 dark:text-gray-300" />
@@ -480,7 +480,7 @@ export default function Index() {
                     <Moon className="h-4 w-4 text-gray-600 dark:text-gray-300" />
                   )}
                 </button>
-                <button className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 relative">
+                <button className="p-2 rounded-lg bg-white/60 dark:bg-white/5 relative ring-1 ring-white/20 dark:ring-white/10">
                   <Bell className="h-4 w-4 text-gray-600 dark:text-gray-300" />
                   <div className="absolute -top-1 -right-1 h-2 w-2 bg-red-500 rounded-full"></div>
                 </button>
@@ -504,7 +504,7 @@ export default function Index() {
                 placeholder="Search events..."
                 value={searchQuery}
                 onChange={(e) => handleSearchChange(e.target.value)}
-                className="w-full pl-9 pr-4 py-2.5 bg-gray-100 dark:bg-gray-800 rounded-xl border-0 focus:ring-2 focus:ring-[#1976d2] focus:bg-white dark:focus:bg-gray-700 transition-all text-gray-900 dark:text-gray-100 text-sm"
+                className="w-full pl-9 pr-4 py-2.5 bg-white/60 dark:bg-white/5 rounded-xl border border-white/20 dark:border-white/10 focus:ring-2 focus:ring-[#1976d2] focus:bg-white/80 dark:focus:bg-white/10 transition-all text-gray-900 dark:text-gray-100 text-sm placeholder:text-gray-500 dark:placeholder:text-gray-500"
               />
             </div>
           </div>
