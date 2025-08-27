@@ -94,10 +94,10 @@ export default function Layout({ children, searchQuery = "", onSearchChange }: L
             {/* Logo/Brand */}
             <div className="flex items-center space-x-8">
               <Link to="/" className="flex items-center space-x-2 hover:opacity-80 transition-opacity">
-                <div className="w-8 h-8 bg-gradient-to-br from-purple-600 to-blue-600 rounded-lg flex items-center justify-center">
+                <div className="w-8 h-8 bg-gradient-to-br from-blue-600 to-cyan-500 rounded-lg flex items-center justify-center">
                   <Calendar className="h-5 w-5 text-white" />
                 </div>
-                <span className="text-xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
+                <span className="text-xl font-bold bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent">
                   Sang
                 </span>
               </Link>
@@ -113,11 +113,11 @@ export default function Layout({ children, searchQuery = "", onSearchChange }: L
                       className={cn(
                         "flex items-center space-x-2 px-4 py-2.5 rounded-xl transition-all duration-200 font-medium",
                         isActive
-                          ? "text-purple-600 bg-purple-50 dark:bg-purple-900/20 shadow-sm"
+                          ? "text-blue-600 bg-blue-50 dark:bg-blue-900/20 shadow-sm"
                           : "text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-800"
                       )}
                     >
-                      <item.icon className={cn("h-4 w-4", isActive ? "text-purple-600" : "")} />
+                      <item.icon className={cn("h-4 w-4", isActive ? "text-blue-600" : "")} />
                       <span className="text-sm">{item.name}</span>
                     </Link>
                   );
@@ -142,7 +142,7 @@ export default function Layout({ children, searchQuery = "", onSearchChange }: L
             {/* Right Side - Theme Toggle, Location & Profile */}
             <div className="flex items-center space-x-4">
               <div className="flex items-center space-x-2 px-3 py-2 bg-gray-50 dark:bg-gray-800 rounded-xl">
-                <MapPin className="h-4 w-4 text-purple-600" />
+                <MapPin className="h-4 w-4 text-blue-600" />
                 <div className="text-sm">
                   <span className="text-gray-600 dark:text-gray-400 block text-xs">Location</span>
                   <span className="font-medium text-gray-900 dark:text-gray-100">San Francisco, CA</span>
@@ -232,7 +232,7 @@ export default function Layout({ children, searchQuery = "", onSearchChange }: L
                   )}
                 </>
               ) : (
-                <Link to="/auth" className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white px-4 py-2 rounded-xl font-semibold transition-all duration-200 shadow-lg hover:shadow-xl">
+                <Link to="/auth" className="bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 text-white px-4 py-2 rounded-xl font-semibold transition-all duration-200 shadow-lg hover:shadow-xl">
                   Login / Sign Up
                 </Link>
               )}
@@ -264,11 +264,11 @@ export default function Layout({ children, searchQuery = "", onSearchChange }: L
                   className={cn(
                     "flex flex-col items-center py-2 px-3 rounded-xl transition-all duration-200",
                     isActive
-                      ? "text-purple-600 bg-purple-50 dark:bg-purple-900/20 shadow-sm"
+                      ? "text-blue-600 bg-blue-50 dark:bg-blue-900/20 shadow-sm"
                       : "text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"
                   )}
                 >
-                  <item.icon className={cn("h-5 w-5 mb-1", isActive ? "text-purple-600" : "")} />
+                  <item.icon className={cn("h-5 w-5 mb-1", isActive ? "text-blue-600" : "")} />
                   <span className="text-xs font-medium">{item.name}</span>
                 </Link>
               );
