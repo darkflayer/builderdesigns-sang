@@ -86,7 +86,7 @@ export default function Layout({ children, searchQuery = "", onSearchChange }: L
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 flex flex-col transition-colors duration-300">
+    <div className="min-h-screen bg-gradient-to-br from-[#F8F5EF] to-[#F2EDE6] dark:from-gray-900 dark:to-gray-800 flex flex-col transition-colors duration-300">
       {/* Premium Desktop Navigation - Hidden on mobile */}
       <nav className="hidden lg:block bg-white/95 dark:bg-gray-900/95 backdrop-blur-md border-b border-gray-200/50 dark:border-gray-700/50 shadow-sm">
         <div className="max-w-7xl mx-auto px-6 py-4">
@@ -94,10 +94,10 @@ export default function Layout({ children, searchQuery = "", onSearchChange }: L
             {/* Logo/Brand */}
             <div className="flex items-center space-x-8">
               <Link to="/" className="flex items-center space-x-2 hover:opacity-80 transition-opacity">
-                <div className="w-8 h-8 bg-gradient-to-br from-blue-600 to-cyan-500 rounded-lg flex items-center justify-center">
+                <div className="w-8 h-8 bg-gradient-to-br from-[#7DA3D8] to-[#4F6789] rounded-lg flex items-center justify-center">
                   <Calendar className="h-5 w-5 text-white" />
                 </div>
-                <span className="text-xl font-bold bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent">
+                <span className="text-xl font-bold bg-gradient-to-r from-[#7DA3D8] to-[#4F6789] bg-clip-text text-transparent">
                   Sang
                 </span>
               </Link>
@@ -113,11 +113,11 @@ export default function Layout({ children, searchQuery = "", onSearchChange }: L
                       className={cn(
                         "flex items-center space-x-2 px-4 py-2.5 rounded-xl transition-all duration-200 font-medium",
                         isActive
-                          ? "text-blue-600 bg-blue-50 dark:bg-blue-900/20 shadow-sm"
+                          ? "text-[#1976d2] bg-[#E8F1FC] dark:bg-[#4F6789]/20 shadow-sm"
                           : "text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-800"
                       )}
                     >
-                      <item.icon className={cn("h-4 w-4", isActive ? "text-blue-600" : "")} />
+                      <item.icon className={cn("h-4 w-4", isActive ? "text-[#1976d2]" : "")} />
                       <span className="text-sm">{item.name}</span>
                     </Link>
                   );
@@ -134,7 +134,7 @@ export default function Layout({ children, searchQuery = "", onSearchChange }: L
                   placeholder="Search events by name, location, category..."
                   value={searchQuery}
                   onChange={(e) => onSearchChange?.(e.target.value)}
-                  className="w-full pl-12 pr-4 py-3 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 text-sm text-gray-900 dark:text-gray-100"
+                  className="w-full pl-12 pr-4 py-3 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl focus:outline-none focus:ring-2 focus:ring-[#1976d2] focus:border-transparent transition-all duration-200 text-sm text-gray-900 dark:text-gray-100"
                 />
               </div>
             </div>
@@ -142,7 +142,7 @@ export default function Layout({ children, searchQuery = "", onSearchChange }: L
             {/* Right Side - Theme Toggle, Location & Profile */}
             <div className="flex items-center space-x-4">
               <div className="flex items-center space-x-2 px-3 py-2 bg-gray-50 dark:bg-gray-800 rounded-xl">
-                <MapPin className="h-4 w-4 text-blue-600" />
+                <MapPin className="h-4 w-4 text-[#1976d2]" />
                 <div className="text-sm">
                   <span className="text-gray-600 dark:text-gray-400 block text-xs">Location</span>
                   <span className="font-medium text-gray-900 dark:text-gray-100">San Francisco, CA</span>
@@ -177,7 +177,7 @@ export default function Layout({ children, searchQuery = "", onSearchChange }: L
                   <button
                     ref={profileButtonRef}
                     onClick={toggleProfileDropdown}
-                    className="flex items-center space-x-2 p-2.5 rounded-xl bg-gradient-to-br from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 transition-all duration-200 shadow-lg hover:shadow-xl"
+                    className="flex items-center space-x-2 p-2.5 rounded-xl bg-gradient-to-br from-[#7DA3D8] to-[#4F6789] hover:opacity-90 transition-all duration-200 shadow-lg hover:shadow-xl"
                   >
                     <User className="h-5 w-5 text-white" />
                     <ChevronDown className="h-3 w-3 text-white" />
@@ -196,7 +196,7 @@ export default function Layout({ children, searchQuery = "", onSearchChange }: L
                       {/* Profile Header */}
                       <div className="px-4 py-3 border-b border-gray-100 dark:border-gray-700">
                         <div className="flex items-center space-x-3">
-                          <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-cyan-500 rounded-full flex items-center justify-center">
+                          <div className="w-10 h-10 bg-gradient-to-br from-[#7DA3D8] to-[#4F6789] rounded-full flex items-center justify-center">
                             <User className="h-5 w-5 text-white" />
                           </div>
                           <div>
@@ -232,7 +232,7 @@ export default function Layout({ children, searchQuery = "", onSearchChange }: L
                   )}
                 </>
               ) : (
-                <Link to="/auth" className="bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 text-white px-4 py-2 rounded-xl font-semibold transition-all duration-200 shadow-lg hover:shadow-xl">
+                <Link to="/auth" className="bg-gradient-to-r from-[#7DA3D8] to-[#4F6789] hover:opacity-90 text-white px-4 py-2 rounded-xl font-semibold transition-all duration-200 shadow-lg hover:shadow-xl">
                   Login / Sign Up
                 </Link>
               )}
@@ -264,11 +264,11 @@ export default function Layout({ children, searchQuery = "", onSearchChange }: L
                   className={cn(
                     "flex flex-col items-center py-2 px-3 rounded-xl transition-all duration-200",
                     isActive
-                      ? "text-blue-600 bg-blue-50 dark:bg-blue-900/20 shadow-sm"
+                      ? "text-[#1976d2] bg-[#E8F1FC] dark:bg-[#4F6789]/20 shadow-sm"
                       : "text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"
                   )}
                 >
-                  <item.icon className={cn("h-5 w-5 mb-1", isActive ? "text-blue-600" : "")} />
+                  <item.icon className={cn("h-5 w-5 mb-1", isActive ? "text-[#1976d2]" : "")} />
                   <span className="text-xs font-medium">{item.name}</span>
                 </Link>
               );
