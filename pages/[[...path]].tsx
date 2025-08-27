@@ -1,12 +1,9 @@
-"use client";
+import dynamic from "next/dynamic";
 
-import { BrowserRouter } from "react-router-dom";
-import AppRoutes from "@/next-adapter/AppRoutes";
+const ClientApp = dynamic(() => import("@/next-adapter/ClientApp"), {
+  ssr: false,
+});
 
 export default function CatchAllPage() {
-  return (
-    <BrowserRouter>
-      <AppRoutes />
-    </BrowserRouter>
-  );
+  return <ClientApp />;
 }
