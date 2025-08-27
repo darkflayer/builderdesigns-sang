@@ -35,7 +35,7 @@ export default function NotificationsModal({ isOpen, onClose }: NotificationsMod
       case 'medium':
         return 'text-orange-600 dark:text-orange-400';
       case 'low':
-        return 'text-blue-600 dark:text-blue-400';
+        return 'text-[#1976d2] dark:text-[#7DA3D8]';
       default:
         return 'text-gray-600 dark:text-gray-400';
     }
