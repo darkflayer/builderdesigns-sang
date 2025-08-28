@@ -141,13 +141,13 @@ export default function MyEvents() {
 
   return (
     <Layout searchQuery="" onSearchChange={() => {}}>
-      <div className="min-h-screen bg-gradient-to-br from-[#F8F5EF] to-[#F2EDE6] dark:from-gray-900 dark:to-gray-800">
+      <div className="min-h-screen bg-gradient-to-br from-[#F8F5EF] to-[#F2EDE6] dark:from-black dark:to-gray-900">
         {/* Header */}
         <div className="bg-white dark:bg-gray-800 shadow-sm px-4 lg:px-8 py-6">
           <div className="max-w-7xl mx-auto">
             <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
               <div>
-                <h1 className="text-2xl lg:text-3xl font-bold text-gray-900 dark:text-gray-100">My Events</h1>
+                <h1 className="text-2xl lg:text-3xl font-bold text-gray-900 dark:text-white">My Events</h1>
                 <p className="text-gray-600 dark:text-gray-400 mt-1">
                   Manage your event registrations and track approval status
                 </p>
@@ -214,7 +214,7 @@ export default function MyEvents() {
 
                     <div className="p-6">
                       <Link to={`/event/${event!.id}`}>
-                        <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-3 text-lg group-hover:text-[#1976d2] transition-colors">
+                        <h3 className="font-bold text-gray-900 dark:text-white mb-3 text-lg group-hover:text-[#1976d2] transition-colors">
                           {event!.title}
                         </h3>
                       </Link>
@@ -284,7 +284,7 @@ export default function MyEvents() {
               <div className="text-center py-12">
                 <div className="bg-white dark:bg-gray-800 rounded-2xl p-12 shadow-lg max-w-md mx-auto">
                   <Calendar className="h-16 w-16 text-gray-400 mx-auto mb-6" />
-                  <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-3">
+                  <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">
                     {statusFilter === 'all' ? 'No Registered Events' : `No ${statusFilter.charAt(0).toUpperCase() + statusFilter.slice(1)} Events`}
                   </h3>
                   <p className="text-gray-600 dark:text-gray-400 mb-6">
