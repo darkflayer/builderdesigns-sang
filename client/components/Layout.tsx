@@ -1,7 +1,8 @@
 import { useState, useRef, useEffect } from "react";
 import { createPortal } from "react-dom";
 import { Home, Calendar, Scan, Users, Search, MapPin, Bell, User, Moon, Sun, LogOut, ChevronDown } from "lucide-react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import Link from "next/link";
+import { useRouter } from "next/router";
 import { cn } from "@/lib/utils";
 import { useTheme } from "@/contexts/ThemeContext";
 import { useAuth } from "@/hooks/useAuth";
@@ -16,8 +17,7 @@ interface LayoutProps {
 }
 
 export default function Layout({ children, searchQuery = "", onSearchChange }: LayoutProps) {
-  const location = useLocation();
-  const navigate = useNavigate();
+  const router = useRouter();
   const { theme, toggleTheme } = useTheme();
   const { isAuthenticated, user, logout } = useAuth();
   const [showNotifications, setShowNotifications] = useState(false);
@@ -43,7 +43,7 @@ export default function Layout({ children, searchQuery = "", onSearchChange }: L
 
   const handleProfileClick = () => {
     setShowProfileDropdown(false);
-    navigate('/profile');
+    router.push('/profile');
   };
 
   const handleLogout = () => {
@@ -105,7 +105,7 @@ export default function Layout({ children, searchQuery = "", onSearchChange }: L
               {/* Navigation Links */}
               <div className="flex space-x-1">
                 {navigation.map((item) => {
-                  const isActive = location.pathname === item.href;
+                  const isActive = router.pathname === item.href;
                   return (
                     <Link
                       key={item.name}
@@ -256,7 +256,7 @@ export default function Layout({ children, searchQuery = "", onSearchChange }: L
         <div className="max-w-md mx-auto">
           <div className="flex justify-around">
             {navigation.map((item) => {
-              const isActive = location.pathname === item.href;
+              const isActive = router.pathname === item.href;
               return (
                 <Link
                   key={item.name}
