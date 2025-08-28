@@ -93,7 +93,7 @@ export default function Layout({ children, searchQuery = "", onSearchChange }: L
           <div className="flex items-center justify-between">
             {/* Logo/Brand */}
             <div className="flex items-center space-x-8">
-              <Link to="/" className="flex items-center space-x-2 hover:opacity-80 transition-opacity">
+              <Link href="/" className="flex items-center space-x-2 hover:opacity-80 transition-opacity">
                 <div className="w-8 h-8 bg-gradient-to-br from-[#7DA3D8] to-[#4F6789] rounded-lg flex items-center justify-center">
                   <Calendar className="h-5 w-5 text-white" />
                 </div>
@@ -109,7 +109,7 @@ export default function Layout({ children, searchQuery = "", onSearchChange }: L
                   return (
                     <Link
                       key={item.name}
-                      to={item.href}
+                      href={item.href}
                       className={cn(
                         "flex items-center space-x-2 px-4 py-2.5 rounded-xl transition-all duration-200 font-medium",
                         isActive
@@ -232,7 +232,7 @@ export default function Layout({ children, searchQuery = "", onSearchChange }: L
                   )}
                 </>
               ) : (
-                <Link to="/auth" className="bg-gradient-to-r from-[#7DA3D8] to-[#4F6789] hover:opacity-90 text-white px-4 py-2 rounded-xl font-semibold transition-all duration-200 shadow-lg hover:shadow-xl">
+                <Link href="/auth" className="bg-gradient-to-r from-[#7DA3D8] to-[#4F6789] hover:opacity-90 text-white px-4 py-2 rounded-xl font-semibold transition-all duration-200 shadow-lg hover:shadow-xl">
                   Login / Sign Up
                 </Link>
               )}
@@ -260,7 +260,7 @@ export default function Layout({ children, searchQuery = "", onSearchChange }: L
               return (
                 <Link
                   key={item.name}
-                  to={item.href}
+                  href={item.href}
                   className={cn(
                     "flex flex-col items-center py-2 px-3 rounded-xl transition-all duration-200",
                     isActive
