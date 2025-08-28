@@ -84,7 +84,7 @@ export default function Footer() {
               {footerLinks.platform.map((link) => (
                 <li key={link.name}>
                   <Link
-                    to={link.href}
+                    href={link.href}
                     className="text-sm text-gray-600 dark:text-gray-400 hover:text-[#1976d2] dark:hover:text-[#7DA3D8] transition-colors"
                   >
                     {link.name}
@@ -103,7 +103,7 @@ export default function Footer() {
               {footerLinks.events.map((link) => (
                 <li key={link.name}>
                   <Link
-                    to={link.href}
+                    href={link.href}
                     className="text-sm text-gray-600 dark:text-gray-400 hover:text-[#1976d2] dark:hover:text-[#7DA3D8] transition-colors"
                   >
                     {link.name}
@@ -122,7 +122,7 @@ export default function Footer() {
               {footerLinks.support.map((link) => (
                 <li key={link.name}>
                   <Link
-                    to={link.href}
+                    href={link.href}
                     className="text-sm text-gray-600 dark:text-gray-400 hover:text-[#1976d2] dark:hover:text-[#7DA3D8] transition-colors"
                   >
                     {link.name}
@@ -141,7 +141,7 @@ export default function Footer() {
               {footerLinks.legal.map((link) => (
                 <li key={link.name}>
                   <Link
-                    to={link.href}
+                    href={link.href}
                     className="text-sm text-gray-600 dark:text-gray-400 hover:text-[#1976d2] dark:hover:text-[#7DA3D8] transition-colors"
                   >
                     {link.name}
