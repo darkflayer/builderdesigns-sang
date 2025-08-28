@@ -23,9 +23,9 @@ export default function Profile() {
   if (!isAuthenticated) {
     return (
       <Layout searchQuery="" onSearchChange={() => {}}>
-        <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-slate-900">
+        <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-black">
           <div className="text-center">
-            <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4">
+            <h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
               Please log in to view your profile
             </h1>
             <Link 
@@ -80,7 +80,7 @@ export default function Profile() {
             <span className="text-white text-xl font-bold">JD</span>
           </div>
           <div className="flex-1">
-            <h2 className="text-xl font-bold text-gray-900 dark:text-gray-100">John Doe</h2>
+            <h2 className="text-xl font-bold text-gray-900 dark:text-white">John Doe</h2>
             <p className="text-gray-600 dark:text-gray-300">Event Enthusiast</p>
             <div className="flex items-center space-x-1 mt-1">
               <MapPin className="h-4 w-4 text-gray-500 dark:text-gray-400" />
@@ -108,7 +108,7 @@ export default function Profile() {
             <div className="flex justify-center mb-2">
               <stat.icon className="h-6 w-6 text-[#1976d2]" />
             </div>
-            <p className="text-2xl font-bold text-gray-900 dark:text-gray-100">{stat.value}</p>
+            <p className="text-2xl font-bold text-gray-900 dark:text-white">{stat.value}</p>
             <p className="text-sm text-gray-600 dark:text-gray-400">{stat.label}</p>
           </div>
         ))}
@@ -116,13 +116,13 @@ export default function Profile() {
 
       {/* Recent Events */}
       <div className="bg-white dark:bg-slate-800 rounded-xl shadow-sm p-6">
-        <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">Recent Events</h3>
+        <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Recent Events</h3>
         <div className="space-y-4">
           {recentEvents.map((event) => (
             <div key={event.id} className="flex items-center space-x-4">
               <img src={event.image} alt={event.title} className="w-12 h-12 rounded-lg object-cover" />
               <div className="flex-1">
-                <h4 className="font-medium text-gray-900 dark:text-gray-100">{event.title}</h4>
+                <h4 className="font-medium text-gray-900 dark:text-white">{event.title}</h4>
                 <p className="text-sm text-gray-600 dark:text-gray-400">{event.date}</p>
               </div>
               <span className={`px-3 py-1 rounded-full text-xs font-medium ${
@@ -143,7 +143,7 @@ export default function Profile() {
     <div className="space-y-6">
       {/* Organizations Header */}
       <div className="flex items-center justify-between">
-        <h2 className="text-xl font-bold text-gray-900 dark:text-gray-100">Organizations</h2>
+        <h2 className="text-xl font-bold text-gray-900 dark:text-white">Organizations</h2>
         <div className="flex space-x-2">
           <button
             onClick={() => setShowCreateOrg(true)}
@@ -197,7 +197,7 @@ export default function Profile() {
           <div key={org._id} className="bg-white dark:bg-slate-800 rounded-xl shadow-sm p-6">
             <div className="flex items-start justify-between mb-4">
               <div>
-                <h3 className="text-lg font-bold text-gray-900 dark:text-gray-100">{org.name}</h3>
+                <h3 className="text-lg font-bold text-gray-900 dark:text-white">{org.name}</h3>
                 <p className="text-gray-600 dark:text-gray-400">{org.description}</p>
                 <p className="text-sm text-gray-500 dark:text-gray-500 mt-1">
                   Your role: <span className="font-medium capitalize">{getUserRole(currentUserId, org._id)}</span>
@@ -209,25 +209,25 @@ export default function Profile() {
             <div className="grid grid-cols-3 gap-4 mb-4">
               <div className="text-center">
                 <p className="text-sm text-gray-500 dark:text-gray-400">Members</p>
-                <p className="font-bold text-gray-900 dark:text-gray-100">{org.members.length}</p>
+                <p className="font-bold text-gray-900 dark:text-white">{org.members.length}</p>
               </div>
               <div className="text-center">
                 <p className="text-sm text-gray-500 dark:text-gray-400">Events</p>
-                <p className="font-bold text-gray-900 dark:text-gray-100">
+                <p className="font-bold text-gray-900 dark:text-white">
                   {getOrganizationEvents(org._id).length}
                 </p>
               </div>
               <div className="text-center">
                 <p className="text-sm text-gray-500 dark:text-gray-400">Requests</p>
-                <p className="font-bold text-gray-900 dark:text-gray-100">
+                <p className="font-bold text-gray-900 dark:text-white">
                   {isAdmin(currentUserId, org._id) ? getPendingRoleRequests(org._id).length : 0}
                 </p>
               </div>
             </div>
 
             {isAdmin(currentUserId, org._id) && (
-              <div className="border-t border-gray-200 dark:border-slate-700 pt-4">
-                <p className="text-sm font-medium text-gray-900 dark:text-gray-100 mb-2">Admin Actions:</p>
+              <div className="border-t border-gray-200 dark:border-gray-700 pt-4">
+                <p className="text-sm font-medium text-gray-900 dark:text-white mb-2">Admin Actions:</p>
                 <div className="flex space-x-2">
                   <button className="bg-[#1976d2] text-white px-3 py-1 rounded text-sm font-medium hover:bg-[#125AA0]">
                     Manage Members
@@ -245,7 +245,7 @@ export default function Profile() {
       {userOrganizations.length === 0 && (
         <div className="text-center py-12">
           <Building className="h-16 w-16 text-gray-400 mx-auto mb-4" />
-          <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">No Organizations</h3>
+          <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">No Organizations</h3>
           <p className="text-gray-600 dark:text-gray-400 mb-4">
             Create your first organization or join an existing one to start managing events.
           </p>
@@ -257,7 +257,7 @@ export default function Profile() {
   const renderEventsTab = () => (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
-        <h2 className="text-xl font-bold text-gray-900 dark:text-gray-100">Event Management</h2>
+        <h2 className="text-xl font-bold text-gray-900 dark:text-white">Event Management</h2>
         <button className="bg-gradient-to-r from-[#7DA3D8] to-[#4F6789] text-white px-4 py-2 rounded-lg font-medium hover:from-blue-700 hover:to-cyan-600 transition-all">
           <Plus className="h-4 w-4 inline mr-2" />
           Create Event
@@ -268,7 +268,7 @@ export default function Profile() {
         <div key={event._id} className="bg-white dark:bg-slate-800 rounded-xl shadow-sm p-6">
           <div className="flex items-start justify-between mb-4">
             <div>
-              <h3 className="text-lg font-bold text-gray-900 dark:text-gray-100">{event.name}</h3>
+              <h3 className="text-lg font-bold text-gray-900 dark:text-white">{event.name}</h3>
               <p className="text-gray-600 dark:text-gray-400">{event.description}</p>
               <div className="flex items-center space-x-4 mt-2 text-sm text-gray-500 dark:text-gray-500">
                 <span>{event.date}</span>
@@ -288,8 +288,8 @@ export default function Profile() {
             </div>
           </div>
           
-          <div className="border-t border-gray-200 dark:border-slate-700 pt-4">
-            <p className="text-sm font-medium text-gray-900 dark:text-gray-100 mb-2">Team Members:</p>
+          <div className="border-t border-gray-200 dark:border-gray-700 pt-4">
+            <p className="text-sm font-medium text-gray-900 dark:text-white mb-2">Team Members:</p>
             <div className="flex flex-wrap gap-2">
               {event.team.map((member, index) => (
                 <span key={index} className="bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-400 px-2 py-1 rounded text-xs">
@@ -304,7 +304,7 @@ export default function Profile() {
       {userEvents.length === 0 && (
         <div className="text-center py-12">
           <Calendar className="h-16 w-16 text-gray-400 mx-auto mb-4" />
-          <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">No Events</h3>
+          <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">No Events</h3>
           <p className="text-gray-600 dark:text-gray-400 mb-4">
             Create your first event to start managing attendees and team members.
           </p>
@@ -315,7 +315,7 @@ export default function Profile() {
 
   const renderRequestsTab = () => (
     <div className="space-y-6">
-      <h2 className="text-xl font-bold text-gray-900 dark:text-gray-100">Role Requests</h2>
+      <h2 className="text-xl font-bold text-gray-900 dark:text-white">Role Requests</h2>
       
       {pendingRequests.length > 0 ? (
         <div className="space-y-4">
@@ -323,7 +323,7 @@ export default function Profile() {
             <div key={request._id} className="bg-white dark:bg-slate-800 rounded-xl shadow-sm p-6">
               <div className="flex items-start justify-between">
                 <div>
-                  <h3 className="font-semibold text-gray-900 dark:text-gray-100">{request.userName}</h3>
+                  <h3 className="font-semibold text-gray-900 dark:text-white">{request.userName}</h3>
                   <p className="text-gray-600 dark:text-gray-400">
                     Requests {request.requestedRole} role in {request.organizationName}
                   </p>
@@ -348,7 +348,7 @@ export default function Profile() {
       ) : (
         <div className="text-center py-12">
           <ClockIcon className="h-16 w-16 text-gray-400 mx-auto mb-4" />
-          <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">No Pending Requests</h3>
+          <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">No Pending Requests</h3>
           <p className="text-gray-600 dark:text-gray-400">
             Role requests will appear here when users apply to join your organizations.
           </p>
@@ -359,16 +359,16 @@ export default function Profile() {
 
   return (
     <Layout searchQuery="" onSearchChange={() => {}}>
-      <div className="min-h-screen bg-gradient-to-br from-[#F8F5EF] to-[#F2EDE6] dark:bg-slate-900">
+      <div className="min-h-screen bg-gradient-to-br from-[#F8F5EF] to-[#F2EDE6] dark:bg-black">
         {/* Header */}
         <div className="bg-white dark:bg-slate-800 shadow-sm px-4 py-4">
           <div className="max-w-4xl mx-auto">
             <div className="flex items-center justify-between">
-              <Link to="/" className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-slate-700">
+              <Link to="/" className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800">
                 <ArrowLeft className="h-5 w-5 text-gray-600 dark:text-gray-300" />
               </Link>
-              <h1 className="text-lg font-semibold text-gray-900 dark:text-gray-100">Profile & Management</h1>
-              <button className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-slate-700">
+              <h1 className="text-lg font-semibold text-gray-900 dark:text-white">Profile & Management</h1>
+              <button className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800">
                 <Settings className="h-5 w-5 text-gray-600 dark:text-gray-300" />
               </button>
             </div>
@@ -376,7 +376,7 @@ export default function Profile() {
         </div>
 
         {/* Tabs */}
-        <div className="bg-white dark:bg-slate-800 border-b border-gray-200 dark:border-slate-700">
+        <div className="bg-white dark:bg-slate-800 border-b border-gray-200 dark:border-gray-700">
           <div className="max-w-4xl mx-auto px-4">
             <div className="flex space-x-8">
               {[
@@ -417,7 +417,7 @@ export default function Profile() {
 
         {/* Action Buttons */}
         {activeTab === 'profile' && (
-          <div className="fixed bottom-6 left-1/2 transform -translate-x-1/2 bg-white dark:bg-slate-800 rounded-xl shadow-lg p-4 border border-gray-200 dark:border-slate-700">
+          <div className="fixed bottom-6 left-1/2 transform -translate-x-1/2 bg-white dark:bg-slate-800 rounded-xl shadow-lg p-4 border border-gray-200 dark:border-gray-700">
             <div className="flex space-x-3">
               <button className="bg-[#1976d2] text-white px-6 py-3 rounded-xl font-medium hover:bg-[#125AA0] transition-colors">
                 Edit Profile
