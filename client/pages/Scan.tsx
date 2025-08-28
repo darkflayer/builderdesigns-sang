@@ -85,13 +85,13 @@ export default function Scan() {
 
   return (
     <Layout searchQuery="" onSearchChange={() => {}}>
-      <div className="min-h-screen bg-gradient-to-br from-[#F8F5EF] to-[#F2EDE6] dark:from-gray-900 dark:to-gray-800">
+      <div className="min-h-screen bg-gradient-to-br from-[#F8F5EF] to-[#F2EDE6] dark:from-black dark:to-gray-900">
         {/* Header */}
         <div className="bg-white dark:bg-gray-800 shadow-sm px-4 lg:px-8 py-6">
           <div className="max-w-4xl mx-auto">
             <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
               <div>
-                <h1 className="text-2xl lg:text-3xl font-bold text-gray-900 dark:text-gray-100">QR Scanner</h1>
+                <h1 className="text-2xl lg:text-3xl font-bold text-gray-900 dark:text-white">QR Scanner</h1>
                 <p className="text-gray-600 dark:text-gray-400 mt-1">
                   Scan QR codes or share your information
                 </p>
@@ -148,7 +148,7 @@ export default function Scan() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
               {/* QR Scanner Section */}
               <div className="space-y-6">
-                <h2 className="text-xl font-bold text-gray-900 dark:text-gray-100">Scan QR Code</h2>
+                <h2 className="text-xl font-bold text-gray-900 dark:text-white">Scan QR Code</h2>
 
                 {/* Scanner Box */}
                 <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg">
@@ -227,7 +227,7 @@ export default function Scan() {
               {/* Connections & Recent Activity */}
               <div className="space-y-6">
                 <div className="flex items-center justify-between">
-                  <h2 className="text-xl font-bold text-gray-900 dark:text-gray-100">Recent Connections</h2>
+                  <h2 className="text-xl font-bold text-gray-900 dark:text-white">Recent Connections</h2>
                   <button
                     onClick={() => setShowConnections(!showConnections)}
                     className="text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 text-sm font-medium"
@@ -249,7 +249,7 @@ export default function Scan() {
                             className="w-12 h-12 rounded-full"
                           />
                           <div className="flex-1">
-                            <h3 className="font-semibold text-gray-900 dark:text-gray-100">
+                            <h3 className="font-semibold text-gray-900 dark:text-white">
                               {connection.name}
                             </h3>
                             <div className="flex items-center space-x-2 mt-1">
@@ -285,7 +285,7 @@ export default function Scan() {
                 {mockConnections.length === 0 && (
                   <div className="bg-white dark:bg-gray-800 rounded-xl p-8 text-center">
                     <User className="h-12 w-12 text-gray-400 mx-auto mb-4" />
-                    <h3 className="text-lg font-medium text-gray-900 dark:text-gray-100 mb-2">
+                    <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-2">
                       No Connections Yet
                     </h3>
                     <p className="text-gray-600 dark:text-gray-400">
@@ -306,7 +306,7 @@ export default function Scan() {
                 {/* Header */}
                 <div className="p-6 border-b border-gray-200 dark:border-gray-700">
                   <div className="flex items-center justify-between">
-                    <h2 className="text-xl font-bold text-gray-900 dark:text-gray-100">Share My QR Code</h2>
+                    <h2 className="text-xl font-bold text-gray-900 dark:text-white">Share My QR Code</h2>
                     <button
                       onClick={() => setShowMyQR(false)}
                       className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors"
@@ -318,7 +318,7 @@ export default function Scan() {
 
                 {/* Category Selection */}
                 <div className="p-6 overflow-y-auto max-h-[calc(90vh-200px)]">
-                  <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">
+                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
                     Select Connection Category
                   </h3>
                   <p className="text-sm text-gray-600 dark:text-gray-400 mb-6">
@@ -340,7 +340,7 @@ export default function Scan() {
                         <div className={`w-12 h-12 rounded-full flex items-center justify-center text-xl mb-2 ${category.color}`}>
                           {category.icon}
                         </div>
-                        <h4 className="font-semibold text-gray-900 dark:text-gray-100 text-sm">
+                        <h4 className="font-semibold text-gray-900 dark:text-white text-sm">
                           {category.name}
                         </h4>
                         <p className="text-xs text-gray-600 dark:text-gray-400 text-center mt-1">
@@ -353,7 +353,7 @@ export default function Scan() {
                   {/* Selected Category Details */}
                   {selectedCategory && (
                     <div className="mt-6 bg-gray-50 dark:bg-gray-700 rounded-xl p-4">
-                      <h4 className="font-semibold text-gray-900 dark:text-gray-100 mb-3">
+                      <h4 className="font-semibold text-gray-900 dark:text-white mb-3">
                         Information that will be shared:
                       </h4>
                       <div className="grid grid-cols-2 gap-2 text-sm">
