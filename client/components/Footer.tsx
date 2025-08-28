@@ -40,7 +40,7 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800 mt-auto">
+    <footer className="bg-white dark:bg-black border-t border-gray-200 dark:border-gray-800 mt-auto">
       <div className="max-w-7xl mx-auto px-4 lg:px-8 py-12">
         {/* Main Footer Content */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8 mb-8">
@@ -77,7 +77,7 @@ export default function Footer() {
 
           {/* Platform Links */}
           <div>
-            <h3 className="text-sm font-semibold text-gray-900 dark:text-gray-100 mb-4 uppercase tracking-wider">
+            <h3 className="text-sm font-semibold text-gray-900 dark:text-white mb-4 uppercase tracking-wider">
               Platform
             </h3>
             <ul className="space-y-3">
@@ -96,7 +96,7 @@ export default function Footer() {
 
           {/* Events Links */}
           <div>
-            <h3 className="text-sm font-semibold text-gray-900 dark:text-gray-100 mb-4 uppercase tracking-wider">
+            <h3 className="text-sm font-semibold text-gray-900 dark:text-white mb-4 uppercase tracking-wider">
               Events
             </h3>
             <ul className="space-y-3">
@@ -115,7 +115,7 @@ export default function Footer() {
 
           {/* Support Links */}
           <div>
-            <h3 className="text-sm font-semibold text-gray-900 dark:text-gray-100 mb-4 uppercase tracking-wider">
+            <h3 className="text-sm font-semibold text-gray-900 dark:text-white mb-4 uppercase tracking-wider">
               Support
             </h3>
             <ul className="space-y-3">
@@ -134,7 +134,7 @@ export default function Footer() {
 
           {/* Legal Links */}
           <div>
-            <h3 className="text-sm font-semibold text-gray-900 dark:text-gray-100 mb-4 uppercase tracking-wider">
+            <h3 className="text-sm font-semibold text-gray-900 dark:text-white mb-4 uppercase tracking-wider">
               Legal
             </h3>
             <ul className="space-y-3">
@@ -156,7 +156,7 @@ export default function Footer() {
         <div className="bg-gradient-to-r from-[#E8F1FC] to-[#D9E4F4] dark:from-[#4F6789]/20 dark:to-[#7DA3D8]/20 rounded-2xl p-6 mb-8">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <div>
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
                 Stay updated with the latest events
               </h3>
               <p className="text-sm text-gray-600 dark:text-gray-400">
