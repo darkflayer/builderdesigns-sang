@@ -445,9 +445,9 @@ export default function Index() {
 
   return (
     <Layout searchQuery={searchQuery} onSearchChange={handleSearchChange}>
-      <div className="min-h-screen bg-gradient-to-br from-[#F8F5EF] to-[#F2EDE6] dark:from-slate-900 dark:to-slate-800 transition-colors duration-300">
+      <div className="min-h-screen bg-gradient-to-br from-[#F8F5EF] to-[#F2EDE6] dark:from-black dark:to-gray-900 transition-colors duration-300">
         {/* Mobile Header - Only shown on mobile */}
-        <div className="lg:hidden bg-gradient-to-b from-[rgba(255,255,255,0.85)] to-[rgba(255,255,255,0.65)] dark:from-[rgba(16,23,40,0.85)] dark:to-[rgba(16,23,40,0.65)] backdrop-blur-xl border-b border-white/20 dark:border-white/10 shadow-sm px-3 py-3">
+        <div className="lg:hidden bg-gradient-to-b from-[rgba(255,255,255,0.85)] to-[rgba(255,255,255,0.65)] dark:from-[rgba(0,0,0,0.85)] dark:to-[rgba(0,0,0,0.65)] backdrop-blur-xl border-b border-white/20 dark:border-white/10 shadow-sm px-3 py-3">
           <div className="max-w-full mx-auto">
             {/* App Brand */}
             <div className="flex items-center justify-center mb-3">
@@ -465,8 +465,8 @@ export default function Index() {
               <div className="flex items-center space-x-2 flex-1">
                 <MapPin className="h-4 w-4 text-[#1976d2] flex-shrink-0" />
                 <div className="min-w-0 flex-1">
-                  <p className="text-xs text-gray-600 dark:text-gray-400">Location</p>
-                  <p className="font-semibold text-gray-900 dark:text-gray-100 text-sm truncate">San Francisco, CA</p>
+                  <p className="text-xs text-gray-600 dark:text-gray-300">Location</p>
+                  <p className="font-semibold text-gray-900 dark:text-white text-sm truncate">San Francisco, CA</p>
                 </div>
               </div>
               <div className="flex items-center space-x-2">
@@ -498,13 +498,13 @@ export default function Index() {
 
             {/* Mobile Search Bar */}
             <div className="relative">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400 dark:text-gray-500" />
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400 dark:text-gray-300" />
               <input
                 type="text"
                 placeholder="Search events..."
                 value={searchQuery}
                 onChange={(e) => handleSearchChange(e.target.value)}
-                className="w-full pl-9 pr-4 py-2.5 bg-white/60 dark:bg-white/5 rounded-xl border border-white/20 dark:border-white/10 focus:ring-2 focus:ring-[#1976d2] focus:bg-white/80 dark:focus:bg-white/10 transition-all text-gray-900 dark:text-gray-100 text-sm placeholder:text-gray-500 dark:placeholder:text-gray-500"
+                className="w-full pl-9 pr-4 py-2.5 bg-white/60 dark:bg-white/5 rounded-xl border border-white/20 dark:border-white/10 focus:ring-2 focus:ring-[#1976d2] focus:bg-white/80 dark:focus:bg-white/10 transition-all text-gray-900 dark:text-white text-sm placeholder:text-gray-500 dark:placeholder:text-gray-500"
               />
             </div>
           </div>
@@ -626,9 +626,9 @@ export default function Index() {
         <div className="px-3 lg:px-8 py-4 lg:py-8">
           <div className="max-w-full lg:max-w-7xl mx-auto">
             <div className="flex flex-col lg:flex-row lg:items-center justify-between mb-4 lg:mb-6 gap-3 lg:gap-4">
-              <h2 className="text-xl lg:text-3xl font-bold text-gray-900 dark:text-gray-100">Discover Events</h2>
+              <h2 className="text-xl lg:text-3xl font-bold text-gray-900 dark:text-white">Discover Events</h2>
               <div className="flex items-center justify-between lg:justify-end space-x-3 lg:space-x-4">
-                <div className="text-xs lg:text-sm text-gray-600 dark:text-gray-400">
+                <div className="text-xs lg:text-sm text-gray-600 dark:text-gray-300">
                   {filteredAndSortedEvents.length} events
                 </div>
                 <FilterSort
@@ -662,7 +662,7 @@ export default function Index() {
         {featuredEvents.length > 0 && (
           <div className="px-3 lg:px-8 py-4">
             <div className="max-w-full lg:max-w-7xl mx-auto">
-              <h2 className="text-lg lg:text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4 lg:mb-6">⭐ Featured Events</h2>
+              <h2 className="text-lg lg:text-2xl font-bold text-gray-900 dark:text-white mb-4 lg:mb-6">⭐ Featured Events</h2>
               <div className="space-y-4 lg:grid lg:grid-cols-2 xl:grid-cols-3 lg:space-y-0 lg:gap-8">
                 {featuredEvents.map((event) => (
                   <div
@@ -700,9 +700,9 @@ export default function Index() {
                     </Link>
                     <div className="p-4 lg:p-6">
                       <Link to={`/event/${event.id}`}>
-                        <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-2 lg:mb-3 text-base lg:text-lg group-hover:text-[#1976d2] transition-colors line-clamp-2">{event.title}</h3>
+                        <h3 className="font-bold text-gray-900 dark:text-white mb-2 lg:mb-3 text-base lg:text-lg group-hover:text-[#1976d2] transition-colors line-clamp-2">{event.title}</h3>
                       </Link>
-                      <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-4 space-y-2 sm:space-y-0 text-xs lg:text-sm text-gray-600 dark:text-gray-400 mb-3 lg:mb-4">
+                      <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-4 space-y-2 sm:space-y-0 text-xs lg:text-sm text-gray-600 dark:text-gray-300 mb-3 lg:mb-4">
                         <div className="flex items-center space-x-1 lg:space-x-2 bg-gray-50 dark:bg-gray-700 rounded-lg px-2 py-1 lg:px-3 lg:py-1.5">
                           <Calendar className="h-3 w-3 lg:h-4 lg:w-4 text-[#1976d2]" />
                           <span className="font-medium text-gray-900 dark:text-gray-200">{event.date}</span>
@@ -712,7 +712,7 @@ export default function Index() {
                           <span className="font-medium text-gray-900 dark:text-gray-200">{event.time}</span>
                         </div>
                       </div>
-                      <div className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-400 mb-4 bg-gray-50 dark:bg-gray-700 rounded-lg px-3 py-1.5">
+                      <div className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-300 mb-4 bg-gray-50 dark:bg-gray-700 rounded-lg px-3 py-1.5">
                         <MapPin className="h-4 w-4 text-[#1976d2]" />
                         <span className="font-medium text-gray-900 dark:text-gray-200">{event.location}</span>
                       </div>
@@ -755,7 +755,7 @@ export default function Index() {
         {/* All Events Section */}
         <div className="px-3 lg:px-8 py-4 lg:py-6">
           <div className="max-w-full lg:max-w-7xl mx-auto">
-            <h2 className="text-lg lg:text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4 lg:mb-6">🎯 All Events</h2>
+            <h2 className="text-lg lg:text-2xl font-bold text-gray-900 dark:text-white mb-4 lg:mb-6">🎯 All Events</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-4 lg:gap-6">
               {regularEvents.map((event) => (
                 <div
@@ -788,9 +788,9 @@ export default function Index() {
                   </Link>
                   <div className="p-4">
                     <Link to={`/event/${event.id}`}>
-                      <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-2 text-sm group-hover:text-[#1976d2] transition-colors line-clamp-2">{event.title}</h3>
+                      <h3 className="font-bold text-gray-900 dark:text-white mb-2 text-sm group-hover:text-[#1976d2] transition-colors line-clamp-2">{event.title}</h3>
                     </Link>
-                    <div className="flex items-center space-x-2 text-xs text-gray-600 dark:text-gray-400 mb-3">
+                    <div className="flex items-center space-x-2 text-xs text-gray-600 dark:text-gray-300 mb-3">
                       <div className="flex items-center space-x-1 bg-gray-50 dark:bg-gray-700 rounded-lg px-2 py-1">
                         <Calendar className="h-3 w-3 text-[#1976d2]" />
                         <span className="font-medium text-gray-900 dark:text-gray-200">{event.date}</span>
@@ -800,7 +800,7 @@ export default function Index() {
                         <span className="font-medium text-gray-900 dark:text-gray-200">{event.time}</span>
                       </div>
                     </div>
-                    <div className="flex items-center space-x-1 text-xs text-gray-600 dark:text-gray-400 mb-3 bg-gray-50 dark:bg-gray-700 rounded-lg px-2 py-1">
+                    <div className="flex items-center space-x-1 text-xs text-gray-600 dark:text-gray-300 mb-3 bg-gray-50 dark:bg-gray-700 rounded-lg px-2 py-1">
                       <MapPin className="h-3 w-3 text-[#1976d2]" />
                       <span className="font-medium text-gray-900 dark:text-gray-200 truncate">{event.location}</span>
                     </div>
@@ -856,8 +856,8 @@ export default function Index() {
                 <div className="w-16 h-16 bg-gradient-to-br from-[#7DA3D8] to-[#4F6789] rounded-2xl flex items-center justify-center mx-auto mb-6">
                   <Calendar className="h-8 w-8 text-white" />
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-3">No events found</h3>
-                <p className="text-gray-600 dark:text-gray-400 max-w-sm mx-auto">
+                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">No events found</h3>
+                <p className="text-gray-600 dark:text-gray-300 max-w-sm mx-auto">
                   Try adjusting your search or category filter to discover amazing events in your area.
                 </p>
                 <button 
