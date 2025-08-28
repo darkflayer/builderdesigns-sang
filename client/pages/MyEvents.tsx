@@ -1,6 +1,16 @@
 import { useState, useMemo } from "react";
 import { Link } from "react-router-dom";
-import { Calendar, Clock, MapPin, Users, Star, CheckCircle, XCircle, AlertCircle, Filter } from "lucide-react";
+import {
+  Calendar,
+  Clock,
+  MapPin,
+  Users,
+  Star,
+  CheckCircle,
+  XCircle,
+  AlertCircle,
+  Filter,
+} from "lucide-react";
 import Layout from "@/components/Layout";
 import { getUserRegisteredEvents } from "@/data/mockRegistrations";
 import { cn } from "@/lib/utils";
@@ -14,7 +24,8 @@ const events = [
     location: "San Francisco, CA",
     date: "Dec 15, 2024",
     time: "9:00 AM",
-    image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=400&h=200&fit=crop",
+    image:
+      "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=400&h=200&fit=crop",
     attendees: 250,
     rating: 4.8,
     registrationType: "open" as const,
@@ -27,7 +38,8 @@ const events = [
     location: "New York, NY",
     date: "Dec 18, 2024",
     time: "2:00 PM",
-    image: "https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=400&h=200&fit=crop",
+    image:
+      "https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=400&h=200&fit=crop",
     attendees: 85,
     rating: 4.6,
     registrationType: "approval_required" as const,
@@ -40,7 +52,8 @@ const events = [
     location: "Austin, TX",
     date: "Dec 22, 2024",
     time: "6:00 PM",
-    image: "https://images.unsplash.com/photo-1515187029135-18ee286d815b?w=400&h=200&fit=crop",
+    image:
+      "https://images.unsplash.com/photo-1515187029135-18ee286d815b?w=400&h=200&fit=crop",
     attendees: 180,
     rating: 4.7,
     registrationType: "approval_required" as const,
@@ -53,7 +66,8 @@ const events = [
     location: "Seattle, WA",
     date: "Dec 25, 2024",
     time: "10:00 AM",
-    image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=400&h=200&fit=crop",
+    image:
+      "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=400&h=200&fit=crop",
     attendees: 320,
     rating: 4.9,
     registrationType: "approval_required" as const,
@@ -66,7 +80,8 @@ const events = [
     location: "Los Angeles, CA",
     date: "Dec 28, 2024",
     time: "1:00 PM",
-    image: "https://images.unsplash.com/photo-1606983340126-99ab4feaa64a?w=400&h=200&fit=crop",
+    image:
+      "https://images.unsplash.com/photo-1606983340126-99ab4feaa64a?w=400&h=200&fit=crop",
     attendees: 45,
     rating: 4.7,
     registrationType: "open" as const,
@@ -75,35 +90,39 @@ const events = [
   },
 ];
 
-type StatusFilter = 'all' | 'registered' | 'pending' | 'approved' | 'rejected';
+type StatusFilter = "all" | "registered" | "pending" | "approved" | "rejected";
 
 export default function MyEvents() {
   const { isAuthenticated } = useAuth();
-  const [statusFilter, setStatusFilter] = useState<StatusFilter>('all');
+  const [statusFilter, setStatusFilter] = useState<StatusFilter>("all");
   const userRegistrations = getUserRegisteredEvents();
 
   // Get events with registration status
   const myEventsWithStatus = useMemo(() => {
-    return userRegistrations.map(registration => {
-      const event = events.find(e => e.id === registration.eventId);
-      return event ? { ...event, registration } : null;
-    }).filter(Boolean);
+    return userRegistrations
+      .map((registration) => {
+        const event = events.find((e) => e.id === registration.eventId);
+        return event ? { ...event, registration } : null;
+      })
+      .filter(Boolean);
   }, [userRegistrations]);
 
   // Filter by status
   const filteredEvents = useMemo(() => {
-    if (statusFilter === 'all') return myEventsWithStatus;
-    return myEventsWithStatus.filter(event => event?.registration.status === statusFilter);
+    if (statusFilter === "all") return myEventsWithStatus;
+    return myEventsWithStatus.filter(
+      (event) => event?.registration.status === statusFilter,
+    );
   }, [myEventsWithStatus, statusFilter]);
 
   const getStatusIcon = (status: string) => {
     switch (status) {
-      case 'registered':
-      case 'approved':
+      case "registered":
+      case "approved":
         return <CheckCircle className="h-4 w-4 text-green-600" />;
-      case 'pending':
+      case "pending":
         return <AlertCircle className="h-4 w-4 text-orange-600" />;
-      case 'rejected':
+      case "rejected":
         return <XCircle className="h-4 w-4 text-red-600" />;
       default:
         return null;
@@ -112,28 +131,28 @@ export default function MyEvents() {
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'registered':
-      case 'approved':
-        return 'bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300';
-      case 'pending':
-        return 'bg-orange-100 dark:bg-orange-900/30 text-orange-800 dark:text-orange-300';
-      case 'rejected':
-        return 'bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-300';
+      case "registered":
+      case "approved":
+        return "bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300";
+      case "pending":
+        return "bg-orange-100 dark:bg-orange-900/30 text-orange-800 dark:text-orange-300";
+      case "rejected":
+        return "bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-300";
       default:
-        return 'bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-300';
+        return "bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-300";
     }
   };
 
   const getStatusText = (status: string) => {
     switch (status) {
-      case 'registered':
-        return 'Registered';
-      case 'pending':
-        return 'Pending Approval';
-      case 'approved':
-        return 'Approved';
-      case 'rejected':
-        return 'Not Approved';
+      case "registered":
+        return "Registered";
+      case "pending":
+        return "Pending Approval";
+      case "approved":
+        return "Approved";
+      case "rejected":
+        return "Not Approved";
       default:
         return status;
     }
@@ -141,13 +160,15 @@ export default function MyEvents() {
 
   return (
     <Layout searchQuery="" onSearchChange={() => {}}>
-      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
+      <div className="min-h-screen bg-gradient-to-br from-[#F8F5EF] to-[#F2EDE6] dark:from-black dark:to-gray-900">
         {/* Header */}
         <div className="bg-white dark:bg-gray-800 shadow-sm px-4 lg:px-8 py-6">
           <div className="max-w-7xl mx-auto">
             <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
               <div>
-                <h1 className="text-2xl lg:text-3xl font-bold text-gray-900 dark:text-gray-100">My Events</h1>
+                <h1 className="text-2xl lg:text-3xl font-bold text-gray-900 dark:text-white">
+                  My Events
+                </h1>
                 <p className="text-gray-600 dark:text-gray-400 mt-1">
                   Manage your event registrations and track approval status
                 </p>
@@ -158,8 +179,10 @@ export default function MyEvents() {
                 <Filter className="h-4 w-4 text-gray-500" />
                 <select
                   value={statusFilter}
-                  onChange={(e) => setStatusFilter(e.target.value as StatusFilter)}
-                  className="px-3 py-2 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-purple-500"
+                  onChange={(e) =>
+                    setStatusFilter(e.target.value as StatusFilter)
+                  }
+                  className="px-3 py-2 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#1976d2]"
                 >
                   <option value="all">All Status</option>
                   <option value="registered">Registered</option>
@@ -193,20 +216,28 @@ export default function MyEvents() {
 
                         {/* Registration Status Badge */}
                         <div className="absolute top-3 left-3">
-                          <div className={`flex items-center space-x-1 px-3 py-1.5 rounded-full text-xs font-semibold shadow-lg ${getStatusColor(event!.registration.status)}`}>
+                          <div
+                            className={`flex items-center space-x-1 px-3 py-1.5 rounded-full text-xs font-semibold shadow-lg ${getStatusColor(event!.registration.status)}`}
+                          >
                             {getStatusIcon(event!.registration.status)}
-                            <span>{getStatusText(event!.registration.status)}</span>
+                            <span>
+                              {getStatusText(event!.registration.status)}
+                            </span>
                           </div>
                         </div>
 
                         {/* Registration Type */}
                         <div className="absolute top-3 right-3">
-                          <span className={`px-2.5 py-1 rounded-full text-xs font-bold shadow-lg ${
-                            event!.registrationType === 'open'
-                              ? 'text-green-700 bg-green-100/95'
-                              : 'text-orange-700 bg-orange-100/95'
-                          }`}>
-                            {event!.registrationType === 'open' ? 'Open' : 'Approval Required'}
+                          <span
+                            className={`px-2.5 py-1 rounded-full text-xs font-bold shadow-lg ${
+                              event!.registrationType === "open"
+                                ? "text-green-700 bg-green-100/95"
+                                : "text-orange-700 bg-orange-100/95"
+                            }`}
+                          >
+                            {event!.registrationType === "open"
+                              ? "Open"
+                              : "Approval Required"}
                           </span>
                         </div>
                       </div>
@@ -214,38 +245,52 @@ export default function MyEvents() {
 
                     <div className="p-6">
                       <Link to={`/event/${event!.id}`}>
-                        <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-3 text-lg group-hover:text-purple-600 transition-colors">
+                        <h3 className="font-bold text-gray-900 dark:text-white mb-3 text-lg group-hover:text-[#1976d2] transition-colors">
                           {event!.title}
                         </h3>
                       </Link>
 
                       <div className="flex items-center space-x-4 text-sm text-gray-600 dark:text-gray-400 mb-4">
                         <div className="flex items-center space-x-2 bg-gray-50 dark:bg-gray-700 rounded-lg px-3 py-1.5">
-                          <Calendar className="h-4 w-4 text-purple-600" />
-                          <span className="font-medium text-gray-900 dark:text-gray-200">{event!.date}</span>
+                          <Calendar className="h-4 w-4 text-[#1976d2]" />
+                          <span className="font-medium text-gray-900 dark:text-gray-200">
+                            {event!.date}
+                          </span>
                         </div>
                         <div className="flex items-center space-x-2 bg-gray-50 dark:bg-gray-700 rounded-lg px-3 py-1.5">
-                          <Clock className="h-4 w-4 text-purple-600" />
-                          <span className="font-medium text-gray-900 dark:text-gray-200">{event!.time}</span>
+                          <Clock className="h-4 w-4 text-[#1976d2]" />
+                          <span className="font-medium text-gray-900 dark:text-gray-200">
+                            {event!.time}
+                          </span>
                         </div>
                       </div>
 
                       <div className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-400 mb-4 bg-gray-50 dark:bg-gray-700 rounded-lg px-3 py-1.5">
-                        <MapPin className="h-4 w-4 text-purple-600" />
-                        <span className="font-medium text-gray-900 dark:text-gray-200">{event!.location}</span>
+                        <MapPin className="h-4 w-4 text-[#1976d2]" />
+                        <span className="font-medium text-gray-900 dark:text-gray-200">
+                          {event!.location}
+                        </span>
                       </div>
 
                       {/* Registration Details */}
                       <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-3 mb-4">
                         <div className="text-xs text-gray-600 dark:text-gray-400">
                           <p className="mb-1">
-                            <span className="font-medium">Registered:</span> {new Date(event!.registration.registrationDate).toLocaleDateString()}
+                            <span className="font-medium">Registered:</span>{" "}
+                            {new Date(
+                              event!.registration.registrationDate,
+                            ).toLocaleDateString()}
                           </p>
                           {event!.registration.approvalDate && (
                             <p className="mb-1">
                               <span className="font-medium">
-                                {event!.registration.status === 'approved' ? 'Approved:' : 'Confirmed:'}
-                              </span> {new Date(event!.registration.approvalDate).toLocaleDateString()}
+                                {event!.registration.status === "approved"
+                                  ? "Approved:"
+                                  : "Confirmed:"}
+                              </span>{" "}
+                              {new Date(
+                                event!.registration.approvalDate,
+                              ).toLocaleDateString()}
                             </p>
                           )}
                           {event!.registration.notes && (
@@ -260,11 +305,15 @@ export default function MyEvents() {
                         <div className="flex items-center space-x-4">
                           <div className="flex items-center space-x-1">
                             <Users className="h-4 w-4 text-gray-500" />
-                            <span className="text-sm font-medium text-gray-700 dark:text-gray-300">{event!.attendees}</span>
+                            <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                              {event!.attendees}
+                            </span>
                           </div>
                           <div className="flex items-center space-x-1">
                             <Star className="h-4 w-4 text-yellow-500 fill-current" />
-                            <span className="text-sm font-medium text-gray-700 dark:text-gray-300">{event!.rating}</span>
+                            <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                              {event!.rating}
+                            </span>
                           </div>
                         </div>
 
@@ -284,18 +333,19 @@ export default function MyEvents() {
               <div className="text-center py-12">
                 <div className="bg-white dark:bg-gray-800 rounded-2xl p-12 shadow-lg max-w-md mx-auto">
                   <Calendar className="h-16 w-16 text-gray-400 mx-auto mb-6" />
-                  <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-3">
-                    {statusFilter === 'all' ? 'No Registered Events' : `No ${statusFilter.charAt(0).toUpperCase() + statusFilter.slice(1)} Events`}
+                  <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">
+                    {statusFilter === "all"
+                      ? "No Registered Events"
+                      : `No ${statusFilter.charAt(0).toUpperCase() + statusFilter.slice(1)} Events`}
                   </h3>
                   <p className="text-gray-600 dark:text-gray-400 mb-6">
-                    {statusFilter === 'all'
+                    {statusFilter === "all"
                       ? "You haven't registered for any events yet. Discover amazing events to join!"
-                      : `You don't have any ${statusFilter} events. Try changing the filter or explore new events.`
-                    }
+                      : `You don't have any ${statusFilter} events. Try changing the filter or explore new events.`}
                   </p>
                   <Link
                     to="/"
-                    className="inline-flex items-center bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white px-6 py-3 rounded-xl font-semibold transition-all duration-200"
+                    className="inline-flex items-center bg-gradient-to-r from-[#7DA3D8] to-[#4F6789] hover:opacity-90 text-white px-6 py-3 rounded-xl font-semibold transition-all duration-200"
                   >
                     Discover Events
                   </Link>

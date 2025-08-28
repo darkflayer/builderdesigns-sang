@@ -1,8 +1,23 @@
 import { useState, useMemo, useEffect } from "react";
-import { Search, MapPin, Bell, User, Calendar, Clock, Users, Star, Moon, Sun } from "lucide-react";
+import {
+  Search,
+  MapPin,
+  Bell,
+  User,
+  Calendar,
+  Clock,
+  Users,
+  Star,
+  Moon,
+  Sun,
+} from "lucide-react";
 import { Link } from "react-router-dom";
 import Layout from "@/components/Layout";
-import FilterSort, { SortOption, SortDirection, FilterState } from "@/components/FilterSort";
+import FilterSort, {
+  SortOption,
+  SortDirection,
+  FilterState,
+} from "@/components/FilterSort";
 import Pagination from "@/components/Pagination";
 import RegistrationModal from "@/components/RegistrationModal";
 import { cn } from "@/lib/utils";
@@ -37,13 +52,15 @@ const megaEvents = [
     location: "San Francisco, CA",
     date: "Dec 15, 2024",
     time: "9:00 AM",
-    image: "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?w=800&h=400&fit=crop",
+    image:
+      "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?w=800&h=400&fit=crop",
     attendees: 250,
     rating: 4.8,
     registrationType: "open" as const,
     category: "Technology",
     isMega: true,
-    description: "The premier technology conference featuring industry leaders, cutting-edge innovations, and networking opportunities.",
+    description:
+      "The premier technology conference featuring industry leaders, cutting-edge innovations, and networking opportunities.",
     hasSubEvents: true,
     subEvents: [
       {
@@ -55,7 +72,7 @@ const megaEvents = [
         maxAttendees: 50,
         registrationType: "open" as const,
         eventManager: "Dr. Sarah Chen",
-        eventCoordinator: "Alex Rodriguez"
+        eventCoordinator: "Alex Rodriguez",
       },
       {
         id: "sub_1_2",
@@ -66,9 +83,9 @@ const megaEvents = [
         maxAttendees: 100,
         registrationType: "approval_required" as const,
         eventManager: "Michael Zhang",
-        eventCoordinator: "Lisa Park"
-      }
-    ] as SubEvent[]
+        eventCoordinator: "Lisa Park",
+      },
+    ] as SubEvent[],
   },
   {
     id: 4, // Use actual event ID
@@ -76,13 +93,15 @@ const megaEvents = [
     location: "Austin, TX",
     date: "Dec 22, 2024",
     time: "6:00 PM",
-    image: "https://images.unsplash.com/photo-1511578314322-379afb476865?w=800&h=400&fit=crop",
+    image:
+      "https://images.unsplash.com/photo-1511578314322-379afb476865?w=800&h=400&fit=crop",
     attendees: 180,
     rating: 4.7,
     registrationType: "approval_required" as const,
     category: "Business",
     isMega: true,
-    description: "Premier networking event bringing together entrepreneurs, investors, and innovators.",
+    description:
+      "Premier networking event bringing together entrepreneurs, investors, and innovators.",
     hasSubEvents: true,
     subEvents: [
       {
@@ -94,7 +113,7 @@ const megaEvents = [
         maxAttendees: 30,
         registrationType: "approval_required" as const,
         eventManager: "Jennifer Walsh",
-        eventCoordinator: "David Kim"
+        eventCoordinator: "David Kim",
       },
       {
         id: "sub_4_2",
@@ -105,9 +124,9 @@ const megaEvents = [
         maxAttendees: 150,
         registrationType: "open" as const,
         eventManager: "Tom Wilson",
-        eventCoordinator: "Maria Garcia"
-      }
-    ] as SubEvent[]
+        eventCoordinator: "Maria Garcia",
+      },
+    ] as SubEvent[],
   },
   {
     id: 3, // Use actual event ID
@@ -115,15 +134,17 @@ const megaEvents = [
     location: "Chicago, IL",
     date: "Dec 20, 2024",
     time: "8:00 PM",
-    image: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=800&h=400&fit=crop",
+    image:
+      "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=800&h=400&fit=crop",
     attendees: 120,
     rating: 4.9,
     registrationType: "open" as const,
     category: "Music",
     isMega: true,
-    description: "An intimate evening of world-class jazz performances featuring renowned artists.",
-    hasSubEvents: false
-  }
+    description:
+      "An intimate evening of world-class jazz performances featuring renowned artists.",
+    hasSubEvents: false,
+  },
 ];
 
 const events = [
@@ -133,7 +154,8 @@ const events = [
     location: "San Francisco, CA",
     date: "Dec 15, 2024",
     time: "9:00 AM",
-    image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=400&h=200&fit=crop",
+    image:
+      "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=400&h=200&fit=crop",
     attendees: 250,
     rating: 4.8,
     registrationType: "open" as const,
@@ -150,7 +172,7 @@ const events = [
         maxAttendees: 50,
         registrationType: "open" as const,
         eventManager: "Dr. Sarah Chen",
-        eventCoordinator: "Alex Rodriguez"
+        eventCoordinator: "Alex Rodriguez",
       },
       {
         id: "sub_1_2",
@@ -161,9 +183,9 @@ const events = [
         maxAttendees: 100,
         registrationType: "approval_required" as const,
         eventManager: "Michael Zhang",
-        eventCoordinator: "Lisa Park"
-      }
-    ] as SubEvent[]
+        eventCoordinator: "Lisa Park",
+      },
+    ] as SubEvent[],
   },
   {
     id: 2,
@@ -171,7 +193,8 @@ const events = [
     location: "New York, NY",
     date: "Dec 18, 2024",
     time: "2:00 PM",
-    image: "https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=400&h=200&fit=crop",
+    image:
+      "https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=400&h=200&fit=crop",
     attendees: 85,
     rating: 4.6,
     registrationType: "approval_required" as const,
@@ -185,7 +208,8 @@ const events = [
     location: "Chicago, IL",
     date: "Dec 20, 2024",
     time: "8:00 PM",
-    image: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=400&h=200&fit=crop",
+    image:
+      "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=400&h=200&fit=crop",
     attendees: 120,
     rating: 4.9,
     registrationType: "open" as const,
@@ -199,7 +223,8 @@ const events = [
     location: "Austin, TX",
     date: "Dec 22, 2024",
     time: "6:00 PM",
-    image: "https://images.unsplash.com/photo-1515187029135-18ee286d815b?w=400&h=200&fit=crop",
+    image:
+      "https://images.unsplash.com/photo-1515187029135-18ee286d815b?w=400&h=200&fit=crop",
     attendees: 180,
     rating: 4.7,
     registrationType: "approval_required" as const,
@@ -216,7 +241,7 @@ const events = [
         maxAttendees: 30,
         registrationType: "approval_required" as const,
         eventManager: "Jennifer Walsh",
-        eventCoordinator: "David Kim"
+        eventCoordinator: "David Kim",
       },
       {
         id: "sub_4_2",
@@ -227,9 +252,9 @@ const events = [
         maxAttendees: 150,
         registrationType: "open" as const,
         eventManager: "Tom Wilson",
-        eventCoordinator: "Maria Garcia"
-      }
-    ] as SubEvent[]
+        eventCoordinator: "Maria Garcia",
+      },
+    ] as SubEvent[],
   },
   {
     id: 5,
@@ -237,7 +262,8 @@ const events = [
     location: "Seattle, WA",
     date: "Dec 25, 2024",
     time: "10:00 AM",
-    image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=400&h=200&fit=crop",
+    image:
+      "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=400&h=200&fit=crop",
     attendees: 320,
     rating: 4.9,
     registrationType: "approval_required" as const,
@@ -251,7 +277,8 @@ const events = [
     location: "Los Angeles, CA",
     date: "Dec 28, 2024",
     time: "1:00 PM",
-    image: "https://images.unsplash.com/photo-1606983340126-99ab4feaa64a?w=400&h=200&fit=crop",
+    image:
+      "https://images.unsplash.com/photo-1606983340126-99ab4feaa64a?w=400&h=200&fit=crop",
     attendees: 45,
     rating: 4.7,
     registrationType: "open" as const,
@@ -265,7 +292,8 @@ const events = [
     location: "Miami, FL",
     date: "Dec 30, 2024",
     time: "7:00 PM",
-    image: "https://images.unsplash.com/photo-1546519638-68e109498ffc?w=400&h=200&fit=crop",
+    image:
+      "https://images.unsplash.com/photo-1546519638-68e109498ffc?w=400&h=200&fit=crop",
     attendees: 15000,
     rating: 4.8,
     registrationType: "approval_required" as const,
@@ -279,7 +307,8 @@ const events = [
     location: "Portland, OR",
     date: "Jan 2, 2025",
     time: "12:00 PM",
-    image: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=400&h=200&fit=crop",
+    image:
+      "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=400&h=200&fit=crop",
     attendees: 500,
     rating: 4.6,
     registrationType: "open" as const,
@@ -293,7 +322,8 @@ const events = [
     location: "Boston, MA",
     date: "Jan 5, 2025",
     time: "8:00 PM",
-    image: "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=400&h=200&fit=crop",
+    image:
+      "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=400&h=200&fit=crop",
     attendees: 800,
     rating: 4.9,
     registrationType: "open" as const,
@@ -307,7 +337,8 @@ const events = [
     location: "New York, NY",
     date: "Jan 8, 2025",
     time: "10:00 AM",
-    image: "https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?w=400&h=200&fit=crop",
+    image:
+      "https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?w=400&h=200&fit=crop",
     attendees: 200,
     rating: 4.5,
     registrationType: "approval_required" as const,
@@ -323,17 +354,21 @@ export default function Index() {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [currentPage, setCurrentPage] = useState(1);
-  const [sortConfig, setSortConfig] = useState<{ option: SortOption; direction: SortDirection }>({
-    option: 'date',
-    direction: 'asc'
+  const [sortConfig, setSortConfig] = useState<{
+    option: SortOption;
+    direction: SortDirection;
+  }>({
+    option: "date",
+    direction: "asc",
   });
   const [filters, setFilters] = useState<FilterState>({
-    priceRange: 'all',
-    dateRange: 'all',
-    cities: []
+    priceRange: "all",
+    dateRange: "all",
+    cities: [],
   });
   const [showRegistrationModal, setShowRegistrationModal] = useState(false);
-  const [selectedEventForRegistration, setSelectedEventForRegistration] = useState<any>(null);
+  const [selectedEventForRegistration, setSelectedEventForRegistration] =
+    useState<any>(null);
   const [currentMegaEvent, setCurrentMegaEvent] = useState(0);
   const { isAuthenticated } = useAuth();
   const { theme, toggleTheme } = useTheme();
@@ -351,57 +386,65 @@ export default function Index() {
   const filteredAndSortedEvents = useMemo(() => {
     let filtered = events.filter((event) => {
       // Search filter
-      const matchesSearch = 
+      const matchesSearch =
         event.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
         event.location.toLowerCase().includes(searchQuery.toLowerCase()) ||
         event.category.toLowerCase().includes(searchQuery.toLowerCase());
-      
+
       // Category filter
-      const matchesCategory = selectedCategory === "All" || event.category === selectedCategory;
-      
+      const matchesCategory =
+        selectedCategory === "All" || event.category === selectedCategory;
+
       // Registration type filter
       let matchesRegistrationType = true;
-      if (filters.priceRange === 'open') {
-        matchesRegistrationType = event.registrationType === 'open';
-      } else if (filters.priceRange === 'approval_required') {
-        matchesRegistrationType = event.registrationType === 'approval_required';
+      if (filters.priceRange === "open") {
+        matchesRegistrationType = event.registrationType === "open";
+      } else if (filters.priceRange === "approval_required") {
+        matchesRegistrationType =
+          event.registrationType === "approval_required";
       }
-      
+
       // City filter
-      const matchesCity = filters.cities.length === 0 || filters.cities.includes(event.location);
-      
-      return matchesSearch && matchesCategory && matchesRegistrationType && matchesCity;
+      const matchesCity =
+        filters.cities.length === 0 || filters.cities.includes(event.location);
+
+      return (
+        matchesSearch &&
+        matchesCategory &&
+        matchesRegistrationType &&
+        matchesCity
+      );
     });
 
     // Sort events
     filtered.sort((a, b) => {
       let comparison = 0;
-      
+
       switch (sortConfig.option) {
-        case 'name':
+        case "name":
           comparison = a.title.localeCompare(b.title);
           break;
-        case 'date':
+        case "date":
           comparison = a.date.localeCompare(b.date);
           break;
-        case 'price':
+        case "price":
           // Sort by registration type (open first, then approval required)
-          const typeOrderA = a.registrationType === 'open' ? 0 : 1;
-          const typeOrderB = b.registrationType === 'open' ? 0 : 1;
+          const typeOrderA = a.registrationType === "open" ? 0 : 1;
+          const typeOrderB = b.registrationType === "open" ? 0 : 1;
           comparison = typeOrderA - typeOrderB;
           break;
-        case 'location':
+        case "location":
           comparison = a.location.localeCompare(b.location);
           break;
-        case 'attendees':
+        case "attendees":
           comparison = a.attendees - b.attendees;
           break;
-        case 'rating':
+        case "rating":
           comparison = a.rating - b.rating;
           break;
       }
-      
-      return sortConfig.direction === 'asc' ? comparison : -comparison;
+
+      return sortConfig.direction === "asc" ? comparison : -comparison;
     });
 
     return filtered;
@@ -411,11 +454,11 @@ export default function Index() {
   const totalPages = Math.ceil(filteredAndSortedEvents.length / ITEMS_PER_PAGE);
   const paginatedEvents = filteredAndSortedEvents.slice(
     (currentPage - 1) * ITEMS_PER_PAGE,
-    currentPage * ITEMS_PER_PAGE
+    currentPage * ITEMS_PER_PAGE,
   );
 
-  const featuredEvents = paginatedEvents.filter(event => event.featured);
-  const regularEvents = paginatedEvents.filter(event => !event.featured);
+  const featuredEvents = paginatedEvents.filter((event) => event.featured);
+  const regularEvents = paginatedEvents.filter((event) => !event.featured);
 
   // Event handlers
   const handleFiltersChange = (newFilters: FilterState) => {
@@ -445,17 +488,17 @@ export default function Index() {
 
   return (
     <Layout searchQuery={searchQuery} onSearchChange={handleSearchChange}>
-      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-slate-900 dark:to-slate-800 transition-colors duration-300">
+      <div className="min-h-screen bg-gradient-to-br from-[#F8F5EF] to-[#F2EDE6] dark:from-black dark:to-gray-900 transition-colors duration-300">
         {/* Mobile Header - Only shown on mobile */}
-        <div className="lg:hidden bg-white/95 dark:bg-slate-900/95 backdrop-blur-md shadow-sm px-3 py-3">
+        <div className="lg:hidden bg-gradient-to-b from-[rgba(255,255,255,0.85)] to-[rgba(255,255,255,0.65)] dark:from-[rgba(0,0,0,0.85)] dark:to-[rgba(0,0,0,0.65)] backdrop-blur-xl border-b border-white/20 dark:border-white/10 shadow-sm px-3 py-3">
           <div className="max-w-full mx-auto">
             {/* App Brand */}
             <div className="flex items-center justify-center mb-3">
               <div className="flex items-center space-x-2">
-                <div className="w-6 h-6 bg-gradient-to-br from-purple-600 to-blue-600 rounded-lg flex items-center justify-center">
+                <div className="w-6 h-6 bg-gradient-to-br from-[#7DA3D8] to-[#4F6789] rounded-lg flex items-center justify-center">
                   <Calendar className="h-4 w-4 text-white" />
                 </div>
-                <span className="text-lg font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
+                <span className="text-lg font-bold bg-gradient-to-r from-[#7DA3D8] to-[#4F6789] bg-clip-text text-transparent">
                   Sang
                 </span>
               </div>
@@ -463,33 +506,43 @@ export default function Index() {
 
             <div className="flex items-center justify-between mb-3">
               <div className="flex items-center space-x-2 flex-1">
-                <MapPin className="h-4 w-4 text-purple-600 flex-shrink-0" />
+                <MapPin className="h-4 w-4 text-[#1976d2] flex-shrink-0" />
                 <div className="min-w-0 flex-1">
-                  <p className="text-xs text-gray-600 dark:text-gray-400">Location</p>
-                  <p className="font-semibold text-gray-900 dark:text-gray-100 text-sm truncate">San Francisco, CA</p>
+                  <p className="text-xs text-gray-600 dark:text-gray-300">
+                    Location
+                  </p>
+                  <p className="font-semibold text-gray-900 dark:text-white text-sm truncate">
+                    San Francisco, CA
+                  </p>
                 </div>
               </div>
               <div className="flex items-center space-x-2">
                 <button
                   onClick={toggleTheme}
-                  className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+                  className="p-2 rounded-lg bg-white/60 dark:bg-white/5 hover:bg-white/80 dark:hover:bg-white/10 ring-1 ring-white/20 dark:ring-white/10 transition-colors"
                 >
-                  {theme === 'dark' ? (
+                  {theme === "dark" ? (
                     <Sun className="h-4 w-4 text-gray-600 dark:text-gray-300" />
                   ) : (
                     <Moon className="h-4 w-4 text-gray-600 dark:text-gray-300" />
                   )}
                 </button>
-                <button className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 relative">
+                <button className="p-2 rounded-lg bg-white/60 dark:bg-white/5 relative ring-1 ring-white/20 dark:ring-white/10">
                   <Bell className="h-4 w-4 text-gray-600 dark:text-gray-300" />
                   <div className="absolute -top-1 -right-1 h-2 w-2 bg-red-500 rounded-full"></div>
                 </button>
                 {isAuthenticated ? (
-                  <Link to="/profile" className="p-2 rounded-lg bg-gradient-to-br from-purple-500 to-blue-600">
+                  <Link
+                    to="/profile"
+                    className="p-2 rounded-lg bg-gradient-to-br from-[#7DA3D8] to-[#4F6789]"
+                  >
                     <User className="h-4 w-4 text-white" />
                   </Link>
                 ) : (
-                  <Link to="/auth" className="bg-gradient-to-r from-purple-600 to-blue-600 text-white px-3 py-2 rounded-lg text-xs font-semibold">
+                  <Link
+                    to="/auth"
+                    className="bg-gradient-to-r from-[#7DA3D8] to-[#4F6789] text-white px-3 py-2 rounded-lg text-xs font-semibold"
+                  >
                     Login
                   </Link>
                 )}
@@ -498,13 +551,13 @@ export default function Index() {
 
             {/* Mobile Search Bar */}
             <div className="relative">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400 dark:text-gray-500" />
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400 dark:text-gray-300" />
               <input
                 type="text"
                 placeholder="Search events..."
                 value={searchQuery}
                 onChange={(e) => handleSearchChange(e.target.value)}
-                className="w-full pl-9 pr-4 py-2.5 bg-gray-100 dark:bg-gray-800 rounded-xl border-0 focus:ring-2 focus:ring-purple-500 focus:bg-white dark:focus:bg-gray-700 transition-all text-gray-900 dark:text-gray-100 text-sm"
+                className="w-full pl-9 pr-4 py-2.5 bg-white/60 dark:bg-white/5 rounded-xl border border-white/20 dark:border-white/10 focus:ring-2 focus:ring-[#1976d2] focus:bg-white/80 dark:focus:bg-white/10 transition-all text-gray-900 dark:text-white text-sm placeholder:text-gray-500 dark:placeholder:text-gray-500"
               />
             </div>
           </div>
@@ -523,8 +576,8 @@ export default function Index() {
                     className={cn(
                       "w-2 h-2 lg:w-3 lg:h-3 rounded-full transition-all duration-300",
                       currentMegaEvent === index
-                        ? "bg-gradient-to-r from-purple-600 to-blue-600 scale-125"
-                        : "bg-gray-300 dark:bg-gray-600 hover:bg-gray-400 dark:hover:bg-gray-500"
+                        ? "bg-gradient-to-r from-[#7DA3D8] to-[#4F6789] scale-125"
+                        : "bg-gray-300 dark:bg-gray-600 hover:bg-gray-400 dark:hover:bg-gray-500",
                     )}
                   />
                 ))}
@@ -568,23 +621,31 @@ export default function Index() {
                             <div className="flex flex-wrap items-center gap-3 lg:gap-4 mb-4 lg:mb-6">
                               <div className="flex items-center space-x-2 bg-white/20 backdrop-blur-sm rounded-lg px-3 py-2">
                                 <Calendar className="h-4 w-4 lg:h-5 lg:w-5 text-white" />
-                                <span className="text-white font-medium text-sm lg:text-base">{event.date}</span>
+                                <span className="text-white font-medium text-sm lg:text-base">
+                                  {event.date}
+                                </span>
                               </div>
                               <div className="flex items-center space-x-2 bg-white/20 backdrop-blur-sm rounded-lg px-3 py-2">
                                 <MapPin className="h-4 w-4 lg:h-5 lg:w-5 text-white" />
-                                <span className="text-white font-medium text-sm lg:text-base">{event.location}</span>
+                                <span className="text-white font-medium text-sm lg:text-base">
+                                  {event.location}
+                                </span>
                               </div>
                               <div className="flex items-center space-x-2 bg-white/20 backdrop-blur-sm rounded-lg px-3 py-2">
                                 <Users className="h-4 w-4 lg:h-5 lg:w-5 text-white" />
-                                <span className="text-white font-medium text-sm lg:text-base">{event.attendees.toLocaleString()}</span>
+                                <span className="text-white font-medium text-sm lg:text-base">
+                                  {event.attendees.toLocaleString()}
+                                </span>
                               </div>
                             </div>
                             <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-3 sm:space-y-0 sm:space-x-4">
                               <button
                                 onClick={() => handleRegisterForEvent(event)}
-                                className="w-full sm:w-auto bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white px-6 py-3 lg:px-8 lg:py-4 rounded-xl lg:rounded-2xl text-sm lg:text-lg font-bold shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1"
+                                className="w-full sm:w-auto bg-gradient-to-r from-[#7DA3D8] to-[#4F6789] hover:opacity-90 text-white px-6 py-3 lg:px-8 lg:py-4 rounded-xl lg:rounded-2xl text-sm lg:text-lg font-bold shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1"
                               >
-                                {event.registrationType === 'open' ? 'Register Now' : 'Apply to Register'}
+                                {event.registrationType === "open"
+                                  ? "Register Now"
+                                  : "Apply to Register"}
                               </button>
                               <Link
                                 to={`/event/${event.id}`}
@@ -603,19 +664,46 @@ export default function Index() {
 
               {/* Navigation Arrows */}
               <button
-                onClick={() => setCurrentMegaEvent((prev) => (prev - 1 + megaEvents.length) % megaEvents.length)}
+                onClick={() =>
+                  setCurrentMegaEvent(
+                    (prev) =>
+                      (prev - 1 + megaEvents.length) % megaEvents.length,
+                  )
+                }
                 className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white p-3 rounded-full transition-all duration-200"
               >
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                <svg
+                  className="w-6 h-6"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M15 19l-7-7 7-7"
+                  />
                 </svg>
               </button>
               <button
-                onClick={() => setCurrentMegaEvent((prev) => (prev + 1) % megaEvents.length)}
+                onClick={() =>
+                  setCurrentMegaEvent((prev) => (prev + 1) % megaEvents.length)
+                }
                 className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white p-3 rounded-full transition-all duration-200"
               >
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                <svg
+                  className="w-6 h-6"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M9 5l7 7-7 7"
+                  />
                 </svg>
               </button>
             </div>
@@ -626,9 +714,11 @@ export default function Index() {
         <div className="px-3 lg:px-8 py-4 lg:py-8">
           <div className="max-w-full lg:max-w-7xl mx-auto">
             <div className="flex flex-col lg:flex-row lg:items-center justify-between mb-4 lg:mb-6 gap-3 lg:gap-4">
-              <h2 className="text-xl lg:text-3xl font-bold text-gray-900 dark:text-gray-100">Discover Events</h2>
+              <h2 className="text-xl lg:text-3xl font-bold text-gray-900 dark:text-white">
+                Discover Events
+              </h2>
               <div className="flex items-center justify-between lg:justify-end space-x-3 lg:space-x-4">
-                <div className="text-xs lg:text-sm text-gray-600 dark:text-gray-400">
+                <div className="text-xs lg:text-sm text-gray-600 dark:text-gray-300">
                   {filteredAndSortedEvents.length} events
                 </div>
                 <FilterSort
@@ -647,8 +737,8 @@ export default function Index() {
                   className={cn(
                     "px-4 py-2 lg:px-6 lg:py-3 rounded-xl lg:rounded-2xl text-xs lg:text-sm font-semibold whitespace-nowrap transition-all duration-200 shadow-sm flex-shrink-0",
                     selectedCategory === category.name
-                      ? "bg-gradient-to-r from-purple-600 to-blue-600 text-white shadow-lg shadow-purple-500/25"
-                      : "bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700 border border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600"
+                      ? "bg-gradient-to-r from-[#7DA3D8] to-[#4F6789] text-white shadow-lg shadow-blue-500/25"
+                      : "bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700 border border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600",
                   )}
                 >
                   {category.name}
@@ -662,12 +752,14 @@ export default function Index() {
         {featuredEvents.length > 0 && (
           <div className="px-3 lg:px-8 py-4">
             <div className="max-w-full lg:max-w-7xl mx-auto">
-              <h2 className="text-lg lg:text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4 lg:mb-6">⭐ Featured Events</h2>
+              <h2 className="text-lg lg:text-2xl font-bold text-gray-900 dark:text-white mb-4 lg:mb-6">
+                ⭐ Featured Events
+              </h2>
               <div className="space-y-4 lg:grid lg:grid-cols-2 xl:grid-cols-3 lg:space-y-0 lg:gap-8">
                 {featuredEvents.map((event) => (
                   <div
                     key={event.id}
-                    className="group bg-white dark:bg-gray-800 rounded-2xl lg:rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-100 dark:border-gray-700 hover:border-purple-200 dark:hover:border-purple-400 hover:-translate-y-1"
+                    className="group bg-white dark:bg-gray-800 rounded-2xl lg:rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-100 dark:border-gray-700 hover:border-blue-200 dark:hover:border-blue-400 hover:-translate-y-1"
                   >
                     <Link to={`/event/${event.id}`} className="block">
                       <div className="relative overflow-hidden">
@@ -678,7 +770,7 @@ export default function Index() {
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
                         <div className="absolute top-4 left-4 space-y-2">
-                          <span className="block bg-gradient-to-r from-purple-600 to-blue-600 text-white px-3 py-1.5 rounded-full text-xs font-semibold shadow-lg">
+                          <span className="block bg-gradient-to-r from-[#7DA3D8] to-[#4F6789] text-white px-3 py-1.5 rounded-full text-xs font-semibold shadow-lg">
                             ✨ Featured
                           </span>
                           {event.hasSubEvents && (
@@ -688,38 +780,53 @@ export default function Index() {
                           )}
                         </div>
                         <div className="absolute top-4 right-4">
-                          <span className={`bg-white/95 backdrop-blur-sm px-3 py-1.5 rounded-full text-sm font-bold shadow-lg ${
-                            event.registrationType === 'open'
-                              ? 'text-green-700 bg-green-100/95'
-                              : 'text-orange-700 bg-orange-100/95'
-                          }`}>
-                            {event.registrationType === 'open' ? 'Open' : 'Approval Required'}
+                          <span
+                            className={`bg-white/95 backdrop-blur-sm px-3 py-1.5 rounded-full text-sm font-bold shadow-lg ${
+                              event.registrationType === "open"
+                                ? "text-green-700 bg-green-100/95"
+                                : "text-orange-700 bg-orange-100/95"
+                            }`}
+                          >
+                            {event.registrationType === "open"
+                              ? "Open"
+                              : "Approval Required"}
                           </span>
                         </div>
                       </div>
                     </Link>
                     <div className="p-4 lg:p-6">
                       <Link to={`/event/${event.id}`}>
-                        <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-2 lg:mb-3 text-base lg:text-lg group-hover:text-purple-600 transition-colors line-clamp-2">{event.title}</h3>
+                        <h3 className="font-bold text-gray-900 dark:text-white mb-2 lg:mb-3 text-base lg:text-lg group-hover:text-[#1976d2] transition-colors line-clamp-2">
+                          {event.title}
+                        </h3>
                       </Link>
-                      <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-4 space-y-2 sm:space-y-0 text-xs lg:text-sm text-gray-600 dark:text-gray-400 mb-3 lg:mb-4">
+                      <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-4 space-y-2 sm:space-y-0 text-xs lg:text-sm text-gray-600 dark:text-gray-300 mb-3 lg:mb-4">
                         <div className="flex items-center space-x-1 lg:space-x-2 bg-gray-50 dark:bg-gray-700 rounded-lg px-2 py-1 lg:px-3 lg:py-1.5">
-                          <Calendar className="h-3 w-3 lg:h-4 lg:w-4 text-purple-600" />
-                          <span className="font-medium text-gray-900 dark:text-gray-200">{event.date}</span>
+                          <Calendar className="h-3 w-3 lg:h-4 lg:w-4 text-[#1976d2]" />
+                          <span className="font-medium text-gray-900 dark:text-gray-200">
+                            {event.date}
+                          </span>
                         </div>
                         <div className="flex items-center space-x-1 lg:space-x-2 bg-gray-50 dark:bg-gray-700 rounded-lg px-2 py-1 lg:px-3 lg:py-1.5">
-                          <Clock className="h-3 w-3 lg:h-4 lg:w-4 text-purple-600" />
-                          <span className="font-medium text-gray-900 dark:text-gray-200">{event.time}</span>
+                          <Clock className="h-3 w-3 lg:h-4 lg:w-4 text-[#1976d2]" />
+                          <span className="font-medium text-gray-900 dark:text-gray-200">
+                            {event.time}
+                          </span>
                         </div>
                       </div>
-                      <div className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-400 mb-4 bg-gray-50 dark:bg-gray-700 rounded-lg px-3 py-1.5">
-                        <MapPin className="h-4 w-4 text-purple-600" />
-                        <span className="font-medium text-gray-900 dark:text-gray-200">{event.location}</span>
+                      <div className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-300 mb-4 bg-gray-50 dark:bg-gray-700 rounded-lg px-3 py-1.5">
+                        <MapPin className="h-4 w-4 text-[#1976d2]" />
+                        <span className="font-medium text-gray-900 dark:text-gray-200">
+                          {event.location}
+                        </span>
                       </div>
                       {event.hasSubEvents && (
                         <div className="mb-4 p-3 bg-green-50 dark:bg-green-900/20 rounded-lg border border-green-200 dark:border-green-800">
                           <div className="flex items-center space-x-2 text-green-700 dark:text-green-400">
-                            <span className="text-xs font-semibold">🎯 {event.subEvents?.length || 0} Sub Events Available</span>
+                            <span className="text-xs font-semibold">
+                              🎯 {event.subEvents?.length || 0} Sub Events
+                              Available
+                            </span>
                           </div>
                         </div>
                       )}
@@ -727,11 +834,15 @@ export default function Index() {
                         <div className="flex items-center space-x-4">
                           <div className="flex items-center space-x-1">
                             <Users className="h-4 w-4 text-gray-500" />
-                            <span className="text-sm font-medium text-gray-700 dark:text-gray-300">{event.attendees}</span>
+                            <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                              {event.attendees}
+                            </span>
                           </div>
                           <div className="flex items-center space-x-1">
                             <Star className="h-4 w-4 text-yellow-500 fill-current" />
-                            <span className="text-sm font-medium text-gray-700 dark:text-gray-300">{event.rating}</span>
+                            <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                              {event.rating}
+                            </span>
                           </div>
                         </div>
                         <button
@@ -739,7 +850,7 @@ export default function Index() {
                             e.preventDefault();
                             handleRegisterForEvent(event);
                           }}
-                          className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white px-6 py-2.5 rounded-xl text-sm font-semibold shadow-lg hover:shadow-xl transition-all duration-200 hover:-translate-y-0.5"
+                          className="bg-gradient-to-r from-[#7DA3D8] to-[#4F6789] hover:opacity-90 text-white px-6 py-2.5 rounded-xl text-sm font-semibold shadow-lg hover:shadow-xl transition-all duration-200 hover:-translate-y-0.5"
                         >
                           Join Event
                         </button>
@@ -755,12 +866,14 @@ export default function Index() {
         {/* All Events Section */}
         <div className="px-3 lg:px-8 py-4 lg:py-6">
           <div className="max-w-full lg:max-w-7xl mx-auto">
-            <h2 className="text-lg lg:text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4 lg:mb-6">🎯 All Events</h2>
+            <h2 className="text-lg lg:text-2xl font-bold text-gray-900 dark:text-white mb-4 lg:mb-6">
+              🎯 All Events
+            </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-4 lg:gap-6">
               {regularEvents.map((event) => (
                 <div
                   key={event.id}
-                  className="group bg-white dark:bg-gray-800 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 dark:border-gray-700 hover:border-purple-200 dark:hover:border-purple-400 hover:-translate-y-1"
+                  className="group bg-white dark:bg-gray-800 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 dark:border-gray-700 hover:border-blue-200 dark:hover:border-blue-400 hover:-translate-y-1"
                 >
                   <Link to={`/event/${event.id}`} className="block">
                     <div className="relative overflow-hidden">
@@ -771,12 +884,16 @@ export default function Index() {
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent"></div>
                       <div className="absolute top-3 right-3 space-y-1">
-                        <span className={`block bg-white/95 backdrop-blur-sm px-2.5 py-1 rounded-full text-xs font-bold shadow-lg ${
-                          event.registrationType === 'open'
-                            ? 'text-green-700 bg-green-100/95'
-                            : 'text-orange-700 bg-orange-100/95'
-                        }`}>
-                          {event.registrationType === 'open' ? 'Open' : 'Approval Required'}
+                        <span
+                          className={`block bg-white/95 backdrop-blur-sm px-2.5 py-1 rounded-full text-xs font-bold shadow-lg ${
+                            event.registrationType === "open"
+                              ? "text-green-700 bg-green-100/95"
+                              : "text-orange-700 bg-orange-100/95"
+                          }`}
+                        >
+                          {event.registrationType === "open"
+                            ? "Open"
+                            : "Approval Required"}
                         </span>
                         {event.hasSubEvents && (
                           <span className="block bg-green-500/95 backdrop-blur-sm text-white px-2.5 py-1 rounded-full text-xs font-bold shadow-lg">
@@ -788,21 +905,29 @@ export default function Index() {
                   </Link>
                   <div className="p-4">
                     <Link to={`/event/${event.id}`}>
-                      <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-2 text-sm group-hover:text-purple-600 transition-colors line-clamp-2">{event.title}</h3>
+                      <h3 className="font-bold text-gray-900 dark:text-white mb-2 text-sm group-hover:text-[#1976d2] transition-colors line-clamp-2">
+                        {event.title}
+                      </h3>
                     </Link>
-                    <div className="flex items-center space-x-2 text-xs text-gray-600 dark:text-gray-400 mb-3">
+                    <div className="flex items-center space-x-2 text-xs text-gray-600 dark:text-gray-300 mb-3">
                       <div className="flex items-center space-x-1 bg-gray-50 dark:bg-gray-700 rounded-lg px-2 py-1">
-                        <Calendar className="h-3 w-3 text-purple-600" />
-                        <span className="font-medium text-gray-900 dark:text-gray-200">{event.date}</span>
+                        <Calendar className="h-3 w-3 text-[#1976d2]" />
+                        <span className="font-medium text-gray-900 dark:text-gray-200">
+                          {event.date}
+                        </span>
                       </div>
                       <div className="flex items-center space-x-1 bg-gray-50 dark:bg-gray-700 rounded-lg px-2 py-1">
-                        <Clock className="h-3 w-3 text-purple-600" />
-                        <span className="font-medium text-gray-900 dark:text-gray-200">{event.time}</span>
+                        <Clock className="h-3 w-3 text-[#1976d2]" />
+                        <span className="font-medium text-gray-900 dark:text-gray-200">
+                          {event.time}
+                        </span>
                       </div>
                     </div>
-                    <div className="flex items-center space-x-1 text-xs text-gray-600 dark:text-gray-400 mb-3 bg-gray-50 dark:bg-gray-700 rounded-lg px-2 py-1">
-                      <MapPin className="h-3 w-3 text-purple-600" />
-                      <span className="font-medium text-gray-900 dark:text-gray-200 truncate">{event.location}</span>
+                    <div className="flex items-center space-x-1 text-xs text-gray-600 dark:text-gray-300 mb-3 bg-gray-50 dark:bg-gray-700 rounded-lg px-2 py-1">
+                      <MapPin className="h-3 w-3 text-[#1976d2]" />
+                      <span className="font-medium text-gray-900 dark:text-gray-200 truncate">
+                        {event.location}
+                      </span>
                     </div>
                     {event.hasSubEvents && (
                       <div className="mb-3 px-2 py-1 bg-green-50 dark:bg-green-900/20 rounded-lg">
@@ -815,11 +940,15 @@ export default function Index() {
                       <div className="flex items-center space-x-3">
                         <div className="flex items-center space-x-1">
                           <Users className="h-3 w-3 text-gray-500" />
-                          <span className="text-xs font-medium text-gray-700 dark:text-gray-300">{event.attendees}</span>
+                          <span className="text-xs font-medium text-gray-700 dark:text-gray-300">
+                            {event.attendees}
+                          </span>
                         </div>
                         <div className="flex items-center space-x-1">
                           <Star className="h-3 w-3 text-yellow-500 fill-current" />
-                          <span className="text-xs font-medium text-gray-700 dark:text-gray-300">{event.rating}</span>
+                          <span className="text-xs font-medium text-gray-700 dark:text-gray-300">
+                            {event.rating}
+                          </span>
                         </div>
                       </div>
                       <button
@@ -827,7 +956,7 @@ export default function Index() {
                           e.preventDefault();
                           handleRegisterForEvent(event);
                         }}
-                        className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white px-3 py-1.5 rounded-xl text-xs font-semibold shadow-md hover:shadow-lg transition-all duration-200 hover:-translate-y-0.5"
+                        className="bg-gradient-to-r from-[#7DA3D8] to-[#4F6789] hover:opacity-90 text-white px-3 py-1.5 rounded-xl text-xs font-semibold shadow-md hover:shadow-lg transition-all duration-200 hover:-translate-y-0.5"
                       >
                         Join
                       </button>
@@ -852,25 +981,28 @@ export default function Index() {
         {filteredAndSortedEvents.length === 0 && (
           <div className="px-3 lg:px-8 py-8 lg:py-12">
             <div className="max-w-full lg:max-w-7xl mx-auto text-center">
-              <div className="bg-gradient-to-br from-purple-100 to-blue-100 dark:from-purple-900/20 dark:to-blue-900/20 rounded-2xl lg:rounded-3xl p-6 lg:p-12 border border-purple-200 dark:border-purple-800">
-                <div className="w-16 h-16 bg-gradient-to-br from-purple-600 to-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-6">
+              <div className="bg-gradient-to-br from-[#E8F1FC] to-[#D9E4F4] dark:from-[#4F6789]/20 dark:to-[#7DA3D8]/20 rounded-2xl lg:rounded-3xl p-6 lg:p-12 border border-blue-200 dark:border-blue-800">
+                <div className="w-16 h-16 bg-gradient-to-br from-[#7DA3D8] to-[#4F6789] rounded-2xl flex items-center justify-center mx-auto mb-6">
                   <Calendar className="h-8 w-8 text-white" />
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-3">No events found</h3>
-                <p className="text-gray-600 dark:text-gray-400 max-w-sm mx-auto">
-                  Try adjusting your search or category filter to discover amazing events in your area.
+                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">
+                  No events found
+                </h3>
+                <p className="text-gray-600 dark:text-gray-300 max-w-sm mx-auto">
+                  Try adjusting your search or category filter to discover
+                  amazing events in your area.
                 </p>
-                <button 
+                <button
                   onClick={() => {
                     setSearchQuery("");
                     setSelectedCategory("All");
                     setFilters({
-                      priceRange: 'all',
-                      dateRange: 'all',
-                      cities: []
+                      priceRange: "all",
+                      dateRange: "all",
+                      cities: [],
                     });
                   }}
-                  className="mt-6 bg-gradient-to-r from-purple-600 to-blue-600 text-white px-6 py-3 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-200 hover:-translate-y-0.5"
+                  className="mt-6 bg-gradient-to-r from-[#7DA3D8] to-[#4F6789] text-white px-6 py-3 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-200 hover:-translate-y-0.5"
                 >
                   Clear Filters
                 </button>

@@ -1,5 +1,16 @@
-import { Calendar, Mail, Phone, MapPin, Twitter, Facebook, Instagram, Linkedin, Github, Heart } from "lucide-react";
-import { Link } from "react-router-dom";
+import {
+  Calendar,
+  Mail,
+  Phone,
+  MapPin,
+  Twitter,
+  Facebook,
+  Instagram,
+  Linkedin,
+  Github,
+  Heart,
+} from "lucide-react";
+import Link from "next/link";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -34,42 +45,51 @@ export default function Footer() {
   const socialLinks = [
     { name: "Twitter", icon: Twitter, href: "https://twitter.com/eventhub" },
     { name: "Facebook", icon: Facebook, href: "https://facebook.com/eventhub" },
-    { name: "Instagram", icon: Instagram, href: "https://instagram.com/eventhub" },
-    { name: "LinkedIn", icon: Linkedin, href: "https://linkedin.com/company/eventhub" },
+    {
+      name: "Instagram",
+      icon: Instagram,
+      href: "https://instagram.com/eventhub",
+    },
+    {
+      name: "LinkedIn",
+      icon: Linkedin,
+      href: "https://linkedin.com/company/eventhub",
+    },
     { name: "GitHub", icon: Github, href: "https://github.com/eventhub" },
   ];
 
   return (
-    <footer className="bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800 mt-auto">
+    <footer className="bg-white dark:bg-black border-t border-gray-200 dark:border-gray-800 mt-auto">
       <div className="max-w-7xl mx-auto px-4 lg:px-8 py-12">
         {/* Main Footer Content */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8 mb-8">
           {/* Brand Section */}
           <div className="lg:col-span-2">
             <div className="flex items-center space-x-2 mb-4">
-              <div className="w-8 h-8 bg-gradient-to-br from-purple-600 to-blue-600 rounded-lg flex items-center justify-center">
+              <div className="w-8 h-8 bg-gradient-to-br from-[#7DA3D8] to-[#4F6789] rounded-lg flex items-center justify-center">
                 <Calendar className="h-5 w-5 text-white" />
               </div>
-              <span className="text-xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
+              <span className="text-xl font-bold bg-gradient-to-r from-[#7DA3D8] to-[#4F6789] bg-clip-text text-transparent">
                 EventHub
               </span>
             </div>
             <p className="text-gray-600 dark:text-gray-400 mb-6 max-w-sm">
-              Discover amazing events, connect with like-minded people, and create unforgettable experiences in your city and beyond.
+              Discover amazing events, connect with like-minded people, and
+              create unforgettable experiences in your city and beyond.
             </p>
-            
+
             {/* Contact Info */}
             <div className="space-y-3">
               <div className="flex items-center space-x-3 text-sm text-gray-600 dark:text-gray-400">
-                <Mail className="h-4 w-4 text-purple-600" />
+                <Mail className="h-4 w-4 text-[#1976d2]" />
                 <span>hello@eventhub.com</span>
               </div>
               <div className="flex items-center space-x-3 text-sm text-gray-600 dark:text-gray-400">
-                <Phone className="h-4 w-4 text-purple-600" />
+                <Phone className="h-4 w-4 text-[#1976d2]" />
                 <span>+1 (555) 123-4567</span>
               </div>
               <div className="flex items-center space-x-3 text-sm text-gray-600 dark:text-gray-400">
-                <MapPin className="h-4 w-4 text-purple-600" />
+                <MapPin className="h-4 w-4 text-[#1976d2]" />
                 <span>San Francisco, CA</span>
               </div>
             </div>
@@ -77,15 +97,15 @@ export default function Footer() {
 
           {/* Platform Links */}
           <div>
-            <h3 className="text-sm font-semibold text-gray-900 dark:text-gray-100 mb-4 uppercase tracking-wider">
+            <h3 className="text-sm font-semibold text-gray-900 dark:text-white mb-4 uppercase tracking-wider">
               Platform
             </h3>
             <ul className="space-y-3">
               {footerLinks.platform.map((link) => (
                 <li key={link.name}>
                   <Link
-                    to={link.href}
-                    className="text-sm text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors"
+                    href={link.href}
+                    className="text-sm text-gray-600 dark:text-gray-400 hover:text-[#1976d2] dark:hover:text-[#7DA3D8] transition-colors"
                   >
                     {link.name}
                   </Link>
@@ -96,15 +116,15 @@ export default function Footer() {
 
           {/* Events Links */}
           <div>
-            <h3 className="text-sm font-semibold text-gray-900 dark:text-gray-100 mb-4 uppercase tracking-wider">
+            <h3 className="text-sm font-semibold text-gray-900 dark:text-white mb-4 uppercase tracking-wider">
               Events
             </h3>
             <ul className="space-y-3">
               {footerLinks.events.map((link) => (
                 <li key={link.name}>
                   <Link
-                    to={link.href}
-                    className="text-sm text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors"
+                    href={link.href}
+                    className="text-sm text-gray-600 dark:text-gray-400 hover:text-[#1976d2] dark:hover:text-[#7DA3D8] transition-colors"
                   >
                     {link.name}
                   </Link>
@@ -115,15 +135,15 @@ export default function Footer() {
 
           {/* Support Links */}
           <div>
-            <h3 className="text-sm font-semibold text-gray-900 dark:text-gray-100 mb-4 uppercase tracking-wider">
+            <h3 className="text-sm font-semibold text-gray-900 dark:text-white mb-4 uppercase tracking-wider">
               Support
             </h3>
             <ul className="space-y-3">
               {footerLinks.support.map((link) => (
                 <li key={link.name}>
                   <Link
-                    to={link.href}
-                    className="text-sm text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors"
+                    href={link.href}
+                    className="text-sm text-gray-600 dark:text-gray-400 hover:text-[#1976d2] dark:hover:text-[#7DA3D8] transition-colors"
                   >
                     {link.name}
                   </Link>
@@ -134,15 +154,15 @@ export default function Footer() {
 
           {/* Legal Links */}
           <div>
-            <h3 className="text-sm font-semibold text-gray-900 dark:text-gray-100 mb-4 uppercase tracking-wider">
+            <h3 className="text-sm font-semibold text-gray-900 dark:text-white mb-4 uppercase tracking-wider">
               Legal
             </h3>
             <ul className="space-y-3">
               {footerLinks.legal.map((link) => (
                 <li key={link.name}>
                   <Link
-                    to={link.href}
-                    className="text-sm text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors"
+                    href={link.href}
+                    className="text-sm text-gray-600 dark:text-gray-400 hover:text-[#1976d2] dark:hover:text-[#7DA3D8] transition-colors"
                   >
                     {link.name}
                   </Link>
@@ -153,23 +173,24 @@ export default function Footer() {
         </div>
 
         {/* Newsletter Signup */}
-        <div className="bg-gradient-to-r from-purple-50 to-blue-50 dark:from-purple-900/20 dark:to-blue-900/20 rounded-2xl p-6 mb-8">
+        <div className="bg-gradient-to-r from-[#E8F1FC] to-[#D9E4F4] dark:from-[#4F6789]/20 dark:to-[#7DA3D8]/20 rounded-2xl p-6 mb-8">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <div>
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
                 Stay updated with the latest events
               </h3>
               <p className="text-sm text-gray-600 dark:text-gray-400">
-                Get weekly updates on trending events in your area and exclusive early access to featured events.
+                Get weekly updates on trending events in your area and exclusive
+                early access to featured events.
               </p>
             </div>
             <div className="flex space-x-3 w-full md:w-auto">
               <input
                 type="email"
                 placeholder="Enter your email"
-                className="flex-1 md:w-64 px-4 py-2.5 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 text-sm"
+                className="flex-1 md:w-64 px-4 py-2.5 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#1976d2] text-sm"
               />
-              <button className="px-6 py-2.5 bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-xl text-sm font-semibold hover:from-purple-700 hover:to-blue-700 transition-all duration-200 whitespace-nowrap">
+              <button className="px-6 py-2.5 bg-gradient-to-r from-[#7DA3D8] to-[#4F6789] text-white rounded-xl text-sm font-semibold hover:from-purple-700 hover:to-blue-700 transition-all duration-200 whitespace-nowrap">
                 Subscribe
               </button>
             </div>

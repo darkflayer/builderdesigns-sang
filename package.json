@@ -11,11 +11,11 @@
     ]
   },
   "scripts": {
-    "dev": "vite",
-    "build": "npm run build:client && npm run build:server",
+    "dev": "next dev -p 8080",
+    "build": "next build",
     "build:client": "vite build",
     "build:server": "vite build --config vite.config.server.ts",
-    "start": "node dist/server/node-build.mjs",
+    "start": "next start -p 8080",
     "test": "vitest --run",
     "format.fix": "prettier --write .",
     "typecheck": "tsc"
@@ -23,6 +23,7 @@
   "dependencies": {
     "dotenv": "^17.2.0",
     "express": "^4.18.2",
+    "next": "^14.2.15",
     "zod": "^3.23.8"
   },
   "devDependencies": {
@@ -85,7 +86,7 @@
     "react-dom": "^18.3.1",
     "react-hook-form": "^7.53.0",
     "react-resizable-panels": "^2.1.3",
-    "react-router-dom": "^6.26.2",
+    "react-router-dom": "^6.30.1",
     "recharts": "^2.12.7",
     "serverless-http": "^3.2.0",
     "sonner": "^1.5.0",
