@@ -86,9 +86,9 @@ export default function Layout({ children, searchQuery = "", onSearchChange }: L
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#F8F5EF] to-[#F2EDE6] dark:from-gray-900 dark:to-gray-800 flex flex-col transition-colors duration-300">
+    <div className="min-h-screen bg-gradient-to-br from-[#F8F5EF] to-[#F2EDE6] dark:from-black dark:to-gray-900 pt-20 flex flex-col transition-colors duration-300">
       {/* Premium Desktop Navigation - Hidden on mobile */}
-      <nav className="hidden lg:block relative bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl border-b border-white/20 dark:border-white/10 shadow-[0_10px_30px_-10px_rgba(0,0,0,0.25)] before:content-[''] before:absolute before:inset-0 before:pointer-events-none before:bg-gradient-to-r before:from-[#7DA3D8]/10 before:via-transparent before:to-[#4F6789]/10">
+      <nav className="hidden lg:block fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-black/80 backdrop-blur-2xl border-b border-white/30 dark:border-white/10 shadow-[0_20px_25px_-5px_rgba(0,0,0,0.1)] dark:shadow-[0_20px_25px_-5px_rgba(0,0,0,0.8)] before:content-[''] before:absolute before:inset-0 before:pointer-events-none before:bg-gradient-to-r before:from-[#7DA3D8]/5 before:via-transparent before:to-[#4F6789]/5">
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             {/* Logo/Brand */}
@@ -114,7 +114,7 @@ export default function Layout({ children, searchQuery = "", onSearchChange }: L
                         "flex items-center space-x-2 px-4 py-2.5 rounded-xl transition-all duration-200 font-medium",
                         isActive
                           ? "text-[#1976d2] bg-[#E8F1FC] dark:bg-[#4F6789]/20 shadow-sm ring-1 ring-[#7DA3D8]/30 dark:ring-[#7DA3D8]/20"
-                          : "text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-[rgba(125,163,216,0.08)] dark:hover:bg-[rgba(79,103,137,0.18)]"
+                          : "text-gray-600 dark:text-gray-200 hover:text-gray-900 dark:hover:text-white hover:bg-[rgba(125,163,216,0.08)] dark:hover:bg-[rgba(79,103,137,0.18)]"
                       )}
                     >
                       <item.icon className={cn("h-4 w-4", isActive ? "text-[#1976d2]" : "")} />
@@ -128,13 +128,13 @@ export default function Layout({ children, searchQuery = "", onSearchChange }: L
             {/* Center Search */}
             <div className="flex-1 max-w-2xl mx-8">
               <div className="relative">
-                <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400 dark:text-gray-500" />
+                <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400 dark:text-gray-300" />
                 <input
                   type="text"
                   placeholder="Search events by name, location, category..."
                   value={searchQuery}
                   onChange={(e) => onSearchChange?.(e.target.value)}
-                  className="w-full pl-12 pr-4 py-3 bg-white/60 dark:bg-white/5 border border-white/20 dark:border-white/10 rounded-2xl focus:outline-none focus:ring-2 focus:ring-[#1976d2] focus:border-transparent transition-all duration-200 text-sm text-gray-900 dark:text-gray-100 placeholder:text-gray-500 dark:placeholder:text-gray-500"
+                  className="w-full pl-12 pr-4 py-3 bg-white/60 dark:bg-white/5 border border-white/20 dark:border-white/10 rounded-2xl focus:outline-none focus:ring-2 focus:ring-[#1976d2] focus:border-transparent transition-all duration-200 text-sm text-gray-900 dark:text-white placeholder:text-gray-500 dark:placeholder:text-gray-500"
                 />
               </div>
             </div>
@@ -144,8 +144,8 @@ export default function Layout({ children, searchQuery = "", onSearchChange }: L
               <div className="flex items-center space-x-2 px-3 py-2 bg-white/60 dark:bg-white/5 rounded-xl ring-1 ring-white/20 dark:ring-white/10">
                 <MapPin className="h-4 w-4 text-[#1976d2]" />
                 <div className="text-sm">
-                  <span className="text-gray-600 dark:text-gray-400 block text-xs">Location</span>
-                  <span className="font-medium text-gray-900 dark:text-gray-100">San Francisco, CA</span>
+                  <span className="text-gray-600 dark:text-gray-300 block text-xs">Location</span>
+                  <span className="font-medium text-gray-900 dark:text-white">San Francisco, CA</span>
                 </div>
               </div>
 
@@ -154,9 +154,9 @@ export default function Layout({ children, searchQuery = "", onSearchChange }: L
                 className="p-2.5 rounded-xl bg-white/60 dark:bg-white/5 hover:bg-white/80 dark:hover:bg-white/10 ring-1 ring-white/20 dark:ring-white/10 transition-colors"
               >
                 {theme === 'dark' ? (
-                  <Sun className="h-5 w-5 text-gray-600 dark:text-gray-300" />
+                  <Sun className="h-5 w-5 text-gray-600 dark:text-gray-200" />
                 ) : (
-                  <Moon className="h-5 w-5 text-gray-600 dark:text-gray-300" />
+                  <Moon className="h-5 w-5 text-gray-600 dark:text-gray-200" />
                 )}
               </button>
 
@@ -164,7 +164,7 @@ export default function Layout({ children, searchQuery = "", onSearchChange }: L
                 onClick={() => setShowNotifications(true)}
                 className="p-2.5 rounded-xl bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors relative"
               >
-                <Bell className="h-5 w-5 text-gray-600 dark:text-gray-300" />
+                <Bell className="h-5 w-5 text-gray-600 dark:text-gray-200" />
                 {unreadCount > 0 && (
                   <div className="absolute -top-1 -right-1 h-5 w-5 bg-red-500 rounded-full flex items-center justify-center">
                     <span className="text-xs text-white font-bold">{unreadCount > 9 ? '9+' : unreadCount}</span>
@@ -200,7 +200,7 @@ export default function Layout({ children, searchQuery = "", onSearchChange }: L
                             <User className="h-5 w-5 text-white" />
                           </div>
                           <div>
-                            <p className="text-sm font-medium text-gray-900 dark:text-gray-100">
+                            <p className="text-sm font-medium text-gray-900 dark:text-white">
                               Hi, {user?.name || 'User'}!
                             </p>
                             <p className="text-xs text-gray-500 dark:text-gray-400">
@@ -265,7 +265,7 @@ export default function Layout({ children, searchQuery = "", onSearchChange }: L
                     "flex flex-col items-center py-2 px-3 rounded-xl transition-all duration-200",
                     isActive
                       ? "text-[#1976d2] bg-[#E8F1FC] dark:bg-[#4F6789]/20 shadow-sm ring-1 ring-[#7DA3D8]/30 dark:ring-[#7DA3D8]/20"
-                      : "text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"
+                      : "text-gray-600 dark:text-gray-200 hover:text-gray-900 dark:hover:text-white"
                   )}
                 >
                   <item.icon className={cn("h-5 w-5 mb-1", isActive ? "text-[#1976d2]" : "")} />
