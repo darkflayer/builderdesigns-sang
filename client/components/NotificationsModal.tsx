@@ -72,7 +72,7 @@ export default function NotificationsModal({ isOpen, onClose }: NotificationsMod
           {/* Header */}
           <div className="p-4 border-b border-gray-200 dark:border-slate-700">
             <div className="flex items-center justify-between">
-              <h2 className="text-lg font-bold text-gray-900 dark:text-gray-100">Notifications</h2>
+              <h2 className="text-lg font-bold text-gray-900 dark:text-white">Notifications</h2>
               <div className="flex items-center space-x-2">
                 <button
                   onClick={handleMarkAllAsRead}
@@ -131,7 +131,7 @@ export default function NotificationsModal({ isOpen, onClose }: NotificationsMod
                               "font-semibold text-sm",
                               notification.read 
                                 ? "text-gray-700 dark:text-gray-300" 
-                                : "text-gray-900 dark:text-gray-100"
+                                : "text-gray-900 dark:text-white"
                             )}>
                               {notification.title}
                             </h3>
