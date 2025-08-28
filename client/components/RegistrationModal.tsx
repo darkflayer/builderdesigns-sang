@@ -1,12 +1,23 @@
 import { useState } from "react";
-import { X, Check, Mail, Phone, Linkedin, Twitter, Building, User, Shield, Info } from "lucide-react";
+import {
+  X,
+  Check,
+  Mail,
+  Phone,
+  Linkedin,
+  Twitter,
+  Building,
+  User,
+  Shield,
+  Info,
+} from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface RegistrationModalProps {
   isOpen: boolean;
   onClose: () => void;
   eventTitle: string;
-  registrationType: 'open' | 'approval_required';
+  registrationType: "open" | "approval_required";
 }
 
 interface ShareableDetails {
@@ -21,57 +32,62 @@ interface ShareableDetails {
 
 const shareableFields = [
   {
-    key: 'email' as keyof ShareableDetails,
-    label: 'Email Address',
-    description: 'Let attendees contact you directly',
+    key: "email" as keyof ShareableDetails,
+    label: "Email Address",
+    description: "Let attendees contact you directly",
     icon: Mail,
     required: true,
   },
   {
-    key: 'phone' as keyof ShareableDetails,
-    label: 'Phone Number',
-    description: 'Share for urgent event updates',
+    key: "phone" as keyof ShareableDetails,
+    label: "Phone Number",
+    description: "Share for urgent event updates",
     icon: Phone,
     required: false,
   },
   {
-    key: 'linkedin' as keyof ShareableDetails,
-    label: 'LinkedIn Profile',
-    description: 'Connect professionally with attendees',
+    key: "linkedin" as keyof ShareableDetails,
+    label: "LinkedIn Profile",
+    description: "Connect professionally with attendees",
     icon: Linkedin,
     required: false,
   },
   {
-    key: 'twitter' as keyof ShareableDetails,
-    label: 'Twitter Profile',
-    description: 'Share your social presence',
+    key: "twitter" as keyof ShareableDetails,
+    label: "Twitter Profile",
+    description: "Share your social presence",
     icon: Twitter,
     required: false,
   },
   {
-    key: 'company' as keyof ShareableDetails,
-    label: 'Company Name',
-    description: 'Help others know where you work',
+    key: "company" as keyof ShareableDetails,
+    label: "Company Name",
+    description: "Help others know where you work",
     icon: Building,
     required: false,
   },
   {
-    key: 'role' as keyof ShareableDetails,
-    label: 'Job Title/Role',
-    description: 'Share your professional role',
+    key: "role" as keyof ShareableDetails,
+    label: "Job Title/Role",
+    description: "Share your professional role",
     icon: User,
     required: false,
   },
   {
-    key: 'bio' as keyof ShareableDetails,
-    label: 'Bio/About',
-    description: 'Tell others about yourself',
+    key: "bio" as keyof ShareableDetails,
+    label: "Bio/About",
+    description: "Tell others about yourself",
     icon: Info,
     required: false,
   },
 ];
 
-export default function RegistrationModal({ isOpen, onClose, eventTitle, registrationType }: RegistrationModalProps) {
+export default function RegistrationModal({
+  isOpen,
+  onClose,
+  eventTitle,
+  registrationType,
+}: RegistrationModalProps) {
   const [shareableDetails, setShareableDetails] = useState<ShareableDetails>({
     email: true, // Email is required and pre-checked
     phone: false,
@@ -82,29 +98,31 @@ export default function RegistrationModal({ isOpen, onClose, eventTitle, registr
     bio: false,
   });
 
-  const [step, setStep] = useState<'privacy' | 'details' | 'confirmation'>('privacy');
+  const [step, setStep] = useState<"privacy" | "details" | "confirmation">(
+    "privacy",
+  );
 
   const handleToggle = (field: keyof ShareableDetails) => {
-    if (field === 'email') return; // Email is required, can't be toggled
+    if (field === "email") return; // Email is required, can't be toggled
 
-    setShareableDetails(prev => ({
+    setShareableDetails((prev) => ({
       ...prev,
-      [field]: !prev[field]
+      [field]: !prev[field],
     }));
   };
 
   const handleRegister = () => {
     // Here you would typically send the registration data to your backend
-    console.log('Registering with shared details:', shareableDetails);
-    console.log('Registration type:', registrationType);
+    console.log("Registering with shared details:", shareableDetails);
+    console.log("Registration type:", registrationType);
 
     // Simulate registration
-    setStep('confirmation');
+    setStep("confirmation");
 
     // Auto-close after a delay
     setTimeout(() => {
       onClose();
-      setStep('privacy'); // Reset for next time
+      setStep("privacy"); // Reset for next time
     }, 3000);
   };
 
@@ -119,14 +137,18 @@ export default function RegistrationModal({ isOpen, onClose, eventTitle, registr
             <div className="flex items-center justify-between">
               <div>
                 <h2 className="text-xl font-bold text-gray-900 dark:text-white">
-                  {step === 'privacy' ? 'Privacy Settings' : 
-                   step === 'details' ? 'Complete Registration' : 
-                   'Registration Successful!'}
+                  {step === "privacy"
+                    ? "Privacy Settings"
+                    : step === "details"
+                      ? "Complete Registration"
+                      : "Registration Successful!"}
                 </h2>
                 <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
-                  {step === 'privacy' ? `Choose what to share with other attendees at ${eventTitle}` :
-                   step === 'details' ? 'Fill in your details for the event' :
-                   'You\'re all set for the event!'}
+                  {step === "privacy"
+                    ? `Choose what to share with other attendees at ${eventTitle}`
+                    : step === "details"
+                      ? "Fill in your details for the event"
+                      : "You're all set for the event!"}
                 </p>
               </div>
               <button
@@ -140,7 +162,7 @@ export default function RegistrationModal({ isOpen, onClose, eventTitle, registr
 
           {/* Content */}
           <div className="overflow-y-auto max-h-[calc(90vh-200px)]">
-            {step === 'privacy' && (
+            {step === "privacy" && (
               <div className="p-6">
                 {/* Privacy Notice */}
                 <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-xl p-4 mb-6">
@@ -151,7 +173,8 @@ export default function RegistrationModal({ isOpen, onClose, eventTitle, registr
                         Your Privacy Matters
                       </h3>
                       <p className="text-sm text-blue-800 dark:text-blue-200">
-                        You control what information other attendees can see. You can change these settings anytime in your profile.
+                        You control what information other attendees can see.
+                        You can change these settings anytime in your profile.
                       </p>
                     </div>
                   </div>
@@ -162,9 +185,12 @@ export default function RegistrationModal({ isOpen, onClose, eventTitle, registr
                   <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
                     What would you like to share with other attendees?
                   </h3>
-                  
+
                   {shareableFields.map((field) => (
-                    <div key={field.key} className="flex items-start space-x-4 p-4 border border-gray-200 dark:border-gray-700 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors">
+                    <div
+                      key={field.key}
+                      className="flex items-start space-x-4 p-4 border border-gray-200 dark:border-gray-700 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors"
+                    >
                       <div className="flex-shrink-0">
                         <field.icon className="h-5 w-5 text-[#1976d2] dark:text-[#7DA3D8] mt-1" />
                       </div>
@@ -192,13 +218,15 @@ export default function RegistrationModal({ isOpen, onClose, eventTitle, registr
                             shareableDetails[field.key]
                               ? "bg-blue-600"
                               : "bg-gray-200 dark:bg-gray-600",
-                            field.required && "opacity-50 cursor-not-allowed"
+                            field.required && "opacity-50 cursor-not-allowed",
                           )}
                         >
                           <span
                             className={cn(
                               "inline-block h-4 w-4 transform rounded-full bg-white transition-transform",
-                              shareableDetails[field.key] ? "translate-x-6" : "translate-x-1"
+                              shareableDetails[field.key]
+                                ? "translate-x-6"
+                                : "translate-x-1",
                             )}
                           />
                         </button>
@@ -210,7 +238,7 @@ export default function RegistrationModal({ isOpen, onClose, eventTitle, registr
                 {/* Continue Button */}
                 <div className="mt-8 flex space-x-3">
                   <button
-                    onClick={() => setStep('details')}
+                    onClick={() => setStep("details")}
                     className="flex-1 bg-gradient-to-r from-[#7DA3D8] to-[#4F6789] hover:opacity-90 text-white py-3 rounded-xl font-semibold transition-all duration-200"
                   >
                     Continue to Registration
@@ -219,14 +247,23 @@ export default function RegistrationModal({ isOpen, onClose, eventTitle, registr
               </div>
             )}
 
-            {step === 'details' && (
+            {step === "details" && (
               <div className="p-6">
                 {/* Event Summary */}
                 <div className="bg-gray-50 dark:bg-gray-700 rounded-xl p-4 mb-6">
-                  <h3 className="font-semibold text-gray-900 dark:text-white mb-2">Event Summary</h3>
+                  <h3 className="font-semibold text-gray-900 dark:text-white mb-2">
+                    Event Summary
+                  </h3>
                   <div className="text-sm text-gray-600 dark:text-gray-400">
-                    <p className="mb-1"><strong>Event:</strong> {eventTitle}</p>
-                    <p><strong>Registration:</strong> {registrationType === 'open' ? 'Open (Instant approval)' : 'Approval Required'}</p>
+                    <p className="mb-1">
+                      <strong>Event:</strong> {eventTitle}
+                    </p>
+                    <p>
+                      <strong>Registration:</strong>{" "}
+                      {registrationType === "open"
+                        ? "Open (Instant approval)"
+                        : "Approval Required"}
+                    </p>
                   </div>
                 </div>
 
@@ -235,7 +272,7 @@ export default function RegistrationModal({ isOpen, onClose, eventTitle, registr
                   <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
                     Complete Your Registration
                   </h3>
-                  
+
                   {/* Personal Details */}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
@@ -343,7 +380,7 @@ export default function RegistrationModal({ isOpen, onClose, eventTitle, registr
                 {/* Action Buttons */}
                 <div className="mt-8 flex space-x-3">
                   <button
-                    onClick={() => setStep('privacy')}
+                    onClick={() => setStep("privacy")}
                     className="px-6 py-3 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-xl font-semibold hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
                   >
                     Back
@@ -358,38 +395,42 @@ export default function RegistrationModal({ isOpen, onClose, eventTitle, registr
               </div>
             )}
 
-            {step === 'confirmation' && (
+            {step === "confirmation" && (
               <div className="p-6 text-center">
-                <div className={`w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 ${
-                  registrationType === 'open'
-                    ? 'bg-green-100 dark:bg-green-900/30'
-                    : 'bg-orange-100 dark:bg-orange-900/30'
-                }`}>
-                  {registrationType === 'open' ? (
+                <div
+                  className={`w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 ${
+                    registrationType === "open"
+                      ? "bg-green-100 dark:bg-green-900/30"
+                      : "bg-orange-100 dark:bg-orange-900/30"
+                  }`}
+                >
+                  {registrationType === "open" ? (
                     <Check className="h-8 w-8 text-green-600 dark:text-green-400" />
                   ) : (
                     <Clock className="h-8 w-8 text-orange-600 dark:text-orange-400" />
                   )}
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
-                  {registrationType === 'open' ? 'Registration Successful!' : 'Application Submitted!'}
+                  {registrationType === "open"
+                    ? "Registration Successful!"
+                    : "Application Submitted!"}
                 </h3>
                 <p className="text-gray-600 dark:text-gray-400 mb-6">
-                  {registrationType === 'open'
+                  {registrationType === "open"
                     ? `You're all set for ${eventTitle}. We've sent a confirmation email with all the details.`
-                    : `Your application for ${eventTitle} has been submitted. You'll receive a notification once it's reviewed by the organizers.`
-                  }
+                    : `Your application for ${eventTitle} has been submitted. You'll receive a notification once it's reviewed by the organizers.`}
                 </p>
-                <div className={`rounded-xl p-4 ${
-                  registrationType === 'open'
-                    ? 'bg-green-50 dark:bg-green-900/20'
-                    : 'bg-orange-50 dark:bg-orange-900/20'
-                }`}>
+                <div
+                  className={`rounded-xl p-4 ${
+                    registrationType === "open"
+                      ? "bg-green-50 dark:bg-green-900/20"
+                      : "bg-orange-50 dark:bg-orange-900/20"
+                  }`}
+                >
                   <p className="text-sm text-gray-600 dark:text-gray-400">
-                    {registrationType === 'open'
-                      ? 'You can update your privacy settings and shared information anytime in your profile.'
-                      : 'We typically review applications within 24-48 hours. You can check your application status in "My Events".'
-                    }
+                    {registrationType === "open"
+                      ? "You can update your privacy settings and shared information anytime in your profile."
+                      : 'We typically review applications within 24-48 hours. You can check your application status in "My Events".'}
                   </p>
                 </div>
               </div>

@@ -1,4 +1,15 @@
-import { Calendar, Mail, Phone, MapPin, Twitter, Facebook, Instagram, Linkedin, Github, Heart } from "lucide-react";
+import {
+  Calendar,
+  Mail,
+  Phone,
+  MapPin,
+  Twitter,
+  Facebook,
+  Instagram,
+  Linkedin,
+  Github,
+  Heart,
+} from "lucide-react";
 import Link from "next/link";
 
 export default function Footer() {
@@ -34,8 +45,16 @@ export default function Footer() {
   const socialLinks = [
     { name: "Twitter", icon: Twitter, href: "https://twitter.com/eventhub" },
     { name: "Facebook", icon: Facebook, href: "https://facebook.com/eventhub" },
-    { name: "Instagram", icon: Instagram, href: "https://instagram.com/eventhub" },
-    { name: "LinkedIn", icon: Linkedin, href: "https://linkedin.com/company/eventhub" },
+    {
+      name: "Instagram",
+      icon: Instagram,
+      href: "https://instagram.com/eventhub",
+    },
+    {
+      name: "LinkedIn",
+      icon: Linkedin,
+      href: "https://linkedin.com/company/eventhub",
+    },
     { name: "GitHub", icon: Github, href: "https://github.com/eventhub" },
   ];
 
@@ -55,9 +74,10 @@ export default function Footer() {
               </span>
             </div>
             <p className="text-gray-600 dark:text-gray-400 mb-6 max-w-sm">
-              Discover amazing events, connect with like-minded people, and create unforgettable experiences in your city and beyond.
+              Discover amazing events, connect with like-minded people, and
+              create unforgettable experiences in your city and beyond.
             </p>
-            
+
             {/* Contact Info */}
             <div className="space-y-3">
               <div className="flex items-center space-x-3 text-sm text-gray-600 dark:text-gray-400">
@@ -160,7 +180,8 @@ export default function Footer() {
                 Stay updated with the latest events
               </h3>
               <p className="text-sm text-gray-600 dark:text-gray-400">
-                Get weekly updates on trending events in your area and exclusive early access to featured events.
+                Get weekly updates on trending events in your area and exclusive
+                early access to featured events.
               </p>
             </div>
             <div className="flex space-x-3 w-full md:w-auto">

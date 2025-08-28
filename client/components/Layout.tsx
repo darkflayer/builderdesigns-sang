@@ -1,6 +1,19 @@
 import { useState, useRef, useEffect } from "react";
 import { createPortal } from "react-dom";
-import { Home, Calendar, Scan, Users, Search, MapPin, Bell, User, Moon, Sun, LogOut, ChevronDown } from "lucide-react";
+import {
+  Home,
+  Calendar,
+  Scan,
+  Users,
+  Search,
+  MapPin,
+  Bell,
+  User,
+  Moon,
+  Sun,
+  LogOut,
+  ChevronDown,
+} from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { cn } from "@/lib/utils";
@@ -16,13 +29,20 @@ interface LayoutProps {
   onSearchChange?: (query: string) => void;
 }
 
-export default function Layout({ children, searchQuery = "", onSearchChange }: LayoutProps) {
+export default function Layout({
+  children,
+  searchQuery = "",
+  onSearchChange,
+}: LayoutProps) {
   const router = useRouter();
   const { theme, toggleTheme } = useTheme();
   const { isAuthenticated, user, logout } = useAuth();
   const [showNotifications, setShowNotifications] = useState(false);
   const [showProfileDropdown, setShowProfileDropdown] = useState(false);
-  const [dropdownPosition, setDropdownPosition] = useState({ top: 0, right: 0 });
+  const [dropdownPosition, setDropdownPosition] = useState({
+    top: 0,
+    right: 0,
+  });
   const dropdownRef = useRef<HTMLDivElement>(null);
   const profileButtonRef = useRef<HTMLButtonElement>(null);
   const unreadCount = getUnreadCount();
@@ -30,20 +50,23 @@ export default function Layout({ children, searchQuery = "", onSearchChange }: L
   // Close dropdown when clicking outside
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
         setShowProfileDropdown(false);
       }
     }
 
-    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener("mousedown", handleClickOutside);
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
 
   const handleProfileClick = () => {
     setShowProfileDropdown(false);
-    router.push('/profile');
+    router.push("/profile");
   };
 
   const handleLogout = () => {
@@ -56,7 +79,7 @@ export default function Layout({ children, searchQuery = "", onSearchChange }: L
       const rect = profileButtonRef.current.getBoundingClientRect();
       setDropdownPosition({
         top: rect.bottom + 8,
-        right: window.innerWidth - rect.right
+        right: window.innerWidth - rect.right,
       });
     }
     setShowProfileDropdown(!showProfileDropdown);
@@ -93,7 +116,10 @@ export default function Layout({ children, searchQuery = "", onSearchChange }: L
           <div className="flex items-center justify-between">
             {/* Logo/Brand */}
             <div className="flex items-center space-x-8">
-              <Link href="/" className="flex items-center space-x-2 hover:opacity-80 transition-opacity">
+              <Link
+                href="/"
+                className="flex items-center space-x-2 hover:opacity-80 transition-opacity"
+              >
                 <div className="w-8 h-8 bg-gradient-to-br from-[#7DA3D8] to-[#4F6789] rounded-lg flex items-center justify-center">
                   <Calendar className="h-5 w-5 text-white" />
                 </div>
@@ -114,10 +140,15 @@ export default function Layout({ children, searchQuery = "", onSearchChange }: L
                         "flex items-center space-x-2 px-4 py-2.5 rounded-xl transition-all duration-200 font-medium",
                         isActive
                           ? "text-[#1976d2] bg-[#E8F1FC] dark:bg-[#4F6789]/20 shadow-sm ring-1 ring-[#7DA3D8]/30 dark:ring-[#7DA3D8]/20"
-                          : "text-gray-600 dark:text-gray-200 hover:text-gray-900 dark:hover:text-white hover:bg-[rgba(125,163,216,0.08)] dark:hover:bg-[rgba(79,103,137,0.18)]"
+                          : "text-gray-600 dark:text-gray-200 hover:text-gray-900 dark:hover:text-white hover:bg-[rgba(125,163,216,0.08)] dark:hover:bg-[rgba(79,103,137,0.18)]",
                       )}
                     >
-                      <item.icon className={cn("h-4 w-4", isActive ? "text-[#1976d2]" : "")} />
+                      <item.icon
+                        className={cn(
+                          "h-4 w-4",
+                          isActive ? "text-[#1976d2]" : "",
+                        )}
+                      />
                       <span className="text-sm">{item.name}</span>
                     </Link>
                   );
@@ -144,8 +175,12 @@ export default function Layout({ children, searchQuery = "", onSearchChange }: L
               <div className="flex items-center space-x-2 px-3 py-2 bg-white/60 dark:bg-white/5 rounded-xl ring-1 ring-white/20 dark:ring-white/10">
                 <MapPin className="h-4 w-4 text-[#1976d2]" />
                 <div className="text-sm">
-                  <span className="text-gray-600 dark:text-gray-300 block text-xs">Location</span>
-                  <span className="font-medium text-gray-900 dark:text-white">San Francisco, CA</span>
+                  <span className="text-gray-600 dark:text-gray-300 block text-xs">
+                    Location
+                  </span>
+                  <span className="font-medium text-gray-900 dark:text-white">
+                    San Francisco, CA
+                  </span>
                 </div>
               </div>
 
@@ -153,7 +188,7 @@ export default function Layout({ children, searchQuery = "", onSearchChange }: L
                 onClick={toggleTheme}
                 className="p-2.5 rounded-xl bg-white/60 dark:bg-white/5 hover:bg-white/80 dark:hover:bg-white/10 ring-1 ring-white/20 dark:ring-white/10 transition-colors"
               >
-                {theme === 'dark' ? (
+                {theme === "dark" ? (
                   <Sun className="h-5 w-5 text-gray-600 dark:text-gray-200" />
                 ) : (
                   <Moon className="h-5 w-5 text-gray-600 dark:text-gray-200" />
@@ -167,7 +202,9 @@ export default function Layout({ children, searchQuery = "", onSearchChange }: L
                 <Bell className="h-5 w-5 text-gray-600 dark:text-gray-200" />
                 {unreadCount > 0 && (
                   <div className="absolute -top-1 -right-1 h-5 w-5 bg-red-500 rounded-full flex items-center justify-center">
-                    <span className="text-xs text-white font-bold">{unreadCount > 9 ? '9+' : unreadCount}</span>
+                    <span className="text-xs text-white font-bold">
+                      {unreadCount > 9 ? "9+" : unreadCount}
+                    </span>
                   </div>
                 )}
               </button>
@@ -183,56 +220,60 @@ export default function Layout({ children, searchQuery = "", onSearchChange }: L
                     <ChevronDown className="h-3 w-3 text-white" />
                   </button>
 
-                  {showProfileDropdown && createPortal(
-                    <div
-                      ref={dropdownRef}
-                      className="fixed w-64 bg-white dark:bg-gray-800 rounded-xl shadow-2xl border border-gray-200 dark:border-gray-700 py-2"
-                      style={{
-                        top: dropdownPosition.top,
-                        right: dropdownPosition.right,
-                        zIndex: 99999
-                      }}
-                    >
-                      {/* Profile Header */}
-                      <div className="px-4 py-3 border-b border-gray-100 dark:border-gray-700">
-                        <div className="flex items-center space-x-3">
-                          <div className="w-10 h-10 bg-gradient-to-br from-[#7DA3D8] to-[#4F6789] rounded-full flex items-center justify-center">
-                            <User className="h-5 w-5 text-white" />
-                          </div>
-                          <div>
-                            <p className="text-sm font-medium text-gray-900 dark:text-white">
-                              Hi, {user?.name || 'User'}!
-                            </p>
-                            <p className="text-xs text-gray-500 dark:text-gray-400">
-                              {user?.email || 'user@example.com'}
-                            </p>
+                  {showProfileDropdown &&
+                    createPortal(
+                      <div
+                        ref={dropdownRef}
+                        className="fixed w-64 bg-white dark:bg-gray-800 rounded-xl shadow-2xl border border-gray-200 dark:border-gray-700 py-2"
+                        style={{
+                          top: dropdownPosition.top,
+                          right: dropdownPosition.right,
+                          zIndex: 99999,
+                        }}
+                      >
+                        {/* Profile Header */}
+                        <div className="px-4 py-3 border-b border-gray-100 dark:border-gray-700">
+                          <div className="flex items-center space-x-3">
+                            <div className="w-10 h-10 bg-gradient-to-br from-[#7DA3D8] to-[#4F6789] rounded-full flex items-center justify-center">
+                              <User className="h-5 w-5 text-white" />
+                            </div>
+                            <div>
+                              <p className="text-sm font-medium text-gray-900 dark:text-white">
+                                Hi, {user?.name || "User"}!
+                              </p>
+                              <p className="text-xs text-gray-500 dark:text-gray-400">
+                                {user?.email || "user@example.com"}
+                              </p>
+                            </div>
                           </div>
                         </div>
-                      </div>
 
-                      {/* Menu Items */}
-                      <div className="py-1">
-                        <button
-                          onClick={handleProfileClick}
-                          className="flex items-center w-full px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
-                        >
-                          <User className="h-4 w-4 mr-3" />
-                          Profile
-                        </button>
-                        <button
-                          onClick={handleLogout}
-                          className="flex items-center w-full px-4 py-2 text-sm text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors"
-                        >
-                          <LogOut className="h-4 w-4 mr-3" />
-                          Log out
-                        </button>
-                      </div>
-                    </div>,
-                    document.body
-                  )}
+                        {/* Menu Items */}
+                        <div className="py-1">
+                          <button
+                            onClick={handleProfileClick}
+                            className="flex items-center w-full px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
+                          >
+                            <User className="h-4 w-4 mr-3" />
+                            Profile
+                          </button>
+                          <button
+                            onClick={handleLogout}
+                            className="flex items-center w-full px-4 py-2 text-sm text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors"
+                          >
+                            <LogOut className="h-4 w-4 mr-3" />
+                            Log out
+                          </button>
+                        </div>
+                      </div>,
+                      document.body,
+                    )}
                 </>
               ) : (
-                <Link href="/auth" className="bg-gradient-to-r from-[#7DA3D8] to-[#4F6789] hover:opacity-90 text-white px-4 py-2 rounded-xl font-semibold transition-all duration-200 shadow-lg hover:shadow-xl">
+                <Link
+                  href="/auth"
+                  className="bg-gradient-to-r from-[#7DA3D8] to-[#4F6789] hover:opacity-90 text-white px-4 py-2 rounded-xl font-semibold transition-all duration-200 shadow-lg hover:shadow-xl"
+                >
                   Login / Sign Up
                 </Link>
               )}
@@ -242,9 +283,7 @@ export default function Layout({ children, searchQuery = "", onSearchChange }: L
       </nav>
 
       {/* Main Content */}
-      <main className="flex-1 lg:pb-0 pb-20">
-        {children}
-      </main>
+      <main className="flex-1 lg:pb-0 pb-20">{children}</main>
 
       {/* Footer - Hidden on mobile */}
       <div className="hidden lg:block">
@@ -265,10 +304,15 @@ export default function Layout({ children, searchQuery = "", onSearchChange }: L
                     "flex flex-col items-center py-2 px-3 rounded-xl transition-all duration-200",
                     isActive
                       ? "text-[#1976d2] bg-[#E8F1FC] dark:bg-[#4F6789]/20 shadow-sm ring-1 ring-[#7DA3D8]/30 dark:ring-[#7DA3D8]/20"
-                      : "text-gray-600 dark:text-gray-200 hover:text-gray-900 dark:hover:text-white"
+                      : "text-gray-600 dark:text-gray-200 hover:text-gray-900 dark:hover:text-white",
                   )}
                 >
-                  <item.icon className={cn("h-5 w-5 mb-1", isActive ? "text-[#1976d2]" : "")} />
+                  <item.icon
+                    className={cn(
+                      "h-5 w-5 mb-1",
+                      isActive ? "text-[#1976d2]" : "",
+                    )}
+                  />
                   <span className="text-xs font-medium">{item.name}</span>
                 </Link>
               );

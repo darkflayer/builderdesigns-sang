@@ -1,21 +1,49 @@
 import { useState, useMemo } from "react";
-import { Search, MoreVertical, Edit3, Trash2, Download, MapPin, Mail, Phone, Linkedin, Twitter, Instagram, Globe, Building, User, X, Calendar, Filter } from "lucide-react";
+import {
+  Search,
+  MoreVertical,
+  Edit3,
+  Trash2,
+  Download,
+  MapPin,
+  Mail,
+  Phone,
+  Linkedin,
+  Twitter,
+  Instagram,
+  Globe,
+  Building,
+  User,
+  X,
+  Calendar,
+  Filter,
+} from "lucide-react";
 import Layout from "@/components/Layout";
-import { getAllConnections, connectionCategories, getCategoryById, type Connection } from "@/data/connectionCategories";
+import {
+  getAllConnections,
+  connectionCategories,
+  getCategoryById,
+  type Connection,
+} from "@/data/connectionCategories";
 import { cn } from "@/lib/utils";
 import { useAuth } from "@/hooks/useAuth";
 
-type CategoryFilter = 'all' | string;
-type SortOption = 'name' | 'date' | 'category';
+type CategoryFilter = "all" | string;
+type SortOption = "name" | "date" | "category";
 
 export default function Network() {
   const { isAuthenticated } = useAuth();
   const [searchQuery, setSearchQuery] = useState("");
-  const [categoryFilter, setCategoryFilter] = useState<CategoryFilter>('all');
-  const [sortBy, setSortBy] = useState<SortOption>('name');
-  const [selectedConnection, setSelectedConnection] = useState<Connection | null>(null);
-  const [showCategoryModal, setShowCategoryModal] = useState<Connection | null>(null);
-  const [showRemoveModal, setShowRemoveModal] = useState<Connection | null>(null);
+  const [categoryFilter, setCategoryFilter] = useState<CategoryFilter>("all");
+  const [sortBy, setSortBy] = useState<SortOption>("name");
+  const [selectedConnection, setSelectedConnection] =
+    useState<Connection | null>(null);
+  const [showCategoryModal, setShowCategoryModal] = useState<Connection | null>(
+    null,
+  );
+  const [showRemoveModal, setShowRemoveModal] = useState<Connection | null>(
+    null,
+  );
   const connections = getAllConnections();
 
   // Filter and sort connections
@@ -23,10 +51,15 @@ export default function Network() {
     let filtered = connections.filter((connection) => {
       const matchesSearch =
         connection.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        (connection.fieldsShared.company?.toLowerCase().includes(searchQuery.toLowerCase())) ||
-        (connection.fieldsShared.role?.toLowerCase().includes(searchQuery.toLowerCase()));
+        connection.fieldsShared.company
+          ?.toLowerCase()
+          .includes(searchQuery.toLowerCase()) ||
+        connection.fieldsShared.role
+          ?.toLowerCase()
+          .includes(searchQuery.toLowerCase());
 
-      const matchesCategory = categoryFilter === 'all' || connection.category === categoryFilter;
+      const matchesCategory =
+        categoryFilter === "all" || connection.category === categoryFilter;
 
       return matchesSearch && matchesCategory;
     });
@@ -34,11 +67,14 @@ export default function Network() {
     // Sort connections
     filtered.sort((a, b) => {
       switch (sortBy) {
-        case 'name':
+        case "name":
           return a.name.localeCompare(b.name);
-        case 'date':
-          return new Date(b.connectionDate).getTime() - new Date(a.connectionDate).getTime();
-        case 'category':
+        case "date":
+          return (
+            new Date(b.connectionDate).getTime() -
+            new Date(a.connectionDate).getTime()
+          );
+        case "category":
           return a.category.localeCompare(b.category);
         default:
           return 0;
@@ -48,7 +84,10 @@ export default function Network() {
     return filtered;
   }, [connections, searchQuery, categoryFilter, sortBy]);
 
-  const handleCategoryChange = (connection: Connection, newCategoryId: string) => {
+  const handleCategoryChange = (
+    connection: Connection,
+    newCategoryId: string,
+  ) => {
     // In a real app, this would update the backend
     console.log(`Changing category for ${connection.name} to ${newCategoryId}`);
     alert(`Category updated! In a real app, this would save to backend.`);
@@ -69,39 +108,75 @@ export default function Network() {
       category: connection.category,
       connectionDate: connection.connectionDate,
       sharedFields: connection.fieldsShared,
-      eventContext: connection.eventName ? {
-        eventId: connection.eventId,
-        eventName: connection.eventName
-      } : null
+      eventContext: connection.eventName
+        ? {
+            eventId: connection.eventId,
+            eventName: connection.eventName,
+          }
+        : null,
     };
 
-    console.log('Downloading connection info:', info);
-    alert(`Downloading ${connection.name}'s information! In a real app, this would download a file.`);
+    console.log("Downloading connection info:", info);
+    alert(
+      `Downloading ${connection.name}'s information! In a real app, this would download a file.`,
+    );
   };
 
   const getFieldIcon = (fieldName: string) => {
     switch (fieldName) {
-      case 'email': return Mail;
-      case 'phone': return Phone;
-      case 'linkedin': return Linkedin;
-      case 'twitter': return Twitter;
-      case 'instagram': return Instagram;
-      case 'website': return Globe;
-      case 'company': return Building;
-      case 'location': return MapPin;
-      default: return User;
+      case "email":
+        return Mail;
+      case "phone":
+        return Phone;
+      case "linkedin":
+        return Linkedin;
+      case "twitter":
+        return Twitter;
+      case "instagram":
+        return Instagram;
+      case "website":
+        return Globe;
+      case "company":
+        return Building;
+      case "location":
+        return MapPin;
+      default:
+        return User;
     }
   };
 
   const formatFieldValue = (fieldName: string, value: string) => {
-    if (fieldName === 'email') {
-      return <a href={`mailto:${value}`} className="text-[#1976d2] dark:text-[#7DA3D8] hover:underline">{value}</a>;
+    if (fieldName === "email") {
+      return (
+        <a
+          href={`mailto:${value}`}
+          className="text-[#1976d2] dark:text-[#7DA3D8] hover:underline"
+        >
+          {value}
+        </a>
+      );
     }
-    if (fieldName === 'phone') {
-      return <a href={`tel:${value}`} className="text-[#1976d2] dark:text-[#7DA3D8] hover:underline">{value}</a>;
+    if (fieldName === "phone") {
+      return (
+        <a
+          href={`tel:${value}`}
+          className="text-[#1976d2] dark:text-[#7DA3D8] hover:underline"
+        >
+          {value}
+        </a>
+      );
     }
-    if (['linkedin', 'twitter', 'instagram', 'website'].includes(fieldName)) {
-      return <a href={value} target="_blank" rel="noopener noreferrer" className="text-[#1976d2] dark:text-[#7DA3D8] hover:underline">View Profile</a>;
+    if (["linkedin", "twitter", "instagram", "website"].includes(fieldName)) {
+      return (
+        <a
+          href={value}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-[#1976d2] dark:text-[#7DA3D8] hover:underline"
+        >
+          View Profile
+        </a>
+      );
     }
     return value;
   };
@@ -114,7 +189,9 @@ export default function Network() {
           <div className="max-w-7xl mx-auto">
             <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
               <div>
-                <h1 className="text-2xl lg:text-3xl font-bold text-gray-900 dark:text-white">My Network</h1>
+                <h1 className="text-2xl lg:text-3xl font-bold text-gray-900 dark:text-white">
+                  My Network
+                </h1>
                 <p className="text-gray-600 dark:text-gray-400 mt-1">
                   Manage your connections and professional network
                 </p>
@@ -135,7 +212,9 @@ export default function Network() {
                 {/* Category Filter */}
                 <select
                   value={categoryFilter}
-                  onChange={(e) => setCategoryFilter(e.target.value as CategoryFilter)}
+                  onChange={(e) =>
+                    setCategoryFilter(e.target.value as CategoryFilter)
+                  }
                   className="px-3 py-2 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#1976d2]"
                 >
                   <option value="all">All Categories</option>
@@ -162,20 +241,28 @@ export default function Network() {
             {/* Stats */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-6">
               <div className="bg-[#E8F1FC] dark:bg-[#4F6789]/20 rounded-xl p-4">
-                <div className="text-2xl font-bold text-[#1976d2] dark:text-[#7DA3D8]">{connections.length}</div>
-                <div className="text-sm text-[#125AA0] dark:text-blue-300">Total Connections</div>
+                <div className="text-2xl font-bold text-[#1976d2] dark:text-[#7DA3D8]">
+                  {connections.length}
+                </div>
+                <div className="text-sm text-[#125AA0] dark:text-blue-300">
+                  Total Connections
+                </div>
               </div>
               <div className="bg-[#E8F1FC] dark:bg-[#4F6789]/20 rounded-xl p-4">
                 <div className="text-2xl font-bold text-[#1976d2] dark:text-[#7DA3D8]">
-                  {connections.filter(c => c.eventName).length}
+                  {connections.filter((c) => c.eventName).length}
                 </div>
-                <div className="text-sm text-[#125AA0] dark:text-blue-300">Event Connections</div>
+                <div className="text-sm text-[#125AA0] dark:text-blue-300">
+                  Event Connections
+                </div>
               </div>
               <div className="bg-green-50 dark:bg-green-900/20 rounded-xl p-4">
                 <div className="text-2xl font-bold text-green-600 dark:text-green-400">
-                  {new Set(connections.map(c => c.category)).size}
+                  {new Set(connections.map((c) => c.category)).size}
                 </div>
-                <div className="text-sm text-green-700 dark:text-green-300">Categories</div>
+                <div className="text-sm text-green-700 dark:text-green-300">
+                  Categories
+                </div>
               </div>
             </div>
           </div>
@@ -245,7 +332,9 @@ export default function Network() {
 
                         {/* Category Badge */}
                         <div className="flex justify-center mb-3">
-                          <span className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold text-white ${category?.color}`}>
+                          <span
+                            className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold text-white ${category?.color}`}
+                          >
                             {category?.icon} {category?.name}
                           </span>
                         </div>
@@ -285,7 +374,12 @@ export default function Network() {
                         {/* Connection Date */}
                         <div className="flex items-center justify-center space-x-1 text-xs text-gray-500 dark:text-gray-500">
                           <Calendar className="h-3 w-3" />
-                          <span>Connected {new Date(connection.connectionDate).toLocaleDateString()}</span>
+                          <span>
+                            Connected{" "}
+                            {new Date(
+                              connection.connectionDate,
+                            ).toLocaleDateString()}
+                          </span>
                         </div>
                       </div>
                     </div>
@@ -301,15 +395,14 @@ export default function Network() {
                     No Connections Found
                   </h3>
                   <p className="text-gray-600 dark:text-gray-400 mb-6">
-                    {searchQuery || categoryFilter !== 'all'
+                    {searchQuery || categoryFilter !== "all"
                       ? "Try adjusting your search or filters."
-                      : "Start scanning QR codes to build your network!"
-                    }
+                      : "Start scanning QR codes to build your network!"}
                   </p>
                   <button
                     onClick={() => {
                       setSearchQuery("");
-                      setCategoryFilter('all');
+                      setCategoryFilter("all");
                     }}
                     className="bg-gradient-to-r from-[#7DA3D8] to-[#4F6789] hover:opacity-90 text-white px-6 py-3 rounded-xl font-semibold transition-all duration-200"
                   >
@@ -329,7 +422,9 @@ export default function Network() {
                 {/* Header */}
                 <div className="p-6 border-b border-gray-200 dark:border-gray-700">
                   <div className="flex items-center justify-between">
-                    <h2 className="text-xl font-bold text-gray-900 dark:text-white">Connection Profile</h2>
+                    <h2 className="text-xl font-bold text-gray-900 dark:text-white">
+                      Connection Profile
+                    </h2>
                     <button
                       onClick={() => setSelectedConnection(null)}
                       className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors"
@@ -354,8 +449,11 @@ export default function Network() {
 
                     {/* Our Category for Them */}
                     <div className="flex justify-center mb-4">
-                      <span className={`inline-flex items-center px-4 py-2 rounded-full text-sm font-semibold text-white ${getCategoryById(selectedConnection.category)?.color}`}>
-                        {getCategoryById(selectedConnection.category)?.icon} {getCategoryById(selectedConnection.category)?.name}
+                      <span
+                        className={`inline-flex items-center px-4 py-2 rounded-full text-sm font-semibold text-white ${getCategoryById(selectedConnection.category)?.color}`}
+                      >
+                        {getCategoryById(selectedConnection.category)?.icon}{" "}
+                        {getCategoryById(selectedConnection.category)?.name}
                       </span>
                     </div>
 
@@ -364,7 +462,9 @@ export default function Network() {
                       <div className="bg-[#E8F1FC] dark:bg-[#4F6789]/20 rounded-lg p-3 mb-4">
                         <div className="flex items-center justify-center space-x-2 text-[#125AA0] dark:text-blue-300">
                           <MapPin className="h-4 w-4" />
-                          <span className="text-sm font-medium">Met at: {selectedConnection.eventName}</span>
+                          <span className="text-sm font-medium">
+                            Met at: {selectedConnection.eventName}
+                          </span>
                         </div>
                       </div>
                     )}
@@ -372,35 +472,47 @@ export default function Network() {
 
                   {/* Shared Information */}
                   <div className="space-y-6">
-                    <h4 className="text-lg font-semibold text-gray-900 dark:text-white">Shared Information</h4>
+                    <h4 className="text-lg font-semibold text-gray-900 dark:text-white">
+                      Shared Information
+                    </h4>
 
                     <div className="grid grid-cols-1 gap-4">
-                      {Object.entries(selectedConnection.fieldsShared).map(([field, value]) => {
-                        if (!value || field === 'name') return null;
+                      {Object.entries(selectedConnection.fieldsShared).map(
+                        ([field, value]) => {
+                          if (!value || field === "name") return null;
 
-                        const IconComponent = getFieldIcon(field);
+                          const IconComponent = getFieldIcon(field);
 
-                        return (
-                          <div key={field} className="flex items-start space-x-3 p-4 bg-gray-50 dark:bg-gray-700 rounded-xl">
-                            <IconComponent className="h-5 w-5 text-[#1976d2] dark:text-[#7DA3D8] mt-0.5 flex-shrink-0" />
-                            <div className="flex-1">
-                              <p className="text-sm font-medium text-gray-700 dark:text-gray-300 capitalize mb-1">
-                                {field.replace(/([A-Z])/g, ' $1').trim()}
-                              </p>
-                              <div className="text-gray-900 dark:text-white">
-                                {formatFieldValue(field, value)}
+                          return (
+                            <div
+                              key={field}
+                              className="flex items-start space-x-3 p-4 bg-gray-50 dark:bg-gray-700 rounded-xl"
+                            >
+                              <IconComponent className="h-5 w-5 text-[#1976d2] dark:text-[#7DA3D8] mt-0.5 flex-shrink-0" />
+                              <div className="flex-1">
+                                <p className="text-sm font-medium text-gray-700 dark:text-gray-300 capitalize mb-1">
+                                  {field.replace(/([A-Z])/g, " $1").trim()}
+                                </p>
+                                <div className="text-gray-900 dark:text-white">
+                                  {formatFieldValue(field, value)}
+                                </div>
                               </div>
                             </div>
-                          </div>
-                        );
-                      })}
+                          );
+                        },
+                      )}
                     </div>
 
                     {/* Connection Details */}
                     <div className="bg-gray-50 dark:bg-gray-700 rounded-xl p-4">
-                      <h5 className="font-semibold text-gray-900 dark:text-white mb-2">Connection Details</h5>
+                      <h5 className="font-semibold text-gray-900 dark:text-white mb-2">
+                        Connection Details
+                      </h5>
                       <p className="text-sm text-gray-600 dark:text-gray-400">
-                        Connected on {new Date(selectedConnection.connectionDate).toLocaleDateString()}
+                        Connected on{" "}
+                        {new Date(
+                          selectedConnection.connectionDate,
+                        ).toLocaleDateString()}
                       </p>
                     </div>
                   </div>
@@ -441,15 +553,19 @@ export default function Network() {
                     {connectionCategories.map((category) => (
                       <button
                         key={category.id}
-                        onClick={() => handleCategoryChange(showCategoryModal, category.id)}
+                        onClick={() =>
+                          handleCategoryChange(showCategoryModal, category.id)
+                        }
                         className={cn(
                           "flex flex-col items-center p-4 rounded-xl border-2 transition-all duration-200",
                           showCategoryModal.category === category.id
                             ? "border-blue-500 bg-[#E8F1FC] dark:bg-blue-900/30"
-                            : "border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600"
+                            : "border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600",
                         )}
                       >
-                        <div className={`w-10 h-10 rounded-full flex items-center justify-center text-lg mb-2 ${category.color}`}>
+                        <div
+                          className={`w-10 h-10 rounded-full flex items-center justify-center text-lg mb-2 ${category.color}`}
+                        >
                           {category.icon}
                         </div>
                         <span className="text-sm font-medium text-gray-900 dark:text-white">
@@ -482,7 +598,9 @@ export default function Network() {
                     Remove Connection
                   </h3>
                   <p className="text-gray-600 dark:text-gray-400 mb-6">
-                    Are you sure you want to remove <strong>{showRemoveModal.name}</strong> from your network? This action cannot be undone.
+                    Are you sure you want to remove{" "}
+                    <strong>{showRemoveModal.name}</strong> from your network?
+                    This action cannot be undone.
                   </p>
                   <div className="flex space-x-3">
                     <button

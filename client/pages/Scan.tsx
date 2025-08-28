@@ -1,7 +1,23 @@
 import { useState, useRef } from "react";
-import { Camera, Upload, Flashlight, QrCode, ToggleLeft, ToggleRight, X, User, MapPin, Calendar, Share2 } from "lucide-react";
+import {
+  Camera,
+  Upload,
+  Flashlight,
+  QrCode,
+  ToggleLeft,
+  ToggleRight,
+  X,
+  User,
+  MapPin,
+  Calendar,
+  Share2,
+} from "lucide-react";
 import Layout from "@/components/Layout";
-import { connectionCategories, mockConnections, getCategoryById } from "@/data/connectionCategories";
+import {
+  connectionCategories,
+  mockConnections,
+  getCategoryById,
+} from "@/data/connectionCategories";
 import { cn } from "@/lib/utils";
 import { useAuth } from "@/hooks/useAuth";
 
@@ -13,8 +29,10 @@ export default function Scan() {
   const [flashEnabled, setFlashEnabled] = useState(false);
   const [scanning, setScanning] = useState(false);
   const [showConnections, setShowConnections] = useState(false);
-  const [locationPermission, setLocationPermission] = useState<'granted' | 'denied' | 'prompt'>('prompt');
-  const [currentLocation, setCurrentLocation] = useState<string>('');
+  const [locationPermission, setLocationPermission] = useState<
+    "granted" | "denied" | "prompt"
+  >("prompt");
+  const [currentLocation, setCurrentLocation] = useState<string>("");
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const handleFileUpload = () => {
@@ -26,36 +44,42 @@ export default function Scan() {
     if (file) {
       // In a real app, you would process the uploaded image for QR scanning
       console.log("Processing uploaded image:", file.name);
-      alert("QR scan from uploaded image - feature would be implemented with QR scanner library");
+      alert(
+        "QR scan from uploaded image - feature would be implemented with QR scanner library",
+      );
     }
   };
 
   const requestLocationPermission = async () => {
     if (navigator.geolocation) {
       try {
-        const position = await new Promise<GeolocationPosition>((resolve, reject) => {
-          navigator.geolocation.getCurrentPosition(resolve, reject);
-        });
+        const position = await new Promise<GeolocationPosition>(
+          (resolve, reject) => {
+            navigator.geolocation.getCurrentPosition(resolve, reject);
+          },
+        );
 
         // In a real app, you would reverse geocode the coordinates to get a readable address
         const mockLocation = `${position.coords.latitude.toFixed(4)}, ${position.coords.longitude.toFixed(4)}`;
         setCurrentLocation(mockLocation);
-        setLocationPermission('granted');
+        setLocationPermission("granted");
         return true;
       } catch (error) {
-        setLocationPermission('denied');
-        alert('Location access denied. QR scanning will work without location data.');
+        setLocationPermission("denied");
+        alert(
+          "Location access denied. QR scanning will work without location data.",
+        );
         return false;
       }
     } else {
-      alert('Geolocation is not supported by this browser.');
+      alert("Geolocation is not supported by this browser.");
       return false;
     }
   };
 
   const startScanning = async () => {
     // Request location if not already granted
-    if (locationPermission === 'prompt') {
+    if (locationPermission === "prompt") {
       await requestLocationPermission();
     }
 
@@ -63,8 +87,10 @@ export default function Scan() {
     // In a real app, you would start the camera and QR scanning
     setTimeout(() => {
       setScanning(false);
-      const locationText = currentLocation ? ` at ${currentLocation}` : '';
-      alert(`QR Code scanned successfully${locationText}! In a real app, this would process the scanned data and save the connection with location info.`);
+      const locationText = currentLocation ? ` at ${currentLocation}` : "";
+      alert(
+        `QR Code scanned successfully${locationText}! In a real app, this would process the scanned data and save the connection with location info.`,
+      );
     }, 2000);
   };
 
@@ -79,7 +105,9 @@ export default function Scan() {
       // In a real app, you would generate QR code with the selected fields
       console.log("Generating QR with category:", category.name);
       console.log("Fields to share:", category.fieldsToShare);
-      alert(`QR Code generated for ${category.name} category with specified fields. In a real app, this would show the actual QR code.`);
+      alert(
+        `QR Code generated for ${category.name} category with specified fields. In a real app, this would show the actual QR code.`,
+      );
     }
   };
 
@@ -91,7 +119,9 @@ export default function Scan() {
           <div className="max-w-4xl mx-auto">
             <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
               <div>
-                <h1 className="text-2xl lg:text-3xl font-bold text-gray-900 dark:text-white">QR Scanner</h1>
+                <h1 className="text-2xl lg:text-3xl font-bold text-gray-900 dark:text-white">
+                  QR Scanner
+                </h1>
                 <p className="text-gray-600 dark:text-gray-400 mt-1">
                   Scan QR codes or share your information
                 </p>
@@ -109,18 +139,22 @@ export default function Scan() {
 
                 {/* Event Mode Toggle */}
                 <div className="flex items-center space-x-3">
-                  <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Event Mode</span>
+                  <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                    Event Mode
+                  </span>
                   <button
                     onClick={() => setEventMode(!eventMode)}
                     className={cn(
                       "relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-[#1976d2] focus:ring-offset-2",
-                      eventMode ? "bg-[#1976d2]" : "bg-gray-200 dark:bg-gray-600"
+                      eventMode
+                        ? "bg-[#1976d2]"
+                        : "bg-gray-200 dark:bg-gray-600",
                     )}
                   >
                     <span
                       className={cn(
                         "inline-block h-4 w-4 transform rounded-full bg-white transition-transform",
-                        eventMode ? "translate-x-6" : "translate-x-1"
+                        eventMode ? "translate-x-6" : "translate-x-1",
                       )}
                     />
                   </button>
@@ -134,7 +168,8 @@ export default function Scan() {
                 <div className="flex items-center space-x-2 text-blue-700 dark:text-blue-300">
                   <Calendar className="h-4 w-4" />
                   <span className="text-sm font-medium">
-                    Event Mode Active - Connections will show "Met at Event" context
+                    Event Mode Active - Connections will show "Met at Event"
+                    context
                   </span>
                 </div>
               </div>
@@ -148,7 +183,9 @@ export default function Scan() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
               {/* QR Scanner Section */}
               <div className="space-y-6">
-                <h2 className="text-xl font-bold text-gray-900 dark:text-white">Scan QR Code</h2>
+                <h2 className="text-xl font-bold text-gray-900 dark:text-white">
+                  Scan QR Code
+                </h2>
 
                 {/* Scanner Box */}
                 <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg">
@@ -159,14 +196,18 @@ export default function Scan() {
                         <div className="absolute inset-0 flex items-center justify-center">
                           <div className="text-center">
                             <div className="animate-spin h-8 w-8 border-2 border-purple-600 border-t-transparent rounded-full mx-auto mb-2"></div>
-                            <p className="text-sm text-gray-600 dark:text-gray-400">Scanning...</p>
+                            <p className="text-sm text-gray-600 dark:text-gray-400">
+                              Scanning...
+                            </p>
                           </div>
                         </div>
                       ) : (
                         <div className="absolute inset-0 flex items-center justify-center">
                           <div className="text-center">
                             <QrCode className="h-16 w-16 text-gray-400 mx-auto mb-4" />
-                            <p className="text-gray-600 dark:text-gray-400">Position QR code within frame</p>
+                            <p className="text-gray-600 dark:text-gray-400">
+                              Position QR code within frame
+                            </p>
                           </div>
                         </div>
                       )}
@@ -188,7 +229,7 @@ export default function Scan() {
                           "flex flex-col items-center space-y-2 p-3 rounded-xl transition-all duration-200",
                           flashEnabled
                             ? "bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-300"
-                            : "bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-600"
+                            : "bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-600",
                         )}
                       >
                         <Flashlight className="h-5 w-5" />
@@ -227,59 +268,73 @@ export default function Scan() {
               {/* Connections & Recent Activity */}
               <div className="space-y-6">
                 <div className="flex items-center justify-between">
-                  <h2 className="text-xl font-bold text-gray-900 dark:text-white">Recent Connections</h2>
+                  <h2 className="text-xl font-bold text-gray-900 dark:text-white">
+                    Recent Connections
+                  </h2>
                   <button
                     onClick={() => setShowConnections(!showConnections)}
                     className="text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 text-sm font-medium"
                   >
-                    {showConnections ? 'Hide All' : 'View All'}
+                    {showConnections ? "Hide All" : "View All"}
                   </button>
                 </div>
 
                 {/* Connections List */}
                 <div className="space-y-4">
-                  {mockConnections.slice(0, showConnections ? undefined : 3).map((connection) => {
-                    const category = getCategoryById(connection.category);
-                    return (
-                      <div key={connection.id} className="bg-white dark:bg-gray-800 rounded-xl p-4 shadow-md">
-                        <div className="flex items-center space-x-4">
-                          <img
-                            src={connection.avatar}
-                            alt={connection.name}
-                            className="w-12 h-12 rounded-full"
-                          />
-                          <div className="flex-1">
-                            <h3 className="font-semibold text-gray-900 dark:text-white">
-                              {connection.name}
-                            </h3>
-                            <div className="flex items-center space-x-2 mt-1">
-                              <span className={`inline-flex items-center px-2 py-1 rounded-full text-xs font-medium text-white ${category?.color}`}>
-                                {category?.icon} {category?.name}
-                              </span>
+                  {mockConnections
+                    .slice(0, showConnections ? undefined : 3)
+                    .map((connection) => {
+                      const category = getCategoryById(connection.category);
+                      return (
+                        <div
+                          key={connection.id}
+                          className="bg-white dark:bg-gray-800 rounded-xl p-4 shadow-md"
+                        >
+                          <div className="flex items-center space-x-4">
+                            <img
+                              src={connection.avatar}
+                              alt={connection.name}
+                              className="w-12 h-12 rounded-full"
+                            />
+                            <div className="flex-1">
+                              <h3 className="font-semibold text-gray-900 dark:text-white">
+                                {connection.name}
+                              </h3>
+                              <div className="flex items-center space-x-2 mt-1">
+                                <span
+                                  className={`inline-flex items-center px-2 py-1 rounded-full text-xs font-medium text-white ${category?.color}`}
+                                >
+                                  {category?.icon} {category?.name}
+                                </span>
+                              </div>
+                              {eventMode && connection.eventName && (
+                                <div className="flex items-center space-x-1 mt-2 text-xs text-gray-600 dark:text-gray-400">
+                                  <MapPin className="h-3 w-3" />
+                                  <span>Met at: {connection.eventName}</span>
+                                </div>
+                              )}
+                              {connection.scanLocation && (
+                                <div className="flex items-center space-x-1 mt-1 text-xs text-gray-500 dark:text-gray-500">
+                                  <MapPin className="h-3 w-3" />
+                                  <span>
+                                    Scanned at: {connection.scanLocation}
+                                  </span>
+                                </div>
+                              )}
+                              <p className="text-xs text-gray-500 dark:text-gray-500 mt-1">
+                                Connected on{" "}
+                                {new Date(
+                                  connection.connectionDate,
+                                ).toLocaleDateString()}
+                              </p>
                             </div>
-                            {eventMode && connection.eventName && (
-                              <div className="flex items-center space-x-1 mt-2 text-xs text-gray-600 dark:text-gray-400">
-                                <MapPin className="h-3 w-3" />
-                                <span>Met at: {connection.eventName}</span>
-                              </div>
-                            )}
-                            {connection.scanLocation && (
-                              <div className="flex items-center space-x-1 mt-1 text-xs text-gray-500 dark:text-gray-500">
-                                <MapPin className="h-3 w-3" />
-                                <span>Scanned at: {connection.scanLocation}</span>
-                              </div>
-                            )}
-                            <p className="text-xs text-gray-500 dark:text-gray-500 mt-1">
-                              Connected on {new Date(connection.connectionDate).toLocaleDateString()}
-                            </p>
+                            <button className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors">
+                              <Share2 className="h-4 w-4 text-gray-500" />
+                            </button>
                           </div>
-                          <button className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors">
-                            <Share2 className="h-4 w-4 text-gray-500" />
-                          </button>
                         </div>
-                      </div>
-                    );
-                  })}
+                      );
+                    })}
                 </div>
 
                 {mockConnections.length === 0 && (
@@ -306,7 +361,9 @@ export default function Scan() {
                 {/* Header */}
                 <div className="p-6 border-b border-gray-200 dark:border-gray-700">
                   <div className="flex items-center justify-between">
-                    <h2 className="text-xl font-bold text-gray-900 dark:text-white">Share My QR Code</h2>
+                    <h2 className="text-xl font-bold text-gray-900 dark:text-white">
+                      Share My QR Code
+                    </h2>
                     <button
                       onClick={() => setShowMyQR(false)}
                       className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors"
@@ -322,7 +379,8 @@ export default function Scan() {
                     Select Connection Category
                   </h3>
                   <p className="text-sm text-gray-600 dark:text-gray-400 mb-6">
-                    Choose how you want to connect. Different categories share different information.
+                    Choose how you want to connect. Different categories share
+                    different information.
                   </p>
 
                   <div className="grid grid-cols-2 gap-3">
@@ -334,10 +392,12 @@ export default function Scan() {
                           "flex flex-col items-center p-4 rounded-xl border-2 transition-all duration-200",
                           selectedCategory === category.id
                             ? "border-blue-500 bg-purple-50 dark:bg-purple-900/30"
-                            : "border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600"
+                            : "border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600",
                         )}
                       >
-                        <div className={`w-12 h-12 rounded-full flex items-center justify-center text-xl mb-2 ${category.color}`}>
+                        <div
+                          className={`w-12 h-12 rounded-full flex items-center justify-center text-xl mb-2 ${category.color}`}
+                        >
                           {category.icon}
                         </div>
                         <h4 className="font-semibold text-gray-900 dark:text-white text-sm">
@@ -357,16 +417,23 @@ export default function Scan() {
                         Information that will be shared:
                       </h4>
                       <div className="grid grid-cols-2 gap-2 text-sm">
-                        {Object.entries(getCategoryById(selectedCategory)?.fieldsToShare || {}).map(([field, shared]) => (
-                          shared && (
-                            <div key={field} className="flex items-center space-x-2">
-                              <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                              <span className="text-gray-700 dark:text-gray-300 capitalize">
-                                {field.replace(/([A-Z])/g, ' $1').trim()}
-                              </span>
-                            </div>
-                          )
-                        ))}
+                        {Object.entries(
+                          getCategoryById(selectedCategory)?.fieldsToShare ||
+                            {},
+                        ).map(
+                          ([field, shared]) =>
+                            shared && (
+                              <div
+                                key={field}
+                                className="flex items-center space-x-2"
+                              >
+                                <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                                <span className="text-gray-700 dark:text-gray-300 capitalize">
+                                  {field.replace(/([A-Z])/g, " $1").trim()}
+                                </span>
+                              </div>
+                            ),
+                        )}
                       </div>
                     </div>
                   )}
