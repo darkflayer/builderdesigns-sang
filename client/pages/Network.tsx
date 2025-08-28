@@ -108,13 +108,13 @@ export default function Network() {
 
   return (
     <Layout searchQuery={searchQuery} onSearchChange={setSearchQuery}>
-      <div className="min-h-screen bg-gradient-to-br from-[#F8F5EF] to-[#F2EDE6] dark:from-gray-900 dark:to-gray-800">
+      <div className="min-h-screen bg-gradient-to-br from-[#F8F5EF] to-[#F2EDE6] dark:from-black dark:to-gray-900">
         {/* Header */}
         <div className="bg-white dark:bg-gray-800 shadow-sm px-4 lg:px-8 py-6">
           <div className="max-w-7xl mx-auto">
             <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
               <div>
-                <h1 className="text-2xl lg:text-3xl font-bold text-gray-900 dark:text-gray-100">My Network</h1>
+                <h1 className="text-2xl lg:text-3xl font-bold text-gray-900 dark:text-white">My Network</h1>
                 <p className="text-gray-600 dark:text-gray-400 mt-1">
                   Manage your connections and professional network
                 </p>
@@ -205,7 +205,7 @@ export default function Network() {
                               alt={connection.name}
                               className="w-16 h-16 rounded-full mx-auto mb-3 group-hover:scale-105 transition-transform duration-200"
                             />
-                            <h3 className="font-bold text-gray-900 dark:text-gray-100 text-center group-hover:text-[#1976d2] dark:group-hover:text-blue-400 transition-colors">
+                            <h3 className="font-bold text-gray-900 dark:text-white text-center group-hover:text-[#1976d2] dark:group-hover:text-blue-400 transition-colors">
                               {connection.name}
                             </h3>
                           </button>
@@ -297,7 +297,7 @@ export default function Network() {
               <div className="text-center py-12">
                 <div className="bg-white dark:bg-gray-800 rounded-2xl p-12 shadow-lg max-w-md mx-auto">
                   <User className="h-16 w-16 text-gray-400 mx-auto mb-6" />
-                  <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-3">
+                  <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">
                     No Connections Found
                   </h3>
                   <p className="text-gray-600 dark:text-gray-400 mb-6">
@@ -329,7 +329,7 @@ export default function Network() {
                 {/* Header */}
                 <div className="p-6 border-b border-gray-200 dark:border-gray-700">
                   <div className="flex items-center justify-between">
-                    <h2 className="text-xl font-bold text-gray-900 dark:text-gray-100">Connection Profile</h2>
+                    <h2 className="text-xl font-bold text-gray-900 dark:text-white">Connection Profile</h2>
                     <button
                       onClick={() => setSelectedConnection(null)}
                       className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors"
@@ -348,7 +348,7 @@ export default function Network() {
                       alt={selectedConnection.name}
                       className="w-24 h-24 rounded-full mx-auto mb-4 border-4 border-purple-100 dark:border-purple-900"
                     />
-                    <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-2">
+                    <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
                       {selectedConnection.name}
                     </h3>
 
@@ -372,7 +372,7 @@ export default function Network() {
 
                   {/* Shared Information */}
                   <div className="space-y-6">
-                    <h4 className="text-lg font-semibold text-gray-900 dark:text-gray-100">Shared Information</h4>
+                    <h4 className="text-lg font-semibold text-gray-900 dark:text-white">Shared Information</h4>
 
                     <div className="grid grid-cols-1 gap-4">
                       {Object.entries(selectedConnection.fieldsShared).map(([field, value]) => {
@@ -387,7 +387,7 @@ export default function Network() {
                               <p className="text-sm font-medium text-gray-700 dark:text-gray-300 capitalize mb-1">
                                 {field.replace(/([A-Z])/g, ' $1').trim()}
                               </p>
-                              <div className="text-gray-900 dark:text-gray-100">
+                              <div className="text-gray-900 dark:text-white">
                                 {formatFieldValue(field, value)}
                               </div>
                             </div>
@@ -398,7 +398,7 @@ export default function Network() {
 
                     {/* Connection Details */}
                     <div className="bg-gray-50 dark:bg-gray-700 rounded-xl p-4">
-                      <h5 className="font-semibold text-gray-900 dark:text-gray-100 mb-2">Connection Details</h5>
+                      <h5 className="font-semibold text-gray-900 dark:text-white mb-2">Connection Details</h5>
                       <p className="text-sm text-gray-600 dark:text-gray-400">
                         Connected on {new Date(selectedConnection.connectionDate).toLocaleDateString()}
                       </p>
@@ -432,7 +432,7 @@ export default function Network() {
             <div className="flex items-center justify-center min-h-screen p-4">
               <div className="bg-white dark:bg-gray-800 rounded-2xl max-w-lg w-full shadow-2xl">
                 <div className="p-6 border-b border-gray-200 dark:border-gray-700">
-                  <h3 className="text-lg font-bold text-gray-900 dark:text-gray-100">
+                  <h3 className="text-lg font-bold text-gray-900 dark:text-white">
                     Change Category for {showCategoryModal.name}
                   </h3>
                 </div>
@@ -452,7 +452,7 @@ export default function Network() {
                         <div className={`w-10 h-10 rounded-full flex items-center justify-center text-lg mb-2 ${category.color}`}>
                           {category.icon}
                         </div>
-                        <span className="text-sm font-medium text-gray-900 dark:text-gray-100">
+                        <span className="text-sm font-medium text-gray-900 dark:text-white">
                           {category.name}
                         </span>
                       </button>
@@ -478,7 +478,7 @@ export default function Network() {
             <div className="flex items-center justify-center min-h-screen p-4">
               <div className="bg-white dark:bg-gray-800 rounded-2xl max-w-md w-full shadow-2xl">
                 <div className="p-6">
-                  <h3 className="text-lg font-bold text-gray-900 dark:text-gray-100 mb-4">
+                  <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-4">
                     Remove Connection
                   </h3>
                   <p className="text-gray-600 dark:text-gray-400 mb-6">
