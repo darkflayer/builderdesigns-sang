@@ -453,7 +453,7 @@ export default function EventDetails() {
       <Layout searchQuery="" onSearchChange={() => {}}>
         <div className="min-h-screen flex items-center justify-center">
           <div className="text-center">
-            <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4">Event Not Found</h1>
+            <h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Event Not Found</h1>
             <Link to="/" className="text-[#1976d2] hover:text-[#125AA0]">
               Return to Home
             </Link>
@@ -465,7 +465,7 @@ export default function EventDetails() {
 
   return (
     <Layout searchQuery="" onSearchChange={() => {}}>
-      <div className="min-h-screen bg-gradient-to-br from-[#F8F5EF] to-[#F2EDE6] dark:from-slate-900 dark:to-slate-800">
+      <div className="min-h-screen bg-gradient-to-br from-[#F8F5EF] to-[#F2EDE6] dark:from-black dark:to-gray-900">
         {/* Hero Section */}
         <div className="relative">
           <img
@@ -478,9 +478,9 @@ export default function EventDetails() {
           {/* Back Button */}
           <Link
             to="/"
-            className="absolute top-3 left-3 lg:top-8 lg:left-8 p-2 bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm rounded-lg lg:rounded-xl hover:bg-white dark:hover:bg-gray-900 transition-colors z-10"
+            className="absolute top-3 left-3 lg:top-8 lg:left-8 p-2 bg-white/90 dark:bg-black/90 backdrop-blur-sm rounded-lg lg:rounded-xl hover:bg-white dark:hover:bg-black transition-colors z-10"
           >
-            <ArrowLeft className="h-4 w-4 lg:h-5 lg:w-5 text-gray-900 dark:text-gray-100" />
+            <ArrowLeft className="h-4 w-4 lg:h-5 lg:w-5 text-gray-900 dark:text-white" />
           </Link>
 
           {/* Event Info Overlay */}
@@ -542,13 +542,13 @@ export default function EventDetails() {
             <div className="lg:col-span-2 space-y-4 lg:space-y-8">
               {/* About Event */}
               <div className="bg-white dark:bg-gray-800 rounded-xl lg:rounded-2xl p-4 lg:p-6 shadow-lg">
-                <h2 className="text-lg lg:text-xl font-bold text-gray-900 dark:text-gray-100 mb-3 lg:mb-4">About This Event</h2>
+                <h2 className="text-lg lg:text-xl font-bold text-gray-900 dark:text-white mb-3 lg:mb-4">About This Event</h2>
                 <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-4 lg:mb-6 text-sm lg:text-base">
                   {event.description}
                 </p>
 
                 {/* Event Highlights */}
-                <h3 className="text-base lg:text-lg font-semibold text-gray-900 dark:text-gray-100 mb-3">What to Expect</h3>
+                <h3 className="text-base lg:text-lg font-semibold text-gray-900 dark:text-white mb-3">What to Expect</h3>
                 <ul className="space-y-2">
                   {event.highlights.map((highlight, index) => (
                     <li key={index} className="flex items-start space-x-2">
@@ -562,14 +562,14 @@ export default function EventDetails() {
               {/* Sub Events */}
               {event.hasSubEvents && event.subEvents && (
                 <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg">
-                  <h2 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-6">Sub Events</h2>
+                  <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-6">Sub Events</h2>
                   <div className="space-y-4">
                     {event.subEvents.map((subEvent, index) => (
                       <div key={subEvent.id} className="border border-gray-200 dark:border-gray-600 rounded-xl p-4 hover:border-blue-300 dark:hover:border-blue-500 transition-colors">
                         <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
                           <div className="flex-1">
                             <div className="flex items-center space-x-2 mb-2">
-                              <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">{subEvent.title}</h3>
+                              <h3 className="text-lg font-semibold text-gray-900 dark:text-white">{subEvent.title}</h3>
                               <span className={`px-2 py-1 rounded-full text-xs font-semibold ${
                                 subEvent.registrationType === 'open'
                                   ? 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400'
@@ -611,7 +611,7 @@ export default function EventDetails() {
 
               {/* Schedule */}
               <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg">
-                <h2 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-6">Event Schedule</h2>
+                <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-6">Event Schedule</h2>
                 <div className="space-y-4">
                   {event.schedule.map((item, index) => (
                     <div key={index} className="flex items-start space-x-4 p-3 bg-gray-50 dark:bg-gray-700 rounded-xl">
@@ -626,7 +626,7 @@ export default function EventDetails() {
 
               {/* Tags */}
               <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg">
-                <h2 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4">Topics</h2>
+                <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-4">Topics</h2>
                 <div className="flex flex-wrap gap-2">
                   {event.tags.map((tag, index) => (
                     <span
@@ -654,7 +654,7 @@ export default function EventDetails() {
                       <XCircle className="h-5 w-5 text-red-600" />
                     )}
                     <div className="flex-1">
-                      <h3 className="font-semibold text-gray-900 dark:text-gray-100">
+                      <h3 className="font-semibold text-gray-900 dark:text-white">
                         {userRegistration.status === 'registered' ? 'You\'re Registered!' :
                          userRegistration.status === 'approved' ? 'Registration Approved!' :
                          userRegistration.status === 'pending' ? 'Registration Pending' :
@@ -725,7 +725,7 @@ export default function EventDetails() {
                 {/* Attendees */}
                 <div className="border-t border-gray-200 dark:border-gray-700 pt-6">
                   <div className="flex items-center justify-between mb-4">
-                    <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">Attendees</h3>
+                    <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Attendees</h3>
                     <span className="text-sm text-gray-600 dark:text-gray-400">{event.attendees} going</span>
                   </div>
                   
@@ -759,7 +759,7 @@ export default function EventDetails() {
 
               {/* Organizer Info */}
               <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg">
-                <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">Organizer</h3>
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Organizer</h3>
                 <div className="flex items-center space-x-3">
                   <img
                     src={event.organizer.avatar}
@@ -768,7 +768,7 @@ export default function EventDetails() {
                   />
                   <div className="flex-1">
                     <div className="flex items-center space-x-2">
-                      <h4 className="font-semibold text-gray-900 dark:text-gray-100">{event.organizer.name}</h4>
+                      <h4 className="font-semibold text-gray-900 dark:text-white">{event.organizer.name}</h4>
                       {event.organizer.verified && (
                         <div className="w-4 h-4 bg-blue-500 rounded-full flex items-center justify-center">
                           <div className="w-2 h-2 bg-white rounded-full"></div>
