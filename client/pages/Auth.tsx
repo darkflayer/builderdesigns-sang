@@ -54,7 +54,7 @@ export default function Auth() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#F8F5EF] via-[#F2EDE6] to-[#EDE7DE] dark:from-gray-900 dark:via-[#4F6789]/20 dark:to-gray-900 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-gradient-to-br from-[#F8F5EF] via-[#F2EDE6] to-[#EDE7DE] dark:from-black dark:via-[#4F6789]/20 dark:to-gray-900 flex items-center justify-center p-4">
       <div className="w-full max-w-md">
         {/* Header */}
         <div className="text-center mb-8">
@@ -72,7 +72,7 @@ export default function Auth() {
             </span>
           </div>
           
-          <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-2">
+          <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
             {isLogin ? "Welcome back!" : "Create account"}
           </h1>
           <p className="text-gray-600 dark:text-gray-400">
@@ -96,7 +96,7 @@ export default function Auth() {
                     required={!isLogin}
                     value={formData.fullName}
                     onChange={(e) => handleInputChange("fullName", e.target.value)}
-                    className="w-full pl-10 pr-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#1976d2] focus:border-transparent bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-gray-100 transition-all"
+                    className="w-full pl-10 pr-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#1976d2] focus:border-transparent bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white transition-all"
                     placeholder="Enter your full name"
                   />
                 </div>
@@ -115,7 +115,7 @@ export default function Auth() {
                   required
                   value={formData.email}
                   onChange={(e) => handleInputChange("email", e.target.value)}
-                  className="w-full pl-10 pr-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#1976d2] focus:border-transparent bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-gray-100 transition-all"
+                  className="w-full pl-10 pr-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#1976d2] focus:border-transparent bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white transition-all"
                   placeholder="Enter your email"
                 />
               </div>
@@ -133,7 +133,7 @@ export default function Auth() {
                   required
                   value={formData.password}
                   onChange={(e) => handleInputChange("password", e.target.value)}
-                  className="w-full pl-10 pr-12 py-3 border border-gray-300 dark:border-gray-600 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#1976d2] focus:border-transparent bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-gray-100 transition-all"
+                  className="w-full pl-10 pr-12 py-3 border border-gray-300 dark:border-gray-600 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#1976d2] focus:border-transparent bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white transition-all"
                   placeholder="Enter your password"
                 />
                 <button
@@ -159,7 +159,7 @@ export default function Auth() {
                     required={!isLogin}
                     value={formData.confirmPassword}
                     onChange={(e) => handleInputChange("confirmPassword", e.target.value)}
-                    className="w-full pl-10 pr-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#1976d2] focus:border-transparent bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-gray-100 transition-all"
+                    className="w-full pl-10 pr-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#1976d2] focus:border-transparent bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white transition-all"
                     placeholder="Confirm your password"
                   />
                 </div>
