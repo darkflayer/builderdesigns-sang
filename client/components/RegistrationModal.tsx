@@ -118,7 +118,7 @@ export default function RegistrationModal({ isOpen, onClose, eventTitle, registr
           <div className="p-6 border-b border-gray-200 dark:border-gray-700">
             <div className="flex items-center justify-between">
               <div>
-                <h2 className="text-xl font-bold text-gray-900 dark:text-gray-100">
+                <h2 className="text-xl font-bold text-gray-900 dark:text-white">
                   {step === 'privacy' ? 'Privacy Settings' : 
                    step === 'details' ? 'Complete Registration' : 
                    'Registration Successful!'}
@@ -159,7 +159,7 @@ export default function RegistrationModal({ isOpen, onClose, eventTitle, registr
 
                 {/* Shareable Details */}
                 <div className="space-y-4">
-                  <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
+                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
                     What would you like to share with other attendees?
                   </h3>
                   
@@ -170,7 +170,7 @@ export default function RegistrationModal({ isOpen, onClose, eventTitle, registr
                       </div>
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center space-x-2 mb-1">
-                          <h4 className="font-medium text-gray-900 dark:text-gray-100">
+                          <h4 className="font-medium text-gray-900 dark:text-white">
                             {field.label}
                           </h4>
                           {field.required && (
@@ -223,7 +223,7 @@ export default function RegistrationModal({ isOpen, onClose, eventTitle, registr
               <div className="p-6">
                 {/* Event Summary */}
                 <div className="bg-gray-50 dark:bg-gray-700 rounded-xl p-4 mb-6">
-                  <h3 className="font-semibold text-gray-900 dark:text-gray-100 mb-2">Event Summary</h3>
+                  <h3 className="font-semibold text-gray-900 dark:text-white mb-2">Event Summary</h3>
                   <div className="text-sm text-gray-600 dark:text-gray-400">
                     <p className="mb-1"><strong>Event:</strong> {eventTitle}</p>
                     <p><strong>Registration:</strong> {registrationType === 'open' ? 'Open (Instant approval)' : 'Approval Required'}</p>
@@ -232,7 +232,7 @@ export default function RegistrationModal({ isOpen, onClose, eventTitle, registr
 
                 {/* Registration Form */}
                 <div className="space-y-4">
-                  <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
+                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
                     Complete Your Registration
                   </h3>
                   
@@ -244,7 +244,7 @@ export default function RegistrationModal({ isOpen, onClose, eventTitle, registr
                       </label>
                       <input
                         type="text"
-                        className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1976d2] bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
+                        className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1976d2] bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
                         placeholder="Enter your full name"
                       />
                     </div>
@@ -254,7 +254,7 @@ export default function RegistrationModal({ isOpen, onClose, eventTitle, registr
                       </label>
                       <input
                         type="email"
-                        className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1976d2] bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
+                        className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1976d2] bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
                         placeholder="Enter your email"
                       />
                     </div>
@@ -268,7 +268,7 @@ export default function RegistrationModal({ isOpen, onClose, eventTitle, registr
                       </label>
                       <input
                         type="tel"
-                        className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1976d2] bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
+                        className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1976d2] bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
                         placeholder="Enter your phone number"
                       />
                     </div>
@@ -281,7 +281,7 @@ export default function RegistrationModal({ isOpen, onClose, eventTitle, registr
                       </label>
                       <input
                         type="text"
-                        className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1976d2] bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
+                        className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1976d2] bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
                         placeholder="Enter your company name"
                       />
                     </div>
@@ -294,7 +294,7 @@ export default function RegistrationModal({ isOpen, onClose, eventTitle, registr
                       </label>
                       <input
                         type="text"
-                        className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1976d2] bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
+                        className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1976d2] bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
                         placeholder="Enter your job title"
                       />
                     </div>
@@ -307,7 +307,7 @@ export default function RegistrationModal({ isOpen, onClose, eventTitle, registr
                       </label>
                       <input
                         type="url"
-                        className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1976d2] bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
+                        className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1976d2] bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
                         placeholder="https://linkedin.com/in/yourprofile"
                       />
                     </div>
@@ -320,7 +320,7 @@ export default function RegistrationModal({ isOpen, onClose, eventTitle, registr
                       </label>
                       <input
                         type="url"
-                        className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1976d2] bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
+                        className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1976d2] bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
                         placeholder="https://twitter.com/yourusername"
                       />
                     </div>
@@ -333,7 +333,7 @@ export default function RegistrationModal({ isOpen, onClose, eventTitle, registr
                       </label>
                       <textarea
                         rows={3}
-                        className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1976d2] bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
+                        className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1976d2] bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
                         placeholder="Tell other attendees about yourself..."
                       />
                     </div>
@@ -371,7 +371,7 @@ export default function RegistrationModal({ isOpen, onClose, eventTitle, registr
                     <Clock className="h-8 w-8 text-orange-600 dark:text-orange-400" />
                   )}
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-2">
+                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
                   {registrationType === 'open' ? 'Registration Successful!' : 'Application Submitted!'}
                 </h3>
                 <p className="text-gray-600 dark:text-gray-400 mb-6">
