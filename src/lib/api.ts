@@ -14,9 +14,11 @@ export const api = axios.create({
 // Request interceptor to add auth token
 api.interceptors.request.use(
   (config) => {
-    const token = localStorage.getItem('sang_token');
-    if (token) {
-      config.headers.Authorization = `Bearer ${token}`;
+    if (typeof window !== 'undefined') {
+      const token = localStorage.getItem('sang_token');
+      if (token) {
+        (config.headers = config.headers || {}).Authorization = `Bearer ${token}`;
+      }
     }
     return config;
   },
@@ -29,11 +31,11 @@ api.interceptors.request.use(
 api.interceptors.response.use(
   (response) => response,
   (error) => {
-    if (error.response?.status === 401) {
+    if (error.response?.status === 401 && typeof window !== 'undefined') {
       // Clear auth data and redirect to login
       localStorage.removeItem('sang_token');
       localStorage.removeItem('sang_user');
-      window.location.href = '/auth';
+      window.location.href = '/login';
     }
     return Promise.reject(error);
   }
@@ -52,11 +54,13 @@ export const endpoints = {
     details: (id: string) => `/api/events/${id}`,
     register: (id: string) => `/api/events/${id}/register`,
     attendees: (id: string) => `/api/events/${id}/attendees`,
+    search: '/api/events/search',
   },
   user: {
     profile: '/api/user/profile',
     events: '/api/user/events',
     connections: '/api/user/connections',
+    notifications: '/api/user/notifications',
   },
   qr: {
     generate: '/api/qr/generate',
