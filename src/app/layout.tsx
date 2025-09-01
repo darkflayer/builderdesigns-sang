@@ -13,7 +13,11 @@ export const metadata: Metadata = {
   description: "Connect with like-minded people and discover amazing events in your city",
   keywords: ["events", "networking", "community", "meetups"],
   authors: [{ name: "Sang Team" }],
-  viewport: "width=device-width, initial-scale=1",
+};
+
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
 };
 
 export default function RootLayout({
