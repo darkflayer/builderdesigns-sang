@@ -1,5 +1,3 @@
-import Layout from "@/components/layouts/Layout";
-
 "use client";
 
 import Layout from "@/components/layouts/Layout";
