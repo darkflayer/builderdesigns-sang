@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { ThemeProvider } from "next-themes";
-import { Toaster as Sonner } from "sonner";
-import { TooltipProvider } from "@radix-ui/react-tooltip";
 import QueryProvider from "@/components/providers/QueryProvider";
 import "../../styles/globals.css";
 
@@ -35,10 +33,7 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
-            <TooltipProvider>
-              <Sonner />
-              {children}
-            </TooltipProvider>
+            {children}
           </ThemeProvider>
         </QueryProvider>
       </body>
