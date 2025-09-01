@@ -2,6 +2,7 @@ import Layout from "@/components/layouts/Layout";
 
 "use client";
 
+import Layout from "@/components/layouts/Layout";
 import { useFetch, useApiMutation } from "@/hooks/useFetch";
 import { endpoints } from "@/lib/api";
 
