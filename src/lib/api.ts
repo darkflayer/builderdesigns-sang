@@ -17,7 +17,11 @@ api.interceptors.request.use(
     if (typeof window !== 'undefined') {
       const token = localStorage.getItem('sang_token');
       if (token) {
-        (config.headers = config.headers || {}).Authorization = `Bearer ${token}`;
+        if (config.headers) {
+          (config.headers as any).Authorization = `Bearer ${token}`;
+        } else {
+          (config as any).headers = { Authorization: `Bearer ${token}` };
+        }
       }
     }
     return config;
