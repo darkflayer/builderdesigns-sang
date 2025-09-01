@@ -4,7 +4,7 @@ import { ThemeProvider } from "next-themes";
 import { Toaster as Sonner } from "sonner";
 import { TooltipProvider } from "@radix-ui/react-tooltip";
 import QueryProvider from "@/components/providers/QueryProvider";
-import "@/styles/globals.css";
+import "../../styles/globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
