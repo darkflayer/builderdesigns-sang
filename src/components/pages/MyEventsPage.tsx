@@ -1,5 +1,7 @@
 import Layout from "@/components/layouts/Layout";
 
+"use client";
+
 import { useFetch } from "@/hooks/useFetch";
 import { endpoints } from "@/lib/api";
 
